@@ -409,10 +409,21 @@ window.addEventListener('click', () => {
         if (groupIntersected) {
             if(groupIntersected.name === 'menuIsland') {
                 const menuIslandMeshesArray = [...twitter.children, ...discord.children, ...blog.children]
+                for(const mesh of menuIslandMeshesArray) {
+                    if(currentIntersect.object === mesh) {
+                        if (mesh.parent === twitter) {
+                            location.href = 'https://twitter.com/DoliaCats_eth'
+                        } else if (mesh.parent === discord) {
+                            location.href = 'https://discord.com/invite/RetekYNarD'
+                        } else if (mesh.parent === blog) {
+                            location.href = 'https://medium.com/'
 
-                console.log('menuIslandMeshesArray')
+                        }
+                    }
+                }
+                // console.log('menuIslandMeshesArray')
 
-                console.log(menuIslandMeshesArray)
+                // console.log(menuIslandMeshesArray)
             
             }
         }
