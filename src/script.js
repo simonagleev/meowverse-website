@@ -35,16 +35,26 @@ const textureLoader = new THREE.TextureLoader()
  */
 
 let meowverseIsland;
-let twitter = null;
+
+
 
 // menu
 const menuGroup = new THREE.Group()
+menuGroup.name = 'menuIsland'
 menuGroup.position.set(0, 0, 4)
 
 const menuMainPawGroup = new THREE.Group()
 menuGroup.add(menuMainPawGroup)
-
 scene.add(menuGroup)
+
+let twitter = null;
+let discord = null;
+let blog = null;
+
+let NFTsFinger = null;
+let gamesMeowverseFinger = null;
+let roadmapFinger = null;
+let partnersFinger = null;
 
                            // load models
 // Menu island
@@ -52,25 +62,29 @@ gltfLoader.load(
     'models/WEB3_MENU/WEB3_MENU(1MESH)_MAIN.gltf',
     (gltf) => {
         console.log('gltf.scene.children')
-        gltf.scene.children[0].children[1].material.wireframe = true
-        console.log(gltf.scene.children[0].children[0].material.wireframe)
+        gltf.scene.children[0].children[1].material.wireframe = false
+        
         menuMainPawGroup.add(gltf.scene)
     },
 )
 gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU_MAIN_T.gltf',
+    'models/WEB3_MENU/WEB3_MENU(1MESH)_T.gltf',
     (gltf) => {
-        gltf.scene.children[0].material.wireframe = false
         menuMainPawGroup.add(gltf.scene)
-        console.log(gltf.scene)
+        
+        console.log('TWITTER')
+        console.log(gltf.scene.children)
         twitter = gltf.scene.children[0]
+
     },
 )
 gltfLoader.load(
     'models/WEB3_MENU/WEB3_MENU(1MESH)_D.gltf',
     (gltf) => {
-
+       
         menuMainPawGroup.add(gltf.scene)
+
+        discord = gltf.scene.children[0]
     },
 )
 gltfLoader.load(
@@ -78,6 +92,10 @@ gltfLoader.load(
     (gltf) => {
 
         menuMainPawGroup.add(gltf.scene)
+
+        blog = gltf.scene.children[0]
+        console.log("BLOG")
+        console.log(blog)
     },
 )
 
@@ -86,6 +104,8 @@ gltfLoader.load(
     (gltf) => {
 
         menuGroup.add(gltf.scene)
+        
+        NFTsFinger = gltf.scene.children[0].children
     },
 )
 gltfLoader.load(
@@ -122,7 +142,7 @@ gltfLoader.load(
     'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BOAT.gltf',
     (gltf) => {
         gltf.scene.children[0].children[0].material.wireframe = false
-        gltf.scene.children[0].children[0].material.color = {b: 0.123, g: 0.105, r: 0.55}
+        // gltf.scene.children[0].children[0].material.color = {b: 0.123, g: 0.105, r: 0.55}
 
         bigIslandGroup.add(gltf.scene)
         
@@ -281,7 +301,7 @@ scene.add(spotlight)
 spotlight.target.position.set(-.8, -.5, 0)
 spotlight.intensity = 3
 scene.add(spotlight.target)
-console.log(spotlight.target)
+// console.log(spotlight.target)
 
 /**
  * 
@@ -345,6 +365,9 @@ window.addEventListener('mousemove', (event) => {
     mouse.y = - (event.clientY / sizes.height) * 2 + 1
 })
 
+/**
+ * UTILS
+ */
 
 let isHoweredIsland = false
 
@@ -357,10 +380,10 @@ const getParent = (obj) => {
     
     let element = obj
     if(element.parent === null){
-        console.log('got to scene')
+        // console.log('got to scene')
         
     } else {
-        console.log('else happened')
+        // console.log('else happened')
         for(let i = 0; i < myGroups.length; i++) {
 
             if(element.uuid === myGroups[i].uuid){
@@ -371,25 +394,29 @@ const getParent = (obj) => {
         element = element.parent
         getParent(element)
     }
-}
+};
+
+
 // Events
 window.addEventListener('click', () => {
-    const roadmapMainMeshesArray = roadmapGroup.children[1].children[0].children;
+    // const roadmapMainMeshesArray = roadmapGroup.children[1].children[0].children;
     if (currentIntersect) {
-        // console.log(currentIntersect.object)
-        // console.log(currentIntersect.object.parent)
-        // console.log(currentIntersect.object.parent === menuGroup.children[0])
-        
-        // console.log(menuGroup.uuid)
-        // console.log(roadmapGroup.uuid)
-        // console.log(bigIslandGroup.uuid)
-        console.log(twitter)
+        console.log('currentIntersect.object')
         console.log(currentIntersect.object)
-        if(currentIntersect.object === twitter || currentIntersect.object.name == "Platform_1") {
-            alert('TWIIIIT')
-        }
+
         // Сделать что-то с group при клике
         getParent(currentIntersect.object)
+        if (groupIntersected) {
+            if(groupIntersected.name === 'menuIsland') {
+                const menuIslandMeshesArray = [...twitter.children, ...discord.children, ...blog.children]
+
+                console.log('menuIslandMeshesArray')
+
+                console.log(menuIslandMeshesArray)
+            
+            }
+        }
+        
         if(groupIntersected) {
             for(const group of myGroups) {
                 if(group === groupIntersected) {
@@ -407,9 +434,8 @@ window.addEventListener('click', () => {
                     // camera.position.y = group.position.y + 4
                     camera.position.z = group.position.z + 5
                     // тут нужен плавный переход камеры на остров
-                    console.log(menuGroup)
                     
-                    console.log(menuGroup.getObjectByName('sign'))
+                    
                 } else {
                     console.log('wrong group')
                 }
@@ -442,6 +468,7 @@ controls.maxDistance = 10
 controls.minDistance = 1
 controls.maxPolarAngle = 1.4
 controls.minAzimuthAngle = 0
+
 /**
  * Renderer
  */
@@ -467,22 +494,6 @@ gui.add(camera.position, 'z').min(-10).max(10).step(0.1)
 
 gui.add(ambientLight, 'intensity').min(-10).max(10).step(0.1)
 gui.add(directionalLight, 'intensity').min(-10).max(10).step(0.1)
-// gui.add(directionalLight.position, 'x').min(-10).max(10).step(0.1)
-// gui.add(directionalLight.position, 'y').min(-10).max(10).step(0.1)
-// gui.add(directionalLight.position, 'z').min(-10).max(10).step(0.1)
-
-
-// gui.add(pointLightBigIsland.position, 'x').min(-10).max(10).step(0.1)
-// gui.add(pointLightBigIsland.position, 'y').min(-10).max(10).step(0.1)
-// gui.add(pointLightBigIsland.position, 'z').min(-10).max(10).step(0.1)
-// gui.add(pointLightBigIsland, 'intensity').min(-10).max(10).step(0.1)
-
-
-// gui.add(pointLightmenuIsland.position, 'x').min(-10).max(10).step(0.1)
-// gui.add(pointLightmenuIsland.position, 'y').min(-10).max(10).step(0.1)
-// gui.add(pointLightmenuIsland.position, 'z').min(-10).max(10).step(0.1)
-// gui.add(pointLightmenuIsland, 'intensity').min(-10).max(10).step(0.1)
-// gui.add(pointLightmenuIsland, 'distance').min(-10).max(10).step(0.1)
 
 gui.add(spotlight.target.position, 'x').min(-10).max(10).step(0.1)
 gui.add(spotlight.target.position, 'y').min(-10).max(10).step(0.1)
@@ -491,6 +502,13 @@ gui.add(spotlight, 'intensity').min(-10).max(10).step(0.1)
 
 
 
+/**
+ * TRIGGERS
+ */
+
+let twitterTrigger = false
+let discordTrigger = false
+let blogTrigger = false
 
 
 /**
@@ -504,41 +522,46 @@ const tick = () => {
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
 
-//  Floationg island animation
-    // if (menuGroup) {
-    //     menuGroup.position.y = Math.sin(elapsedTime * 2) * .1
-    // }
-
-    // if (roadmapGroup) {
-    //     roadmapGroup.position.y = Math.sin(elapsedTime / 2) * .1
-    // }
-
-    // if (bigIslandGroup) {
-    //     bigIslandGroup.position.y = Math.sin(elapsedTime / 2) * .1
-    // }
-
-    // if (meowverseIsland) {
-    //     meowverseIsland.position.y = Math.sin(elapsedTime / 2) * .4
-    // }
-    for(const group of myGroups) 
-
 // Cast a ray from the mouse and handle events
     setTimeout(() => {
         raycaster.setFromCamera(mouse, camera)
 
-        const objectsToTest = [menuGroup, roadmapGroup, bigIslandGroup, meowverseIsland]
+        const objectsToTest = [roadmapGroup, bigIslandGroup, meowverseIsland, twitter, discord, blog]
         const intersects = raycaster.intersectObjects(objectsToTest)
 
         if (intersects.length) {
             
             if (!currentIntersect) {
                 console.log('mouse enter') 
-
+                
                 isHoweredIsland = !isHoweredIsland    
 
                 currentIntersect = intersects[0]
-
+                
                 getParent(currentIntersect.object)
+
+                if(groupIntersected.name === 'menuIsland') {
+                    console.log('menu hovered')
+    
+                    for(const obj of twitter.children){
+                        if(currentIntersect.object === obj) {
+                            twitterTrigger = !twitterTrigger
+                        }
+                    }
+    
+                    for(const obj of discord.children){
+                        if(currentIntersect.object === obj) {
+                            discordTrigger = !discordTrigger
+                        }
+                    }
+    
+                    for(const obj of blog.children){
+                        if(currentIntersect.object === obj) {
+                            blogTrigger = !blogTrigger    
+                        }
+                    }
+                }
+    
             }
             
             if(isHoweredIsland) {
@@ -547,6 +570,7 @@ const tick = () => {
                 }
             }
             
+            
             intersectsArray = intersects
             
         }
@@ -554,12 +578,50 @@ const tick = () => {
             if (currentIntersect) {
                 console.log('mouse leave')
                 isHoweredIsland = !isHoweredIsland
+
+                if(groupIntersected.name === 'menuIsland') {
+                    console.log('menu hovered')
+    
+                    for(const obj of twitter.children){
+                        if(currentIntersect.object === obj) {
+                            twitterTrigger = !twitterTrigger
+                        }
+                    }
+    
+                    for(const obj of discord.children){
+                        if(currentIntersect.object === obj) {
+                            discordTrigger = !discordTrigger
+                        }
+                    }
+    
+                    for(const obj of blog.children){
+                        if(currentIntersect.object === obj) {
+                            blogTrigger = !blogTrigger    
+                        }
+                    }
+                }
             }
 
             currentIntersect = null
             intersectsArray = null
+            
         }
     }, 10000)
+
+    // Twitter,discord and blog animations
+    if(twitterTrigger) {
+        twitter.children[0].rotation.z -= .01
+    } 
+
+    if(discordTrigger) {
+        discord.children[0].rotation.z += .01
+        discord.children[1].rotation.z += .01
+    }
+
+    if(blogTrigger) {
+        blog.children[0].rotation.z += .01
+        blog.children[1].rotation.z += .01
+    }
 
     spotlightHelper.update()
     // Update controls
