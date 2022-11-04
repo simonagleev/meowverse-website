@@ -138,22 +138,170 @@ bigIslandGroup.position.set(-9, 0, -2)
 
 scene.add(bigIslandGroup)
 
-gltfLoader.load(
-    'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BOAT.gltf',
-    (gltf) => {
-        gltf.scene.children[0].children[0].material.wireframe = false
-        // gltf.scene.children[0].children[0].material.color = {b: 0.123, g: 0.105, r: 0.55}
+// gltfLoader.load(
+//     'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BOAT.gltf',
+//     (gltf) => {
+//         gltf.scene.children[0].children[0].material.wireframe = false
+//         // gltf.scene.children[0].children[0].material.color = {b: 0.123, g: 0.105, r: 0.55}
 
+//         bigIslandGroup.add(gltf.scene)
+        
+        
+//     },
+// )
+// gltfLoader.load(
+//     'models/WEB3_BIGISLAND/WEB3_BIGISLAND(1MESH).gltf',
+//     (gltf) => {
+        
+//         bigIslandGroup.add(gltf.scene)
+
+//     },
+// )
+let bigIslandLand = null;
+let bigIslandBath = null;
+let bigIslandBoat = null;
+let bigIslandGenCard1 = null;
+let bigIslandGenCard2 = null;
+let bigIslandOrigCard1 = null;
+let bigIslandOrigCard2 = null;
+let bigIslandOrigCard3 = null;
+let bigIslandOrigCard4 = null;
+let bigIslandOrigCard5 = null;
+let bigIslandSign1 = null;
+let bigIslandSign2 = null;
+let bigIslandSign3 = null;
+let bigIslandToken = null;
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_ISLAND.gltf',
+    (gltf) => {
+        
         bigIslandGroup.add(gltf.scene)
-        
-        
+        bigIslandLand = gltf.scene
     },
 )
+
 gltfLoader.load(
-    'models/WEB3_BIGISLAND/WEB3_BIGISLAND(1MESH).gltf',
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_BATH.gltf',
     (gltf) => {
         
         bigIslandGroup.add(gltf.scene)
+        bigIslandBath = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_BOAT.gltf',
+    (gltf) => {
+        
+        bigIslandGroup.add(gltf.scene)
+        bigIslandBoat = gltf.scene
+        bigIslandBoat.position.y = .4
+        bigIslandBoat.position.x = -.3
+        bigIslandBoat.rotation.z = .1
+
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_GEN1.gltf',
+    (gltf) => {
+        
+        bigIslandGroup.add(gltf.scene)
+        bigIslandGenCard1 = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_GEN2.gltf',
+    (gltf) => {
+        
+        bigIslandGroup.add(gltf.scene)
+        bigIslandGenCard2 = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_OG1.gltf',
+    (gltf) => {
+        
+        bigIslandGroup.add(gltf.scene)
+        bigIslandOrigCard1 = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_OG2.gltf',
+    (gltf) => {
+        
+        bigIslandGroup.add(gltf.scene)
+        bigIslandOrigCard2 = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_OG3.gltf',
+    (gltf) => {
+        
+        bigIslandGroup.add(gltf.scene)
+        bigIslandOrigCard3 = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_OG4.gltf',
+    (gltf) => {
+        
+        bigIslandGroup.add(gltf.scene)
+        bigIslandOrigCard4 = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_OG5.gltf',
+    (gltf) => {
+        
+        bigIslandGroup.add(gltf.scene)
+        bigIslandOrigCard5 = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_SIGN1.gltf',
+    (gltf) => {
+        
+        bigIslandGroup.add(gltf.scene)
+        bigIslandSign1 = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_SIGN2.gltf',
+    (gltf) => {
+        
+        bigIslandGroup.add(gltf.scene)
+        bigIslandSign2 = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_SIGN3.gltf',
+    (gltf) => {
+        
+        bigIslandGroup.add(gltf.scene)
+        bigIslandSign3 = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_TOKEN.gltf',
+    (gltf) => {
+        
+        bigIslandGroup.add(gltf.scene)
+        bigIslandToken = gltf.scene
+        createToken(1,.2,0, bigIslandGroup)
+        createToken(1,0,1, bigIslandGroup)
+        createToken(1,0,2.5, bigIslandGroup)
 
     },
 )
@@ -169,6 +317,15 @@ gltfLoader.load(
         scene.add(gltf.scene)
     },
 )
+const createToken = (x, y, z, group) => {
+    if (bigIslandToken) {
+        let coin = bigIslandToken.clone()
+        coin.position.x = x
+        coin.position.y = y
+        coin.position.z = z
+        group.add(coin)
+    }
+}
 
 // Roadmap island
 const roadmapGroup = new THREE.Group()
@@ -406,7 +563,8 @@ window.addEventListener('click', () => {
 
         // Сделать что-то с group при клике
         getParent(currentIntersect.object)
-        if (groupIntersected) {
+        if (groupIntersected) { 
+            // Click по соц. сетям
             if(groupIntersected.name === 'menuIsland') {
                 const menuIslandMeshesArray = [...twitter.children, ...discord.children, ...blog.children]
                 for(const mesh of menuIslandMeshesArray) {
@@ -421,11 +579,8 @@ window.addEventListener('click', () => {
                         }
                     }
                 }
-                // console.log('menuIslandMeshesArray')
-
-                // console.log(menuIslandMeshesArray)
-            
             }
+            
         }
         
         if(groupIntersected) {
@@ -632,6 +787,12 @@ const tick = () => {
     if(blogTrigger) {
         blog.children[0].rotation.z += .01
         blog.children[1].rotation.z += .01
+    }
+
+    // Boat animation 
+    if(bigIslandBoat) {
+        bigIslandBoat.position.y = Math.sin(elapsedTime * 2) * .02
+        bigIslandBoat.rotation.z = Math.cos(elapsedTime * 2) * .02
     }
 
     spotlightHelper.update()
