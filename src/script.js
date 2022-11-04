@@ -645,7 +645,7 @@ window.addEventListener('click', () => {
                         } else if (mesh.parent.name === 'bigIslandGenCard1') {
                             mesh.position.z = 4
 
-                        }
+                        } 
                     }
                 }
             }
