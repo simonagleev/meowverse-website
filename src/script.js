@@ -611,11 +611,11 @@ window.addEventListener('click', () => {
                 for (const mesh of menuIslandMeshesArray) {
                     if (currentIntersect.object === mesh) {
                         if (mesh.parent === twitter) {
-                            location.href = 'https://twitter.com/DoliaCats_eth'
+                            window.open('https://twitter.com/DoliaCats_eth', '_blank');
                         } else if (mesh.parent === discord) {
-                            location.href = 'https://discord.com/invite/RetekYNarD'
+                            window.open('https://discord.com/invite/RetekYNarD', '_blank');
                         } else if (mesh.parent === blog) {
-                            location.href = 'https://medium.com/'
+                            window.open('https://medium.com/', '_blank');
                         }
                     }
                 }
@@ -710,7 +710,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 // Debug
 const gui = new dat.GUI()
-
+gui.close()
 gui.add(controls, 'maxAzimuthAngle').min(0).max(Math.PI * 2).step(0.1)
 
 
