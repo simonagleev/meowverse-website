@@ -699,11 +699,11 @@ const tick = () => {
             
             if (!currentIntersect) {
                 console.log('mouse enter') 
-                
                 isHoweredIsland = !isHoweredIsland    
 
                 currentIntersect = intersects[0]
-                
+                console.log(currentIntersect.object)
+                console.log(bigIslandSign1)
                 getParent(currentIntersect.object)
 
                 if(groupIntersected.name === 'menuIsland') {
