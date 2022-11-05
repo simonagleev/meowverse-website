@@ -199,7 +199,6 @@ gltfLoader.load(
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_GEN1.gltf',
     (gltf) => {
-        gltf.scene.position.y += .1
 
         bigIslandGroup.add(gltf.scene)
         bigIslandGenCard1 = gltf.scene
@@ -211,7 +210,6 @@ gltfLoader.load(
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_GEN2.gltf',
     (gltf) => {
-        gltf.scene.position.y += .1
 
         bigIslandGroup.add(gltf.scene)
         bigIslandGenCard2 = gltf.scene
@@ -223,7 +221,6 @@ gltfLoader.load(
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_OG1.gltf',
     (gltf) => {
-        gltf.scene.position.y += .1
 
         bigIslandGroup.add(gltf.scene)
         bigIslandOrigCard1 = gltf.scene
@@ -235,7 +232,6 @@ gltfLoader.load(
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_OG2.gltf',
     (gltf) => {
-        gltf.scene.position.y += .1
 
         bigIslandGroup.add(gltf.scene)
         bigIslandOrigCard2 = gltf.scene
@@ -247,7 +243,6 @@ gltfLoader.load(
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_OG3.gltf',
     (gltf) => {
-        gltf.scene.position.y += .1
 
         bigIslandGroup.add(gltf.scene)
         bigIslandOrigCard3 = gltf.scene
@@ -259,7 +254,6 @@ gltfLoader.load(
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_OG4.gltf',
     (gltf) => {
-        gltf.scene.position.y += .1
 
         bigIslandGroup.add(gltf.scene)
         bigIslandOrigCard4 = gltf.scene
@@ -271,7 +265,6 @@ gltfLoader.load(
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_OG5.gltf',
     (gltf) => {
-        gltf.scene.position.y += .1
 
         bigIslandGroup.add(gltf.scene)
         bigIslandOrigCard5 = gltf.scene
@@ -283,7 +276,6 @@ gltfLoader.load(
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_SIGN1.gltf',
     (gltf) => {
-        gltf.scene.position.y += .1
 
         bigIslandGroup.add(gltf.scene)
         bigIslandSign1 = gltf.scene
@@ -295,7 +287,6 @@ gltfLoader.load(
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_SIGN2.gltf',
     (gltf) => {
-        gltf.scene.position.y += .1
 
         bigIslandGroup.add(gltf.scene)
         bigIslandSign2 = gltf.scene
@@ -307,7 +298,6 @@ gltfLoader.load(
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_SIGN3.gltf',
     (gltf) => {
-        gltf.scene.position.y += .1
 
         bigIslandGroup.add(gltf.scene)
         bigIslandSign3 = gltf.scene
@@ -319,7 +309,6 @@ gltfLoader.load(
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_TOKEN.gltf',
     (gltf) => {
-        gltf.scene.position.y += .1
 
         bigIslandGroup.add(gltf.scene)
         bigIslandToken = gltf.scene
