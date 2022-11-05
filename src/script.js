@@ -34,9 +34,6 @@ const textureLoader = new THREE.TextureLoader()
  *  Models
  */
 
-let meowverseIsland;
-
-
 
 // menu Island
 const menuGroup = new THREE.Group()
@@ -109,8 +106,8 @@ gltfLoader.load(
 
         menuGroup.add(gltf.scene)
 
-        partnersFinger = gltf.scene.children[0]
-        partnersFinger.name = 'partnersFinger'
+        gamesMeowverseFinger = gltf.scene.children[0]
+        gamesMeowverseFinger.name = 'gamesMeowverseFinger'
 
     },
 )
@@ -120,8 +117,10 @@ gltfLoader.load(
 
         menuGroup.add(gltf.scene)
 
-        roadmapFinger = gltf.scene.children[0]
-        roadmapFinger.name = 'roadmapFinger'
+        partnersFinger = gltf.scene.children[0]
+        partnersFinger.name = 'partnersFinger'
+        
+       
     },
 )
 gltfLoader.load(
@@ -130,8 +129,9 @@ gltfLoader.load(
 
         menuGroup.add(gltf.scene)
 
-        gamesMeowverseFinger = gltf.scene.children[0]
-        gamesMeowverseFinger.name = 'gamesMeowverseFinger'
+        roadmapFinger = gltf.scene.children[0]
+        roadmapFinger.name = 'roadmapFinger'
+
     },
 )
 
@@ -332,16 +332,17 @@ gltfLoader.load(
 )
 
 // Meowverse island
-
+const meowverseIslandGroup = new THREE.Group()
+meowverseIslandGroup.position.set(6, 0, -7)
+scene.add(meowverseIslandGroup)
 gltfLoader.load(
     'models/WEB3_MEOWVERSE/WEB3_MEOWVERSE(1MESH).gltf',
     (gltf) => {
-        meowverseIsland = gltf.scene
-        meowverseIsland.position.set(6, 0, -7)
-
-        scene.add(gltf.scene)
+        meowverseIslandGroup.add(gltf.scene)
     },
 )
+
+
 const createToken = (x, y, z, group) => {
     if (bigIslandToken) {
         let coin = bigIslandToken.clone()
@@ -551,7 +552,7 @@ window.addEventListener('mousemove', (event) => {
 
 
 // Находит родителей вплоть до Scene
-const myGroups = [menuGroup, bigIslandGroup, roadmapGroup]
+const myGroups = [menuGroup, bigIslandGroup, meowverseIslandGroup, roadmapGroup]
 
 let groupIntersected = null;
 
@@ -585,7 +586,15 @@ window.addEventListener('click', () => {
         if (groupIntersected) {
             // Click по соц. сетям
             if (groupIntersected.name === 'menuIsland') {
-                const menuIslandMeshesArray = [...twitter.children, ...discord.children, ...blog.children, ...NFTsFinger.children]
+                const menuIslandMeshesArray = [
+                    ...twitter.children, 
+                    ...discord.children, 
+                    ...blog.children, 
+                    ...NFTsFinger.children, 
+                    ...roadmapFinger.children,
+                    ...gamesMeowverseFinger.children,
+                ]
+
                 for (const mesh of menuIslandMeshesArray) {
                     if (currentIntersect.object === mesh) {
                         if (mesh.parent === twitter) {
@@ -595,7 +604,11 @@ window.addEventListener('click', () => {
                         } else if (mesh.parent === blog) {
                             window.open('https://medium.com/', '_blank');
                         } else if (mesh.parent === NFTsFinger) {
-                            focusIsland(bigIslandGroup)
+                            focuseIsland(bigIslandGroup)
+                        } else if (mesh.parent === roadmapFinger) {
+                            focuseIsland(roadmapGroup)
+                        } else if (mesh.parent === gamesMeowverseFinger) {
+                            focuseIsland(meowverseIslandGroup)
                         }
                     }
                 }
@@ -634,7 +647,7 @@ window.addEventListener('click', () => {
             for (const group of myGroups) {
                 if (group === groupIntersected) {
                     
-                    focusIsland(group)
+                    focuseIsland(group)
 
                 } else {
                     console.log('wrong group')
@@ -749,7 +762,7 @@ const animateSocialMediaLeave = () => {
     }
 }
 
-const focusIsland = (group) => {
+const focuseIsland = (group) => {
     controls.target.x = group.position.x
     controls.target.y = group.position.y
     controls.target.z = group.position.z
@@ -778,7 +791,7 @@ const tick = () => {
 
         const objectsToTest = [
             roadmapGroup,
-            meowverseIsland,
+            meowverseIslandGroup,
             twitter,
             discord,
             blog,
