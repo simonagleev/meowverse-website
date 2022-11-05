@@ -6,6 +6,16 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { Color, Group, Vector3 } from 'three'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
+
+/**
+ * HTML
+ */
+
+const menuBtn = document.querySelector('.menu')
+menuBtn.addEventListener('click', () => {
+    focuseIsland(menuGroup)
+})
+
 /**
  * Base
  */
