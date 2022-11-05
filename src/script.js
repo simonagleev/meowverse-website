@@ -38,33 +38,33 @@ let meowverseIsland;
 
 
 
-// menu
+// menu Island
 const menuGroup = new THREE.Group()
 menuGroup.name = 'menuIsland'
 menuGroup.position.set(0, 0, 4)
 
 const menuMainPawGroup = new THREE.Group()
 menuGroup.add(menuMainPawGroup)
+
 scene.add(menuGroup)
 
 let twitter = null;
 let discord = null;
 let blog = null;
+let pawBig = null;
 
 let NFTsFinger = null;
 let gamesMeowverseFinger = null;
 let roadmapFinger = null;
 let partnersFinger = null;
 
-// load models
-// Menu island
 gltfLoader.load(
     'models/WEB3_MENU/WEB3_MENU(1MESH)_MAIN.gltf',
     (gltf) => {
-        console.log('gltf.scene.children')
-        gltf.scene.children[0].children[1].material.wireframe = false
-
         menuMainPawGroup.add(gltf.scene)
+
+        pawBig = gltf.scene.children[0]
+        pawBig.name = 'pawBig'
     },
 )
 gltfLoader.load(
@@ -72,10 +72,7 @@ gltfLoader.load(
     (gltf) => {
         menuMainPawGroup.add(gltf.scene)
 
-        console.log('TWITTER')
-        console.log(gltf.scene.children)
         twitter = gltf.scene.children[0]
-
     },
 )
 gltfLoader.load(
@@ -90,12 +87,9 @@ gltfLoader.load(
 gltfLoader.load(
     'models/WEB3_MENU/WEB3_MENU(1MESH)_B.gltf',
     (gltf) => {
-
         menuMainPawGroup.add(gltf.scene)
 
         blog = gltf.scene.children[0]
-        console.log("BLOG")
-        console.log(blog)
     },
 )
 
@@ -105,7 +99,8 @@ gltfLoader.load(
 
         menuGroup.add(gltf.scene)
 
-        NFTsFinger = gltf.scene.children[0].children
+        NFTsFinger = gltf.scene.children[0]
+        NFTsFinger.name = 'NFTsFinger'
     },
 )
 gltfLoader.load(
@@ -113,6 +108,10 @@ gltfLoader.load(
     (gltf) => {
 
         menuGroup.add(gltf.scene)
+
+        partnersFinger = gltf.scene.children[0]
+        partnersFinger.name = 'partnersFinger'
+
     },
 )
 gltfLoader.load(
@@ -120,6 +119,9 @@ gltfLoader.load(
     (gltf) => {
 
         menuGroup.add(gltf.scene)
+
+        roadmapFinger = gltf.scene.children[0]
+        roadmapFinger.name = 'roadmapFinger'
     },
 )
 gltfLoader.load(
@@ -127,6 +129,9 @@ gltfLoader.load(
     (gltf) => {
 
         menuGroup.add(gltf.scene)
+
+        gamesMeowverseFinger = gltf.scene.children[0]
+        gamesMeowverseFinger.name = 'gamesMeowverseFinger'
     },
 )
 
@@ -138,25 +143,6 @@ bigIslandGroup.position.set(-9, 0, -2)
 bigIslandGroup.name = 'bigIsland'
 scene.add(bigIslandGroup)
 
-// gltfLoader.load(
-//     'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BOAT.gltf',
-//     (gltf) => {
-//         gltf.scene.children[0].children[0].material.wireframe = false
-//         // gltf.scene.children[0].children[0].material.color = {b: 0.123, g: 0.105, r: 0.55}
-
-//         bigIslandGroup.add(gltf.scene)
-
-
-//     },
-// )
-// gltfLoader.load(
-//     'models/WEB3_BIGISLAND/WEB3_BIGISLAND(1MESH).gltf',
-//     (gltf) => {
-
-//         bigIslandGroup.add(gltf.scene)
-
-//     },
-// )
 let bigIslandLand = null;
 let bigIslandBath = null;
 let bigIslandBoat = null;
@@ -179,9 +165,9 @@ gltfLoader.load(
         bigIslandGroup.add(gltf.scene)
         bigIslandLand = gltf.scene
         bigIslandLand.name = 'bigIslandLand'
-        for (const child of bigIslandLand.children) {
-            child.name = 'bigIslandLand'
-        }
+        // for (const child of bigIslandLand.children) { 
+        //     child.name = 'bigIslandLand'
+        // }
     },
 )
 
@@ -448,9 +434,7 @@ scene.add(particles)
  * GEOMETRIES
  */
 
-// const spaceBoxGeometry = new THREE.BoxGeometry(1, 1, 1)
-// const spaceBox = new THREE.Mesh(spaceBoxGeometry, environmentMapTexture)
-// scene.add(spaceBox)
+
 
 /**
  * FOG
@@ -497,7 +481,7 @@ scene.add(spotlight)
 spotlight.target.position.set(-.8, -.5, 0)
 spotlight.intensity = 3
 scene.add(spotlight.target)
-// console.log(spotlight.target)
+
 
 /**
  * 
@@ -520,7 +504,6 @@ const raycaster = new THREE.Raycaster()
 let currentIntersect = null
 
 let currentIntersectLength = null
-
 
 
 const rayOrigin = new THREE.Vector3(- 3, 0, 0)
@@ -563,11 +546,9 @@ window.addEventListener('mousemove', (event) => {
     mouse.y = - (event.clientY / sizes.height) * 2 + 1
 })
 
-/**
- * UTILS
- */
 
-let isHoweredIsland = false
+//  UTILS
+
 
 // Находит родителей вплоть до Scene
 const myGroups = [menuGroup, bigIslandGroup, roadmapGroup]
@@ -600,14 +581,11 @@ window.addEventListener('click', () => {
     if (currentIntersect) {
         getParent(currentIntersect.object)  // Получвем родителя меша, на кторый навели курсор (группу)
 
-        console.log(currentIntersect.object.parent.parent.name)
-        console.log(currentIntersect.object.parent)
-
         // Сделать что-то с group при клике
         if (groupIntersected) {
             // Click по соц. сетям
             if (groupIntersected.name === 'menuIsland') {
-                const menuIslandMeshesArray = [...twitter.children, ...discord.children, ...blog.children]
+                const menuIslandMeshesArray = [...twitter.children, ...discord.children, ...blog.children, ...NFTsFinger.children]
                 for (const mesh of menuIslandMeshesArray) {
                     if (currentIntersect.object === mesh) {
                         if (mesh.parent === twitter) {
@@ -616,10 +594,12 @@ window.addEventListener('click', () => {
                             window.open('https://discord.com/invite/RetekYNarD', '_blank');
                         } else if (mesh.parent === blog) {
                             window.open('https://medium.com/', '_blank');
+                        } else if (mesh.parent === NFTsFinger) {
+                            focusIsland(bigIslandGroup)
                         }
                     }
                 }
-            } else if (groupIntersected.name === 'bigIsland') {
+            } else if (groupIntersected.name === 'bigIsland') {   // Click по big-island
                 const bigIslandMeshesArray = [
                     ...bigIslandLand.children[0].children,
                     ...bigIslandBath.children[0].children,
@@ -636,39 +616,25 @@ window.addEventListener('click', () => {
                     ...bigIslandSign3.children[0].children,
                     ...bigIslandToken.children[0].children,
                 ]
-                console.log(bigIslandMeshesArray)
-                console.log(currentIntersect.object)
                 for (const mesh of bigIslandMeshesArray) {
                     if (currentIntersect.object.parent.name === mesh.parent.name) {
-                        if (mesh.parent.name === 'bigIslandLand') {
-                            mesh.position.y = 4
-                        } else if (mesh.parent.name === 'bigIslandGenCard1') {
-                            mesh.position.z = 4
-
-                        } 
+                        if (mesh.parent.name === 'bigIslandSign1' || mesh.parent.parent.name === 'bigIslandSign1') {
+                            window.open('https://doliacats.com#tokenomiks', '_blank')
+                        } else if (mesh.parent.name === 'bigIslandSign2' || mesh.parent.parent.name === 'bigIslandSign2') {
+                            window.open('https://doliacats.com', '_blank')
+                        } else if (mesh.parent.name === 'bigIslandSign3' || mesh.parent.parent.name === 'bigIslandSign3') {
+                            window.open('http://genesis.doliacats.com', '_blank')
+                        }
                     }
                 }
             }
         }
 
-        if (groupIntersected) {
+        if (groupIntersected && groupIntersected.name !== 'menuIsland') {
             for (const group of myGroups) {
                 if (group === groupIntersected) {
-                    console.log('CHILD')
-                    // console.log(menuGroup.children[0].children[0].children[0].children[0].material.color.r)
-                    // console.log(group.position)
-                    // camera.position.set(-9, -0.0008470513057307835, -2)
-                    // menuGroup.children[0].children[0].children[0].children[0].material.color = {r: 200, g: 0, b: 0}
-
-                    controls.target.x = group.position.x
-                    controls.target.y = group.position.y
-                    controls.target.z = group.position.z
-
-                    camera.position.x = group.position.x
-                    // camera.position.y = group.position.y + 4
-                    camera.position.z = group.position.z + 5
-                    // тут нужен плавный переход камеры на остров
-
+                    
+                    focusIsland(group)
 
                 } else {
                     console.log('wrong group')
@@ -732,10 +698,68 @@ gui.add(spotlight, 'intensity').min(-10).max(10).step(0.1)
  * TRIGGERS
  */
 
+let isHoweredIsland = false
+
 let twitterTrigger = false
 let discordTrigger = false
 let blogTrigger = false
 
+
+/**
+ * Action FUNCTIONS
+ */
+
+const animateSocialMediaEnterAndChange = () => {
+    if (currentIntersect.object.parent === twitter || currentIntersect.object.parent.parent === twitter) {
+        twitterTrigger = true
+    } else {
+        twitterTrigger = false
+    }
+
+    if (currentIntersect.object.parent === discord || currentIntersect.object.parent.parent === discord) {
+        discordTrigger = true
+    } else {
+        discordTrigger = false
+    }
+
+    if (currentIntersect.object.parent === blog || currentIntersect.object.parent.parent === blog) {
+        blogTrigger = true
+    } else {
+        blogTrigger = false
+    }
+}
+
+const animateSocialMediaLeave = () => {
+    for (const obj of twitter.children) {
+        if (currentIntersect.object === obj) {
+            twitterTrigger = !twitterTrigger
+        }
+    }
+
+    for (const obj of discord.children) {
+        if (currentIntersect.object === obj) {
+            discordTrigger = !discordTrigger
+        }
+    }
+
+    for (const obj of blog.children) {
+        if (currentIntersect.object === obj) {
+            blogTrigger = !blogTrigger
+        }
+    }
+}
+
+const focusIsland = (group) => {
+    controls.target.x = group.position.x
+    controls.target.y = group.position.y
+    controls.target.z = group.position.z
+
+    camera.position.x = group.position.x
+    // camera.position.y = group.position.y + 4
+    camera.position.z = group.position.z + 5
+    // тут нужен плавный переход камеры на остров
+
+}
 
 /**
  * Animate
@@ -749,7 +773,7 @@ const tick = () => {
     previousTime = elapsedTime
 
     // Cast a ray from the mouse and handle events
-    setTimeout(() => {
+    
         raycaster.setFromCamera(mouse, camera)
 
         const objectsToTest = [
@@ -758,6 +782,11 @@ const tick = () => {
             twitter,
             discord,
             blog,
+            pawBig,
+            NFTsFinger,
+            roadmapFinger,
+            partnersFinger,
+            gamesMeowverseFinger,
             bigIslandLand,
             bigIslandBath,
             bigIslandBoat,
@@ -781,72 +810,44 @@ const tick = () => {
             if (!currentIntersect) {
                 console.log('mouse enter')
 
+                currentIntersect = intersects[0]
+
                 isHoweredIsland = !isHoweredIsland
 
-                currentIntersect = intersects[0]
-                
                 getParent(currentIntersect.object)
 
-                if (groupIntersected.name === 'menuIsland') {
+                if (groupIntersected && groupIntersected.name === 'menuIsland') {
                     console.log('menu hovered')
-
-                    for (const obj of twitter.children) {
-                        if (currentIntersect.object === obj) {
-                            twitterTrigger = !twitterTrigger
-                        }
-                    }
-
-                    for (const obj of discord.children) {
-                        if (currentIntersect.object === obj) {
-                            discordTrigger = !discordTrigger
-                        }
-                    }
-
-                    for (const obj of blog.children) {
-                        if (currentIntersect.object === obj) {
-                            blogTrigger = !blogTrigger
-                        }
-                    }
+                    animateSocialMediaEnterAndChange()
                 }
 
             } else if (currentIntersect && (currentIntersect.object !== intersects[0].object)) {
                 console.log('mesh hovered changed')
-                
+
                 currentIntersect = intersects[0]
+
+                if (groupIntersected && groupIntersected.name === 'menuIsland') {
+                    animateSocialMediaEnterAndChange()
+                }
+
             }
 
         } else {
-             if (currentIntersect) {
+            if (currentIntersect) {
                 console.log('mouse leave')
+
                 isHoweredIsland = !isHoweredIsland
-
-                if (groupIntersected.name === 'menuIsland') {
-                    console.log('menu hovered')
-
-                    for (const obj of twitter.children) {
-                        if (currentIntersect.object === obj) {
-                            twitterTrigger = !twitterTrigger
-                        }
-                    }
-
-                    for (const obj of discord.children) {
-                        if (currentIntersect.object === obj) {
-                            discordTrigger = !discordTrigger
-                        }
-                    }
-
-                    for (const obj of blog.children) {
-                        if (currentIntersect.object === obj) {
-                            blogTrigger = !blogTrigger
-                        }
-                    }
+                
+                if (groupIntersected && groupIntersected.name === 'menuIsland') {
+                    animateSocialMediaLeave()
                 }
             }
 
+            groupIntersected = null
+
             currentIntersect = null
-            
         }
-    }, 10000)
+    
 
     // Islandfloating animations
     if (isHoweredIsland) {
@@ -886,9 +887,9 @@ const tick = () => {
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
-
-tick()
-
+setTimeout(() => {
+    tick()
+}, 7000)
 
 
 
