@@ -2,14 +2,13 @@ import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import * as models from './js/Models.js'
+import * as particles from './js/Particles.js'
+import * as light from './js/Lights.js'
+
 import { Color, Group, Vector3 } from 'three'
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
-/**
- * Base
- */
-
+import Stats from 'stats.js'
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -19,176 +18,28 @@ const scene = new THREE.Scene()
 
 
 /**
- * Loaders
+ * Add models to the scene
  */
-
-const dracoLoader = new DRACOLoader()
-dracoLoader.setDecoderPath('/draco/')
-
-const gltfLoader = new GLTFLoader()
-gltfLoader.setDRACOLoader(dracoLoader)
-
-const textureLoader = new THREE.TextureLoader()
+scene.add(models.menuGroup)
+scene.add(models.bigIslandGroup)
+scene.add(models.roadmapGroup)
+scene.add(models.meowverseIslandGroup)
 
 /**
- *  Models
+ * Add particles to the scene
+ */
+scene.add(particles.particles)
+
+/**
+ * Add lights to the scene
  */
 
-let meowverseIsland;
-
-
-
-// menu
-const menuGroup = new THREE.Group()
-menuGroup.name = 'menuIsland'
-menuGroup.position.set(0, 0, 4)
-
-const menuMainPawGroup = new THREE.Group()
-menuGroup.add(menuMainPawGroup)
-scene.add(menuGroup)
-
-let twitter = null;
-let discord = null;
-let blog = null;
-
-let NFTsFinger = null;
-let gamesMeowverseFinger = null;
-let roadmapFinger = null;
-let partnersFinger = null;
-
-                           // load models
-// Menu island
-gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_MAIN.gltf',
-    (gltf) => {
-        console.log('gltf.scene.children')
-        gltf.scene.children[0].children[1].material.wireframe = false
-        
-        menuMainPawGroup.add(gltf.scene)
-    },
-)
-gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_T.gltf',
-    (gltf) => {
-        menuMainPawGroup.add(gltf.scene)
-        
-        console.log('TWITTER')
-        console.log(gltf.scene.children)
-        twitter = gltf.scene.children[0]
-
-    },
-)
-gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_D.gltf',
-    (gltf) => {
-       
-        menuMainPawGroup.add(gltf.scene)
-
-        discord = gltf.scene.children[0]
-    },
-)
-gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_B.gltf',
-    (gltf) => {
-
-        menuMainPawGroup.add(gltf.scene)
-
-        blog = gltf.scene.children[0]
-        console.log("BLOG")
-        console.log(blog)
-    },
-)
-
-gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_NM.gltf',
-    (gltf) => {
-
-        menuGroup.add(gltf.scene)
-        
-        NFTsFinger = gltf.scene.children[0].children
-    },
-)
-gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_GM.gltf',
-    (gltf) => {
-
-        menuGroup.add(gltf.scene)
-    },
-)
-gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_P.gltf',
-    (gltf) => {
-
-        menuGroup.add(gltf.scene)
-    },
-)
-gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_R.gltf',
-    (gltf) => {
-
-        menuGroup.add(gltf.scene)
-    },
-)
-
-
-// BIGisland
-
-const bigIslandGroup = new THREE.Group()
-bigIslandGroup.position.set(-9, 0, -2)
-
-scene.add(bigIslandGroup)
-
-gltfLoader.load(
-    'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BOAT.gltf',
-    (gltf) => {
-        gltf.scene.children[0].children[0].material.wireframe = false
-        // gltf.scene.children[0].children[0].material.color = {b: 0.123, g: 0.105, r: 0.55}
-
-        bigIslandGroup.add(gltf.scene)
-        
-        
-    },
-)
-gltfLoader.load(
-    'models/WEB3_BIGISLAND/WEB3_BIGISLAND(1MESH).gltf',
-    (gltf) => {
-        
-        bigIslandGroup.add(gltf.scene)
-
-    },
-)
-
-// Meowverse island
-
-gltfLoader.load(
-    'models/WEB3_MEOWVERSE/WEB3_MEOWVERSE(1MESH).gltf',
-    (gltf) => {
-        meowverseIsland = gltf.scene
-        meowverseIsland.position.set(6, 0, -7)
-
-        scene.add(gltf.scene)
-    },
-)
-
-// Roadmap island
-const roadmapGroup = new THREE.Group()
-roadmapGroup.position.set(6.5, 0, 1.5)
-
-scene.add(roadmapGroup)
-
-gltfLoader.load(
-    'models/WEB3_ROADMAP/WEB3_ROADMAP_MAIN(1MESH).gltf',
-    (gltf) => {
-        roadmapGroup.add(gltf.scene)
-    },
-)
-
-gltfLoader.load(
-    'models/WEB3_ROADMAP/WEB3_ROADMAP_BUTTON.gltf',
-    (gltf) => {
-        roadmapGroup.add(gltf.scene)
-    },
-)
+scene.add(light.ambientLight)
+scene.add(light.directionalLight)
+scene.add(light.pointLightBigIsland)
+scene.add(light.pointLightmenuIsland)
+scene.add(light.spotlight)
+scene.add(light.spotlight.target)
 
 /**
  * TEXTURES
@@ -205,56 +56,6 @@ scene.background = new THREE.CubeTextureLoader()
     ]);
 
 
-/**
- *  PARTICLES
- */
-
-const particleTexture = textureLoader.load('/textures/particles/1.png')
-
-// Geometry
-const particlesGeometry = new THREE.BufferGeometry()
-const count = 5000
-
-const positions = new Float32Array(count * 3)
-const colors = new Float32Array(count * 3)
-
-for (let i = 0; i < count * 3; i++) {
-    positions[i] = (Math.random() - 0.5) * 100
-    colors[i] = Math.random()
-}
-
-particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
-particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
-
-// Material
-const particlesMaterial = new THREE.PointsMaterial()
-
-particlesMaterial.size = 0.1
-particlesMaterial.sizeAttenuation = true
-
-particlesMaterial.color = new THREE.Color('#ffffff')
-
-particlesMaterial.transparent = true
-particlesMaterial.alphaMap = particleTexture
-// particlesMaterial.alphaTest = 0.01
-// particlesMaterial.depthTest = false
-particlesMaterial.depthWrite = false
-particlesMaterial.blending = THREE.AdditiveBlending
-
-particlesMaterial.vertexColors = false
-
-// Points
-const particles = new THREE.Points(particlesGeometry, particlesMaterial)
-scene.add(particles)
-
-
-/**
- * GEOMETRIES
- */
-
-// const spaceBoxGeometry = new THREE.BoxGeometry(1, 1, 1)
-// const spaceBox = new THREE.Mesh(spaceBoxGeometry, environmentMapTexture)
-// scene.add(spaceBox)
 
 /**
  * FOG
@@ -263,56 +64,6 @@ scene.add(particles)
 const fog = new THREE.Fog(0x8C97F4, 1, 50)
 scene.fog = fog
 
-/**
- * Lights
- */
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.7)
-scene.add(ambientLight)
-
-const directionalLight = new THREE.DirectionalLight(0xFF7F50, 0.6)
-directionalLight.castShadow = true
-directionalLight.shadow.mapSize.set(1024, 1024)
-directionalLight.shadow.camera.far = 15
-directionalLight.shadow.camera.left = - 7
-directionalLight.shadow.camera.top = 7
-directionalLight.shadow.camera.right = 7
-directionalLight.shadow.camera.bottom = - 7
-directionalLight.position.set(5, 5, 5)
-scene.add(directionalLight)
-
-const pointLightBigIsland = new THREE.PointLight(0xFF9933, 1)
-pointLightBigIsland.position.set(-8, 3.5, -3.3)
-pointLightBigIsland.castShadow = true
-pointLightBigIsland.intensity = .5
-scene.add(pointLightBigIsland)
-
-
-const pointLightmenuIsland = new THREE.PointLight(0xFF9933, 1)
-pointLightmenuIsland.position.set(0.5, 2.5, 2.7)
-pointLightmenuIsland.castShadow = true
-pointLightmenuIsland.intensity = .5
-pointLightmenuIsland.lookAt(new Vector3(0, 0, 4))
-scene.add(pointLightmenuIsland)
-
-const spotlight = new THREE.SpotLight("#Ff9889", .5, 6, Math.PI * .13, 0.25, 1)
-spotlight.position.set(0,2,2)
-
-scene.add(spotlight)
-spotlight.target.position.set(-.8, -.5, 0)
-spotlight.intensity = 3
-scene.add(spotlight.target)
-// console.log(spotlight.target)
-
-/**
- * 
- * HELPERS 
- */
-const helper = new THREE.DirectionalLightHelper(directionalLight, 5);
-const helper1 = new THREE.PointLightHelper(pointLightBigIsland, 1);
-const helper2 = new THREE.PointLightHelper(pointLightmenuIsland, 1);
-const spotlightHelper = new THREE.SpotLightHelper(spotlight, 1)
-// scene.add(spotlightHelper)
-//  scene.add( helper, helper1, helper2 );
 
 
 /**
@@ -372,7 +123,7 @@ window.addEventListener('mousemove', (event) => {
 let isHoweredIsland = false
 
 // Находит родителей вплоть до Scene
-const myGroups = [menuGroup, bigIslandGroup, roadmapGroup]
+const myGroups = [models.menuGroup, models.bigIslandGroup, models.roadmapGroup]
 
 let groupIntersected = null
 
@@ -492,13 +243,13 @@ gui.add(camera.position, 'x').min(-10).max(10).step(0.1)
 gui.add(camera.position, 'y').min(-10).max(10).step(0.1)
 gui.add(camera.position, 'z').min(-10).max(10).step(0.1)
 
-gui.add(ambientLight, 'intensity').min(-10).max(10).step(0.1)
-gui.add(directionalLight, 'intensity').min(-10).max(10).step(0.1)
+gui.add(light.ambientLight, 'intensity').min(-10).max(10).step(0.1)
+gui.add(light.directionalLight, 'intensity').min(-10).max(10).step(0.1)
 
-gui.add(spotlight.target.position, 'x').min(-10).max(10).step(0.1)
-gui.add(spotlight.target.position, 'y').min(-10).max(10).step(0.1)
-gui.add(spotlight.target.position, 'z').min(-10).max(10).step(0.1)
-gui.add(spotlight, 'intensity').min(-10).max(10).step(0.1)
+gui.add(light.spotlight.target.position, 'x').min(-10).max(10).step(0.1)
+gui.add(light.spotlight.target.position, 'y').min(-10).max(10).step(0.1)
+gui.add(light.spotlight.target.position, 'z').min(-10).max(10).step(0.1)
+gui.add(light.spotlight, 'intensity').min(-10).max(10).step(0.1)
 
 
 
@@ -517,16 +268,34 @@ let blogTrigger = false
 const clock = new THREE.Clock()
 let previousTime = 0
 
+/**
+ * Raycast counter
+ */
+var raycastCounter = 0
+
+/**
+ * Stats
+ */
+ const stats = new Stats()
+ stats.showPanel(0) 
+ document.body.appendChild(stats.dom)
+
 const tick = () => {
+    stats.begin()
+
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
 
 // Cast a ray from the mouse and handle events
-    setTimeout(() => {
+
+    raycastCounter+=1
+
+    if(raycastCounter == 30) {
+        raycastCounter = 0
         raycaster.setFromCamera(mouse, camera)
 
-        const objectsToTest = [roadmapGroup, bigIslandGroup, meowverseIsland, twitter, discord, blog]
+        const objectsToTest = [models.roadmapGroup, models.bigIslandGroup, models.meowverseIslandGroup, models.twitter, models.discord, models.blog]
         const intersects = raycaster.intersectObjects(objectsToTest)
 
         if (intersects.length) {
@@ -606,6 +375,9 @@ const tick = () => {
             intersectsArray = null
             
         }
+    }
+    setTimeout(() => {
+        
     }, 10000)
 
     // Twitter,discord and blog animations
@@ -623,12 +395,14 @@ const tick = () => {
         blog.children[1].rotation.z += .01
     }
 
-    spotlightHelper.update()
+    light.spotlightHelper.update()
     // Update controls
     controls.update()
 
     // Render
     renderer.render(scene, camera)
+
+    stats.end()
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
