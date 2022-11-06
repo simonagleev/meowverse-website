@@ -27,18 +27,38 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
+/**
+ * Loading manager (loading process and screen)
+ */
+const loadingManager = new THREE.LoadingManager()
+const progressBar = document.getElementById('progress-bar')
+const progressBarontainer = document.querySelector('.progress-bar-container')
+
+let isLoaded = false
+
+loadingManager.onProgress = (url, loaded, total) => {
+    progressBar.value = (loaded / total) * 100
+}
+
+loadingManager.onLoad = () => {
+    console.log('LOADED')
+    isLoaded = true
+    tick()
+    progressBarontainer.style.display = 'none'
+}
 
 /**
  * Loaders
  */
 
-const dracoLoader = new DRACOLoader()
+const dracoLoader = new DRACOLoader(loadingManager)
 dracoLoader.setDecoderPath('/draco/')
 
-const gltfLoader = new GLTFLoader()
+const gltfLoader = new GLTFLoader(loadingManager)
 gltfLoader.setDRACOLoader(dracoLoader)
 
-const textureLoader = new THREE.TextureLoader()
+const textureLoader = new THREE.TextureLoader(loadingManager)
+
 
 /**
  *  Models
@@ -129,8 +149,8 @@ gltfLoader.load(
 
         partnersFinger = gltf.scene.children[0]
         partnersFinger.name = 'partnersFinger'
-        
-       
+
+
     },
 )
 gltfLoader.load(
@@ -586,10 +606,10 @@ window.addEventListener('click', () => {
             // Click по соц. сетям
             if (groupIntersected.name === 'menuIsland') {
                 const menuIslandMeshesArray = [
-                    ...twitter.children, 
-                    ...discord.children, 
-                    ...blog.children, 
-                    ...NFTsFinger.children, 
+                    ...twitter.children,
+                    ...discord.children,
+                    ...blog.children,
+                    ...NFTsFinger.children,
                     ...roadmapFinger.children,
                     ...gamesMeowverseFinger.children,
                 ]
@@ -645,7 +665,7 @@ window.addEventListener('click', () => {
         if (groupIntersected && groupIntersected.name !== 'menuIsland') {
             for (const group of myGroups) {
                 if (group === groupIntersected) {
-                    
+
                     focuseIsland(group)
 
                 } else {
@@ -785,81 +805,81 @@ const tick = () => {
     previousTime = elapsedTime
 
     // Cast a ray from the mouse and handle events
-    
-        raycaster.setFromCamera(mouse, camera)
 
-        const objectsToTest = [
-            roadmapGroup,
-            meowverseIslandGroup,
-            twitter,
-            discord,
-            blog,
-            pawBig,
-            NFTsFinger,
-            roadmapFinger,
-            partnersFinger,
-            gamesMeowverseFinger,
-            bigIslandLand,
-            bigIslandBath,
-            bigIslandBoat,
-            bigIslandGenCard1,
-            bigIslandGenCard2,
-            bigIslandOrigCard1,
-            bigIslandOrigCard2,
-            bigIslandOrigCard3,
-            bigIslandOrigCard4,
-            bigIslandOrigCard5,
-            bigIslandSign1,
-            bigIslandSign2,
-            bigIslandSign3,
-            bigIslandToken,
-        ]
+    raycaster.setFromCamera(mouse, camera)
 
-        const intersects = raycaster.intersectObjects(objectsToTest)   //тут все меши под курсором
+    const objectsToTest = [
+        roadmapGroup,
+        meowverseIslandGroup,
+        twitter,
+        discord,
+        blog,
+        pawBig,
+        NFTsFinger,
+        roadmapFinger,
+        partnersFinger,
+        gamesMeowverseFinger,
+        bigIslandLand,
+        bigIslandBath,
+        bigIslandBoat,
+        bigIslandGenCard1,
+        bigIslandGenCard2,
+        bigIslandOrigCard1,
+        bigIslandOrigCard2,
+        bigIslandOrigCard3,
+        bigIslandOrigCard4,
+        bigIslandOrigCard5,
+        bigIslandSign1,
+        bigIslandSign2,
+        bigIslandSign3,
+        bigIslandToken,
+    ]
 
-        if (intersects.length) {
+    const intersects = raycaster.intersectObjects(objectsToTest)   //тут все меши под курсором
 
-            if (!currentIntersect) {
-                console.log('mouse enter')
+    if (intersects.length) {
 
-                currentIntersect = intersects[0]
+        if (!currentIntersect) {
+            console.log('mouse enter')
 
-                isHoweredIsland = !isHoweredIsland
+            currentIntersect = intersects[0]
 
-                getParent(currentIntersect.object)
+            isHoweredIsland = !isHoweredIsland
 
-                if (groupIntersected && groupIntersected.name === 'menuIsland') {
-                    console.log('menu hovered')
-                    animateSocialMediaEnterAndChange()
-                }
+            getParent(currentIntersect.object)
 
-            } else if (currentIntersect && (currentIntersect.object !== intersects[0].object)) {
-                console.log('mesh hovered changed')
-
-                currentIntersect = intersects[0]
-
-                if (groupIntersected && groupIntersected.name === 'menuIsland') {
-                    animateSocialMediaEnterAndChange()
-                }
-
+            if (groupIntersected && groupIntersected.name === 'menuIsland') {
+                console.log('menu hovered')
+                animateSocialMediaEnterAndChange()
             }
 
-        } else {
-            if (currentIntersect) {
-                console.log('mouse leave')
+        } else if (currentIntersect && (currentIntersect.object !== intersects[0].object)) {
+            console.log('mesh hovered changed')
 
-                isHoweredIsland = !isHoweredIsland
-                
-                if (groupIntersected && groupIntersected.name === 'menuIsland') {
-                    animateSocialMediaLeave()
-                }
+            currentIntersect = intersects[0]
+
+            if (groupIntersected && groupIntersected.name === 'menuIsland') {
+                animateSocialMediaEnterAndChange()
             }
 
-            groupIntersected = null
-
-            currentIntersect = null
         }
-    
+
+    } else {
+        if (currentIntersect) {
+            console.log('mouse leave')
+
+            isHoweredIsland = !isHoweredIsland
+
+            if (groupIntersected && groupIntersected.name === 'menuIsland') {
+                animateSocialMediaLeave()
+            }
+        }
+
+        groupIntersected = null
+
+        currentIntersect = null
+    }
+
 
     // Islandfloating animations
     if (isHoweredIsland) {
@@ -899,9 +919,10 @@ const tick = () => {
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
-setTimeout(() => {
-    tick()
-}, 7000)
 
+
+// setTimeout(() => {
+//     tick()
+// }, 7000)
 
 
