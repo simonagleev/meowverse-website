@@ -118,37 +118,6 @@ window.addEventListener('mousemove', (event) => {
     mouse.y = - (event.clientY / sizes.height) * 2 + 1
 })
 
-/**
- * UTILS
- */
-
-let isHoweredIsland = false
-
-// Находит родителей вплоть до Scene
-const myGroups = [models.menuGroup, models.bigIslandGroup, models.roadmapGroup]
-
-let groupIntersected = null
-
-const getParent = (obj) => {
-    
-    let element = obj
-    if(element.parent === null){
-        // console.log('got to scene')
-        
-    } else {
-        // console.log('else happened')
-        for(let i = 0; i < myGroups.length; i++) {
-
-            if(element.uuid === myGroups[i].uuid){
-                groupIntersected = myGroups[i]
-            } else {
-            }
-        }
-        element = element.parent
-        getParent(element)
-    }
-};
-
 
 // Events
 window.addEventListener('click', () => {

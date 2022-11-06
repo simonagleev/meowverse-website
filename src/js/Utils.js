@@ -1,5 +1,8 @@
-import * as THREE from 'three'
 import * as models from './Models.js'
+
+
+const myGroups = [models.menuGroup, models.bigIslandGroup, models.roadmapGroup]
+let groupIntersected = null
 
 export function intersectAnimation(intersects) {
     if(intersects[0]) {
@@ -25,4 +28,22 @@ export function intersectAnimation(intersects) {
 }
 
 
+export function getParent(obj) {
+    
+    let element = obj
+    if(element.parent === null){
+        // console.log('got to scene')
+        
+    } else {
+        // console.log('else happened')
+        for(let i = 0; i < myGroups.length; i++) {
 
+            if(element.uuid === myGroups[i].uuid){
+                groupIntersected = myGroups[i]
+            } else {
+            }
+        }
+        element = element.parent
+        getParent(element)
+    }
+};
