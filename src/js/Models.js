@@ -60,7 +60,7 @@ roadmapGroup.position.set(6.5, 0, 1.5)
  gltfLoader.load(
     'models/WEB3_MENU/WEB3_MENU(1MESH)_MAIN.gltf',
     (gltf) => {
-        console.log('gltf.scene.children')
+        // console.log('gltf.scene.children')
         gltf.scene.children[0].children[1].material.wireframe = false
         
         menuMainPawGroup.add(gltf.scene)
@@ -70,7 +70,7 @@ roadmapGroup.position.set(6.5, 0, 1.5)
 gltfLoader.load(
     'models/WEB3_MENU/WEB3_MENU(1MESH)_MAIN.gltf',
     (gltf) => {
-        console.log('gltf.scene.children')
+        // console.log('gltf.scene.children')
         gltf.scene.children[0].children[1].material.wireframe = false
         
         menuMainPawGroup.add(gltf.scene)
@@ -81,8 +81,8 @@ gltfLoader.load(
     (gltf) => {
         menuMainPawGroup.add(gltf.scene)
         
-        console.log('TWITTER')
-        console.log(gltf.scene.children)
+        // console.log('TWITTER')
+        // console.log(gltf.scene.children)
         twitter = gltf.scene.children[0]
 
     },
@@ -103,8 +103,8 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
 
         blog = gltf.scene.children[0]
-        console.log("BLOG")
-        console.log(blog)
+        // console.log("BLOG")
+        // console.log(blog)
     },
 )
 

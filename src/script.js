@@ -5,10 +5,12 @@ import * as dat from 'lil-gui'
 import * as models from './js/Models.js'
 import * as particles from './js/Particles.js'
 import * as light from './js/Lights.js'
+import * as utils from './js/Utils.js'
 
 import { Color, Group, Vector3 } from 'three'
 
 import Stats from 'stats.js'
+import gsap from "gsap";
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -152,8 +154,8 @@ const getParent = (obj) => {
 window.addEventListener('click', () => {
     // const roadmapMainMeshesArray = roadmapGroup.children[1].children[0].children;
     if (currentIntersect) {
-        console.log('currentIntersect.object')
-        console.log(currentIntersect.object)
+        // console.log('currentIntersect.object')
+        // console.log(currentIntersect.object)
 
         // Сделать что-то с group при клике
         getParent(currentIntersect.object)
@@ -161,9 +163,9 @@ window.addEventListener('click', () => {
             if(groupIntersected.name === 'menuIsland') {
                 const menuIslandMeshesArray = [...twitter.children, ...discord.children, ...blog.children]
 
-                console.log('menuIslandMeshesArray')
+                // console.log('menuIslandMeshesArray')
 
-                console.log(menuIslandMeshesArray)
+                // console.log(menuIslandMeshesArray)
             
             }
         }
@@ -171,7 +173,7 @@ window.addEventListener('click', () => {
         if(groupIntersected) {
             for(const group of myGroups) {
                 if(group === groupIntersected) {
-                    console.log('CHILD')
+                    // console.log('CHILD')
                     // console.log(menuGroup.children[0].children[0].children[0].children[0].material.color.r)
                     // console.log(group.position)
                     // camera.position.set(-9, -0.0008470513057307835, -2)
@@ -188,7 +190,7 @@ window.addEventListener('click', () => {
                     
                     
                 } else {
-                    console.log('wrong group')
+                    // console.log('wrong group')
                 }
             }
         }
@@ -280,6 +282,8 @@ var raycastCounter = 0
  stats.showPanel(0) 
  document.body.appendChild(stats.dom)
 
+ var intersects = []
+
 const tick = () => {
     stats.begin()
 
@@ -287,113 +291,33 @@ const tick = () => {
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
 
-// Cast a ray from the mouse and handle events
+    // Cast a ray from the mouse and handle events
 
-    raycastCounter+=1
+    raycastCounter +=1
+    
+    if(raycastCounter == 15) {
 
-    if(raycastCounter == 30) {
-        raycastCounter = 0
-        raycaster.setFromCamera(mouse, camera)
-
-        const objectsToTest = [models.roadmapGroup, models.bigIslandGroup, models.meowverseIslandGroup, models.twitter, models.discord, models.blog]
-        const intersects = raycaster.intersectObjects(objectsToTest)
-
-        if (intersects.length) {
             
-            if (!currentIntersect) {
-                console.log('mouse enter') 
-                
-                isHoweredIsland = !isHoweredIsland    
 
-                currentIntersect = intersects[0]
-                
-                getParent(currentIntersect.object)
+                raycaster.setFromCamera(mouse,camera)
+                const objectsToTest = [models.roadmapGroup, models.bigIslandGroup, models.meowverseIslandGroup, models.twitter, models.discord, models.blog]
+                intersects = raycaster.intersectObjects(objectsToTest)
+            
 
-                if(groupIntersected.name === 'menuIsland') {
-                    console.log('menu hovered')
-    
-                    for(const obj of twitter.children){
-                        if(currentIntersect.object === obj) {
-                            twitterTrigger = !twitterTrigger
-                        }
-                    }
-    
-                    for(const obj of discord.children){
-                        if(currentIntersect.object === obj) {
-                            discordTrigger = !discordTrigger
-                        }
-                    }
-    
-                    for(const obj of blog.children){
-                        if(currentIntersect.object === obj) {
-                            blogTrigger = !blogTrigger    
-                        }
-                    }
-                }
-    
-            }
             
-            if(isHoweredIsland) {
-                if(groupIntersected) {
-                    groupIntersected.position.y = Math.sin(elapsedTime * 2) * .1 
-                }
-            }
-            
-            
-            intersectsArray = intersects
-            
-        }
-        else {
-            if (currentIntersect) {
-                console.log('mouse leave')
-                isHoweredIsland = !isHoweredIsland
 
-                if(groupIntersected.name === 'menuIsland') {
-                    console.log('menu hovered')
-    
-                    for(const obj of twitter.children){
-                        if(currentIntersect.object === obj) {
-                            twitterTrigger = !twitterTrigger
-                        }
-                    }
-    
-                    for(const obj of discord.children){
-                        if(currentIntersect.object === obj) {
-                            discordTrigger = !discordTrigger
-                        }
-                    }
-    
-                    for(const obj of blog.children){
-                        if(currentIntersect.object === obj) {
-                            blogTrigger = !blogTrigger    
-                        }
-                    }
-                }
-            }
-
-            currentIntersect = null
-            intersectsArray = null
             
-        }
-    }
-    setTimeout(() => {
+
+            raycastCounter = 0
+
+            
         
-    }, 10000)
-
-    // Twitter,discord and blog animations
-    if(twitterTrigger) {
-        twitter.children[0].rotation.z -= .01
-    } 
-
-    if(discordTrigger) {
-        discord.children[0].rotation.z += .01
-        discord.children[1].rotation.z += .01
+            
+        
     }
 
-    if(blogTrigger) {
-        blog.children[0].rotation.z += .01
-        blog.children[1].rotation.z += .01
-    }
+    utils.intersectAnimation(intersects)
+
 
     light.spotlightHelper.update()
     // Update controls
@@ -408,7 +332,12 @@ const tick = () => {
     window.requestAnimationFrame(tick)
 }
 
-tick()
+    setTimeout(() => {
+        tick()
+    }, 3000);
+    
+
+
 
 
 
