@@ -705,8 +705,9 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 
-
-// Debug
+/**
+ * DEBUG
+ */
 const gui = new dat.GUI()
 gui.close()
 gui.add(controls, 'maxAzimuthAngle').min(0).max(Math.PI * 2).step(0.1)
@@ -800,6 +801,7 @@ const clock = new THREE.Clock()
 let previousTime = 0
 
 const tick = () => {
+
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
@@ -920,9 +922,5 @@ const tick = () => {
     window.requestAnimationFrame(tick)
 }
 
-
-// setTimeout(() => {
-//     tick()
-// }, 7000)
 
 
