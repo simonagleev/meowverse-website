@@ -17,6 +17,13 @@ module.exports = merge(
         {
             level: 'warn',
         },
+        resolve: {
+            fallback: {
+                "path": require.resolve("path-browserify")
+    
+            }
+           
+        },
         devServer:
         {
             host: 'local-ip',
