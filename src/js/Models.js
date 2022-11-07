@@ -146,15 +146,15 @@ gltfLoader.load(
     },
 )
 // test island
-gltfLoader.load(
-    'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BAKING.glb',
-    (gltf) => {
-        gltf.scene.traverse((child) =>
-        {
-            child.material = bakedMaterial
-        })
-        testIslandGroup.add(gltf.scene)
-    })
+// gltfLoader.load(
+//     'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BAKING.glb',
+//     (gltf) => {
+//         gltf.scene.traverse((child) =>
+//         {
+//             child.material = bakedMaterial
+//         })
+//         testIslandGroup.add(gltf.scene)
+//     })
 
 // Big island
 
