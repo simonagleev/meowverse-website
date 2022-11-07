@@ -597,7 +597,92 @@ const getParent = (obj) => {
 
 
 // Events
-window.addEventListener('click', () => {
+if (window.innerWidth > 920) {
+
+
+    window.addEventListener('click', (event) => {
+        event.preventDefault()
+        if (currentIntersect) {
+            getParent(currentIntersect.object)  // Получвем родителя меша, на кторый навели курсор (группу)
+
+            // Сделать что-то с group при клике
+            if (groupIntersected) {
+                // Click по соц. сетям
+                if (groupIntersected.name === 'menuIsland') {
+                    const menuIslandMeshesArray = [
+                        ...twitter.children,
+                        ...discord.children,
+                        ...blog.children,
+                        ...NFTsFinger.children,
+                        ...roadmapFinger.children,
+                        ...gamesMeowverseFinger.children,
+                    ]
+
+                    for (const mesh of menuIslandMeshesArray) {
+                        if (currentIntersect.object === mesh) {
+                            if (mesh.parent === twitter) {
+                                window.open('https://twitter.com/DoliaCats_eth', '_blank');
+                            } else if (mesh.parent === discord) {
+                                window.open('https://discord.com/invite/RetekYNarD', '_blank');
+                            } else if (mesh.parent === blog) {
+                                window.open('https://medium.com/', '_blank');
+                            } else if (mesh.parent === NFTsFinger) {
+                                focuseIsland(bigIslandGroup)
+                            } else if (mesh.parent === roadmapFinger) {
+                                focuseIsland(roadmapGroup)
+                            } else if (mesh.parent === gamesMeowverseFinger) {
+                                focuseIsland(meowverseIslandGroup)
+                            }
+                        }
+                    }
+                } else if (groupIntersected.name === 'bigIsland') {   // Click по big-island
+                    const bigIslandMeshesArray = [
+                        ...bigIslandLand.children[0].children,
+                        ...bigIslandBath.children[0].children,
+                        ...bigIslandBoat.children[0].children,
+                        bigIslandGenCard1.children[0],
+                        bigIslandGenCard2.children[0],
+                        bigIslandOrigCard1.children[0],
+                        bigIslandOrigCard2.children[0],
+                        bigIslandOrigCard3.children[0],
+                        bigIslandOrigCard4.children[0],
+                        bigIslandOrigCard5.children[0],
+                        ...bigIslandSign1.children[0].children,
+                        ...bigIslandSign2.children[0].children,
+                        ...bigIslandSign3.children[0].children,
+                        ...bigIslandToken.children[0].children,
+                    ]
+                    for (const mesh of bigIslandMeshesArray) {
+                        if (currentIntersect.object.parent.name === mesh.parent.name) {
+                            if (mesh.parent.name === 'bigIslandSign1' || mesh.parent.parent.name === 'bigIslandSign1') {
+                                window.open('https://doliacats.com#tokenomiks', '_blank')
+                            } else if (mesh.parent.name === 'bigIslandSign2' || mesh.parent.parent.name === 'bigIslandSign2') {
+                                window.open('https://doliacats.com', '_blank')
+                            } else if (mesh.parent.name === 'bigIslandSign3' || mesh.parent.parent.name === 'bigIslandSign3') {
+                                window.open('http://genesis.doliacats.com', '_blank')
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (groupIntersected && groupIntersected.name !== 'menuIsland') {
+                for (const group of myGroups) {
+                    if (group === groupIntersected) {
+
+                        focuseIsland(group)
+
+                    } else {
+                        console.log('wrong group')
+                    }
+                }
+            }
+        }
+    })
+}
+
+window.addEventListener('touchcancel', (event) => {
+    event.preventDefault();
     if (currentIntersect) {
         getParent(currentIntersect.object)  // Получвем родителя меша, на кторый навели курсор (группу)
 
@@ -674,6 +759,8 @@ window.addEventListener('click', () => {
             }
         }
     }
+    
+    currentIntersect = null;
 })
 
 /**
