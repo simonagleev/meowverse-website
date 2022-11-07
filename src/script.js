@@ -5,7 +5,7 @@ import * as dat from 'lil-gui'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { Vector3 } from 'three'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
-import loader from 'css-loader'
+
 
 
 /**
@@ -167,18 +167,18 @@ gltfLoader.load(
 )
 
 // Test island
-const bakedMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+// const bakedMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 })
 
-gltfLoader.load(
-    'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BAKING.glb',
-    (gltf) => {
-        gltf.scene.traverse((child) =>
-        {
-            child.material = bakedMaterial
-        })
-        scene.add(gltf.scene)
-    }
-)
+// gltfLoader.load(
+//     'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BAKING.glb',
+//     (gltf) => {
+//         gltf.scene.traverse((child) =>
+//         {
+//             child.material = bakedMaterial
+//         })
+//         scene.add(gltf.scene)
+//     }
+// )
 
 // BIGisland 
 
@@ -1022,6 +1022,3 @@ const tick = () => {
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
-
-
-
