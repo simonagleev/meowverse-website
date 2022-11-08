@@ -5,13 +5,18 @@ const myGroups = [models.menuGroup, models.bigIslandGroup, models.meowverseIslan
 
 let hoveredObj = null
 
-const createToken = (x, y, z, group, bigIslandToken) => {
 
-    if (bigIslandToken) {
-        let coin = bigIslandToken.clone()
+
+export const createToken = (x, y, z, group) => {
+    if (models.bigIslandToken) {
+        console.log('da')
+        let coin = models.bigIslandToken.clone()
         coin.position.x = x
         coin.position.y = y
         coin.position.z = z
+        group.add(coin)
+    } else {
+        console.log('net')
 
     }
 }
@@ -241,3 +246,4 @@ export const handleClick = (camera, controls) => {
     }
 
 }
+

@@ -34,6 +34,8 @@ export let partnersFinger = null;
 //test island
 export const testIslandGroup = new THREE.Group()
 const bakedMaterial = new THREE.MeshBasicMaterial({ map:  textures.bakedTexture})
+textures.bakedTexture.flipY = false
+
 
 //Big island
 export const bigIslandGroup = new THREE.Group()
@@ -54,6 +56,9 @@ export let bigIslandSign1 = null;
 export let bigIslandSign2 = null;
 export let bigIslandSign3 = null;
 export let bigIslandToken = null;
+export let bigIslandToken2 = null;
+export let bigIslandToken3 = null;
+export let bigIslandToken4 = null;
 
 // Meowverse island
 export const meowverseIslandGroup = new THREE.Group()
@@ -166,15 +171,17 @@ gltfLoader.load(
 
 // Big island
 gltfLoader.load(
-    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_ISLAND.gltf',
-    (gltf) => {
+    'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BAKING.glb',
 
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterial
+        })
         bigIslandGroup.add(gltf.scene)
         bigIslandLand = gltf.scene
         bigIslandLand.name = 'bigIslandLand'
-        // for (const child of bigIslandLand.children) { 
-        //     child.name = 'bigIslandLand'
-        // }
+
     },
 )
 
@@ -326,6 +333,37 @@ gltfLoader.load(
         // createToken(1, 0, 2.5, bigIslandGroup)
     },
 )
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_TOKEN.gltf',
+    (gltf) => {
+        gltf.scene.position.set(1, .2, 0)
+        bigIslandGroup.add(gltf.scene)
+        bigIslandToken2 = gltf.scene
+        bigIslandToken2.name = 'bigIslandToken2'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_TOKEN.gltf',
+    (gltf) => {
+        gltf.scene.position.set(1, 0, 1)
+        bigIslandGroup.add(gltf.scene)
+        bigIslandToken3 = gltf.scene
+        bigIslandToken3.name = 'bigIslandToken3'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_TOKEN.gltf',
+    (gltf) => {
+        gltf.scene.position.set(1, 0, 2.5)
+        bigIslandGroup.add(gltf.scene)
+        bigIslandToken4 = gltf.scene
+        bigIslandToken4.name = 'bigIslandToken4'
+    },
+)
+
 
 //Meowverse island
 

@@ -56,7 +56,7 @@ loaders.loadingManager.onLoad = () => {
 scene.add(models.menuGroup)
 
 // Test island
-scene.add(models.testIslandGroup)
+// scene.add(models.testIslandGroup)
 
 // BIGisland 
 scene.add(models.bigIslandGroup)
@@ -64,15 +64,7 @@ scene.add(models.bigIslandGroup)
 // Meowverse island
 scene.add(models.meowverseIslandGroup)
 
-const createToken = (x, y, z, group) => {
-    if (bigIslandToken) {
-        let coin = bigIslandToken.clone()
-        coin.position.x = x
-        coin.position.y = y
-        coin.position.z = z
-        group.add(coin)
-    }
-}
+
 
 // Roadmap island
 scene.add(models.roadmapGroup)
@@ -397,6 +389,10 @@ const tick = () => {
             models.bigIslandSign2,
             models.bigIslandSign3,
             models.bigIslandToken,
+            models.bigIslandToken2,
+            models.bigIslandToken3,
+            models.bigIslandToken4,
+
         ]
 
         intersects = raycaster.intersectObjects(objectsToTest)   //тут все меши под курсором

@@ -48,6 +48,7 @@ body
     align-items: center;
     flex-direction: column;
     opacity: 1;
+    
 }
 
 #progress-bar {
