@@ -21,9 +21,15 @@ menuGroup.position.set(0, 0, 4)
 const menuMainPawGroup = new THREE.Group()
 menuGroup.add(menuMainPawGroup)
 
+const bakedMaterialMenu = new THREE.MeshBasicMaterial({ map:  textures.backedTextureMenu})
+textures.backedTextureMenu.flipY = false
+
 export let twitter = null;
+export let twitterPlate = null;
+
 export let discord = null;
 export let blog = null;
+
 export let pawBig = null;
 
 export let NFTsFinger = null;
@@ -104,22 +110,48 @@ export let roadmapIslandSign = null;
 
 //menu island
 gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_MAIN.gltf',
+    'models/WEB3_MENU/menu-backed/menu_main_island.glb',
     (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
         menuMainPawGroup.add(gltf.scene)
 
         pawBig = gltf.scene.children[0]
         pawBig.name = 'pawBig'
     },
 )
+
 gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_T.gltf',
+    'models/WEB3_MENU/menu-backed/menu_twitter.glb',
     (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
         menuMainPawGroup.add(gltf.scene)
 
         twitter = gltf.scene.children[0]
+        twitter.name = 'twitter'
     },
 )
+
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_plate1.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+
+        twitterPlate = gltf.scene.children[0]
+        twitterPlate.name = 'twitterPlate'
+    
+    },
+)
+
 gltfLoader.load(
     'models/WEB3_MENU/WEB3_MENU(1MESH)_D.gltf',
     (gltf) => {
@@ -129,6 +161,7 @@ gltfLoader.load(
         discord = gltf.scene.children[0]
     },
 )
+
 gltfLoader.load(
     'models/WEB3_MENU/WEB3_MENU(1MESH)_B.gltf',
     (gltf) => {
@@ -310,7 +343,7 @@ gltfLoader.load(
         {
             child.material = bakedMaterial
         })
-        
+
         bigIslandGroup.add(gltf.scene)
         bigIslandSign1 = gltf.scene
         bigIslandSign1.name = 'bigIslandSign1'
@@ -431,7 +464,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Kart.glb',
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_kart.glb',
     (gltf) => {
         gltf.scene.traverse((child) =>
         {
@@ -444,7 +477,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Mushroom.glb',
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_mushroom.glb',
     (gltf) => {
         gltf.scene.traverse((child) =>
         {
@@ -457,7 +490,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Sign1.glb',
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_sign1.glb',
     (gltf) => {
         gltf.scene.traverse((child) =>
         {
@@ -470,7 +503,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Sign2.glb',
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_sign2.glb',
     (gltf) => {
         gltf.scene.traverse((child) =>
         {
@@ -483,7 +516,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Tree1.glb',
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_tree1.glb',
     (gltf) => {
         gltf.scene.traverse((child) =>
         {
@@ -496,7 +529,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Tree2.glb',
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_tree2.glb',
     (gltf) => {
         gltf.scene.traverse((child) =>
         {
@@ -509,7 +542,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Wheel1.glb',
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_wheel1.glb',
     (gltf) => {
         gltf.scene.traverse((child) =>
         {
@@ -522,7 +555,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Wheel2.glb',
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_wheel2.glb',
     (gltf) => {
         gltf.scene.traverse((child) =>
         {

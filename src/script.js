@@ -45,6 +45,8 @@ loaders.loadingManager.onLoad = () => {
     console.log('LOADED')
     tick()
     progressBarontainer.style.display = 'none'
+console.log(models.twitter)
+
 }
 
 
@@ -349,7 +351,6 @@ var intersects = []
 /**
  * Raycaster counter
  */
-
 var raycasterCount = 0
 
 const tick = () => {
@@ -368,6 +369,8 @@ const tick = () => {
             models.roadmapGroup,
             models.meowverseIslandGroup,
             models.twitter,
+            models.twitterPlate,
+
             models.discord,
             models.blog,
             models.pawBig,
@@ -392,6 +395,18 @@ const tick = () => {
             models.bigIslandToken2,
             models.bigIslandToken3,
             models.bigIslandToken4,
+            // models.meowverseIslandCliff,
+            // models.meowverseIslandGun,
+            // models.meowverseIslandKart,
+            // models.meowverseIslandLand,
+            // models.meowverseIslandMushroom,
+            // models.meowverseIslandSign1,
+            // models.meowverseIslandSign2,
+            // models.meowverseIslandTree1,
+            // models.meowverseIslandTree2,
+            // models.meowverseIslandWheel1,
+            // models.meowverseIslandWheel2
+
 
         ]
 

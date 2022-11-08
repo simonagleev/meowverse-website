@@ -52,7 +52,8 @@ export function intersectAnimationMedia(intersects) {
 
         switch (result.name) {
             case "twitter":
-                models.twitter.children[0].rotation.z -= .01
+                models.twitter.rotation.z -= .01
+                console.log('ds')
                 break
 
             case "discord":
@@ -117,7 +118,7 @@ function getModelByMeshName(obj) {
     let shortName = null
     if (hoveredObj) {
 
-        if (obj.name === "TW" || obj.name === "TW_2" || obj.name === "TW_1") {
+        if (obj.name === "Cylinder047" || obj.name === "Cylinder047_1" || obj.name === "twitter" || obj.name === "twitterPlate") {
             object = models.twitter
             shortName = "twitter"
         }
