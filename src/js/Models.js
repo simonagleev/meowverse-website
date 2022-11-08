@@ -31,16 +31,15 @@ export let gamesMeowverseFinger = null;
 export let roadmapFinger = null;
 export let partnersFinger = null;
 
-//test island
-export const testIslandGroup = new THREE.Group()
-const bakedMaterial = new THREE.MeshBasicMaterial({ map:  textures.bakedTexture})
-textures.bakedTexture.flipY = false
 
 
-//Big island
+
+//Big island    //Таблички поправить, тут 2 разных накладываются друг на друга
 export const bigIslandGroup = new THREE.Group()
 bigIslandGroup.position.set(-9, 0, -2)
 bigIslandGroup.name = 'bigIsland'
+const bakedMaterial = new THREE.MeshBasicMaterial({ map:  textures.bakedTexture})
+textures.bakedTexture.flipY = false
 
 export let bigIslandLand = null;
 export let bigIslandBath = null;
@@ -63,6 +62,22 @@ export let bigIslandToken4 = null;
 // Meowverse island
 export const meowverseIslandGroup = new THREE.Group()
 meowverseIslandGroup.position.set(6, 0, -7)
+const backedMaterialMeowverse = new THREE.MeshBasicMaterial({ map:  textures.backedTextureMeowverse})
+textures.backedTextureMeowverse.flipY = false
+
+
+export let meowverseIslandLand = null;
+export let meowverseIslandCliff = null;
+export let meowverseIslandGun = null;
+export let meowverseIslandKart = null;
+export let meowverseIslandMushroom = null;
+export let meowverseIslandSign1 = null;
+export let meowverseIslandSign2 = null;
+export let meowverseIslandTree1 = null;
+export let meowverseIslandTree2 = null;
+export let meowverseIslandWheel1 = null;
+export let meowverseIslandWheel2 = null;
+
 
 //Roadmap island
 export const roadmapGroup = new THREE.Group()
@@ -154,18 +169,6 @@ gltfLoader.load(
 
     },
 )
-
-// test island
-
-gltfLoader.load(
-    'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BAKING.glb',
-    (gltf) => {
-        gltf.scene.traverse((child) =>
-        {
-            child.material = bakedMaterial
-        })
-        testIslandGroup.add(gltf.scene)
-    })
 
 
 
@@ -328,9 +331,6 @@ gltfLoader.load(
         bigIslandToken = gltf.scene
         bigIslandToken.name = 'bigIslandToken'
 
-        // createToken(1, .2, 0, bigIslandGroup,)
-        // createToken(1, 0, 1, bigIslandGroup)
-        // createToken(1, 0, 2.5, bigIslandGroup)
     },
 )
 
@@ -368,11 +368,146 @@ gltfLoader.load(
 //Meowverse island
 
 gltfLoader.load(
-    'models/WEB3_MEOWVERSE/WEB3_MEOWVERSE(1MESH).gltf',
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_island.glb',
     (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialMeowverse
+        })
         meowverseIslandGroup.add(gltf.scene)
     },
 )
+
+gltfLoader.load(
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_cliff.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialMeowverse
+        })
+        meowverseIslandGroup.add(gltf.scene)
+        meowverseIslandCliff = gltf.scene
+        meowverseIslandCliff.name = 'meowverseIslandCliff'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_gun.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialMeowverse
+        })
+        meowverseIslandGroup.add(gltf.scene)
+        meowverseIslandGun = gltf.scene
+        meowverseIslandGun.name = 'meowverseIslandGun'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Kart.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialMeowverse
+        })
+        meowverseIslandGroup.add(gltf.scene)
+        meowverseIslandKart = gltf.scene
+        meowverseIslandKart.name = 'meowverseIslandKart'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Mushroom.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialMeowverse
+        })
+        meowverseIslandGroup.add(gltf.scene)
+        meowverseIslandMushroom = gltf.scene
+        meowverseIslandMushroom.name = 'meowverseIslandMushroom'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Sign1.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialMeowverse
+        })
+        meowverseIslandGroup.add(gltf.scene)
+        meowverseIslandSign1 = gltf.scene
+        meowverseIslandSign1.name = 'meowverseIslandSign1'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Sign2.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialMeowverse
+        })
+        meowverseIslandGroup.add(gltf.scene)
+        meowverseIslandSign2 = gltf.scene
+        meowverseIslandSign2.name = 'meowverseIslandSign2'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Tree1.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialMeowverse
+        })
+        meowverseIslandGroup.add(gltf.scene)
+        meowverseIslandTree1 = gltf.scene
+        meowverseIslandTree1.name = 'meowverseIslandTree1'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Tree2.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialMeowverse
+        })
+        meowverseIslandGroup.add(gltf.scene)
+        meowverseIslandTree2 = gltf.scene
+        meowverseIslandTree2.name = 'meowverseIslandTree2'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Wheel1.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialMeowverse
+        })
+        meowverseIslandGroup.add(gltf.scene)
+        meowverseIslandWheel1 = gltf.scene
+        meowverseIslandWheel1.name = 'meowverseIslandWheel1'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MEOWVERSE/meowverse-devided/meowverse_Wheel2.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialMeowverse
+        })
+        meowverseIslandGroup.add(gltf.scene)
+        meowverseIslandWheel2 = gltf.scene
+        meowverseIslandWheel2.name = 'meowverseIslandWheel2'
+    },
+)
+
 
 //Roadmap island 
 gltfLoader.load(
