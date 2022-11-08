@@ -14,8 +14,9 @@ import * as loaders from './js/Loaders.js'
  */
 
 const menuBtn = document.querySelector('.menu')
-menuBtn.addEventListener('click', () => {
-    focuseIsland(menuGroup)
+menuBtn.addEventListener('click', (event) => {
+    event.preventDefault()
+    utils.onFingerClickFocus(camera, controls, models.menuGroup)
 })
 
 /**
@@ -36,10 +37,7 @@ const scene = new THREE.Scene()
 const progressBar = document.getElementById('progress-bar')
 const progressBarontainer = document.querySelector('.progress-bar-container')
 
-
-
 loaders.loadingManager.onProgress = (url, loaded, total) => {
-    console.log('LOADING')
     progressBar.value = (loaded / total) * 100
 }
 
@@ -58,7 +56,7 @@ loaders.loadingManager.onLoad = () => {
 scene.add(models.menuGroup)
 
 // Test island
-// scene.add(models.testIslandGroup)
+scene.add(models.testIslandGroup)
 
 // BIGisland 
 scene.add(models.bigIslandGroup)
@@ -209,6 +207,7 @@ const getParent = (obj) => {
 
 //Events
 window.addEventListener('click', (event) => {
+    event.preventDefault()
     utils.handleClick(camera, controls)
 })
 
@@ -405,7 +404,10 @@ const tick = () => {
         raycasterCount = 0
     }
 
+    // Social Media animation
     utils.intersectAnimationMedia(intersects, elapsedTime)
+
+    //Boat animation
     utils.animateBoat(elapsedTime)
 
     // Update controls

@@ -23,6 +23,7 @@ export function intersectAnimationMedia(intersects, elapsedTime) {
         console.log(intersects[0].object.name)
 
         let obj = intersects[0].object
+
         hoveredObj = obj
 
         let result = getModelByMeshName(intersects[0].object)
@@ -47,6 +48,7 @@ export function intersectAnimationMedia(intersects, elapsedTime) {
         animateIsland(obj, elapsedTime)
 
     } else {
+        hoveredObj = null
         groupIntersected = null
     }
 }
@@ -103,83 +105,88 @@ export function focusCamera(camera, controls) {
 }
 
 function getModelByMeshName(obj) {
-
     let object = null
     let shortName = null
+    if (hoveredObj) {
 
 
-    if (obj.name === "TW" || obj.name === "TW_2" || obj.name === "TW_1") {
-        object = models.twitter
-        shortName = "twitter"
-    }
+        
 
-    if (obj.name === "Cube000_Cube005_1" || obj.name === "Cube000_Cube005_2" || obj.name === "Cube000_Cube005_4" || obj.name === "Cube000_Cube005_3") {
-        object = models.discord
-        shortName = "discord"
-    }
 
-    if (obj.name === "Cube033_3" || obj.name === "Cube033_2" || obj.name === "Cube033_1" || obj.name === "Cube033") {
-        object = models.blog
-        shortName = "blog"
-    }
+        if (obj.name === "TW" || obj.name === "TW_2" || obj.name === "TW_1") {
+            object = models.twitter
+            shortName = "twitter"
+        }
 
-    if (
-        obj.name === "Cube006_1" ||
-        obj.name === "Cube006_2" ||
-        obj.name === "Cube006_3" ||
-        obj.name === "Cube006_4" ||
-        obj.name === "Cube006_5" ||
-        obj.name === "Cube006_6" ||
-        obj.name === "Cube006_7" ||
-        obj.name === "Cube006_8" ||
-        obj.name === "Cube006_9" ||
-        obj.name === "Cube006_10"
-    ) {
-        object = models.NFTsFinger
-        shortName = "NFTsFinger"
-    }
+        if (obj.name === "Cube000_Cube005_1" || obj.name === "Cube000_Cube005_2" || obj.name === "Cube000_Cube005_4" || obj.name === "Cube000_Cube005_3") {
+            object = models.discord
+            shortName = "discord"
+        }
 
-    if (
-        obj.name === "Cube004_1" ||
-        obj.name === "Cube004_2" ||
-        obj.name === "Cube004_3" ||
-        obj.name === "Cube004_4" ||
-        obj.name === "Cube004_5" ||
-        obj.name === "Cube004_6" ||
-        obj.name === "Cube004_7" ||
-        obj.name === "Cube004_8" ||
-        obj.name === "Cube004" 
-    ) {
-        object = models.gamesMeowverseFinger
-        shortName = "gamesMeowverseFinger"
-    }
+        if (obj.name === "Cube033_3" || obj.name === "Cube033_2" || obj.name === "Cube033_1" || obj.name === "Cube033") {
+            object = models.blog
+            shortName = "blog"
+        }
 
-    if (
-        obj.name === "Cube053_1" ||
-        obj.name === "Cube053_2" ||
-        obj.name === "Cube053_3" ||
-        obj.name === "Cube053_4" ||
-        obj.name === "Cube053_5" ||
-        obj.name === "Cube053_6" ||
-        obj.name === "Cube053"  
-    ) {
-        object = models.roadmapFinger
-        shortName = "roadmapFinger"
-    }
+        if (
+            obj.name === "Cube006_1" ||
+            obj.name === "Cube006_2" ||
+            obj.name === "Cube006_3" ||
+            obj.name === "Cube006_4" ||
+            obj.name === "Cube006_5" ||
+            obj.name === "Cube006_6" ||
+            obj.name === "Cube006_7" ||
+            obj.name === "Cube006_8" ||
+            obj.name === "Cube006_9" ||
+            obj.name === "Cube006_10"
+        ) {
+            object = models.NFTsFinger
+            shortName = "NFTsFinger"
+        }
 
-    if (obj.name === "TokenSign_3" || obj.name === "TokenSign_2" || obj.name === "TokenSign_1") {
-        object = models.bigIslandSign1
-        shortName = "tokenomilksSign"
-    }
+        if (
+            obj.name === "Cube004_1" ||
+            obj.name === "Cube004_2" ||
+            obj.name === "Cube004_3" ||
+            obj.name === "Cube004_4" ||
+            obj.name === "Cube004_5" ||
+            obj.name === "Cube004_6" ||
+            obj.name === "Cube004_7" ||
+            obj.name === "Cube004_8" ||
+            obj.name === "Cube004"
+        ) {
+            object = models.gamesMeowverseFinger
+            shortName = "gamesMeowverseFinger"
+        }
 
-    if (obj.name === "Bolt_3" || obj.name === "Bolt_4" || obj.name === "Bolt_5") {
-        object = models.bigIslandSign2
-        shortName = "genesisSign"
-    }
+        if (
+            obj.name === "Cube053_1" ||
+            obj.name === "Cube053_2" ||
+            obj.name === "Cube053_3" ||
+            obj.name === "Cube053_4" ||
+            obj.name === "Cube053_5" ||
+            obj.name === "Cube053_6" ||
+            obj.name === "Cube053"
+        ) {
+            object = models.roadmapFinger
+            shortName = "roadmapFinger"
+        }
 
-    if (obj.name === "OG_Sign_1" || obj.name === "OG_Sign_2" || obj.name === "OG_Sign_3") {
-        object = models.bigIslandSign3
-        shortName = "originalSign"
+        if (obj.name === "TokenSign_3" || obj.name === "TokenSign_2" || obj.name === "TokenSign_1") {
+            object = models.bigIslandSign1
+            shortName = "tokenomilksSign"
+        }
+
+        if (obj.name === "Bolt_3" || obj.name === "Bolt_4" || obj.name === "Bolt_5") {
+            object = models.bigIslandSign2
+            shortName = "genesisSign"
+        }
+
+        if (obj.name === "OG_Sign_1" || obj.name === "OG_Sign_2" || obj.name === "OG_Sign_3") {
+            object = models.bigIslandSign3
+            shortName = "originalSign"
+        }
+
     }
 
     return ({ model: object, name: shortName })
@@ -193,8 +200,8 @@ export function animateBoat(elapsedTime) {
 
 export const handleClick = (camera, controls) => {
 
-    focusCamera(camera, controls) 
-    
+    focusCamera(camera, controls)
+
     let model = getModelByMeshName(hoveredObj)
 
     if (model.name === "twitter") {
