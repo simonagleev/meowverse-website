@@ -83,6 +83,19 @@ export let meowverseIslandWheel2 = null;
 export const roadmapGroup = new THREE.Group()
 roadmapGroup.position.set(6.5, 0, 1.5)
 
+const backedMaterialRoadmap = new THREE.MeshBasicMaterial({ map:  textures.backedTextureRoadmap})
+textures.backedTextureRoadmap.flipY = false
+
+
+export let roadmapIslandA = null;
+export let roadmapIslandB = null;
+export let roadmapIslandBaseButton = null;
+export let roadmapIslandButton = null;
+export let roadmapIslandLand = null;
+export let roadmapIslandPaw1 = null;
+export let roadmapIslandPaw2 = null;
+export let roadmapIslandSign = null;
+
 
 
 /**
@@ -174,7 +187,7 @@ gltfLoader.load(
 
 // Big island
 gltfLoader.load(
-    'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BAKING.glb',
+    'models/WEB3_BIGISLAND/PLAN_B/bigisland_island.glb',
 
     (gltf) => {
         gltf.scene.traverse((child) =>
@@ -291,9 +304,13 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_SIGN1.gltf',
+    'models/WEB3_BIGISLAND/PLAN_B/bigisland_sign1.glb',
     (gltf) => {
-
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterial
+        })
+        
         bigIslandGroup.add(gltf.scene)
         bigIslandSign1 = gltf.scene
         bigIslandSign1.name = 'bigIslandSign1'
@@ -302,8 +319,12 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_SIGN2.gltf',
+    'models/WEB3_BIGISLAND/PLAN_B/bigisland_sign2.glb',
     (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterial
+        })
 
         bigIslandGroup.add(gltf.scene)
         bigIslandSign2 = gltf.scene
@@ -313,8 +334,13 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_SIGN3.gltf',
+    'models/WEB3_BIGISLAND/PLAN_B/bigisland_sign3.glb',
     (gltf) => {
+
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterial
+        })
 
         bigIslandGroup.add(gltf.scene)
         bigIslandSign3 = gltf.scene
@@ -511,15 +537,105 @@ gltfLoader.load(
 
 //Roadmap island 
 gltfLoader.load(
-    'models/WEB3_ROADMAP/WEB3_ROADMAP_MAIN(1MESH).gltf',
+    'models/WEB3_ROADMAP/roadmap-backed/roadmap_island.glb',
     (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialRoadmap
+        })
         roadmapGroup.add(gltf.scene)
+        roadmapIslandLand = gltf.scene
+        roadmapIslandLand.name = 'roadmapIslandLand'
     },
 )
 
 gltfLoader.load(
-    'models/WEB3_ROADMAP/WEB3_ROADMAP_BUTTON.gltf',
+    'models/WEB3_ROADMAP/roadmap-backed/roadmap_a.glb',
     (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialRoadmap
+        })
         roadmapGroup.add(gltf.scene)
+        roadmapIslandA = gltf.scene
+        roadmapIslandA.name = 'roadmapIslandA'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_ROADMAP/roadmap-backed/roadmap_b.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialRoadmap
+        })
+        roadmapGroup.add(gltf.scene)
+        roadmapIslandB = gltf.scene
+        roadmapIslandB.name = 'roadmapIslandB'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_ROADMAP/roadmap-backed/roadmap_basebutton.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialRoadmap
+        })
+        roadmapGroup.add(gltf.scene)
+        roadmapIslandBaseButton = gltf.scene
+        roadmapIslandBaseButton.name = 'roadmapIslandBaseButton'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_ROADMAP/roadmap-backed/roadmap_button.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialRoadmap
+        })
+        roadmapGroup.add(gltf.scene)
+        roadmapIslandButton = gltf.scene
+        roadmapIslandButton.name = 'roadmapIslandButton'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_ROADMAP/roadmap-backed/roadmap_paw1.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialRoadmap
+        })
+        roadmapGroup.add(gltf.scene)
+        roadmapIslandPaw1 = gltf.scene
+        roadmapIslandPaw1.name = 'roadmapIslandPaw1'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_ROADMAP/roadmap-backed/roadmap_paw2.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialRoadmap
+        })
+        roadmapGroup.add(gltf.scene)
+        roadmapIslandPaw2 = gltf.scene
+        roadmapIslandPaw2.name = 'roadmapIslandPaw2'
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_ROADMAP/roadmap-backed/roadmap_sign.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = backedMaterialRoadmap
+        })
+        roadmapGroup.add(gltf.scene)
+        roadmapIslandSign = gltf.scene
+        roadmapIslandSign.name = 'roadmapIslandSign'
     },
 )

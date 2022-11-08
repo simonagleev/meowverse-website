@@ -400,8 +400,14 @@ const tick = () => {
         raycasterCount = 0
     }
 
+    // Islands animation
+
+    utils.hovering(intersects, elapsedTime)
+
     // Social Media animation
-    utils.intersectAnimationMedia(intersects, elapsedTime)
+    utils.intersectAnimationMedia(intersects)
+
+
 
     //Boat animation
     utils.animateBoat(elapsedTime)

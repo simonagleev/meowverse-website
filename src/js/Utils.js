@@ -6,7 +6,6 @@ const myGroups = [models.menuGroup, models.bigIslandGroup, models.meowverseIslan
 let hoveredObj = null
 
 
-
 export const createToken = (x, y, z, group) => {
     if (models.bigIslandToken) {
         console.log('da')
@@ -21,8 +20,15 @@ export const createToken = (x, y, z, group) => {
     }
 }
 
+export function animateIsland(obj, elapsedTime) {
 
-export function intersectAnimationMedia(intersects, elapsedTime) {
+    getParent(obj)
+
+    groupIntersected.position.y = Math.sin(elapsedTime * 2) * 0.1
+
+}
+
+export const hovering = (intersects, elapsedTime) => {
     if (intersects[0]) {
 
         console.log(intersects[0].object.name)
@@ -30,6 +36,17 @@ export function intersectAnimationMedia(intersects, elapsedTime) {
         let obj = intersects[0].object
 
         hoveredObj = obj
+
+        animateIsland(obj, elapsedTime)
+    } else {
+        hoveredObj = null
+        groupIntersected = null
+    }
+}
+
+
+export function intersectAnimationMedia(intersects) {
+    if (intersects[0]) {
 
         let result = getModelByMeshName(intersects[0].object)
 
@@ -49,23 +66,9 @@ export function intersectAnimationMedia(intersects, elapsedTime) {
                 break
 
         }
-
-        animateIsland(obj, elapsedTime)
-
-    } else {
-        hoveredObj = null
-        groupIntersected = null
-    }
+    } 
 }
 
-
-function animateIsland(obj, elapsedTime) {
-
-    getParent(obj)
-
-    groupIntersected.position.y = Math.sin(elapsedTime * 2) * 0.1
-
-}
 
 function getParent(obj) {
 
@@ -113,10 +116,6 @@ function getModelByMeshName(obj) {
     let object = null
     let shortName = null
     if (hoveredObj) {
-
-
-        
-
 
         if (obj.name === "TW" || obj.name === "TW_2" || obj.name === "TW_1") {
             object = models.twitter
