@@ -1,11 +1,15 @@
 import * as THREE from 'three'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import * as textures from './Textures.js'
+import * as loaders from './Loaders.js'
 
-const dracoLoader = new DRACOLoader()
+
+
+const dracoLoader = loaders.dracoLoader
 dracoLoader.setDecoderPath('/draco/')
 
-const gltfLoader = new GLTFLoader()
+const gltfLoader = loaders.gltfLoader
 gltfLoader.setDRACOLoader(dracoLoader)
 
 
@@ -29,7 +33,7 @@ export let partnersFinger = null;
 
 //test island
 export const testIslandGroup = new THREE.Group()
-const bakedMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+const bakedMaterial = new THREE.MeshBasicMaterial({ map:  textures.bakedTexture})
 
 //Big island
 export const bigIslandGroup = new THREE.Group()
@@ -145,19 +149,22 @@ gltfLoader.load(
 
     },
 )
+
 // test island
-// gltfLoader.load(
-//     'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BAKING.glb',
-//     (gltf) => {
-//         gltf.scene.traverse((child) =>
-//         {
-//             child.material = bakedMaterial
-//         })
-//         testIslandGroup.add(gltf.scene)
-//     })
+
+gltfLoader.load(
+    'models/WEB3_BIGISLAND/WEB3_BIGISLAND_BAKING.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterial
+        })
+        testIslandGroup.add(gltf.scene)
+    })
+
+
 
 // Big island
-
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_ISLAND.gltf',
     (gltf) => {

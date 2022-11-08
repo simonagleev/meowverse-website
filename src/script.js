@@ -2,14 +2,12 @@ import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
-import { MathUtils, Vector3 } from 'three'
+import { Vector3 } from 'three'
 import * as models from './js/Models.js'
 import * as particles from './js/Particles.js'
 import * as light from './js/Lights.js'
 import * as utils from './js/Utils.js'
-
-import loader from 'css-loader'
-
+import * as loaders from './js/Loaders.js'
 
 /**
  * HTML
@@ -34,65 +32,39 @@ const scene = new THREE.Scene()
 /**
  * Loading manager (loading process and screen)
  */
-const loadingManager = new THREE.LoadingManager()
+
 const progressBar = document.getElementById('progress-bar')
 const progressBarontainer = document.querySelector('.progress-bar-container')
 
-let isLoaded = false
 
-loadingManager.onProgress = (url, loaded, total) => {
-    
+
+loaders.loadingManager.onProgress = (url, loaded, total) => {
+    console.log('LOADING')
     progressBar.value = (loaded / total) * 100
 }
 
-loadingManager.onLoad = () => {
+loaders.loadingManager.onLoad = () => {
     console.log('LOADED')
-    isLoaded = true
     tick()
     progressBarontainer.style.display = 'none'
 }
-
-/**
- * Loaders
- */
-
-
-
-
 
 
 /**
  *  Models
  */
 
-
 // menu Island
-
-
 scene.add(models.menuGroup)
 
-
-
-
-
 // Test island
-
-
- scene.add(models.testIslandGroup)
+// scene.add(models.testIslandGroup)
 
 // BIGisland 
-
-
 scene.add(models.bigIslandGroup)
 
-
-
-
-
 // Meowverse island
-
 scene.add(models.meowverseIslandGroup)
-
 
 const createToken = (x, y, z, group) => {
     if (bigIslandToken) {
@@ -105,13 +77,12 @@ const createToken = (x, y, z, group) => {
 }
 
 // Roadmap island
-
 scene.add(models.roadmapGroup)
 
 
 
 /**
- * TEXTURES
+ * SKYBOX
  */
 
 scene.background = new THREE.CubeTextureLoader()
@@ -128,29 +99,14 @@ scene.background = new THREE.CubeTextureLoader()
 /**
  *  PARTICLES
  */
-
-
-
-// Geometry
-
-
-// Material
-
 scene.add(particles.particles)
-
-
-/**
- * GEOMETRIES
- */
-
-
 
 /**
  * FOG
  */
 
 const fog = new THREE.Fog(0x8C97F4, 1, 50)
-scene.fog = fog
+// scene.fog = fog
 
 /**
  * Lights
@@ -160,14 +116,9 @@ scene.add(light.directionalLight)
 
 scene.add(light.pointLightBigIsland)
 
-
-
 scene.add(light.pointLightmenuIsland)
 
-
-
 scene.add(light.spotlight)
-
 scene.add(light.spotlight.target)
 
 
@@ -189,15 +140,9 @@ scene.add(light.spotlight.target)
 
 const raycaster = new THREE.Raycaster()
 
-let currentIntersect = null
-
-let currentIntersectLength = null
-
-
 const rayOrigin = new THREE.Vector3(- 3, 0, 0)
 const rayDirection = new THREE.Vector3(10, 0, 0)
 rayDirection.normalize()
-
 
 
 /**
@@ -235,12 +180,11 @@ window.addEventListener('mousemove', (event) => {
 })
 
 
-//  UTILS
-
+/**
+ * UTILS
+ */
 
 // Находит родителей вплоть до Scene
-
-
 let groupIntersected = null;
 
 let parentBeforScene = null;
@@ -265,7 +209,7 @@ const getParent = (obj) => {
 
 //Events
 window.addEventListener('click', (event) => {
-    utils.focusCamera(camera,controls)
+    utils.handleClick(camera, controls)
 })
 
 
@@ -349,7 +293,7 @@ window.addEventListener('click', (event) => {
 //             }
 //         }
 //     }
-    
+
 //     currentIntersect = null;
 // })
 
@@ -424,49 +368,46 @@ const tick = () => {
     previousTime = elapsedTime
 
     // Cast a ray from the mouse and handle events
-    raycasterCount+=1
-    if(raycasterCount == 15) {
+    raycasterCount += 1
+    if (raycasterCount === 15) {
 
-            raycaster.setFromCamera(mouse, camera)
+        raycaster.setFromCamera(mouse, camera)
 
-            const objectsToTest = [
-                models.roadmapGroup,
-                models.meowverseIslandGroup,
-                models.twitter,
-                models.discord,
-                models.blog,
-                models.pawBig,
-                models.NFTsFinger,
-                models.roadmapFinger,
-                models.partnersFinger,
-                models.gamesMeowverseFinger,
-                models.bigIslandLand,
-                models.bigIslandBath,
-                models.bigIslandBoat,
-                models.bigIslandGenCard1,
-                models.bigIslandGenCard2,
-                models.bigIslandOrigCard1,
-                models.bigIslandOrigCard2,
-                models.bigIslandOrigCard3,
-                models.bigIslandOrigCard4,
-                models.bigIslandOrigCard5,
-                models.bigIslandSign1,
-                models.bigIslandSign2,
-                models.bigIslandSign3,
-                models.bigIslandToken,
-            ]
+        const objectsToTest = [
+            models.roadmapGroup,
+            models.meowverseIslandGroup,
+            models.twitter,
+            models.discord,
+            models.blog,
+            models.pawBig,
+            models.NFTsFinger,
+            models.roadmapFinger,
+            models.partnersFinger,
+            models.gamesMeowverseFinger,
+            models.bigIslandLand,
+            models.bigIslandBath,
+            models.bigIslandBoat,
+            models.bigIslandGenCard1,
+            models.bigIslandGenCard2,
+            models.bigIslandOrigCard1,
+            models.bigIslandOrigCard2,
+            models.bigIslandOrigCard3,
+            models.bigIslandOrigCard4,
+            models.bigIslandOrigCard5,
+            models.bigIslandSign1,
+            models.bigIslandSign2,
+            models.bigIslandSign3,
+            models.bigIslandToken,
+        ]
 
-            intersects = raycaster.intersectObjects(objectsToTest)   //тут все меши под курсором
+        intersects = raycaster.intersectObjects(objectsToTest)   //тут все меши под курсором
 
-            raycasterCount = 0
-   
-}
+        raycasterCount = 0
+    }
 
-    utils.intersectAnimationMedia(intersects,elapsedTime)
+    utils.intersectAnimationMedia(intersects, elapsedTime)
     utils.animateBoat(elapsedTime)
-    
 
-    // spotlightHelper.update()
     // Update controls
     controls.update()
 
@@ -476,10 +417,11 @@ const tick = () => {
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
-setTimeout(() => {
-    tick()   
-    progressBarontainer.style.display = 'none'   
-}, 7000);
+
+// setTimeout(() => {
+//     tick()
+//     progressBarontainer.style.display = 'none'
+// }, 7000);
 
 
 

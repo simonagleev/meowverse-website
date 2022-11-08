@@ -1,7 +1,8 @@
 import * as THREE from 'three'
-import * as texture from './Texture.js'
+import * as loaders from './Loaders.js'
 
-const particleTexture = texture.textureLoader.load('/textures/particles/1.png')
+
+const particleTexture = loaders.textureLoader.load('/textures/particles/1.png')
 
 const particlesGeometry = new THREE.BufferGeometry()
 const count = 5000
