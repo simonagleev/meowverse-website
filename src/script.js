@@ -393,7 +393,6 @@ const tick = () => {
             models.gamesMeowverseFingerSign,
 
             models.bigIslandLand,
-            // models.bigIslandBath,
             models.bigIslandBoat,
             models.bigIslandGenCard1,
             models.bigIslandGenCard2,
@@ -409,6 +408,7 @@ const tick = () => {
             models.bigIslandToken2,
             models.bigIslandToken3,
             models.bigIslandToken4,
+
             // models.meowverseIslandCliff,
             // models.meowverseIslandGun,
             // models.meowverseIslandKart,
@@ -420,8 +420,6 @@ const tick = () => {
             // models.meowverseIslandTree2,
             // models.meowverseIslandWheel1,
             // models.meowverseIslandWheel2
-
-
         ]
 
         intersects = raycaster.intersectObjects(objectsToTest)   //тут все меши под курсором

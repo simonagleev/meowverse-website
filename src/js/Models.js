@@ -66,7 +66,6 @@ const bakedMaterial = new THREE.MeshBasicMaterial({ map:  textures.bakedTexture}
 textures.bakedTexture.flipY = false
 
 export let bigIslandLand = null;
-// export let bigIslandBath = null;
 export let bigIslandBoat = null;
 export let bigIslandGenCard1 = null;
 export let bigIslandGenCard2 = null;
@@ -472,16 +471,7 @@ gltfLoader.load(
     },
 )
 
-// gltfLoader.load(
-//     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_BATH.gltf',
-//     (gltf) => {
-//         gltf.scene.position.y += .1
 
-//         bigIslandGroup.add(gltf.scene)
-//         bigIslandBath = gltf.scene
-//         bigIslandBath.name = 'bigIslandBath'
-//     },
-// )
 
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_BOAT.gltf',
