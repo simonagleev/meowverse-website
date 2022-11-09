@@ -63,7 +63,6 @@ export function intersectAnimationMedia(intersects) {
                 models.blog.children[0].rotation.y -= .01
                 models.blog.children[1].rotation.y -= .01
                 break
-
         }
     } 
 }
@@ -79,8 +78,7 @@ function getParent(obj) {
 
             if (element.uuid === myGroups[i].uuid) {
                 groupIntersected = myGroups[i]
-            } else {
-            }
+            } 
         }
         element = element.parent
         getParent(element)
@@ -116,7 +114,6 @@ export const onFingerClickFocus = (camera, controls, group) => {
 
     gsap.to(camera.position, {duration: 2, delay: 0, x: group.position.x , })
     gsap.to(camera.position, {duration: 2, delay: 0, z: group.position.z + 5, })
-
 }
 
 function getModelByMeshName(obj) {
@@ -250,6 +247,6 @@ export const handleClick = (camera, controls) => {
     if (model.name === "originalSign") {
         window.open('https://doliacats.com/', '_blank');
     }
-
+    
 }
 
