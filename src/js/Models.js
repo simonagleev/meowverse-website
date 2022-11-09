@@ -121,6 +121,11 @@ export let roadmapIslandSign = null;
 
 
 
+// Tip circle
+
+export const tipCircle = new THREE.Group()
+
+
 /**
  * Models
  */
@@ -900,3 +905,27 @@ gltfLoader.load(
         roadmapIslandSign.name = 'roadmapIslandSign'
     },
 )
+
+
+// Tip Circle 
+
+const tipCircleRing = new THREE.Mesh(
+    new THREE.RingGeometry(.1, .125, 12, 12),
+    new THREE.MeshBasicMaterial({color: "#ff0000", side: THREE.DoubleSide })
+)
+
+const tipCircleDot = new THREE.Mesh(
+    new THREE.CircleGeometry(.025, 12),
+    new THREE.MeshBasicMaterial({color: "#00ff00", side: THREE.DoubleSide })
+)
+tipCircle.add(tipCircleRing, tipCircleDot)
+setTimeout(() => {
+    // tipCircle.scale.set(2,2,2)
+    
+    tipCircle.position.x = -0.05
+    tipCircle.position.y = .8
+    tipCircle.position.z = 5.1
+
+   
+
+}, 4000)

@@ -65,6 +65,9 @@ scene.add(models.meowverseIslandGroup)
 scene.add(models.roadmapGroup)
 
 
+// Tip circle
+scene.add(models.tipCircle)
+
 /**
  * SKYBOX
  */
@@ -203,7 +206,7 @@ window.addEventListener('click', (event) => {
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(0, 8, 7)
+camera.position.set(0, 6, 6.5)
 scene.add(camera)
 
 // Controls
@@ -234,6 +237,9 @@ const gui = new dat.GUI()
 gui.close()
 // gui.add(controls, 'maxAzimuthAngle').min(0).max(Math.PI * 2).step(0.1)
 
+gui.add(models.tipCircle.position, 'x').min(-10).max(10).step(0.01)
+gui.add(models.tipCircle.position, 'y').min(-10).max(10).step(0.01)
+gui.add(models.tipCircle.position, 'z').min(-10).max(10).step(0.01)
 
 // gui.add(camera.position, 'x').min(-10).max(10).step(0.1)
 // gui.add(camera.position, 'y').min(-10).max(10).step(0.1)
