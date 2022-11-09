@@ -12,6 +12,10 @@ dracoLoader.setDecoderPath('/draco/')
 const gltfLoader = loaders.gltfLoader
 gltfLoader.setDRACOLoader(dracoLoader)
 
+/**
+ * Composer
+ */
+
 
 //menu island
 export const menuGroup = new THREE.Group()

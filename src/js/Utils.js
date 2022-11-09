@@ -27,7 +27,7 @@ export function animateIsland(obj, elapsedTime) {
 
 }
 
-export const hovering = (intersects, elapsedTime) => {
+export const hovering = (intersects, elapsedTime,outlinePass) => {
     if (intersects[0]) {
 
         console.log(intersects[0].object.name)
@@ -37,10 +37,17 @@ export const hovering = (intersects, elapsedTime) => {
         hoveredObj = obj
 
         animateIsland(obj, elapsedTime)
+        outlineObj(groupIntersected,outlinePass)
+
     } else {
         hoveredObj = null
         groupIntersected = null
     }
+}
+
+function outlineObj(obj,outlinePass) {
+    outlinePass.selectedObjects = [obj]
+    console.log(outlinePass)
 }
 
 

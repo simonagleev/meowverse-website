@@ -1,6 +1,9 @@
 import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
+import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass.js'
 import * as dat from 'lil-gui'
 import { Vector3 } from 'three'
 import * as models from './js/Models.js'
@@ -152,6 +155,10 @@ window.addEventListener('resize', () => {
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+    //update composer
+    effectComposer.setSize(sizes.width, sizes.height)
+    effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
 
@@ -228,6 +235,23 @@ renderer.shadowMap.enabled = true
 renderer.shadowMap.type = THREE.PCFSoftShadowMap
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+/**
+ * Post-processing
+ */
+ const effectComposer = new EffectComposer(renderer)
+ effectComposer.setSize( sizes.width, sizes.height );
+ const renderPass = new RenderPass(scene, camera)
+ effectComposer.addPass(renderPass)
+
+ const outlinePass = new OutlinePass(new THREE.Vector2(sizes.width, sizes.height), scene, camera);
+ outlinePass.edgeStrength = 8;
+ outlinePass.edgeThickness = 1;
+ outlinePass.visibleEdgeColor = "#ffffff"
+ outlinePass.hiddenEdgeColor = "#190a05"
+ outlinePass.usePatternTexture = false
+ effectComposer.addPass( outlinePass )
+ 
 
 
 /**
@@ -351,7 +375,7 @@ const tick = () => {
 
     // Islands animation
 
-    utils.hovering(intersects, elapsedTime)
+    utils.hovering(intersects, elapsedTime, outlinePass)
 
     // Social Media animation
     utils.intersectAnimationMedia(intersects)
@@ -369,7 +393,8 @@ const tick = () => {
     controls.update()
 
     // Render
-    renderer.render(scene, camera)
+    // renderer.render(scene, camera)
+    effectComposer.render()
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
