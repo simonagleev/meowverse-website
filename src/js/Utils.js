@@ -6,19 +6,17 @@ const myGroups = [models.menuGroup, models.bigIslandGroup, models.meowverseIslan
 let hoveredObj = null
 
 
-export const createToken = (x, y, z, group) => {
-    if (models.bigIslandToken) {
-        console.log('da')
-        let coin = models.bigIslandToken.clone()
-        coin.position.x = x
-        coin.position.y = y
-        coin.position.z = z
-        group.add(coin)
-    } else {
-        console.log('net')
-
-    }
-}
+// export const createToken = (x, y, z, group) => {
+//     if (models.bigIslandToken) {
+        
+//         let coin = models.bigIslandToken.clone()
+//         coin.position.x = x
+//         coin.position.y = y
+//         coin.position.z = z
+//         group.add(coin)
+//     } else {
+//     }
+// }
 
 export function animateIsland(obj, elapsedTime) {
 
@@ -53,7 +51,6 @@ export function intersectAnimationMedia(intersects) {
         switch (result.name) {
             case "twitter":
                 models.twitter.rotation.z -= .01
-                console.log('ds')
                 break
 
             case "discord":
@@ -62,8 +59,8 @@ export function intersectAnimationMedia(intersects) {
                 break
 
             case "blog":
-                models.blog.children[0].rotation.z -= .01
-                models.blog.children[1].rotation.z -= .01
+                models.blog.children[0].rotation.y -= .01
+                models.blog.children[1].rotation.y -= .01
                 break
 
         }
@@ -123,12 +120,12 @@ function getModelByMeshName(obj) {
             shortName = "twitter"
         }
 
-        if (obj.name === "Cube000_Cube005_1" || obj.name === "Cube000_Cube005_2" || obj.name === "Cube000_Cube005_4" || obj.name === "Cube000_Cube005_3") {
+        if (obj.name === "Cube000_Cube005_1" || obj.name === "Cube000_Cube005_2" || obj.name === "Cylinder036"  || obj.name === "Cylinder036_1" ) {
             object = models.discord
             shortName = "discord"
         }
 
-        if (obj.name === "Cube033_3" || obj.name === "Cube033_2" || obj.name === "Cube033_1" || obj.name === "Cube033") {
+        if (obj.name === "Cube033_1" || obj.name === "Cube033" || obj.name === "Cylinder048"  || obj.name === "Cylinder048_1") {
             object = models.blog
             shortName = "blog"
         }

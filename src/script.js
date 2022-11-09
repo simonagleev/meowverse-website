@@ -45,8 +45,6 @@ loaders.loadingManager.onLoad = () => {
     console.log('LOADED')
     tick()
     progressBarontainer.style.display = 'none'
-console.log(models.twitter)
-
 }
 
 
@@ -57,20 +55,14 @@ console.log(models.twitter)
 // menu Island
 scene.add(models.menuGroup)
 
-// Test island
-// scene.add(models.testIslandGroup)
-
 // BIGisland 
 scene.add(models.bigIslandGroup)
 
 // Meowverse island
 scene.add(models.meowverseIslandGroup)
 
-
-
 // Roadmap island
 scene.add(models.roadmapGroup)
-
 
 
 /**
@@ -368,18 +360,40 @@ const tick = () => {
         const objectsToTest = [
             models.roadmapGroup,
             models.meowverseIslandGroup,
+
             models.twitter,
             models.twitterPlate,
 
             models.discord,
+            models.discordPlate,
+
             models.blog,
+            models.blogPlate,
+
             models.pawBig,
+            models.menuPaw1,
+            models.menuPaw2,
+
             models.NFTsFinger,
+            models.NFTsFingerSign,
+            models.NFTsFingerToken,
+
             models.roadmapFinger,
+            models.roadmapPaw1,
+            models.roadmapPaw1,
+            models.roadmapFingerSign,
+            
             models.partnersFinger,
+            models.partnersFingerQuestion,
+            models.partnersFingerSign,
+
             models.gamesMeowverseFinger,
+            models.gamesMeowverseFingerKart,
+            models.gamesMeowverseFingerMushroom,
+            models.gamesMeowverseFingerSign,
+
             models.bigIslandLand,
-            models.bigIslandBath,
+            // models.bigIslandBath,
             models.bigIslandBoat,
             models.bigIslandGenCard1,
             models.bigIslandGenCard2,

@@ -28,19 +28,37 @@ export let twitter = null;
 export let twitterPlate = null;
 
 export let discord = null;
+export let discordPlate = null;
+
 export let blog = null;
+export let blogPlate = null;
 
 export let pawBig = null;
+export let roadmapPaw1 = null;
+export let roadmapPaw2 = null;
+export let menuPaw1 = null;
+export let menuPaw2 = null;
 
 export let NFTsFinger = null;
+export let NFTsFingerToken = null;
+export let NFTsFingerSign = null;
+
 export let gamesMeowverseFinger = null;
+export let gamesMeowverseFingerKart = null;
+export let gamesMeowverseFingerMushroom = null;
+export let gamesMeowverseFingerSign = null;
+
 export let roadmapFinger = null;
+export let roadmapFingerSign = null;
+
 export let partnersFinger = null;
+export let partnersFingerQuestion = null;
+export let partnersFingerSign = null;
 
 
 
 
-//Big island    //Таблички поправить, тут 2 разных накладываются друг на друга
+//Big island 
 export const bigIslandGroup = new THREE.Group()
 bigIslandGroup.position.set(-9, 0, -2)
 bigIslandGroup.name = 'bigIsland'
@@ -48,7 +66,7 @@ const bakedMaterial = new THREE.MeshBasicMaterial({ map:  textures.bakedTexture}
 textures.bakedTexture.flipY = false
 
 export let bigIslandLand = null;
-export let bigIslandBath = null;
+// export let bigIslandBath = null;
 export let bigIslandBoat = null;
 export let bigIslandGenCard1 = null;
 export let bigIslandGenCard2 = null;
@@ -153,69 +171,289 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_D.gltf',
+    'models/WEB3_MENU/menu-backed/menu_discord.glb',
     (gltf) => {
-
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
         menuMainPawGroup.add(gltf.scene)
 
         discord = gltf.scene.children[0]
+        discord.name = 'dscord'
     },
 )
 
 gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_B.gltf',
+    'models/WEB3_MENU/menu-backed/menu_plate2.glb',
     (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+
+        discordPlate = gltf.scene.children[0]
+        discordPlate.name = 'discordPlate'
+    
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_blog.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
         menuMainPawGroup.add(gltf.scene)
 
         blog = gltf.scene.children[0]
+        blog.name = 'blog'
     },
 )
 
 gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_NM.gltf',
+    'models/WEB3_MENU/menu-backed/menu_plate3.glb',
     (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
 
-        menuGroup.add(gltf.scene)
+        blogPlate = gltf.scene.children[0]
+        blogPlate.name = 'blogPlate'
+    
+    },
+)
 
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_paw.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+        roadmapPaw1 = gltf.scene.children[0]
+        roadmapPaw1.name = 'roadmapPaw1'
+    
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_paw2.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+        roadmapPaw2 = gltf.scene.children[0]
+        roadmapPaw2.name = 'roadmapPaw2'
+    
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_paw3.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+        menuPaw1 = gltf.scene.children[0]
+        menuPaw1.name = 'menuPaw1'
+    
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_paw4.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+        menuPaw2 = gltf.scene.children[0]
+        menuPaw2.name = 'menuPaw2'
+    
+    },
+)
+
+// NFTsFinger
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_island1.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
         NFTsFinger = gltf.scene.children[0]
         NFTsFinger.name = 'NFTsFinger'
+    
     },
 )
 gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_GM.gltf',
+    'models/WEB3_MENU/menu-backed/menu_token.glb',
     (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+        NFTsFingerToken = gltf.scene.children[0]
+        NFTsFingerToken.name = 'NFTsFingerToken'
+    
+    },
+)
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_sign1.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+        NFTsFingerSign = gltf.scene.children[0]
+        NFTsFingerSign.name = 'NFTsFingerSign'
+    },
+)
 
-        menuGroup.add(gltf.scene)
 
+// GamesMeowverseFinger
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_island2.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
         gamesMeowverseFinger = gltf.scene.children[0]
         gamesMeowverseFinger.name = 'gamesMeowverseFinger'
-
+    
     },
 )
+
 gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_P.gltf',
+    'models/WEB3_MENU/menu-backed/menu_kart.glb',
     (gltf) => {
-
-        menuGroup.add(gltf.scene)
-
-        partnersFinger = gltf.scene.children[0]
-        partnersFinger.name = 'partnersFinger'
-
-
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+        gamesMeowverseFingerKart = gltf.scene.children[0]
+        gamesMeowverseFingerKart.name = 'gamesMeowverseFingerKart'
+    
     },
 )
+
 gltfLoader.load(
-    'models/WEB3_MENU/WEB3_MENU(1MESH)_R.gltf',
+    'models/WEB3_MENU/menu-backed/menu_mushroom.glb',
     (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+        gamesMeowverseFingerMushroom = gltf.scene.children[0]
+        gamesMeowverseFingerMushroom.name = 'gamesMeowverseFingerMushroom'
+    
+    },
+)
 
-        menuGroup.add(gltf.scene)
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_sign2.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+        gamesMeowverseFingerSign = gltf.scene.children[0]
+        gamesMeowverseFingerSign.name = 'gamesMeowverseFingerSign'
+    
+    },
+)
 
+
+// Roadmap Finger
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_island3.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
         roadmapFinger = gltf.scene.children[0]
         roadmapFinger.name = 'roadmapFinger'
-
+    
     },
 )
 
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_sign3.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+        roadmapFingerSign = gltf.scene.children[0]
+        roadmapFingerSign.name = 'roadmapFingerSign'
+    
+    },
+)
+
+// Partners Finger
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_island4.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+        partnersFinger = gltf.scene.children[0]
+        partnersFinger.name = 'partnersFinger'
+    
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_question.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+        partnersFingerQuestion = gltf.scene.children[0]
+        partnersFingerQuestion.name = 'partnersFingerQuestion'
+    
+    },
+)
+
+gltfLoader.load(
+    'models/WEB3_MENU/menu-backed/menu_sign4.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) =>
+        {
+            child.material = bakedMaterialMenu
+        })
+        menuMainPawGroup.add(gltf.scene)
+        partnersFingerSign = gltf.scene.children[0]
+        partnersFingerSign.name = 'partnersFingerSign'
+    
+    },
+)
 
 
 // Big island
@@ -234,16 +472,16 @@ gltfLoader.load(
     },
 )
 
-gltfLoader.load(
-    'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_BATH.gltf',
-    (gltf) => {
-        gltf.scene.position.y += .1
+// gltfLoader.load(
+//     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_REMESHED_BATH.gltf',
+//     (gltf) => {
+//         gltf.scene.position.y += .1
 
-        bigIslandGroup.add(gltf.scene)
-        bigIslandBath = gltf.scene
-        bigIslandBath.name = 'bigIslandBath'
-    },
-)
+//         bigIslandGroup.add(gltf.scene)
+//         bigIslandBath = gltf.scene
+//         bigIslandBath.name = 'bigIslandBath'
+//     },
+// )
 
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/WEB3_BIGISLAND_BOAT.gltf',
