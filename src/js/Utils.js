@@ -110,13 +110,12 @@ export function focusCamera(camera, controls) {
 }
 
 export const onFingerClickFocus = (camera, controls, group) => {
-    controls.target.x = group.position.x
-    controls.target.y = group.position.y
-    controls.target.z = group.position.z
+    gsap.to(controls.target, {duration: 2, delay: 0, x: group.position.x , })
+    gsap.to(controls.target, {duration: 2, delay: 0, y: group.position.y, })
+    gsap.to(controls.target, {duration: 2, delay: 0, z: group.position.z, })
 
-    camera.position.x = group.position.x
-    // camera.position.y = group.position.y + 4
-    camera.position.z = group.position.z + 5
+    gsap.to(camera.position, {duration: 2, delay: 0, x: group.position.x , })
+    gsap.to(camera.position, {duration: 2, delay: 0, z: group.position.z + 5, })
 
 }
 
