@@ -198,90 +198,6 @@ window.addEventListener('click', (event) => {
 })
 
 
-// // Events
-
-// window.addEventListener('touchcancel', (event) => {
-//     event.preventDefault();
-//     if (currentIntersect) {
-//         getParent(currentIntersect.object)  // Получвем родителя меша, на кторый навели курсор (группу)
-
-//         // Сделать что-то с group при клике
-//         if (groupIntersected) {
-//             // Click по соц. сетям
-//             if (groupIntersected.name === 'menuIsland') {
-//                 const menuIslandMeshesArray = [
-//                     ...models.twitter.children,
-//                     ...models.discord.children,
-//                     ...models.blog.children,
-//                     ...models.NFTsFinger.children,
-//                     ...models.roadmapFinger.children,
-//                     ...models.gamesMeowverseFinger.children,
-//                 ]
-
-//                 for (const mesh of menuIslandMeshesArray) {
-//                     if (currentIntersect.object === mesh) {
-//                         if (mesh.parent === models.twitter) {
-//                             window.open('https://twitter.com/DoliaCats_eth', '_blank');
-//                         } else if (mesh.parent === models.discord) {
-//                             window.open('https://discord.com/invite/RetekYNarD', '_blank');
-//                         } else if (mesh.parent === models.blog) {
-//                             window.open('https://medium.com/', '_blank');
-//                         } else if (mesh.parent === models.NFTsFinger) {
-//                             focuseIsland(models.bigIslandGroup)
-//                         } else if (mesh.parent === models.roadmapFinger) {
-//                             focuseIsland(models.roadmapGroup)
-//                         } else if (mesh.parent === models.gamesMeowverseFinger) {
-//                             focuseIsland(models.meowverseIslandGroup)
-//                         }
-//                     }
-//                 }
-//             } else if (groupIntersected.name === 'bigIsland') {   // Click по big-island
-//                 const bigIslandMeshesArray = [
-//                     ...models.bigIslandLand.children[0].children,
-//                     ...models.bigIslandBath.children[0].children,
-//                     ...models.bigIslandBoat.children[0].children,
-//                     models.bigIslandGenCard1.children[0],
-//                     models.bigIslandGenCard2.children[0],
-//                     models.bigIslandOrigCard1.children[0],
-//                     models.bigIslandOrigCard2.children[0],
-//                     models.bigIslandOrigCard3.children[0],
-//                     models.bigIslandOrigCard4.children[0],
-//                     models.bigIslandOrigCard5.children[0],
-//                     ...models.bigIslandSign1.children[0].children,
-//                     ...models.bigIslandSign2.children[0].children,
-//                     ...models.bigIslandSign3.children[0].children,
-//                     ...models.bigIslandToken.children[0].children,
-//                 ]
-//                 for (const mesh of bigIslandMeshesArray) {
-//                     if (currentIntersect.object.parent.name === mesh.parent.name) {
-//                         if (mesh.parent.name === 'bigIslandSign1' || mesh.parent.parent.name === 'bigIslandSign1') {
-//                             window.open('https://doliacats.com#tokenomiks', '_blank')
-//                         } else if (mesh.parent.name === 'bigIslandSign2' || mesh.parent.parent.name === 'bigIslandSign2') {
-//                             window.open('https://doliacats.com', '_blank')
-//                         } else if (mesh.parent.name === 'bigIslandSign3' || mesh.parent.parent.name === 'bigIslandSign3') {
-//                             window.open('http://genesis.doliacats.com', '_blank')
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-
-//         if (groupIntersected && groupIntersected.name !== 'menuIsland') {
-//             for (const group of myGroups) {
-//                 if (group === groupIntersected) {
-
-//                     focuseIsland(group)
-
-//                 } else {
-//                     console.log('wrong group')
-//                 }
-//             }
-//         }
-//     }
-
-//     currentIntersect = null;
-// })
-
 /**
  * Camera
  */
@@ -289,6 +205,9 @@ window.addEventListener('click', (event) => {
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 camera.position.set(0, 8, 7)
 scene.add(camera)
+
+const helper = new THREE.CameraHelper( camera );
+scene.add( helper );
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
@@ -434,10 +353,14 @@ const tick = () => {
     // Social Media animation
     utils.intersectAnimationMedia(intersects)
 
-
+    
 
     //Boat animation
     utils.animateBoat(elapsedTime)
+
+
+    // Update camera position 
+    
 
     // Update controls
     controls.update()

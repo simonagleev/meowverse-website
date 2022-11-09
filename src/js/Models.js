@@ -455,7 +455,7 @@ gltfLoader.load(
 )
 
 
-// Big island
+// BIG island
 gltfLoader.load(
     'models/WEB3_BIGISLAND/PLAN_B/bigisland_island.glb',
 

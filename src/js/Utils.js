@@ -1,4 +1,5 @@
-import * as models from './Models.js'
+import * as models from './Models.js';
+import gsap from 'gsap';
 
 let groupIntersected = null;
 const myGroups = [models.menuGroup, models.bigIslandGroup, models.meowverseIslandGroup, models.roadmapGroup]
@@ -86,6 +87,28 @@ function getParent(obj) {
     }
 };
 
+
+
+export function focusCamera(camera, controls) {
+    if (groupIntersected) {
+
+        gsap.to(controls.target, {duration: 2, delay: 0, x: groupIntersected.position.x , })
+        gsap.to(controls.target, {duration: 2, delay: 0, y: groupIntersected.position.y, })
+        gsap.to(controls.target, {duration: 2, delay: 0, z: groupIntersected.position.z, })
+        
+        // controls.target.x = groupIntersected.position.x
+        // controls.target.y = groupIntersected.position.y
+        // controls.target.z = groupIntersected.position.z
+
+        // camera.position.x = groupIntersected.position.x
+        // camera.position.y = group.position.y + 4
+        // camera.position.z = groupIntersected.position.z + 5
+
+        gsap.to(camera.position, {duration: 2, delay: 0, x: groupIntersected.position.x , })
+        gsap.to(camera.position, {duration: 2, delay: 0, z: groupIntersected.position.z + 5, })
+    }
+}
+
 export const onFingerClickFocus = (camera, controls, group) => {
     controls.target.x = group.position.x
     controls.target.y = group.position.y
@@ -95,19 +118,6 @@ export const onFingerClickFocus = (camera, controls, group) => {
     // camera.position.y = group.position.y + 4
     camera.position.z = group.position.z + 5
 
-}
-
-export function focusCamera(camera, controls) {
-    if (groupIntersected) {
-
-        controls.target.x = groupIntersected.position.x
-        controls.target.y = groupIntersected.position.y
-        controls.target.z = groupIntersected.position.z
-
-        camera.position.x = groupIntersected.position.x
-        // camera.position.y = group.position.y + 4
-        camera.position.z = groupIntersected.position.z + 5
-    }
 }
 
 function getModelByMeshName(obj) {
