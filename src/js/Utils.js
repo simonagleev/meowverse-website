@@ -26,7 +26,7 @@ export function animateIsland(obj, elapsedTime) {
 
 }
 
-export const hovering = (intersects, elapsedTime,outlinePass) => {
+export const hovering = (intersects, elapsedTime, outlinePass) => {
     if (intersects[0]) {
 
         console.log(intersects[0].object.name)
@@ -34,10 +34,11 @@ export const hovering = (intersects, elapsedTime,outlinePass) => {
         let obj = intersects[0].object
 
         hoveredObj = obj
+
         getParent(obj)
 
         // animateIsland(obj, elapsedTime)
-        outlineObj(obj,outlinePass)
+        outlineObj(obj, outlinePass)
 
     } else {
         hoveredObj = null
@@ -46,26 +47,21 @@ export const hovering = (intersects, elapsedTime,outlinePass) => {
     }
 }
 
-function outlineObj(obj,outlinePass) {
+function outlineObj(obj, outlinePass) {
     
     let model = getModelByMeshName(obj)
-    console.log(model)
     let objArr = []
+    // console.log(model.model)
 
-    if(model.model != null) {
-
+    if(model.model !== null) {
+        
         objArr.push(model.model)
 
     } else {
         objArr.push(groupIntersected)
     }
 
-    
-        outlinePass.selectedObjects = objArr
-    
-
-    
-    
+    outlinePass.selectedObjects = objArr
 }
 
 
@@ -93,7 +89,7 @@ export function intersectAnimationMedia(intersects) {
 }
 
 
-function getParent(obj) {
+const getParent = (obj) => {
 
     let element = obj
     if (element.parent === null) {
@@ -162,11 +158,11 @@ function getModelByMeshName(obj) {
         }
 
         if (
-            obj.name === "Cube006_1" ||
-            obj.name === "Cube006_2" ||
-            obj.name === "Cube006_3" ||
-            obj.name === "Cube006_4" ||
-            obj.name === "Cube006_5" ||
+            obj.name === "NFTsFingerSign" ||
+            obj.name === "Sphere003" ||
+            obj.name === "Cylinder041" ||
+            obj.name === "Cylinder041_1" ||
+            obj.name === "Sphere003_1" ||
             obj.name === "Cube006_6" ||
             obj.name === "Cube006_7" ||
             obj.name === "Cube006_8" ||
@@ -178,14 +174,14 @@ function getModelByMeshName(obj) {
         }
 
         if (
-            obj.name === "Cube004_1" ||
-            obj.name === "Cube004_2" ||
-            obj.name === "Cube004_3" ||
-            obj.name === "Cube004_4" ||
-            obj.name === "Cube004_5" ||
-            obj.name === "Cube004_6" ||
-            obj.name === "Cube004_7" ||
-            obj.name === "Cube004_8" ||
+            obj.name === "gamesMeowverseFingerSign" ||
+            obj.name === "Sphere001_1" ||
+            obj.name === "Cylinder038_1" ||
+            obj.name === "Cylinder038" ||
+            obj.name === "gamesMeowverseFingerMushroom" ||
+            obj.name === "Cylinder025" ||
+            obj.name === "gamesMeowverseFingerKart" ||
+            obj.name === "Sphere001_2" ||
             obj.name === "Cube004"
         ) {
             object = models.gamesMeowverseFinger
@@ -193,16 +189,29 @@ function getModelByMeshName(obj) {
         }
 
         if (
-            obj.name === "Cube053_1" ||
-            obj.name === "Cube053_2" ||
-            obj.name === "Cube053_3" ||
-            obj.name === "Cube053_4" ||
-            obj.name === "Cube053_5" ||
+            obj.name === "roadmapFingerSign" ||
+            obj.name === "Sphere005" ||
+            obj.name === "roadmapPaw1" ||
+            obj.name === "Sphere005_1" ||
+            obj.name === "roadmapPaw2" ||
             obj.name === "Cube053_6" ||
             obj.name === "Cube053"
         ) {
             object = models.roadmapFinger
             shortName = "roadmapFinger"
+        }
+
+        if (
+            obj.name === "partnersFingerQuestion" ||
+            obj.name === "Sphere004" ||
+            obj.name === "partnersFingerSign" ||
+            obj.name === "Sphere004_1" ||
+            obj.name === "Cube053_5" ||
+            obj.name === "Cube053_6" ||
+            obj.name === "Cube053"
+        ) {
+            object = models.partnersFinger
+            shortName = "partnersFinger"
         }
 
         if (obj.name === "TokenSign_3" || obj.name === "TokenSign_2" || obj.name === "TokenSign_1") {

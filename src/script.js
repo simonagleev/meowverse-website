@@ -238,7 +238,7 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 /**
- * Post-processing
+ * Post-processing & outline
  */
  const effectComposer = new EffectComposer(renderer)
  effectComposer.setSize( sizes.width, sizes.height );
@@ -247,7 +247,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
  const outlinePass = new OutlinePass(new THREE.Vector2(sizes.width, sizes.height), scene, camera);
  outlinePass.edgeStrength = 3;
- outlinePass.edgeThickness = 1;
+ outlinePass.edgeThickness = 2.5;
  outlinePass.visibleEdgeColor = new THREE.Color("#ffffff")
  outlinePass.hiddenEdgeColor = new THREE.Color("#190a05")
  outlinePass.usePatternTexture = false
@@ -330,7 +330,7 @@ const tick = () => {
 
             models.roadmapFinger,
             models.roadmapPaw1,
-            models.roadmapPaw1,
+            models.roadmapPaw2,
             models.roadmapFingerSign,
             
             models.partnersFinger,
