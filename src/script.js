@@ -77,10 +77,11 @@ const createPawPrint = (width) => {
 
 loaders.loadingManager.onProgress = (url, loaded, total) => {
     progressBar.value = (loaded / total) * 100
-
-    createPawPrint(80)
-    createPawPrint(70)
-    createPawPrint(60)
+    if(loaded % 3 === 0) {
+        createPawPrint(80)
+        
+    }
+    
 
 }
 
@@ -89,7 +90,7 @@ loaders.loadingManager.onLoad = () => {
     tick()
     models.createAllTipCircles()
     // progressBarontainer.style.display = 'none'
-    gsap.to(progressBarontainer, {duration: 1, delay: 0, opacity: 0, display: 'none'})
+    gsap.to(progressBarontainer, {duration: 1, delay: 0, opacity: 0, display: 'none',})
     // for(let i; i<paws.length; i++) {
     //     gsap.to(paws[i], {duration: 1, delay: 0,  display: 'none'})
 
