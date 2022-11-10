@@ -21,7 +21,6 @@ let hoveredObj = null
 
 export function animateIsland(obj, elapsedTime) {
 
-    getParent(obj)
 
     groupIntersected.position.y = Math.sin(elapsedTime * 2) * 0.1
 
@@ -35,13 +34,15 @@ export const hovering = (intersects, elapsedTime,outlinePass) => {
         let obj = intersects[0].object
 
         hoveredObj = obj
+        getParent(obj)
 
-        animateIsland(obj, elapsedTime)
+        // animateIsland(obj, elapsedTime)
         outlineObj(groupIntersected,outlinePass)
 
     } else {
         hoveredObj = null
         groupIntersected = null
+        outlinePass.selectedObjects = []
     }
 }
 

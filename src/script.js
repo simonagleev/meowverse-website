@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
 import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass.js'
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js'
 import * as dat from 'lil-gui'
 import { Vector3 } from 'three'
 import * as models from './js/Models.js'
@@ -245,12 +246,15 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
  effectComposer.addPass(renderPass)
 
  const outlinePass = new OutlinePass(new THREE.Vector2(sizes.width, sizes.height), scene, camera);
- outlinePass.edgeStrength = 8;
+ outlinePass.edgeStrength = 3;
  outlinePass.edgeThickness = 1;
- outlinePass.visibleEdgeColor = "#ffffff"
- outlinePass.hiddenEdgeColor = "#190a05"
+ outlinePass.visibleEdgeColor = new THREE.Color("#ffffff")
+ outlinePass.hiddenEdgeColor = new THREE.Color("#190a05")
  outlinePass.usePatternTexture = false
  effectComposer.addPass( outlinePass )
+
+
+
  
 
 
@@ -299,7 +303,7 @@ const tick = () => {
 
     // Cast a ray from the mouse and handle events
     raycasterCount += 1
-    if (raycasterCount === 15) {
+    if (raycasterCount === 5) {
 
         raycaster.setFromCamera(mouse, camera)
 
