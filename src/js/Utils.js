@@ -40,10 +40,30 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
         // animateIsland(obj, elapsedTime)
         outlineObj(obj, outlinePass)
 
+
+        gsap.to(models.tipCircle.scale, {duration: 2, delay: 0, x: 1 , y: 1, z: 1 })
+        if(models.tipCircleTwitter) {
+            gsap.to(models.tipCircleTwitter.scale, {duration: 2, delay: 0, x: 1 , y: 1, z: 1 })
+
+        }
+        if(models.tipCircleBlog) {
+            gsap.to(models.tipCircleBlog.scale, {duration: 2, delay: 0, x: 1 , y: 1, z: 1 })
+
+        }
+
     } else {
         hoveredObj = null
         groupIntersected = null
         outlinePass.selectedObjects = []
+        gsap.to(models.tipCircle.scale, {duration: 1.5, delay: 0, x: 0 , y: 0, z: 0 })
+
+        if(models.tipCircleTwitter) {
+            gsap.to(models.tipCircleTwitter.scale, {duration: 2, delay: 0, x: 0 , y: 0, z: 0 })
+        }
+        if(models.tipCircleBlog) {
+            gsap.to(models.tipCircleBlog.scale, {duration: 2, delay: 0, x: 0 , y: 0, z: 0 })
+        }
+
     }
 }
 
@@ -115,13 +135,6 @@ export function focusCamera(camera, controls) {
         gsap.to(controls.target, {duration: 2, delay: 0, y: groupIntersected.position.y, })
         gsap.to(controls.target, {duration: 2, delay: 0, z: groupIntersected.position.z, })
         
-        // controls.target.x = groupIntersected.position.x
-        // controls.target.y = groupIntersected.position.y
-        // controls.target.z = groupIntersected.position.z
-
-        // camera.position.x = groupIntersected.position.x
-        // camera.position.y = group.position.y + 4
-        // camera.position.z = groupIntersected.position.z + 5
 
         gsap.to(camera.position, {duration: 2, delay: 0, x: groupIntersected.position.x , })
         gsap.to(camera.position, {duration: 2, delay: 0, z: groupIntersected.position.z + 5, })

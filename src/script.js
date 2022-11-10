@@ -48,6 +48,7 @@ loaders.loadingManager.onProgress = (url, loaded, total) => {
 loaders.loadingManager.onLoad = () => {
     console.log('LOADED')
     tick()
+    models.createAllTipCircles()
     progressBarontainer.style.display = 'none'
 }
 
@@ -70,7 +71,7 @@ scene.add(models.roadmapGroup)
 
 
 // Tip circle
-scene.add(models.tipCircle)
+// scene.add(models.tipCircle)
 
 /**
  * SKYBOX

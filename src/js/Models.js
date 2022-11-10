@@ -1,6 +1,4 @@
 import * as THREE from 'three'
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import * as textures from './Textures.js'
 import * as loaders from './Loaders.js'
 
@@ -17,12 +15,36 @@ gltfLoader.setDRACOLoader(dracoLoader)
  */
 
 
+// Tip circle
+export const tipCircle = new THREE.Group()
+
+tipCircle.position.x = -0.05
+tipCircle.position.y = .8
+tipCircle.position.z = 1
+
+export let tipCircleTwitter = null
+export let tipCircleBlog = null
+
+export const createAllTipCircles = () => {
+    tipCircleTwitter = tipCircle.clone()
+    tipCircleTwitter.position.set(-1.05, .8, 1.2)
+
+    tipCircleBlog = tipCircle.clone()
+    tipCircleBlog.position.set(1.05, .8, 1.2)
+
+    menuMainPawGroup.add(tipCircleTwitter, tipCircleBlog)
+}
+    
+
+
+
 //menu island
 export const menuGroup = new THREE.Group()
 menuGroup.name = 'menuIsland'
 menuGroup.position.set(0, 0, 4)
 
 const menuMainPawGroup = new THREE.Group()
+menuMainPawGroup.add(tipCircle)
 menuGroup.add(menuMainPawGroup)
 
 const bakedMaterialMenu = new THREE.MeshBasicMaterial({ map:  textures.backedTextureMenu})
@@ -125,9 +147,7 @@ export let roadmapIslandSign = null;
 
 
 
-// Tip circle
 
-export const tipCircle = new THREE.Group()
 
 
 /**
@@ -912,24 +932,20 @@ gltfLoader.load(
 
 
 // Tip Circle 
+const ringGeometry = new THREE.RingGeometry(.1, .125, 12, 12)
+const ringTexture =  new THREE.MeshBasicMaterial({color: "#ec64f7", side: THREE.DoubleSide })
+const dotGeometry = new THREE.CircleGeometry(.025, 12)
+const dotTexture = new THREE.MeshBasicMaterial({color: "#ffffff", side: THREE.DoubleSide })
 
 const tipCircleRing = new THREE.Mesh(
-    new THREE.RingGeometry(.1, .125, 12, 12),
-    new THREE.MeshBasicMaterial({color: "#ff0000", side: THREE.DoubleSide })
+    ringGeometry,
+    ringTexture
 )
 
 const tipCircleDot = new THREE.Mesh(
-    new THREE.CircleGeometry(.025, 12),
-    new THREE.MeshBasicMaterial({color: "#00ff00", side: THREE.DoubleSide })
+    dotGeometry,
+    dotTexture
 )
 tipCircle.add(tipCircleRing, tipCircleDot)
-setTimeout(() => {
-    // tipCircle.scale.set(2,2,2)
-    
-    tipCircle.position.x = -0.05
-    tipCircle.position.y = .8
-    tipCircle.position.z = 5.1
 
-   
-
-}, 4000)
+// tipCircleTwitter.add(tipCircleRing, tipCircleDot)
