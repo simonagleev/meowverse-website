@@ -37,7 +37,7 @@ export const hovering = (intersects, elapsedTime,outlinePass) => {
         getParent(obj)
 
         // animateIsland(obj, elapsedTime)
-        outlineObj(groupIntersected,outlinePass)
+        outlineObj(obj,outlinePass)
 
     } else {
         hoveredObj = null
@@ -47,8 +47,25 @@ export const hovering = (intersects, elapsedTime,outlinePass) => {
 }
 
 function outlineObj(obj,outlinePass) {
-    outlinePass.selectedObjects = [obj]
-    console.log(outlinePass)
+    
+    let model = getModelByMeshName(obj)
+    console.log(model)
+    let objArr = []
+
+    if(model.model != null) {
+
+        objArr.push(model.model)
+
+    } else {
+        objArr.push(groupIntersected)
+    }
+
+    
+        outlinePass.selectedObjects = objArr
+    
+
+    
+    
 }
 
 
