@@ -12,6 +12,7 @@ import * as particles from './js/Particles.js'
 import * as light from './js/Lights.js'
 import * as utils from './js/Utils.js'
 import * as loaders from './js/Loaders.js'
+import gsap from 'gsap';
 
 /**
  * HTML
@@ -35,21 +36,66 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 /**
- * Loading manager (loading process and screen)
+ * Preloader 
  */
 
 const progressBar = document.getElementById('progress-bar')
 const progressBarontainer = document.querySelector('.progress-bar-container')
 
+let i = 0
+const paws = []
+
+const createPawPrint = (width) => {
+    let pawPrint = document.createElement('img');
+    pawPrint.src = '/paw-print.png';
+    pawPrint.style.position = 'absolute'
+    pawPrint.width = width
+    pawPrint.style.overflow = 'hidden'
+    pawPrint.style.margin = 0
+    pawPrint.style.padding = 0
+    pawPrint.style.transform = `translate(-50%, -50%)`
+
+    const angle = Math.random() * Math.PI * 2;
+    const radius =  innerWidth * .14 + Math.random() * 600
+    const x = window.innerWidth / 2 + Math.sin(angle) * radius
+    const z = window.innerHeight/2 + Math.cos(angle) * radius
+    
+    
+    
+    // pawPrint.style.left = `${Math.floor(0 + Math.random() * (97 + 1 - 0))}%`
+    // pawPrint.style.top = `${Math.floor(0 + Math.random() * (97 + 1 - 0))}%`
+    pawPrint.style.left = `${x}px`
+    pawPrint.style.top = `${z}px`
+
+    paws.push(pawPrint)
+
+    progressBarontainer.appendChild(pawPrint)
+    
+    i+=1
+    
+}
+
 loaders.loadingManager.onProgress = (url, loaded, total) => {
     progressBar.value = (loaded / total) * 100
+
+    createPawPrint(80)
+    createPawPrint(70)
+    createPawPrint(60)
+
 }
 
 loaders.loadingManager.onLoad = () => {
     console.log('LOADED')
     tick()
     models.createAllTipCircles()
-    progressBarontainer.style.display = 'none'
+    // progressBarontainer.style.display = 'none'
+    gsap.to(progressBarontainer, {duration: 1, delay: 0, opacity: 0, display: 'none'})
+    // for(let i; i<paws.length; i++) {
+    //     gsap.to(paws[i], {duration: 1, delay: 0,  display: 'none'})
+
+    // }
+
+
 }
 
 
@@ -241,22 +287,22 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 /**
  * Post-processing & outline
  */
- const effectComposer = new EffectComposer(renderer)
- effectComposer.setSize( sizes.width, sizes.height );
- const renderPass = new RenderPass(scene, camera)
- effectComposer.addPass(renderPass)
+const effectComposer = new EffectComposer(renderer)
+effectComposer.setSize(sizes.width, sizes.height);
+const renderPass = new RenderPass(scene, camera)
+effectComposer.addPass(renderPass)
 
- const outlinePass = new OutlinePass(new THREE.Vector2(sizes.width, sizes.height), scene, camera);
- outlinePass.edgeStrength = 3;
- outlinePass.edgeThickness = 2.5;
- outlinePass.visibleEdgeColor = new THREE.Color("#ffffff")
- outlinePass.hiddenEdgeColor = new THREE.Color("#190a05")
- outlinePass.usePatternTexture = false
- effectComposer.addPass( outlinePass )
+const outlinePass = new OutlinePass(new THREE.Vector2(sizes.width, sizes.height), scene, camera);
+outlinePass.edgeStrength = 3;
+outlinePass.edgeThickness = 2.5;
+outlinePass.visibleEdgeColor = new THREE.Color("#ffffff")
+outlinePass.hiddenEdgeColor = new THREE.Color("#190a05")
+outlinePass.usePatternTexture = false
+effectComposer.addPass(outlinePass)
 
 
 
- 
+
 
 
 /**
@@ -333,7 +379,7 @@ const tick = () => {
             models.roadmapPaw1,
             models.roadmapPaw2,
             models.roadmapFingerSign,
-            
+
             models.partnersFinger,
             models.partnersFingerQuestion,
             models.partnersFingerSign,
@@ -385,14 +431,14 @@ const tick = () => {
     // Social Media animation
     utils.intersectAnimationMedia(intersects)
 
-    
+
 
     //Boat animation
     utils.animateBoat(elapsedTime)
 
 
     // Update camera position 
-    
+
 
     // Update controls
     controls.update()
