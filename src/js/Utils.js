@@ -300,13 +300,24 @@ export const handleClick = (camera, controls) => {
 export const mushroomAnimation = () => {
     let mushroomBody = models.meowverseIslandMushroom.children[0].children[0]
     let mushroomDots = models.meowverseIslandMushroom.children[0].children[1]
-  
+    let mushroomRing = models.meowverseIslandMushroom.children[1]
+    const tree1 = models.meowverseIslandTree1
+    const tree2 = models.meowverseIslandTree2
+
+    console.log(models.meowverseIslandTree1)
 
     let tl = gsap.timeline({ repeat: -1, repeatDelay: 0 });
+    let tlRing = gsap.timeline({ repeat: -1, repeatDelay: 0});
+    let tlTree1 = gsap.timeline({ repeat: -1, repeatDelay: 0});
+    let tlTree2 = gsap.timeline({ repeat: -1, repeatDelay: 0});
+
     
     tl.to([mushroomBody.scale, mushroomDots.scale], {duration: 1, delay: 0, y: 1.1, x: .9 });
-
-    // tl.to([mushroomBody.scale, mushroomDots.scale], {duration: 1,  y: .9, })
     tl.to([mushroomBody.scale, mushroomDots.scale], {duration: 1,  y: 1, x: 1})
 
+    tlTree1.to([tree1.scale,], {duration: .9, y: 1.03 });
+    tlTree1.to([tree1.scale,], {duration: 1, y: 1})
+
+    tlTree2.to([tree2.scale,], {duration: .8, y: 1.01 });
+    tlTree2.to([tree2.scale,], {duration: .8, y: 1})
 }

@@ -42,38 +42,6 @@ const scene = new THREE.Scene()
 const progressBar = document.getElementById('progress-bar')
 const progressBarontainer = document.querySelector('.progress-bar-container')
 const pawsArr = document.querySelectorAll('.paw-pic')
-// let i = 0
-// const paws = []
-
-// const createPawPrint = (width) => {
-//     let pawPrint = document.createElement('img');
-//     pawPrint.src = '/paw-print.png';
-//     pawPrint.style.position = 'absolute'
-//     pawPrint.width = width
-//     pawPrint.style.overflow = 'hidden'
-//     pawPrint.style.margin = 0
-//     pawPrint.style.padding = 0
-//     pawPrint.style.transform = `translate(-50%, -50%)`
-
-//     const angle = Math.random() * Math.PI * 2;
-//     const radius =  innerWidth * .14 + Math.random() * 600
-//     const x = window.innerWidth / 2 + Math.sin(angle) * radius
-//     const z = window.innerHeight/2 + Math.cos(angle) * radius
-    
-    
-    
-//     // pawPrint.style.left = `${Math.floor(0 + Math.random() * (97 + 1 - 0))}%`
-//     // pawPrint.style.top = `${Math.floor(0 + Math.random() * (97 + 1 - 0))}%`
-//     pawPrint.style.left = `${x}px`
-//     pawPrint.style.top = `${z}px`
-
-//     paws.push(pawPrint)
-
-//     progressBarontainer.appendChild(pawPrint)
-    
-//     i+=1
-    
-// }
 
 loaders.loadingManager.onProgress = (url, loaded, total) => {
     // progressBar.value = (loaded / total) * 100
@@ -115,7 +83,6 @@ loaders.loadingManager.onProgress = (url, loaded, total) => {
     }else if(((loaded / total) * 100) > 90 && ((loaded / total) * 100) <= 100) {
         gsap.to(pawsArr[9], {duration: .5, delay: 0, opacity: 1})
         gsap.to(pawsArr[8], {duration: 1.5, delay: .6, opacity: .5})
-
     }
     
 }
@@ -128,7 +95,6 @@ loaders.loadingManager.onLoad = () => {
     gsap.to(progressBarontainer, {duration: 1, delay: 0, opacity: 0, display: 'none',})
   
     utils.mushroomAnimation()
-
 
 }
 
@@ -464,7 +430,7 @@ const tick = () => {
     // Social Media animation
     utils.intersectAnimationMedia(intersects)
 
-    
+
 
     //Boat animation
     utils.animateBoat(elapsedTime)
