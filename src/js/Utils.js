@@ -175,12 +175,8 @@ function getModelByMeshName(obj) {
             obj.name === "Sphere003" ||
             obj.name === "Cylinder041" ||
             obj.name === "Cylinder041_1" ||
-            obj.name === "Sphere003_1" ||
-            obj.name === "Cube006_6" ||
-            obj.name === "Cube006_7" ||
-            obj.name === "Cube006_8" ||
-            obj.name === "Cube006_9" ||
-            obj.name === "Cube006_10"
+            obj.name === "Sphere003_1" 
+         
         ) {
             object = models.NFTsFinger
             shortName = "NFTsFinger"
@@ -194,8 +190,8 @@ function getModelByMeshName(obj) {
             obj.name === "gamesMeowverseFingerMushroom" ||
             obj.name === "Cylinder025" ||
             obj.name === "gamesMeowverseFingerKart" ||
-            obj.name === "Sphere001_2" ||
-            obj.name === "Cube004"
+            obj.name === "Sphere001_2" 
+            
         ) {
             object = models.gamesMeowverseFinger
             shortName = "gamesMeowverseFinger"
@@ -206,9 +202,8 @@ function getModelByMeshName(obj) {
             obj.name === "Sphere005" ||
             obj.name === "roadmapPaw1" ||
             obj.name === "Sphere005_1" ||
-            obj.name === "roadmapPaw2" ||
-            obj.name === "Cube053_6" ||
-            obj.name === "Cube053"
+            obj.name === "roadmapPaw2" 
+           
         ) {
             object = models.roadmapFinger
             shortName = "roadmapFinger"
@@ -218,10 +213,8 @@ function getModelByMeshName(obj) {
             obj.name === "partnersFingerQuestion" ||
             obj.name === "Sphere004" ||
             obj.name === "partnersFingerSign" ||
-            obj.name === "Sphere004_1" ||
-            obj.name === "Cube053_5" ||
-            obj.name === "Cube053_6" ||
-            obj.name === "Cube053"
+            obj.name === "Sphere004_1"
+          
         ) {
             object = models.partnersFinger
             shortName = "partnersFinger"

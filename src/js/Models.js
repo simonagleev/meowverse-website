@@ -948,4 +948,3 @@ const tipCircleDot = new THREE.Mesh(
 )
 tipCircle.add(tipCircleRing, tipCircleDot)
 
-// tipCircleTwitter.add(tipCircleRing, tipCircleDot)

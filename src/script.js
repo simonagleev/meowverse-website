@@ -13,6 +13,7 @@ import * as light from './js/Lights.js'
 import * as utils from './js/Utils.js'
 import * as loaders from './js/Loaders.js'
 import gsap from 'gsap';
+import * as physics from './js/Physics.js'
 
 /**
  * HTML
@@ -329,6 +330,26 @@ gui.add(models.tipCircle.position, 'z').min(-10).max(10).step(0.01)
 // gui.add(spotlight, 'intensity').min(-10).max(10).step(0.1)
 
 
+
+const test = new THREE.Mesh(
+    new THREE.SphereGeometry(.5, 32,32),
+    new THREE.MeshBasicMaterial({color: '#fff000'})
+)
+
+const geo = new THREE.CylinderGeometry(2, 1, 2, 5)
+const testFloor = new THREE.Mesh(
+    geo,
+    new THREE.MeshBasicMaterial({color: '#1aff00'})
+)
+const geo2 = new THREE.CylinderGeometry(.1, .1, 1, 5)
+const testFloor2 = new THREE.Mesh(
+    geo2,
+    new THREE.MeshBasicMaterial({color: '#0000ff'})
+)
+
+
+scene.add(test, testFloor, testFloor2)
+
 /**
  * Animate
  */
@@ -435,6 +456,20 @@ const tick = () => {
     //Boat animation
     utils.animateBoat(elapsedTime)
 
+    //Physics
+    physics.world.step(1/60, deltaTime, 3)
+    test.position.copy(physics.sphereBody.position)
+    testFloor.position.copy(physics.roadmapIslandFloorBody.position)
+    if (physics.roadmapABody) {
+        // models.roadmapIslandA.position.copy(physics.roadmapABody.position)
+        models.roadmapIslandA.position.x = physics.roadmapABody.position.x - 6.5
+        models.roadmapIslandA.position.y = physics.roadmapABody.position.y 
+        models.roadmapIslandA.position.z = physics.roadmapABody.position.z - 1.5
+
+    }
+   
+    
+
 
     // Update camera position 
 
@@ -449,11 +484,3 @@ const tick = () => {
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
-
-// setTimeout(() => {
-//     tick()
-//     progressBarontainer.style.display = 'none'
-// }, 7000);
-
-
-
