@@ -9,7 +9,7 @@ let hoveredObj = null
 
 // export const createToken = (x, y, z, group) => {
 //     if (models.bigIslandToken) {
-        
+
 //         let coin = models.bigIslandToken.clone()
 //         coin.position.x = x
 //         coin.position.y = y
@@ -41,13 +41,13 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
         outlineObj(obj, outlinePass)
 
 
-        gsap.to(models.tipCircle.scale, {duration: 2, delay: 0, x: 1 , y: 1, z: 1 })
-        if(models.tipCircleTwitter) {
-            gsap.to(models.tipCircleTwitter.scale, {duration: 2, delay: 0, x: 1 , y: 1, z: 1 })
+        gsap.to(models.tipCircle.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
+        if (models.tipCircleTwitter) {
+            gsap.to(models.tipCircleTwitter.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
 
         }
-        if(models.tipCircleBlog) {
-            gsap.to(models.tipCircleBlog.scale, {duration: 2, delay: 0, x: 1 , y: 1, z: 1 })
+        if (models.tipCircleBlog) {
+            gsap.to(models.tipCircleBlog.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
 
         }
 
@@ -55,26 +55,26 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
         hoveredObj = null
         groupIntersected = null
         outlinePass.selectedObjects = []
-        gsap.to(models.tipCircle.scale, {duration: 1.5, delay: 0, x: 0 , y: 0, z: 0 })
+        gsap.to(models.tipCircle.scale, { duration: 1.5, delay: 0, x: 0, y: 0, z: 0 })
 
-        if(models.tipCircleTwitter) {
-            gsap.to(models.tipCircleTwitter.scale, {duration: 2, delay: 0, x: 0 , y: 0, z: 0 })
+        if (models.tipCircleTwitter) {
+            gsap.to(models.tipCircleTwitter.scale, { duration: 2, delay: 0, x: 0, y: 0, z: 0 })
         }
-        if(models.tipCircleBlog) {
-            gsap.to(models.tipCircleBlog.scale, {duration: 2, delay: 0, x: 0 , y: 0, z: 0 })
+        if (models.tipCircleBlog) {
+            gsap.to(models.tipCircleBlog.scale, { duration: 2, delay: 0, x: 0, y: 0, z: 0 })
         }
 
     }
 }
 
 function outlineObj(obj, outlinePass) {
-    
+
     let model = getModelByMeshName(obj)
     let objArr = []
     // console.log(model.model)
 
-    if(model.model !== null) {
-        
+    if (model.model !== null) {
+
         objArr.push(model.model)
 
     } else {
@@ -105,7 +105,7 @@ export function intersectAnimationMedia(intersects) {
                 models.blog.children[1].rotation.y -= .01
                 break
         }
-    } 
+    }
 }
 
 
@@ -119,7 +119,7 @@ const getParent = (obj) => {
 
             if (element.uuid === myGroups[i].uuid) {
                 groupIntersected = myGroups[i]
-            } 
+            }
         }
         element = element.parent
         getParent(element)
@@ -131,23 +131,23 @@ const getParent = (obj) => {
 export function focusCamera(camera, controls) {
     if (groupIntersected) {
 
-        gsap.to(controls.target, {duration: 2, delay: 0, x: groupIntersected.position.x , })
-        gsap.to(controls.target, {duration: 2, delay: 0, y: groupIntersected.position.y, })
-        gsap.to(controls.target, {duration: 2, delay: 0, z: groupIntersected.position.z, })
-        
+        gsap.to(controls.target, { duration: 2, delay: 0, x: groupIntersected.position.x, })
+        gsap.to(controls.target, { duration: 2, delay: 0, y: groupIntersected.position.y, })
+        gsap.to(controls.target, { duration: 2, delay: 0, z: groupIntersected.position.z, })
 
-        gsap.to(camera.position, {duration: 2, delay: 0, x: groupIntersected.position.x , })
-        gsap.to(camera.position, {duration: 2, delay: 0, z: groupIntersected.position.z + 5, })
+
+        gsap.to(camera.position, { duration: 2, delay: 0, x: groupIntersected.position.x, })
+        gsap.to(camera.position, { duration: 2, delay: 0, z: groupIntersected.position.z + 5, })
     }
 }
 
 export const onFingerClickFocus = (camera, controls, group) => {
-    gsap.to(controls.target, {duration: 2, delay: 0, x: group.position.x , })
-    gsap.to(controls.target, {duration: 2, delay: 0, y: group.position.y, })
-    gsap.to(controls.target, {duration: 2, delay: 0, z: group.position.z, })
+    gsap.to(controls.target, { duration: 2, delay: 0, x: group.position.x, })
+    gsap.to(controls.target, { duration: 2, delay: 0, y: group.position.y, })
+    gsap.to(controls.target, { duration: 2, delay: 0, z: group.position.z, })
 
-    gsap.to(camera.position, {duration: 2, delay: 0, x: group.position.x , })
-    gsap.to(camera.position, {duration: 2, delay: 0, z: group.position.z + 5, })
+    gsap.to(camera.position, { duration: 2, delay: 0, x: group.position.x, })
+    gsap.to(camera.position, { duration: 2, delay: 0, z: group.position.z + 5, })
 }
 
 function getModelByMeshName(obj) {
@@ -160,12 +160,12 @@ function getModelByMeshName(obj) {
             shortName = "twitter"
         }
 
-        if (obj.name === "Cube000_Cube005_1" || obj.name === "Cube000_Cube005_2" || obj.name === "Cylinder036"  || obj.name === "Cylinder036_1" ) {
+        if (obj.name === "Cube000_Cube005_1" || obj.name === "Cube000_Cube005_2" || obj.name === "Cylinder036" || obj.name === "Cylinder036_1") {
             object = models.discord
             shortName = "discord"
         }
 
-        if (obj.name === "Cube033_1" || obj.name === "Cube033" || obj.name === "Cylinder048"  || obj.name === "Cylinder048_1") {
+        if (obj.name === "Cube033_1" || obj.name === "Cube033" || obj.name === "Cylinder048" || obj.name === "Cylinder048_1") {
             object = models.blog
             shortName = "blog"
         }
@@ -294,6 +294,19 @@ export const handleClick = (camera, controls) => {
     if (model.name === "originalSign") {
         window.open('https://doliacats.com/', '_blank');
     }
-    
+
 }
 
+export const mushroomAnimation = () => {
+    let mushroomBody = models.meowverseIslandMushroom.children[0].children[0]
+    let mushroomDots = models.meowverseIslandMushroom.children[0].children[1]
+  
+
+    let tl = gsap.timeline({ repeat: -1, repeatDelay: 0 });
+    
+    tl.to([mushroomBody.scale, mushroomDots.scale], {duration: 1, delay: 0, y: 1.1, x: .9 });
+
+    // tl.to([mushroomBody.scale, mushroomDots.scale], {duration: 1,  y: .9, })
+    tl.to([mushroomBody.scale, mushroomDots.scale], {duration: 1,  y: 1, x: 1})
+
+}

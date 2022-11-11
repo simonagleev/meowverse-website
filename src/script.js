@@ -41,48 +41,83 @@ const scene = new THREE.Scene()
 
 const progressBar = document.getElementById('progress-bar')
 const progressBarontainer = document.querySelector('.progress-bar-container')
+const pawsArr = document.querySelectorAll('.paw-pic')
+// let i = 0
+// const paws = []
 
-let i = 0
-const paws = []
+// const createPawPrint = (width) => {
+//     let pawPrint = document.createElement('img');
+//     pawPrint.src = '/paw-print.png';
+//     pawPrint.style.position = 'absolute'
+//     pawPrint.width = width
+//     pawPrint.style.overflow = 'hidden'
+//     pawPrint.style.margin = 0
+//     pawPrint.style.padding = 0
+//     pawPrint.style.transform = `translate(-50%, -50%)`
 
-const createPawPrint = (width) => {
-    let pawPrint = document.createElement('img');
-    pawPrint.src = '/paw-print.png';
-    pawPrint.style.position = 'absolute'
-    pawPrint.width = width
-    pawPrint.style.overflow = 'hidden'
-    pawPrint.style.margin = 0
-    pawPrint.style.padding = 0
-    pawPrint.style.transform = `translate(-50%, -50%)`
-
-    const angle = Math.random() * Math.PI * 2;
-    const radius =  innerWidth * .14 + Math.random() * 600
-    const x = window.innerWidth / 2 + Math.sin(angle) * radius
-    const z = window.innerHeight/2 + Math.cos(angle) * radius
+//     const angle = Math.random() * Math.PI * 2;
+//     const radius =  innerWidth * .14 + Math.random() * 600
+//     const x = window.innerWidth / 2 + Math.sin(angle) * radius
+//     const z = window.innerHeight/2 + Math.cos(angle) * radius
     
     
     
-    // pawPrint.style.left = `${Math.floor(0 + Math.random() * (97 + 1 - 0))}%`
-    // pawPrint.style.top = `${Math.floor(0 + Math.random() * (97 + 1 - 0))}%`
-    pawPrint.style.left = `${x}px`
-    pawPrint.style.top = `${z}px`
+//     // pawPrint.style.left = `${Math.floor(0 + Math.random() * (97 + 1 - 0))}%`
+//     // pawPrint.style.top = `${Math.floor(0 + Math.random() * (97 + 1 - 0))}%`
+//     pawPrint.style.left = `${x}px`
+//     pawPrint.style.top = `${z}px`
 
-    paws.push(pawPrint)
+//     paws.push(pawPrint)
 
-    progressBarontainer.appendChild(pawPrint)
+//     progressBarontainer.appendChild(pawPrint)
     
-    i+=1
+//     i+=1
     
-}
+// }
 
 loaders.loadingManager.onProgress = (url, loaded, total) => {
-    progressBar.value = (loaded / total) * 100
-    if(loaded % 3 === 0) {
-        createPawPrint(80)
-        
+    // progressBar.value = (loaded / total) * 100
+    if ((loaded / total) * 100 <= 10) {
+        gsap.to(pawsArr[0], {duration: .5, delay: 0, opacity: 1})
+
+    } else if(((loaded / total) * 100) > 10 && ((loaded / total) * 100) <= 20) {
+        gsap.to(pawsArr[1], {duration: .5, delay: 0, opacity: 1})
+        gsap.to(pawsArr[0], {duration: 1.5, delay: 0, opacity: 0})
+
+    }else if(((loaded / total) * 100) > 20 && ((loaded / total) * 100) <= 30) {
+        gsap.to(pawsArr[2], {duration: .5, delay: 0, opacity: 1})
+        gsap.to(pawsArr[1], {duration: 1.5, delay: .6, opacity: .5})
+
+    }else if(((loaded / total) * 100) > 30 && ((loaded / total) * 100) <= 40) {
+        gsap.to(pawsArr[3], {duration: .5, delay: 0, opacity: 1})
+        gsap.to(pawsArr[2], {duration: 1.5, delay: .6, opacity: .5})
+
+    }else if(((loaded / total) * 100) > 40 && ((loaded / total) * 100) <= 50) {
+        gsap.to(pawsArr[4], {duration: .5, delay: 0, opacity: 1})
+        gsap.to(pawsArr[3], {duration: 1.5, delay: .6, opacity: .5})
+
+    }else if(((loaded / total) * 100) > 50 && ((loaded / total) * 100) <= 60) {
+        gsap.to(pawsArr[5], {duration: .5, delay: 0, opacity: 1})
+        gsap.to(pawsArr[4], {duration: 1.5, delay: .6, opacity: .5})
+
+    }else if(((loaded / total) * 100) > 60 && ((loaded / total) * 100) <= 70) {
+        gsap.to(pawsArr[6], {duration: .5, delay: 0, opacity: 1})
+        gsap.to(pawsArr[5], {duration: 1.5, delay: .6, opacity: .5})
+
+    }else if(((loaded / total) * 100) > 70 && ((loaded / total) * 100) <= 80) {
+        gsap.to(pawsArr[7], {duration: .5, delay: 0, opacity: 1})
+        gsap.to(pawsArr[6], {duration: 1.5, delay: .6, opacity: .5})
+
+    }else if(((loaded / total) * 100) > 80 && ((loaded / total) * 100) <= 90) {
+        gsap.to(pawsArr[8], {duration: .5, delay: 0, opacity: 1})
+        gsap.to(pawsArr[7], {duration: 1.5, delay: .6, opacity: .5})
+
+    }else if(((loaded / total) * 100) > 90 && ((loaded / total) * 100) <= 100) {
+        gsap.to(pawsArr[9], {duration: .5, delay: 0, opacity: 1})
+        gsap.to(pawsArr[8], {duration: 1.5, delay: .6, opacity: .5})
+
     }
     
-
 }
 
 loaders.loadingManager.onLoad = () => {
@@ -91,10 +126,8 @@ loaders.loadingManager.onLoad = () => {
     models.createAllTipCircles()
     // progressBarontainer.style.display = 'none'
     gsap.to(progressBarontainer, {duration: 1, delay: 0, opacity: 0, display: 'none',})
-    // for(let i; i<paws.length; i++) {
-    //     gsap.to(paws[i], {duration: 1, delay: 0,  display: 'none'})
-
-    // }
+  
+    utils.mushroomAnimation()
 
 
 }
@@ -426,13 +459,12 @@ const tick = () => {
     }
 
     // Islands animation
-
     utils.hovering(intersects, elapsedTime, outlinePass)
 
     // Social Media animation
     utils.intersectAnimationMedia(intersects)
 
-
+    
 
     //Boat animation
     utils.animateBoat(elapsedTime)
