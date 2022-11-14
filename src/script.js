@@ -462,9 +462,9 @@ const tick = () => {
     testFloor.position.copy(physics.roadmapIslandFloorBody.position)
     if (physics.roadmapABody) {
         // models.roadmapIslandA.position.copy(physics.roadmapABody.position)
-        models.roadmapIslandA.position.x = physics.roadmapABody.position.x - 6.5
-        models.roadmapIslandA.position.y = physics.roadmapABody.position.y 
-        models.roadmapIslandA.position.z = physics.roadmapABody.position.z - 1.5
+        // models.roadmapIslandA.position.x = physics.roadmapABody.position.x - 6.5
+        // models.roadmapIslandA.position.y = physics.roadmapABody.position.y 
+        // models.roadmapIslandA.position.z = physics.roadmapABody.position.z - 1.5
 
     }
    
