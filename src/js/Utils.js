@@ -2,7 +2,17 @@ import * as models from './Models.js';
 import gsap from 'gsap';
 
 let groupIntersected = null;
-const myGroups = [models.menuGroup, models.bigIslandGroup, models.meowverseIslandGroup, models.roadmapGroup]
+const myGroups = [
+    models.menuGroup, 
+    models.genesisIslandGroup, 
+    models.meelkIslandGroup, 
+    models.OGIslandGroup, 
+    models.meowrushIslandGroup,
+    models.meowverseIslandGroup,
+    models.partnersIslandGroup,
+    models.roadmapGroup,
+]
+
 
 let hoveredObj = null
 
@@ -21,7 +31,6 @@ let hoveredObj = null
 
 export function animateIsland(obj, elapsedTime) {
 
-
     groupIntersected.position.y = Math.sin(elapsedTime * 2) * 0.1
 
 }
@@ -38,6 +47,7 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
         getParent(obj)
 
         // animateIsland(obj, elapsedTime)
+
         outlineObj(obj, outlinePass)
 
 
@@ -131,13 +141,13 @@ const getParent = (obj) => {
 export function focusCamera(camera, controls) {
     if (groupIntersected) {
 
-        gsap.to(controls.target, { duration: 2, delay: 0, x: groupIntersected.position.x, })
-        gsap.to(controls.target, { duration: 2, delay: 0, y: groupIntersected.position.y, })
-        gsap.to(controls.target, { duration: 2, delay: 0, z: groupIntersected.position.z, })
+        gsap.to(controls.target, { duration: 2, delay: 0, x: groupIntersected.children[0].children[0].position.x, })
+        gsap.to(controls.target, { duration: 2, delay: 0, y: groupIntersected.children[0].children[0].position.y, })
+        gsap.to(controls.target, { duration: 2, delay: 0, z: groupIntersected.children[0].children[0].position.z, })
 
 
-        gsap.to(camera.position, { duration: 2, delay: 0, x: groupIntersected.position.x, })
-        gsap.to(camera.position, { duration: 2, delay: 0, z: groupIntersected.position.z + 5, })
+        gsap.to(camera.position, { duration: 2, delay: 0, x: groupIntersected.children[0].children[0].position.x, })
+        gsap.to(camera.position, { duration: 2, delay: 0, z: groupIntersected.children[0].children[0].position.z + 5, })
     }
 }
 
@@ -220,19 +230,33 @@ function getModelByMeshName(obj) {
             shortName = "partnersFinger"
         }
 
-        if (obj.name === "TokenSign_3" || obj.name === "TokenSign_2" || obj.name === "TokenSign_1") {
-            object = models.bigIslandSign1
-            shortName = "tokenomilksSign"
-        }
+        // if (obj.name === "TokenSign_3" || obj.name === "TokenSign_2" || obj.name === "TokenSign_1") {
+        //     object = models.bigIslandSign1
+        //     shortName = "tokenomilksSign"
+        // }
 
-        if (obj.name === "Bolt_3" || obj.name === "Bolt_4" || obj.name === "Bolt_5") {
-            object = models.bigIslandSign2
-            shortName = "genesisSign"
-        }
+        // if (obj.name === "Bolt_3" || obj.name === "Bolt_4" || obj.name === "Bolt_5") {
+        //     object = models.bigIslandSign2
+        //     shortName = "genesisSign"
+        // }
 
-        if (obj.name === "OG_Sign_1" || obj.name === "OG_Sign_2" || obj.name === "OG_Sign_3") {
-            object = models.bigIslandSign3
-            shortName = "originalSign"
+        // if (obj.name === "OG_Sign_1" || obj.name === "OG_Sign_2" || obj.name === "OG_Sign_3") {
+        //     object = models.bigIslandSign3
+        //     shortName = "originalSign"
+        // }
+
+        if (
+            obj.name === "Genesis1002" ||
+            obj.name === "Genesis1001" ||
+            obj.name === "Genesis1" ||
+            obj.name === "BOAT" ||
+            obj.name === "OSbath" ||
+            obj.name === "OSbath_1" ||
+            obj.name === "Cylinder001" ||
+            obj.name === "Cylinder001_1"
+        ) {
+            object = models.genesisLand
+            shortName = "genesisLand"
         }
 
     }
@@ -241,15 +265,18 @@ function getModelByMeshName(obj) {
 }
 
 export function animateBoat(elapsedTime) {
-    models.bigIslandBoat.position.y = Math.sin(elapsedTime * 2) * 0.02
-    models.bigIslandBoat.rotation.z = Math.cos(elapsedTime * 2) * 0.02
+    if(models.genesisBoat) {
+        // models.genesisBoat.position.y = Math.sin(elapsedTime * 2) * 0.02
+        models.genesisBoat.rotation.z = Math.cos(elapsedTime * 2) * 0.02
+        
+    }
 }
 
 
 export const handleClick = (camera, controls) => {
 
     focusCamera(camera, controls)
-
+    console.log(models.genesisLand)
     let model = getModelByMeshName(hoveredObj)
 
     if (model.name === "twitter") {
@@ -264,13 +291,13 @@ export const handleClick = (camera, controls) => {
         window.open('https://medium.com/', '_blank');
     }
 
-    if (model.name === "NFTsFinger") {
-        onFingerClickFocus(camera, controls, models.bigIslandGroup)
-    }
+    // if (model.name === "NFTsFinger") {
+    //     onFingerClickFocus(camera, controls, models.bigIslandGroup)
+    // }
 
-    if (model.name === "gamesMeowverseFinger") {
-        onFingerClickFocus(camera, controls, models.meowverseIslandGroup)
-    }
+    // if (model.name === "gamesMeowverseFinger") {
+    //     onFingerClickFocus(camera, controls, models.meowverseIslandGroup)
+    // }
 
     if (model.name === "roadmapFinger") {
         onFingerClickFocus(camera, controls, models.roadmapGroup)
@@ -290,27 +317,27 @@ export const handleClick = (camera, controls) => {
 
 }
 
-export const mushroomAnimation = () => {
-    let mushroomBody = models.meowverseIslandMushroom.children[0].children[0]
-    let mushroomDots = models.meowverseIslandMushroom.children[0].children[1]
-    let mushroomRing = models.meowverseIslandMushroom.children[1]
-    const tree1 = models.meowverseIslandTree1
-    const tree2 = models.meowverseIslandTree2
+// export const mushroomAnimation = () => {
+//     let mushroomBody = models.meowverseIslandMushroom.children[0].children[0]
+//     let mushroomDots = models.meowverseIslandMushroom.children[0].children[1]
+//     let mushroomRing = models.meowverseIslandMushroom.children[1]
+//     const tree1 = models.meowverseIslandTree1
+//     const tree2 = models.meowverseIslandTree2
 
-    console.log(models.meowverseIslandTree1)
+//     console.log(models.meowverseIslandTree1)
 
-    let tl = gsap.timeline({ repeat: -1, repeatDelay: 0 });
-    let tlRing = gsap.timeline({ repeat: -1, repeatDelay: 0});
-    let tlTree1 = gsap.timeline({ repeat: -1, repeatDelay: 0});
-    let tlTree2 = gsap.timeline({ repeat: -1, repeatDelay: 0});
+//     let tl = gsap.timeline({ repeat: -1, repeatDelay: 0 });
+//     let tlRing = gsap.timeline({ repeat: -1, repeatDelay: 0});
+//     let tlTree1 = gsap.timeline({ repeat: -1, repeatDelay: 0});
+//     let tlTree2 = gsap.timeline({ repeat: -1, repeatDelay: 0});
 
     
-    tl.to([mushroomBody.scale, mushroomDots.scale], {duration: 1, delay: 0, y: 1.1, x: .9 });
-    tl.to([mushroomBody.scale, mushroomDots.scale], {duration: 1,  y: 1, x: 1})
+//     tl.to([mushroomBody.scale, mushroomDots.scale], {duration: 1, delay: 0, y: 1.1, x: .9 });
+//     tl.to([mushroomBody.scale, mushroomDots.scale], {duration: 1,  y: 1, x: 1})
 
-    tlTree1.to([tree1.scale,], {duration: .9, y: 1.03 });
-    tlTree1.to([tree1.scale,], {duration: 1, y: 1})
+//     tlTree1.to([tree1.scale,], {duration: .9, y: 1.03 });
+//     tlTree1.to([tree1.scale,], {duration: 1, y: 1})
 
-    tlTree2.to([tree2.scale,], {duration: .8, y: 1.01 });
-    tlTree2.to([tree2.scale,], {duration: .8, y: 1})
-}
+//     tlTree2.to([tree2.scale,], {duration: .8, y: 1.01 });
+//     tlTree2.to([tree2.scale,], {duration: .8, y: 1})
+// }

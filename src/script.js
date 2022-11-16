@@ -95,7 +95,7 @@ loaders.loadingManager.onLoad = () => {
     // progressBarontainer.style.display = 'none'
     gsap.to(progressBarontainer, {duration: 1, delay: 0, opacity: 0, display: 'none',})
   
-    utils.mushroomAnimation()
+    // utils.mushroomAnimation()
 
 }
 
@@ -107,11 +107,23 @@ loaders.loadingManager.onLoad = () => {
 // menu Island
 scene.add(models.menuGroup)
 
-// BIGisland 
-scene.add(models.bigIslandGroup)
+// GENESIS Island
+scene.add(models.genesisIslandGroup)
+
+// MEELK Island
+scene.add(models.meelkIslandGroup)
+
+// OG Island
+scene.add(models.OGIslandGroup)
+
+// Meowrush island
+scene.add(models.meowrushIslandGroup)
 
 // Meowverse island
 scene.add(models.meowverseIslandGroup)
+
+// Partners Island
+scene.add(models.partnersIslandGroup)
 
 // Roadmap island
 scene.add(models.roadmapGroup)
@@ -317,17 +329,6 @@ gui.add(models.tipCircle.position, 'x').min(-10).max(10).step(0.01)
 gui.add(models.tipCircle.position, 'y').min(-10).max(10).step(0.01)
 gui.add(models.tipCircle.position, 'z').min(-10).max(10).step(0.01)
 
-// gui.add(camera.position, 'x').min(-10).max(10).step(0.1)
-// gui.add(camera.position, 'y').min(-10).max(10).step(0.1)
-// gui.add(camera.position, 'z').min(-10).max(10).step(0.1)
-
-// gui.add(ambientLight, 'intensity').min(-10).max(10).step(0.1)
-// gui.add(directionalLight, 'intensity').min(-10).max(10).step(0.1)
-
-// gui.add(spotlight.target.position, 'x').min(-10).max(10).step(0.1)
-// gui.add(spotlight.target.position, 'y').min(-10).max(10).step(0.1)
-// gui.add(spotlight.target.position, 'z').min(-10).max(10).step(0.1)
-// gui.add(spotlight, 'intensity').min(-10).max(10).step(0.1)
 
 
 /**
@@ -381,6 +382,7 @@ const tick = () => {
 
         const objectsToTest = [
             models.roadmapGroup,
+            models.meowrushIslandGroup,
             models.meowverseIslandGroup,
 
             models.twitter,
@@ -414,22 +416,14 @@ const tick = () => {
             models.gamesMeowverseFingerMushroom,
             models.gamesMeowverseFingerSign,
 
-            models.bigIslandLand,
-            models.bigIslandBoat,
-            models.bigIslandGenCard1,
-            models.bigIslandGenCard2,
-            models.bigIslandOrigCard1,
-            models.bigIslandOrigCard2,
-            models.bigIslandOrigCard3,
-            models.bigIslandOrigCard4,
-            models.bigIslandOrigCard5,
-            models.bigIslandSign1,
-            models.bigIslandSign2,
-            models.bigIslandSign3,
-            models.bigIslandToken,
-            models.bigIslandToken2,
-            models.bigIslandToken3,
-            models.bigIslandToken4,
+            models.genesisIslandGroup,
+           
+            models.meelkIslandGroup,
+            
+            models.OGIslandGroup,
+            models.partnersIslandGroup,
+
+
 
             // models.meowverseIslandCliff,
             // models.meowverseIslandGun,
@@ -455,10 +449,10 @@ const tick = () => {
     // Social Media animation
     utils.intersectAnimationMedia(intersects)
 
-
-
     //Boat animation
     utils.animateBoat(elapsedTime)
+
+
 
     //Physics
     // physics.world.step(1/60, deltaTime, 3)
