@@ -14,15 +14,17 @@ import * as utils from './js/Utils.js'
 import * as loaders from './js/Loaders.js'
 import gsap from 'gsap';
 import * as physics from './js/Physics.js'
+import './app.js'
 
 /**
  * HTML
  */
 
-const menuBtn = document.querySelector('.menu')
-menuBtn.addEventListener('click', (event) => {
+const closeBtn = document.querySelector('.m-experienceHeader__cta')
+closeBtn.addEventListener('click', (event) => {
     event.preventDefault()
     utils.onFingerClickFocus(camera, controls, models.menuGroup)
+    utils.hideCloseBtn()
 })
 
 /**
@@ -328,6 +330,8 @@ gui.close()
 gui.add(models.tipCircle.position, 'x').min(-10).max(10).step(0.01)
 gui.add(models.tipCircle.position, 'y').min(-10).max(10).step(0.01)
 gui.add(models.tipCircle.position, 'z').min(-10).max(10).step(0.01)
+
+
 
 
 

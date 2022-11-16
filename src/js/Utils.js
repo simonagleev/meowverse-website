@@ -1,5 +1,6 @@
 import * as models from './Models.js';
 import gsap from 'gsap';
+import $ from "jquery";
 
 let groupIntersected = null;
 const myGroups = [
@@ -15,6 +16,11 @@ const myGroups = [
 
 
 let hoveredObj = null
+let focusedOnIsland = false
+
+
+//animation flag
+var btnFlag = true
 
 
 // export const createToken = (x, y, z, group) => {
@@ -44,6 +50,7 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
 
         hoveredObj = obj
 
+        console.log(hoveredObj)
         getParent(obj)
 
         // animateIsland(obj, elapsedTime)
@@ -85,7 +92,14 @@ function outlineObj(obj, outlinePass) {
 
     if (model.model !== null) {
 
-        objArr.push(model.model)
+        if(Array.isArray(model.model)) {
+            objArr = model.model
+
+        } else {
+            objArr.push(model.model)
+        }
+
+        
 
     } else {
         objArr.push(groupIntersected)
@@ -139,7 +153,7 @@ const getParent = (obj) => {
 
 
 export function focusCamera(camera, controls) {
-    if (groupIntersected) {
+    if (groupIntersected && !focusedOnIsland) {
 
         gsap.to(controls.target, { duration: 2, delay: 0, x: groupIntersected.children[0].children[0].position.x, })
         gsap.to(controls.target, { duration: 2, delay: 0, y: groupIntersected.children[0].children[0].position.y, })
@@ -148,6 +162,13 @@ export function focusCamera(camera, controls) {
 
         gsap.to(camera.position, { duration: 2, delay: 0, x: groupIntersected.children[0].children[0].position.x, })
         gsap.to(camera.position, { duration: 2, delay: 0, z: groupIntersected.children[0].children[0].position.z + 5, })
+
+        focusedOnIsland = true
+
+        setTimeout(() => {
+            showCloseBtn()
+        }, 1500);
+        
     }
 }
 
@@ -163,7 +184,29 @@ export const onFingerClickFocus = (camera, controls, group) => {
 function getModelByMeshName(obj) {
     let object = null
     let shortName = null
+
     if (hoveredObj) {
+        if(obj.name === "OG1001") {
+            object = hoveredObj
+            shortName = "OriginalNFT002"
+        }
+
+        if(obj.name === "OG1") {
+            object = hoveredObj
+            shortName = "OriginalNFT001"
+        }
+
+        if(obj.name === "OG1002") {
+            object = hoveredObj
+            shortName = "OriginalNFT003"
+        }
+
+
+
+        if(obj.name == "Cylinder014" || obj.name == "Cylinder013" || obj.name == "Text011") {
+            object = [models.roadmapIslandBaseButton,models.roadmapIslandButton]
+            shortName = "red_button"
+        }
 
         if (obj.name === "Cylinder047" || obj.name === "Cylinder047_1" || obj.name === "twitter" || obj.name === "twitterPlate") {
             object = models.twitter
@@ -291,6 +334,9 @@ export const handleClick = (camera, controls) => {
         window.open('https://medium.com/', '_blank');
     }
 
+    // if(model.name === "OriginalNFT002") {
+       
+    // }
     // if (model.name === "NFTsFinger") {
     //     onFingerClickFocus(camera, controls, models.bigIslandGroup)
     // }
@@ -313,6 +359,21 @@ export const handleClick = (camera, controls) => {
 
     if (model.name === "originalSign") {
         window.open('https://doliacats.com/', '_blank');
+    }
+
+    if(model.name === "red_button") {
+        let redBtn = model.model[1]
+
+        if(btnFlag) {
+            btnFlag = false
+
+            gsap.to(redBtn.position, { duration: 0.5, delay: 0, y: redBtn.position.y - 0.18 })
+            gsap.to(redBtn.position, { duration: 0.5, delay: 0.5, y: redBtn.position.y })
+
+            setTimeout(() => {
+                btnFlag = true
+            }, 1000);
+        }
     }
 
 }
@@ -341,3 +402,17 @@ export const handleClick = (camera, controls) => {
 //     tlTree2.to([tree2.scale,], {duration: .8, y: 1.01 });
 //     tlTree2.to([tree2.scale,], {duration: .8, y: 1})
 // }
+
+
+function showCloseBtn() {
+    let closeBtn = document.querySelector('.m-experienceHeader__cta')
+    closeBtn.classList.add("active")
+}
+
+export function hideCloseBtn() {
+    let closeBtn = document.querySelector('.m-experienceHeader__cta')
+    closeBtn.classList.remove('hover')
+    closeBtn.classList.remove('active')
+
+    focusedOnIsland = false
+}

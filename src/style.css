@@ -22,11 +22,11 @@ body
 .menu {
     z-index: 2;
     position: absolute;
-    left: 5px;
-    top: 5px;
-    background-color: #ff6020;
-    border-radius: 45px;
-    cursor: pointer;
+    left: 10px;
+    top: 10px;
+    /* background-color: white;
+    border-radius: 50%;
+    cursor: pointer; */
 }
 
 .menu-text {
@@ -75,3 +75,36 @@ body
     rotate: 90deg;
     opacity: 0
 }
+
+.m-experienceHeader__cta {
+    box-sizing: border-box;
+    width: 3.375rem;
+    height: 3.375rem;
+    background-color: white;
+    border-radius: 50%;
+    padding-top: 0.3rem;
+    cursor: pointer;
+    outline: none;
+    border:none;
+    transform: scale(0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .6s cubic-bezier(.6,-.28,.735,.045),opacity .4s cubic-bezier(.215,.61,.355,1);
+}
+
+.m-experienceHeader__cta.active{
+    pointer-events: all;
+    opacity: 1;
+    transform: scale(1);
+    transition: transform .6s cubic-bezier(.175,.885,.32,1.275),opacity .4s cubic-bezier(.215,.61,.355,1) .1s;
+    cursor: pointer;
+}
+
+.m-experienceHeader__cta.hover{
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+
+
+
+

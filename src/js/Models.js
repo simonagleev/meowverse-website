@@ -115,6 +115,7 @@ meelkIslandGroup.name = 'meelkIsland'
 const meelkIslandMaterial = new THREE.MeshBasicMaterial({ map:  textures.meelkIslandBacked})
 textures.meelkIslandBacked.flipY = false
 
+
 export let meelkLand = null;
 export let meelkFactoryX1 = null;
 export let meelkFactoryX2 = null;
@@ -191,6 +192,8 @@ export let roadmapIslandLand = null;
 export let roadmapIslandPaw1 = null;
 export let roadmapIslandPaw2 = null;
 export let roadmapIslandMore = null;
+
+
 
 
 /**
@@ -578,6 +581,8 @@ gltfLoader.load(
         })
         meelkIslandGroup.add(gltf.scene)
         meelkLand = gltf.scene
+
+        console.log(gltf.scene)
     },
 )
 
@@ -589,6 +594,7 @@ gltfLoader.load(
         })
         meelkIslandGroup.add(gltf.scene)
         meelkFactoryX1 = gltf.scene.children[0]
+
 
     },
 )
