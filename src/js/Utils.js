@@ -175,7 +175,7 @@ function getModelByMeshName(obj) {
             shortName = "discord"
         }
 
-        if (obj.name === "Cube033_1" || obj.name === "Cube033" || obj.name === "Cylinder048" || obj.name === "Cylinder048_1") {
+        if (obj.name === "Cube035_1" || obj.name === "Cube035" || obj.name === "Cylinder048" || obj.name === "Cylinder048_1") {
             object = models.blog
             shortName = "blog"
         }
@@ -220,7 +220,6 @@ function getModelByMeshName(obj) {
         }
 
         if (
-            obj.name === "partnersFingerQuestion" ||
             obj.name === "Sphere004" ||
             obj.name === "partnersFingerSign" ||
             obj.name === "Sphere004_1"
