@@ -23,7 +23,7 @@ export const genesisIslandGen3Backed = loaders.textureLoader.load('models/GEN-is
 export const genesisIslandBoatBacked = loaders.textureLoader.load('models/GEN-island/GEN_boat2k.jpg')
 
 // Meelk island
-export const meelkIslandBacked = loaders.textureLoader.load('models/meelk-island/MEELK_island.jpg')
+export const meelkIslandBacked = loaders.textureLoader.load('models/Meelk-island/MEELK_island.jpg')
 
 // Meelk island
 export const OGIslandBacked = loaders.textureLoader.load('models/OG-island/OG_island2k.jpg')

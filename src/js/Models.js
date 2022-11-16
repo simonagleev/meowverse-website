@@ -575,7 +575,7 @@ gltfLoader.load(
 // MEELK Island
 
 gltfLoader.load(
-    'models/meelk-island/meelk_island.glb',
+    'models/Meelk-island/meelk_island.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = meelkIslandMaterial
@@ -588,20 +588,18 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/meelk-island/meelk_factoryx1.glb',
+    'models/Meelk-island/meelk_factoryx1.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = meelkIslandMaterial
         })
         meelkIslandGroup.add(gltf.scene)
         meelkFactoryX1 = gltf.scene.children[0]
-
-
     },
 )
 
 gltfLoader.load(
-    'models/meelk-island/meelk_factoryx2.glb',
+    'models/Meelk-island/meelk_factoryx2.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = meelkIslandMaterial
@@ -613,7 +611,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/meelk-island/meelk_token.glb',
+    'models/Meelk-island/meelk_token.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = meelkIslandMaterial
@@ -625,7 +623,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/meelk-island/meelk_tokentower1.glb',
+    'models/Meelk-island/meelk_tokentower1.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = meelkIslandMaterial
@@ -637,7 +635,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/meelk-island/meelk_tokentower2.glb',
+    'models/Meelk-island/meelk_tokentower2.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = meelkIslandMaterial
@@ -649,7 +647,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/meelk-island/meelk_tokentower3.glb',
+    'models/Meelk-island/meelk_tokentower3.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = meelkIslandMaterial
