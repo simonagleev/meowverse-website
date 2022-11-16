@@ -1,5 +1,7 @@
 import * as models from './Models.js';
 import gsap from 'gsap';
+import * as THREE from 'three'
+import { LightningStrike } from 'three/examples/jsm/geometries/LightningStrike.js'
 import $ from "jquery";
 
 let groupIntersected = null;
@@ -12,12 +14,17 @@ const myGroups = [
     models.meowverseIslandGroup,
     models.partnersIslandGroup,
     models.roadmapGroup,
+    models.cloudsGroup
 ]
 
 
 let hoveredObj = null
 let focusedOnIsland = false
 
+
+// strike flag
+var strikeCreated = false
+export var strike = null
 
 //animation flag
 var btnFlag = true
@@ -44,16 +51,18 @@ export function animateIsland(obj, elapsedTime) {
 export const hovering = (intersects, elapsedTime, outlinePass) => {
     if (intersects[0]) {
 
-        console.log(intersects[0].object.name)
+        // console.log(intersects[0].object.name)
 
         let obj = intersects[0].object
 
         hoveredObj = obj
 
-        console.log(hoveredObj)
+        
+        
         getParent(obj)
 
         // animateIsland(obj, elapsedTime)
+
 
         outlineObj(obj, outlinePass)
 
@@ -201,6 +210,11 @@ function getModelByMeshName(obj) {
             shortName = "OriginalNFT003"
         }
 
+        if(obj.name === "Mball002" || obj.name === "Mball003" || obj.name === "Mball004" || obj.name === "Mball005" || obj.name === "Mball006" || obj.name === "Mball007") {
+            object = obj
+            shortName = "cloud"
+        }
+
 
 
         if(obj.name == "Cylinder014" || obj.name == "Cylinder013" || obj.name == "Text011") {
@@ -315,10 +329,12 @@ export function animateBoat(elapsedTime) {
 }
 
 
-export const handleClick = (camera, controls) => {
-
-    focusCamera(camera, controls)
-    console.log(models.genesisLand)
+export const handleClick = (camera, controls,scene) => {
+    if(groupIntersected != models.cloudsGroup) {
+        focusCamera(camera, controls)
+    }
+    
+    
     let model = getModelByMeshName(hoveredObj)
 
     if (model.name === "twitter") {
@@ -375,6 +391,10 @@ export const handleClick = (camera, controls) => {
         }
     }
 
+    if(model.name === "cloud") {
+        // createLightningStrike(model.model,scene)
+    }
+
 }
 
 // export const mushroomAnimation = () => {
@@ -415,3 +435,118 @@ export function hideCloseBtn() {
 
     focusedOnIsland = false
 }
+
+
+export function animateClouds(elapsedTime) {
+    let clouds = models.cloudsGroup.children
+
+    
+
+    let cloud1Angle = elapsedTime * 0.12
+    clouds[0].position.x = Math.cos(cloud1Angle) * 4
+    clouds[0].position.z = Math.sin(cloud1Angle) * 4
+    clouds[0].position.y = Math.sin(cloud1Angle)
+
+    let cloud2Angle = -elapsedTime * 0.05
+    clouds[1].position.x = Math.cos(cloud2Angle) * 4
+    clouds[1].position.z = Math.sin(cloud2Angle) * 4
+    clouds[1].position.y = Math.sin(cloud2Angle)
+
+    let cloud3Angle = elapsedTime * 0.07
+    clouds[2].position.x = Math.cos(cloud3Angle) * 6
+    clouds[2].position.z = Math.sin(cloud3Angle) * 5
+    clouds[2].position.y = Math.sin(cloud3Angle)
+
+    let cloud4Angle = elapsedTime * 0.1
+    clouds[3].position.x = Math.cos(cloud4Angle) * 7
+    clouds[3].position.z = Math.sin(cloud4Angle) * 5
+    clouds[3].position.y = Math.sin(cloud4Angle)
+
+    let cloud5Angle = elapsedTime * 0.03
+    clouds[4].position.x = Math.cos(cloud5Angle) * 3
+    clouds[4].position.z = Math.sin(cloud5Angle) * 6
+    clouds[4].position.y = Math.sin(cloud5Angle)
+
+    let cloud6Angle = -elapsedTime * 0.14
+    clouds[5].position.x = Math.cos(cloud6Angle) * 6
+    clouds[5].position.z = Math.sin(cloud6Angle) * 5
+    clouds[5].position.y = Math.sin(cloud6Angle)
+
+    let cloud7Angle = -elapsedTime * 0.01
+    clouds[6].position.x = Math.cos(cloud7Angle) * 6
+    clouds[6].position.z = Math.sin(cloud7Angle) * 5
+    clouds[6].position.y = Math.sin(cloud7Angle)
+
+}
+
+
+// function createLightningStrike(obj,scene) {
+    
+//     // const rayParams = {
+//     //     sourceOffset: obj.position,
+//     //     destOffset: new THREE.Vector3(obj.position.x, obj.position.y - 3,obj.position.z),
+//     //     isEternal: true,
+//     //     // birthTime: 0,
+//     //     // deathTime: 0.7,
+//     //     radius0: 2,
+// 	// 				radius1: 1,
+// 	// 				minRadius: 2.5,
+//     //                 radius1Factor: 0.5,
+//     //                 radius1Factor: 0.2,
+// 	// 				maxIterations: 7,
+//     //     propagationTimeFactor: 0.05,
+// 	// 				vanishingTimeFactor: 0.95,
+// 	// 				subrayPeriod: 3.5,
+// 	// 				subrayDutyCycle: 0.6,
+// 	// 				maxSubrayRecursion: 3,
+// 	// 				ramification: 7,
+// 	// 				recursionProbability: 0.6,
+//     //                 timeScale: 0.7,
+
+// 	// 				roughness: 0.85,
+// 	// 				straightness: 0.6,
+
+//     // }
+
+//     const rayParams = {
+//         sourceOffset: new THREE.Vector3(1,1,1),
+// 					destOffset: new THREE.Vector3(1,1,1),
+// 					radius0: 4,
+// 					radius1: 4,
+// 					minRadius: 2.5,
+// 					maxIterations: 7,
+// 					isEternal: true,
+
+// 					timeScale: 0.7,
+
+// 					propagationTimeFactor: 0.05,
+// 					vanishingTimeFactor: 0.95,
+// 					subrayPeriod: 3.5,
+// 					subrayDutyCycle: 0.6,
+// 					maxSubrayRecursion: 3,
+// 					ramification: 7,
+// 					recursionProbability: 0.6,
+
+// 					roughness: 0.85,
+// 					straightness: 0.6
+//     }
+
+//     const lightningStrike = new LightningStrike(rayParams)
+//     const lightningMaterial = new THREE.MeshBasicMaterial()
+
+//     const strikeMesh = new THREE.Mesh(lightningStrike,lightningMaterial)
+
+//     scene.add(strikeMesh)
+
+//     strike = lightningStrike
+//     strikeCreated = true
+
+    
+    
+// }
+
+// export function animateLightningStrike(elapsedTime) {
+//     if(strikeCreated) {
+//         strike.update()
+//     }
+// }

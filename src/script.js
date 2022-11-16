@@ -5,6 +5,7 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
 import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass.js'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js'
+import { LightningStrike } from 'three/examples/jsm/geometries/LightningStrike.js'
 import * as dat from 'lil-gui'
 import { Vector3 } from 'three'
 import * as models from './js/Models.js'
@@ -272,7 +273,7 @@ const getParent = (obj) => {
 //Events
 window.addEventListener('click', (event) => {
     event.preventDefault()
-    utils.handleClick(camera, controls)
+    utils.handleClick(camera, controls,scene)
 })
 
 
@@ -335,6 +336,90 @@ gui.close()
 gui.add(models.tipCircle.position, 'x').min(-10).max(10).step(0.01)
 gui.add(models.tipCircle.position, 'y').min(-10).max(10).step(0.01)
 gui.add(models.tipCircle.position, 'z').min(-10).max(10).step(0.01)
+
+// const rayParams = {
+//     sourceOffset: new THREE.Vector3(1,1,1),
+//                 destOffset: new THREE.Vector3(2,3,4),
+//                 radius0: 4,
+//                 radius1: 4,
+//                 minRadius: 2.5,
+//                 maxIterations: 7,
+//                 isEternal: true,
+
+//                 timeScale: 0.7,
+
+//                 propagationTimeFactor: 0.05,
+//                 vanishingTimeFactor: 0.95,
+//                 subrayPeriod: 3.5,
+//                 subrayDutyCycle: 0.6,
+//                 maxSubrayRecursion: 3,
+//                 ramification: 7,
+//                 recursionProbability: 0.6,
+
+//                 roughness: 0.85,
+//                 straightness: 0.6
+// }
+
+// var lightningStrike = new LightningStrike(rayParams)
+// var lightningMaterial = new THREE.MeshBasicMaterial()
+
+// var strikeMesh = new THREE.Mesh(lightningStrike,lightningMaterial)
+
+// scene.add(strikeMesh)
+
+// gui.add(rayParams, 'straightness',0,1).name('straightness').onFinishChange( function () {
+
+//     recreateRay();
+
+// } );
+// gui.add(rayParams, 'roughness',0,1).name('roughness').onFinishChange( function () {
+
+//     recreateRay();
+
+// } );
+// gui.add(rayParams, 'radius0',0.1,10).name('radius0').onFinishChange( function () {
+
+//     recreateRay();
+
+// } );
+// gui.add(rayParams, 'radius1',0.1,10).name('radius1').onFinishChange( function () {
+
+//     recreateRay();
+
+// } );
+// gui.add(rayParams, 'radius0Factor',0.1,10).name('radius0Factor').onFinishChange( function () {
+
+//     recreateRay();
+
+// } );
+// gui.add(rayParams, 'radius1Factor',0.1,10).name('radius1Factor').onFinishChange( function () {
+
+//     recreateRay();
+
+// } );
+// gui.add(rayParams, 'timeScale',0,5).name('timeScale').onFinishChange( function () {
+
+//     recreateRay();
+
+// } );
+// gui.add(rayParams, 'subrayPeriod',0.1,10).name('subrayPeriod').onFinishChange( function () {
+
+//     recreateRay();
+
+// } );
+// gui.add(rayParams, 'subrayDutyCycle',0.1,10).name('subrayDutyCycle').onFinishChange( function () {
+
+//     recreateRay();
+
+// } );
+
+// function recreateRay() {
+//     scene.remove(strikeMesh)
+//     lightningStrike = new LightningStrike( rayParams);
+// 	strikeMesh = new THREE.Mesh( lightningStrike, lightningMaterial )
+//     scene.add(strikeMesh)
+// }
+
 
 
 
@@ -430,6 +515,7 @@ const tick = () => {
             
             models.OGIslandGroup,
             models.partnersIslandGroup,
+            models.cloudsGroup
 
 
 
@@ -459,6 +545,13 @@ const tick = () => {
 
     //Boat animation
     utils.animateBoat(elapsedTime)
+
+    //Clouds animation
+    utils.animateClouds(elapsedTime)
+
+    //Strike
+    // utils.animateLightningStrike(elapsedTime)
+    // lightningStrike.update(elapsedTime)
 
 
 

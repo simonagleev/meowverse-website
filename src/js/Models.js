@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import * as textures from './Textures.js'
 import * as loaders from './Loaders.js'
 
+
 const dracoLoader = loaders.dracoLoader
 dracoLoader.setDecoderPath('/draco/')
 
@@ -205,8 +206,10 @@ export let roadmapIslandMore = null;
 
 // CLOUDS
 export const cloudsGroup = new THREE.Group()
-const backedMaterialClouds= new THREE.MeshBasicMaterial({ map: textures.cloudsBaked })
+const backedMaterialClouds= new THREE.MeshBasicMaterial({ map: textures.cloudsBaked, transparent: true, opacity: 0.9 })
 textures.cloudsBaked.flipY = false
+
+cloudsGroup.position.y = 3
 
 // LOGO
 export const logoGroup = new THREE.Group()
