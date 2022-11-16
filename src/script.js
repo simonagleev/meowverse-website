@@ -130,6 +130,11 @@ scene.add(models.partnersIslandGroup)
 // Roadmap island
 scene.add(models.roadmapGroup)
 
+// CLOUDS
+scene.add(models.cloudsGroup)
+
+// LOgo
+// scene.add(models.logoGroup) - на черном фоне
 
 // Tip circle
 // scene.add(models.tipCircle)
@@ -412,7 +417,6 @@ const tick = () => {
             models.roadmapFingerSign,
 
             models.partnersFinger,
-            models.partnersFingerQuestion,
             models.partnersFingerSign,
 
             models.gamesMeowverseFinger,

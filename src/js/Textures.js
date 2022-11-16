@@ -7,6 +7,14 @@ export const backedTextureMeowverse = loaders.textureLoader.load('models/WEB3_ME
 export const backedTextureRoadmap = loaders.textureLoader.load('models/Roadmap-island/roadmap_island.jpg')
 export const backedTextureMenu = loaders.textureLoader.load('models/WEB3_MENU/menu-backed/menu2k.jpg')
 
+// MENU island
+export const menuMainBaked = loaders.textureLoader.load('models/menu-island/menu_island.jpg')
+export const menuGamesMeowverseBaked = loaders.textureLoader.load('models/menu-island/GM_island.jpg')
+export const menuNFTsBaked = loaders.textureLoader.load('models/menu-island/NM_island.jpg')
+export const menuRoadmapBaked = loaders.textureLoader.load('models/menu-island/R_island.png')
+export const menuPartnersBaked = loaders.textureLoader.load('models/menu-island/P_island.jpg')
+
+
 // GEN island
 export const genesisIslandBacked = loaders.textureLoader.load('models/GEN-island/GEN_island2k.jpg')
 export const genesisIslandGen1Backed = loaders.textureLoader.load('models/GEN-island/GEN_1.jpg')
@@ -33,3 +41,10 @@ export const meowverseIslandBaked = loaders.textureLoader.load('models/Meowverse
 
 // Partners island
 export const partnersIslandBaked = loaders.textureLoader.load('models/partners-island/partners_island.jpg')
+
+// CLOUDS
+export const cloudsBaked = loaders.textureLoader.load('models/clouds/clouds.jpg')
+
+
+// LOGO
+export const logoBaked = loaders.textureLoader.load('models/logo/logo.png')

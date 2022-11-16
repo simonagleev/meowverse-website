@@ -2,8 +2,6 @@ import * as THREE from 'three'
 import * as textures from './Textures.js'
 import * as loaders from './Loaders.js'
 
-
-
 const dracoLoader = loaders.dracoLoader
 dracoLoader.setDecoderPath('/draco/')
 
@@ -41,13 +39,25 @@ export const createAllTipCircles = () => {
 //menu island
 export const menuGroup = new THREE.Group()
 menuGroup.name = 'menuIsland'
-menuGroup.position.set(0, 0, 4)
+// menuGroup.position.set(0, 0, 4)
 
 const menuMainPawGroup = new THREE.Group()
 menuMainPawGroup.add(tipCircle)
 menuGroup.add(menuMainPawGroup)
 
-const bakedMaterialMenu = new THREE.MeshBasicMaterial({ map: textures.backedTextureMenu })
+const bakedMaterialMenu = new THREE.MeshBasicMaterial({ map: textures.menuMainBaked })
+textures.menuMainBaked.flipY = false
+
+const bakedMaterialNFTsFinger = new THREE.MeshBasicMaterial({ map: textures.menuNFTsBaked })
+textures.menuNFTsBaked.flipY = false
+const bakedMaterialGamesMeowverseFinger = new THREE.MeshBasicMaterial({ map: textures.menuGamesMeowverseBaked })
+textures.menuGamesMeowverseBaked.flipY = false
+const bakedMaterialRoadmapFinger = new THREE.MeshBasicMaterial({ map: textures.menuRoadmapBaked })
+textures.menuRoadmapBaked.flipY = false
+const bakedMaterialPartnersFinger = new THREE.MeshBasicMaterial({ map: textures.menuPartnersBaked })
+textures.menuPartnersBaked.flipY = false
+
+const kartMaterial = new THREE.MeshBasicMaterial({ map: textures.backedTextureMenu })
 textures.backedTextureMenu.flipY = false
 
 export let twitter = null;
@@ -60,8 +70,6 @@ export let blog = null;
 export let blogPlate = null;
 
 export let pawBig = null;
-export let roadmapPaw1 = null;
-export let roadmapPaw2 = null;
 export let menuPaw1 = null;
 export let menuPaw2 = null;
 
@@ -76,9 +84,10 @@ export let gamesMeowverseFingerSign = null;
 
 export let roadmapFinger = null;
 export let roadmapFingerSign = null;
+export let roadmapPaw1 = null;
+export let roadmapPaw2 = null;
 
 export let partnersFinger = null;
-export let partnersFingerQuestion = null;
 export let partnersFingerSign = null;
 
 
@@ -194,7 +203,15 @@ export let roadmapIslandPaw2 = null;
 export let roadmapIslandMore = null;
 
 
+// CLOUDS
+export const cloudsGroup = new THREE.Group()
+const backedMaterialClouds= new THREE.MeshBasicMaterial({ map: textures.cloudsBaked })
+textures.cloudsBaked.flipY = false
 
+// LOGO
+export const logoGroup = new THREE.Group()
+const backedMaterialLogo= new THREE.MeshBasicMaterial({ map: textures.logoBaked })
+textures.logoBaked.flipY = false
 
 /**
  * Models
@@ -215,113 +232,50 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_twitter.glb',
+    'models/menu-island/menu_twitter.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = bakedMaterialMenu
         })
         menuMainPawGroup.add(gltf.scene)
-
-        twitter = gltf.scene.children[0]
+        twitter = gltf.scene.children[1]
         twitter.name = 'twitter'
-    },
-)
-
-gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_plate1.glb',
-    (gltf) => {
-        gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
-        })
-        menuMainPawGroup.add(gltf.scene)
-
         twitterPlate = gltf.scene.children[0]
         twitterPlate.name = 'twitterPlate'
-
     },
 )
 
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_discord.glb',
+    'models/menu-island/menu_discord.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = bakedMaterialMenu
         })
         menuMainPawGroup.add(gltf.scene)
 
-        discord = gltf.scene.children[0]
+        discord = gltf.scene.children[1]
         discord.name = 'dscord'
-    },
-)
-
-gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_plate2.glb',
-    (gltf) => {
-        gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
-        })
-        menuMainPawGroup.add(gltf.scene)
         discordPlate = gltf.scene.children[0]
         discordPlate.name = 'discordPlate'
-
     },
 )
 
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_blog.glb',
+    'models/menu-island/menu_blog.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = bakedMaterialMenu
         })
         menuMainPawGroup.add(gltf.scene)
-
-        blog = gltf.scene.children[0]
+        blog = gltf.scene.children[1]    // Group
         blog.name = 'blog'
-    },
-)
-
-gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_plate3.glb',
-    (gltf) => {
-        gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
-        })
-        menuMainPawGroup.add(gltf.scene)
-
         blogPlate = gltf.scene.children[0]
         blogPlate.name = 'blogPlate'
-
     },
 )
 
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_paw.glb',
-    (gltf) => {
-        gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
-        })
-        menuMainPawGroup.add(gltf.scene)
-        roadmapPaw1 = gltf.scene.children[0]
-        roadmapPaw1.name = 'roadmapPaw1'
-
-    },
-)
-
-gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_paw2.glb',
-    (gltf) => {
-        gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
-        })
-        menuMainPawGroup.add(gltf.scene)
-        roadmapPaw2 = gltf.scene.children[0]
-        roadmapPaw2.name = 'roadmapPaw2'
-
-    },
-)
-
-gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_paw3.glb',
+    'models/menu-island/menu_paw1.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = bakedMaterialMenu
@@ -334,7 +288,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_paw4.glb',
+    'models/menu-island/menu_paw2.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = bakedMaterialMenu
@@ -348,10 +302,10 @@ gltfLoader.load(
 
 // NFTsFinger
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_island1.glb',
+    'models/menu-island/NM_island.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
+            child.material = bakedMaterialNFTsFinger
         })
         menuMainPawGroup.add(gltf.scene)
         NFTsFinger = gltf.scene.children[0]
@@ -360,10 +314,10 @@ gltfLoader.load(
     },
 )
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_token.glb',
+    'models/menu-island/NM_coin.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
+            child.material = bakedMaterialNFTsFinger
         })
         menuMainPawGroup.add(gltf.scene)
         NFTsFingerToken = gltf.scene.children[0]
@@ -372,10 +326,10 @@ gltfLoader.load(
     },
 )
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_sign1.glb',
+    'models/menu-island/NM_sign.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
+            child.material = bakedMaterialNFTsFinger
         })
         menuMainPawGroup.add(gltf.scene)
         NFTsFingerSign = gltf.scene.children[0]
@@ -383,13 +337,48 @@ gltfLoader.load(
     },
 )
 
+gltfLoader.load(
+    'models/menu-island/NM_gen.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = bakedMaterialNFTsFinger
+        })
+        menuMainPawGroup.add(gltf.scene)
+        // NFTsFingerSign = gltf.scene.children[0]
+        // NFTsFingerSign.name = 'NFTsFingerSign'
+    },
+)
+
+gltfLoader.load(
+    'models/menu-island/NM_gen1.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = bakedMaterialNFTsFinger
+        })
+        menuMainPawGroup.add(gltf.scene)
+        // NFTsFingerSign = gltf.scene.children[0]
+        // NFTsFingerSign.name = 'NFTsFingerSign'
+    },
+)
+
+gltfLoader.load(
+    'models/menu-island/NM_og.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = bakedMaterialNFTsFinger
+        })
+        menuMainPawGroup.add(gltf.scene)
+        // NFTsFingerSign = gltf.scene.children[0]
+        // NFTsFingerSign.name = 'NFTsFingerSign'
+    },
+)
 
 // GamesMeowverseFinger
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_island2.glb',
+    'models/menu-island/GM_island.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
+            child.material = bakedMaterialGamesMeowverseFinger
         })
         menuMainPawGroup.add(gltf.scene)
         gamesMeowverseFinger = gltf.scene.children[0]
@@ -399,10 +388,10 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_kart.glb',
+    'models/menu-island/GM_kart.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
+            child.material = kartMaterial
         })
         menuMainPawGroup.add(gltf.scene)
         gamesMeowverseFingerKart = gltf.scene.children[0]
@@ -412,7 +401,7 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_mushroom.glb',
+    'models/menu-island/GM_mush.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = bakedMaterialMenu
@@ -425,10 +414,10 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_sign2.glb',
+    'models/menu-island/GM_sign.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
+            child.material = bakedMaterialGamesMeowverseFinger
         })
         menuMainPawGroup.add(gltf.scene)
         gamesMeowverseFingerSign = gltf.scene.children[0]
@@ -440,10 +429,10 @@ gltfLoader.load(
 
 // Roadmap Finger
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_island3.glb',
+    'models/menu-island/R_island.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
+            child.material = bakedMaterialRoadmapFinger
         })
         menuMainPawGroup.add(gltf.scene)
         roadmapFinger = gltf.scene.children[0]
@@ -453,10 +442,10 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_sign3.glb',
+    'models/menu-island/R_sign.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
+            child.material = bakedMaterialRoadmapFinger
         })
         menuMainPawGroup.add(gltf.scene)
         roadmapFingerSign = gltf.scene.children[0]
@@ -465,12 +454,37 @@ gltfLoader.load(
     },
 )
 
-// Partners Finger
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_island4.glb',
+    'models/menu-island/R_paw1.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
+            child.material = bakedMaterialRoadmapFinger
+        })
+        menuMainPawGroup.add(gltf.scene)
+        roadmapPaw1 = gltf.scene.children[0]
+        roadmapPaw1.name = 'roadmapPaw1'
+
+    },
+)
+
+gltfLoader.load(
+    'models/menu-island/R_paw2.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = bakedMaterialRoadmapFinger
+        })
+        menuMainPawGroup.add(gltf.scene)
+        roadmapPaw2 = gltf.scene.children[0]
+        roadmapPaw2.name = 'roadmapPaw2'
+    },
+)
+
+// Partners Finger
+gltfLoader.load(
+    'models/menu-island/P_island.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = bakedMaterialPartnersFinger
         })
         menuMainPawGroup.add(gltf.scene)
         partnersFinger = gltf.scene.children[0]
@@ -480,23 +494,10 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_question.glb',
+    'models/menu-island/P_sign.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
-        })
-        menuMainPawGroup.add(gltf.scene)
-        partnersFingerQuestion = gltf.scene.children[0]
-        partnersFingerQuestion.name = 'partnersFingerQuestion'
-
-    },
-)
-
-gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_sign4.glb',
-    (gltf) => {
-        gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
+            child.material = bakedMaterialPartnersFinger
         })
         menuMainPawGroup.add(gltf.scene)
         partnersFingerSign = gltf.scene.children[0]
@@ -1027,3 +1028,85 @@ const tipCircleDot = new THREE.Mesh(
 )
 tipCircle.add(tipCircleRing, tipCircleDot)
 
+
+// CLOUDS
+gltfLoader.load(
+    'models/clouds/cloud1.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialClouds
+        })
+        cloudsGroup.add(gltf.scene)
+    },
+)
+
+gltfLoader.load(
+    'models/clouds/cloud2.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialClouds
+        })
+        cloudsGroup.add(gltf.scene)
+    },
+)
+
+gltfLoader.load(
+    'models/clouds/cloud3.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialClouds
+        })
+        cloudsGroup.add(gltf.scene)
+    },
+)
+
+gltfLoader.load(
+    'models/clouds/cloud4.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialClouds
+        })
+        cloudsGroup.add(gltf.scene)
+    },
+)
+
+gltfLoader.load(
+    'models/clouds/cloud5.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialClouds
+        })
+        cloudsGroup.add(gltf.scene)
+    },
+)
+
+gltfLoader.load(
+    'models/clouds/cloud6.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialClouds
+        })
+        cloudsGroup.add(gltf.scene)
+    },
+)
+
+gltfLoader.load(
+    'models/clouds/cloud7.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialClouds
+        })
+        cloudsGroup.add(gltf.scene)
+    },
+)
+
+// Logo
+gltfLoader.load(
+    'models/logo/logo.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialLogo
+        })
+        logoGroup.add(gltf.scene)
+    },
+)
