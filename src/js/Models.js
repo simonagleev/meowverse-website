@@ -160,6 +160,9 @@ textures.meowrushIslandBaked.flipY = false
 const backedMaterialMeowrushGun = new THREE.MeshBasicMaterial({ map: textures.meowrushGunBaked })
 textures.meowrushGunBaked.flipY = false
 
+const backedMaterialMeowrushKart = new THREE.MeshBasicMaterial({ map: textures.meowrushKartBaked })
+textures.meowrushKartBaked.flipY = false
+
 export let meowrushIslandLand = null;
 export let meowrushIslandGun = null;
 export let meowrushIslandKart = null;
@@ -211,6 +214,15 @@ const backedMaterialClouds= new THREE.MeshBasicMaterial({ map: textures.cloudsBa
 textures.cloudsBaked.flipY = false
 
 cloudsGroup.position.y = 3
+
+export let cloud1 = null;
+export let cloud2 = null;
+export let cloud3 = null;
+export let cloud4 = null;
+export let cloud5 = null;
+export let cloud6 = null;
+export let cloud7 = null;
+
 
 // LOGO
 export const logoGroup = new THREE.Group()
@@ -383,7 +395,7 @@ gltfLoader.load(
     'models/menu-island/GM_kart.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = backedMaterialMeowrush
+            child.material = backedMaterialMeowrushKart
         })
         menuMainPawGroup.add(gltf.scene)
         gamesMeowverseFingerKart = gltf.scene.children[0]
@@ -770,7 +782,7 @@ gltfLoader.load(
     'models/meowrush-island/meowrush_kart.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = backedMaterialMeowrush
+            child.material = backedMaterialMeowrushKart
         })
         meowrushIslandGroup.add(gltf.scene)
         meowrushIslandKart = gltf.scene
@@ -1073,6 +1085,7 @@ gltfLoader.load(
             child.material = backedMaterialClouds
         })
         cloudsGroup.add(gltf.scene)
+        cloud1 = gltf.scene
     },
 )
 
@@ -1082,7 +1095,9 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = backedMaterialClouds
         })
+        
         cloudsGroup.add(gltf.scene)
+        cloud2 = gltf.scene
     },
 )
 
@@ -1093,6 +1108,7 @@ gltfLoader.load(
             child.material = backedMaterialClouds
         })
         cloudsGroup.add(gltf.scene)
+        cloud3 = gltf.scene
     },
 )
 
@@ -1102,7 +1118,10 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = backedMaterialClouds
         })
+        gltf.scene.position.y = -3
+
         cloudsGroup.add(gltf.scene)
+        cloud4 = gltf.scene
     },
 )
 
@@ -1113,6 +1132,8 @@ gltfLoader.load(
             child.material = backedMaterialClouds
         })
         cloudsGroup.add(gltf.scene)
+        cloud5 = gltf.scene
+
     },
 )
 
@@ -1122,7 +1143,10 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = backedMaterialClouds
         })
+        
         cloudsGroup.add(gltf.scene)
+        cloud6 = gltf.scene
+
     },
 )
 
@@ -1132,7 +1156,10 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = backedMaterialClouds
         })
+        gltf.scene.position.y = -3
+
         cloudsGroup.add(gltf.scene)
+        cloud7 = gltf.scene
     },
 )
 

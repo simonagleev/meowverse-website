@@ -23,11 +23,11 @@ let focusedOnIsland = false
 
 
 // strike flag
-var strikeCreated = false
-export var strike = null
+let strikeCreated = false
+export let strike = null
 
 //animation flag
-var btnFlag = true
+let btnFlag = true
 
 
 // export const createToken = (x, y, z, group) => {
@@ -51,7 +51,7 @@ export function animateIsland(obj, elapsedTime) {
 export const hovering = (intersects, elapsedTime, outlinePass) => {
     if (intersects[0]) {
 
-        // console.log(intersects[0].object.name)
+        console.log(intersects[0].object.name)
 
         let obj = intersects[0].object
 
@@ -329,7 +329,7 @@ export function animateBoat(elapsedTime) {
 }
 
 
-export const handleClick = (camera, controls,scene) => {
+export const handleClick = (camera, controls, scene) => {
     if(groupIntersected != models.cloudsGroup) {
         focusCamera(camera, controls)
     }
@@ -402,10 +402,18 @@ export const handleClick = (camera, controls,scene) => {
 }
 
 export const mushroomAnimation = () => {
-    let mushroomBody = models.meowrushIslandMushroom.children[0].children[0]
-    let mushroomDots = models.meowrushIslandMushroom.children[0].children[1]
+    let mushroomBody;
+    let mushroomDots;
+    for(const child of models.meowrushIslandMushroom.children) {
+        if (child.type === 'Group') {
+            mushroomBody = child.children[0]
+            mushroomDots = child.children[1]
+        } 
+    }
+    
     
     let timeLine = gsap.timeline({ repeat: -1, repeatDelay: 0 });
+    console.log(mushroomBody)
        
     timeLine.to([mushroomBody.scale, mushroomDots.scale, ], {duration: 1, delay: 0, y: 1.1, x: .9 });
     timeLine.to([mushroomBody.scale, mushroomDots.scale, ], {duration: 1,  y: 1, x: 1})
@@ -413,7 +421,6 @@ export const mushroomAnimation = () => {
 
 export const coinFlipAnimation = () => {
     const coin = models.NFTsFingerToken;
-    console.log(coin)
     let timeLine = gsap.timeline({ repeat: -1, repeatDelay: 3 });
 
     timeLine.to(coin.position, {duration: .01, delay: 0, y: .7 });
@@ -440,40 +447,29 @@ export function animateClouds(elapsedTime) {
 
     
     let cloud1Angle = elapsedTime * 0.12
-    clouds[0].position.x = Math.cos(cloud1Angle) * 4
-    clouds[0].position.z = Math.sin(cloud1Angle) * 4
-    clouds[0].position.y = Math.sin(cloud1Angle)
+    models.cloud1.position.x = Math.cos(cloud1Angle) * 4
+    models.cloud1.position.z = Math.sin(cloud1Angle) * 4
+    models.cloud1.position.y = Math.sin(cloud1Angle)
 
     let cloud2Angle = -elapsedTime * 0.05
-    clouds[1].position.x = Math.cos(cloud2Angle) * 4
-    clouds[1].position.z = Math.sin(cloud2Angle) * 4
-    clouds[1].position.y = Math.sin(cloud2Angle)
+    models.cloud2.position.x = Math.cos(cloud2Angle) * 4
+    models.cloud2.position.z = Math.sin(cloud2Angle) * 4
+    models.cloud2.position.y = Math.sin(cloud2Angle)
 
     let cloud3Angle = elapsedTime * 0.07
-    clouds[2].position.x = Math.cos(cloud3Angle) * 6
-    clouds[2].position.z = Math.sin(cloud3Angle) * 5
-    clouds[2].position.y = Math.sin(cloud3Angle)
-
-    let cloud4Angle = elapsedTime * 0.1
-    clouds[3].position.x = Math.cos(cloud4Angle) * 7
-    clouds[3].position.z = Math.sin(cloud4Angle) * 5
-    clouds[3].position.y = Math.sin(cloud4Angle)
+    models.cloud3.position.x = Math.cos(cloud3Angle) * 6
+    models.cloud3.position.z = Math.sin(cloud3Angle) * 5
+    models.cloud3.position.y = Math.sin(cloud3Angle)
 
     let cloud5Angle = elapsedTime * 0.03
-    clouds[4].position.x = Math.cos(cloud5Angle) * 3
-    clouds[4].position.z = Math.sin(cloud5Angle) * 6
-    clouds[4].position.y = Math.sin(cloud5Angle)
+    models.cloud5.position.x = Math.cos(cloud5Angle) * 3
+    models.cloud5.position.z = Math.sin(cloud5Angle) * 6
+    models.cloud5.position.y = Math.sin(cloud5Angle)
 
     let cloud6Angle = -elapsedTime * 0.14
-    clouds[5].position.x = Math.cos(cloud6Angle) * 6
-    clouds[5].position.z = Math.sin(cloud6Angle) * 5
-    clouds[5].position.y = Math.sin(cloud6Angle)
-
-    let cloud7Angle = -elapsedTime * 0.01
-    clouds[6].position.x = Math.cos(cloud7Angle) * 6
-    clouds[6].position.z = Math.sin(cloud7Angle) * 5
-    clouds[6].position.y = Math.sin(cloud7Angle)
-
+    models.cloud6.position.x = Math.cos(cloud6Angle) * 6
+    models.cloud6.position.z = Math.sin(cloud6Angle) * 5
+    models.cloud6.position.y = Math.sin(cloud6Angle)
 }
 
 

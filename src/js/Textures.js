@@ -34,6 +34,7 @@ export const OG3IslandBacked = loaders.textureLoader.load('models/OG-island/OG_3
 // Meowrush island
 export const meowrushIslandBaked = loaders.textureLoader.load('models/meowrush-island/meowrush_island.jpg')
 export const meowrushGunBaked = loaders.textureLoader.load('models/meowrush-island/meowrush_gun.jpg')
+export const meowrushKartBaked = loaders.textureLoader.load('models/meowrush-island/meowrush_kart.jpg')
 
 
 // MeowVERSE island
