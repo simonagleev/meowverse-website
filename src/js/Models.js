@@ -58,9 +58,6 @@ textures.menuRoadmapBaked.flipY = false
 const bakedMaterialPartnersFinger = new THREE.MeshBasicMaterial({ map: textures.menuPartnersBaked })
 textures.menuPartnersBaked.flipY = false
 
-const kartMaterial = new THREE.MeshBasicMaterial({ map: textures.backedTextureMenu })
-textures.backedTextureMenu.flipY = false
-
 export let twitter = null;
 export let twitterPlate = null;
 
@@ -222,7 +219,7 @@ textures.logoBaked.flipY = false
 
 //menu island
 gltfLoader.load(
-    'models/WEB3_MENU/menu-backed/menu_main_island.glb',
+    'models/menu-island/menu_island.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = bakedMaterialMenu
@@ -320,7 +317,7 @@ gltfLoader.load(
     'models/menu-island/NM_coin.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialNFTsFinger
+            child.material = meelkIslandMaterial
         })
         menuMainPawGroup.add(gltf.scene)
         NFTsFingerToken = gltf.scene.children[0]
@@ -344,7 +341,7 @@ gltfLoader.load(
     'models/menu-island/NM_gen.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialNFTsFinger
+            child.material = genesisGen3Material
         })
         menuMainPawGroup.add(gltf.scene)
         // NFTsFingerSign = gltf.scene.children[0]
@@ -356,7 +353,7 @@ gltfLoader.load(
     'models/menu-island/NM_gen1.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialNFTsFinger
+            child.material = OG2IslandMaterial
         })
         menuMainPawGroup.add(gltf.scene)
         // NFTsFingerSign = gltf.scene.children[0]
@@ -364,17 +361,6 @@ gltfLoader.load(
     },
 )
 
-gltfLoader.load(
-    'models/menu-island/NM_og.glb',
-    (gltf) => {
-        gltf.scene.traverse((child) => {
-            child.material = bakedMaterialNFTsFinger
-        })
-        menuMainPawGroup.add(gltf.scene)
-        // NFTsFingerSign = gltf.scene.children[0]
-        // NFTsFingerSign.name = 'NFTsFingerSign'
-    },
-)
 
 // GamesMeowverseFinger
 gltfLoader.load(
@@ -394,7 +380,7 @@ gltfLoader.load(
     'models/menu-island/GM_kart.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = kartMaterial
+            child.material = backedMaterialMeowrush
         })
         menuMainPawGroup.add(gltf.scene)
         gamesMeowverseFingerKart = gltf.scene.children[0]
@@ -407,7 +393,7 @@ gltfLoader.load(
     'models/menu-island/GM_mush.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialMenu
+            child.material = backedMaterialMeowrush
         })
         menuMainPawGroup.add(gltf.scene)
         gamesMeowverseFingerMushroom = gltf.scene.children[0]

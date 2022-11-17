@@ -281,8 +281,8 @@ window.addEventListener('click', (event) => {
  * Camera
  */
 // Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(0, 6, 6.5)
+const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 100)
+camera.position.set(0, 8, 8.5)
 scene.add(camera)
 
 // Controls
@@ -336,6 +336,10 @@ gui.close()
 gui.add(models.tipCircle.position, 'x').min(-10).max(10).step(0.01)
 gui.add(models.tipCircle.position, 'y').min(-10).max(10).step(0.01)
 gui.add(models.tipCircle.position, 'z').min(-10).max(10).step(0.01)
+
+gui.add(camera.position, 'x').min(-10).max(10).step(0.01)
+gui.add(camera.position, 'y').min(-10).max(10).step(0.01)
+gui.add(camera.position, 'z').min(-10).max(10).step(0.01)
 
 // const rayParams = {
 //     sourceOffset: new THREE.Vector3(1,1,1),
