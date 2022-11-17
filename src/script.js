@@ -100,6 +100,7 @@ loaders.loadingManager.onLoad = () => {
   
     utils.mushroomAnimation()
     utils.coinFlipAnimation()
+    utils.kartAnimation()
 }
 
 

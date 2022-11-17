@@ -268,7 +268,13 @@ function getModelByMeshName(obj) {
             obj.name === "Sphere001_2" ||
             obj.name === "Sign_stick003" ||
             obj.name === "Sign003" ||
-            obj.name === "Text003" 
+            obj.name === "Text003" ||
+            obj.name === "Cylinder070" ||
+            obj.name === "RetopoFlow004" ||
+            obj.name === "RetopoFlow004_1" ||
+            obj.name === "Cylinder071" ||
+            obj.name === "Cylinder069" ||
+            obj.name === "Cylinder068" 
 
             
         ) {
@@ -365,7 +371,6 @@ export const handleClick = (camera, controls, scene) => {
     }
 
     if (model.name === "NFTsFinger") {
-        console.log('HAHAAHAH')
         onFingerClickFocus(camera, controls, models.genesisIslandGroup)
     }
 
@@ -426,7 +431,6 @@ export const mushroomAnimation = () => {
     
     
     let timeLine = gsap.timeline({ repeat: -1, repeatDelay: 0 });
-    console.log(mushroomBody)
        
     timeLine.to([mushroomBody.scale, mushroomDots.scale, ], {duration: 1, delay: 0, y: 1.1, x: .9 });
     timeLine.to([mushroomBody.scale, mushroomDots.scale, ], {duration: 1,  y: 1, x: 1})
@@ -439,6 +443,14 @@ export const coinFlipAnimation = () => {
     timeLine.to(coin.position, {duration: .01, delay: 0, y: .7 });
     timeLine.to(coin.rotation, {duration: .3, delay: 0, z: -Math.PI * 2 });
     timeLine.to(coin.position, {duration: .05, delay: 0, y: 0.44 });
+}
+
+export const kartAnimation = () => {
+    const kart = models.gamesMeowverseFingerKart;
+    let timeLine = gsap.timeline({ repeat: -1, repeatDelay: 0 });
+    
+    timeLine.to(kart.rotation, {duration: .1, delay: 0, z: .01 });
+    
 }
 
 function showCloseBtn() {

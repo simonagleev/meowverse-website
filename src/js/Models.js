@@ -400,7 +400,8 @@ gltfLoader.load(
             child.material = backedMaterialMeowrushKart
         })
         menuMainPawGroup.add(gltf.scene)
-        gamesMeowverseFingerKart = gltf.scene.children[0]
+        console.log(gltf.scene)
+        gamesMeowverseFingerKart = gltf.scene
         gamesMeowverseFingerKart.name = 'gamesMeowverseFingerKart'
 
     },
@@ -457,7 +458,6 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
         roadmapFingerSign = gltf.scene
         roadmapFingerSign.name = 'roadmapFingerSign'
-        console.log(roadmapFingerSign)
     },
 )
 
