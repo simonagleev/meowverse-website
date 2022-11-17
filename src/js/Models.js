@@ -126,10 +126,14 @@ textures.meelkIslandBacked.flipY = false
 export let meelkLand = null;
 export let meelkFactoryX1 = null;
 export let meelkFactoryX2 = null;
-export let meelkToken = null;
+export let meelkToken1 = null;
+export let meelkToken2 = null;
+export let meelkToken3 = null;
 export let meelkTokenTower1 = null;
 export let meelkTokenTower2 = null;
 export let meelkTokenTower3 = null;
+export let meelkTokenTower4 = null;
+export let meelkTokenTower5 = null;
 
 
 // OG Islnad
@@ -310,7 +314,6 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
         NFTsFinger = gltf.scene.children[0]
         NFTsFinger.name = 'NFTsFinger'
-
     },
 )
 gltfLoader.load(
@@ -448,7 +451,7 @@ gltfLoader.load(
     'models/menu-island/R_paw1.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialRoadmapFinger
+            child.material = backedMaterialRoadmap
         })
         menuMainPawGroup.add(gltf.scene)
         roadmapPaw1 = gltf.scene.children[0]
@@ -461,7 +464,7 @@ gltfLoader.load(
     'models/menu-island/R_paw2.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = bakedMaterialRoadmapFinger
+            child.material = backedMaterialRoadmap
         })
         menuMainPawGroup.add(gltf.scene)
         roadmapPaw2 = gltf.scene.children[0]
@@ -572,8 +575,6 @@ gltfLoader.load(
         })
         meelkIslandGroup.add(gltf.scene)
         meelkLand = gltf.scene
-
-        
     },
 )
 
@@ -601,13 +602,37 @@ gltfLoader.load(
 )
 
 gltfLoader.load(
-    'models/Meelk-island/meelk_token.glb',
+    'models/Meelk-island/meelk_token1.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = meelkIslandMaterial
         })
         meelkIslandGroup.add(gltf.scene)
-        meelkToken = gltf.scene.children[0]
+        meelkToken1 = gltf.scene.children[0]
+
+    },
+)
+
+gltfLoader.load(
+    'models/Meelk-island/meelk_token2.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = meelkIslandMaterial
+        })
+        meelkIslandGroup.add(gltf.scene)
+        meelkToken2 = gltf.scene.children[0]
+
+    },
+)
+
+gltfLoader.load(
+    'models/Meelk-island/meelk_token3.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = meelkIslandMaterial
+        })
+        meelkIslandGroup.add(gltf.scene)
+        meelkToken3 = gltf.scene.children[0]
 
     },
 )
@@ -620,7 +645,6 @@ gltfLoader.load(
         })
         meelkIslandGroup.add(gltf.scene)
         meelkTokenTower1 = gltf.scene.children[0]
-
     },
 )
 
@@ -644,6 +668,30 @@ gltfLoader.load(
         })
         meelkIslandGroup.add(gltf.scene)
         meelkTokenTower3 = gltf.scene.children[0]
+
+    },
+)
+
+gltfLoader.load(
+    'models/Meelk-island/meelk_tokentower4.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = meelkIslandMaterial
+        })
+        meelkIslandGroup.add(gltf.scene)
+        meelkTokenTower4 = gltf.scene.children[0]
+
+    },
+)
+
+gltfLoader.load(
+    'models/Meelk-island/meelk_tokentower5.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = meelkIslandMaterial
+        })
+        meelkIslandGroup.add(gltf.scene)
+        meelkTokenTower5 = gltf.scene.children[0]
 
     },
 )
