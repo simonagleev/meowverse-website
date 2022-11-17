@@ -242,8 +242,12 @@ function getModelByMeshName(obj) {
             obj.name === "Sphere003" ||
             obj.name === "Cylinder041" ||
             obj.name === "Cylinder041_1" ||
-            obj.name === "Sphere003_1" 
-         
+            obj.name === "Sphere003_1" ||
+            obj.name === "Cylinder063" ||
+            obj.name === "Cylinder063_1" ||
+            obj.name === "Cylinder063_1" 
+            
+            
         ) {
             object = models.NFTsFinger
             shortName = "NFTsFinger"
