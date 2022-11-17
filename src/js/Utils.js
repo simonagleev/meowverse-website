@@ -246,7 +246,10 @@ function getModelByMeshName(obj) {
             obj.name === "Cylinder063" ||
             obj.name === "Cylinder063_1" ||
             obj.name === "NFTsFingerGenCard" ||
-            obj.name === "NFTsFingerOgCard" 
+            obj.name === "NFTsFingerOgCard" ||
+            obj.name === "Sign_stick002" ||
+            obj.name === "Sign002" ||
+            obj.name === "Text002" 
             
             
         ) {
@@ -262,7 +265,11 @@ function getModelByMeshName(obj) {
             obj.name === "gamesMeowverseFingerMushroom" ||
             obj.name === "Cylinder025" ||
             obj.name === "gamesMeowverseFingerKart" ||
-            obj.name === "Sphere001_2" 
+            obj.name === "Sphere001_2" ||
+            obj.name === "Sign_stick003" ||
+            obj.name === "Sign003" ||
+            obj.name === "Text003" 
+
             
         ) {
             object = models.gamesMeowverseFinger
@@ -274,7 +281,10 @@ function getModelByMeshName(obj) {
             obj.name === "Sphere005" ||
             obj.name === "roadmapPaw1" ||
             obj.name === "Sphere005_1" ||
-            obj.name === "roadmapPaw2" 
+            obj.name === "roadmapPaw2" ||
+            obj.name === "Sign_stick004" ||
+            obj.name === "Sign004" ||
+            obj.name === "Text005"
            
         ) {
             object = models.roadmapFinger

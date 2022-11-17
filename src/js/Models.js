@@ -349,7 +349,7 @@ gltfLoader.load(
             child.material = bakedMaterialNFTsFinger
         })
         menuMainPawGroup.add(gltf.scene)
-        NFTsFingerSign = gltf.scene.children[0]
+        NFTsFingerSign = gltf.scene
         NFTsFingerSign.name = 'NFTsFingerSign'
     },
 )
@@ -427,7 +427,7 @@ gltfLoader.load(
             child.material = bakedMaterialGamesMeowverseFinger
         })
         menuMainPawGroup.add(gltf.scene)
-        gamesMeowverseFingerSign = gltf.scene.children[0]
+        gamesMeowverseFingerSign = gltf.scene
         gamesMeowverseFingerSign.name = 'gamesMeowverseFingerSign'
 
     },
@@ -455,9 +455,9 @@ gltfLoader.load(
             child.material = bakedMaterialRoadmapFinger
         })
         menuMainPawGroup.add(gltf.scene)
-        roadmapFingerSign = gltf.scene.children[0]
+        roadmapFingerSign = gltf.scene
         roadmapFingerSign.name = 'roadmapFingerSign'
-
+        console.log(roadmapFingerSign)
     },
 )
 
