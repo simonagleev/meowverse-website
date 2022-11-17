@@ -74,6 +74,8 @@ export let menuPaw2 = null;
 export let NFTsFinger = null;
 export let NFTsFingerToken = null;
 export let NFTsFingerSign = null;
+export let NFTsFingerGenCard = null;
+export let NFTsFingerOgCard = null;
 
 export let gamesMeowverseFinger = null;
 export let gamesMeowverseFingerKart = null;
@@ -359,8 +361,8 @@ gltfLoader.load(
             child.material = genesisGen3Material
         })
         menuMainPawGroup.add(gltf.scene)
-        // NFTsFingerSign = gltf.scene.children[0]
-        // NFTsFingerSign.name = 'NFTsFingerSign'
+        NFTsFingerOgCard = gltf.scene.children[0]
+        NFTsFingerOgCard.name = 'NFTsFingerOgCard'
     },
 )
 
@@ -371,8 +373,8 @@ gltfLoader.load(
             child.material = OG2IslandMaterial
         })
         menuMainPawGroup.add(gltf.scene)
-        // NFTsFingerSign = gltf.scene.children[0]
-        // NFTsFingerSign.name = 'NFTsFingerSign'
+        NFTsFingerGenCard = gltf.scene.children[0]
+        NFTsFingerGenCard.name = 'NFTsFingerGenCard'
     },
 )
 

@@ -182,12 +182,12 @@ export function focusCamera(camera, controls) {
 }
 
 export const onFingerClickFocus = (camera, controls, group) => {
-    gsap.to(controls.target, { duration: 2, delay: 0, x: group.position.x, })
-    gsap.to(controls.target, { duration: 2, delay: 0, y: group.position.y, })
-    gsap.to(controls.target, { duration: 2, delay: 0, z: group.position.z, })
+    gsap.to(controls.target, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
+    gsap.to(controls.target, { duration: 2, delay: 0, y: group.children[0].children[0].position.y, })
+    gsap.to(controls.target, { duration: 2, delay: 0, z: group.children[0].children[0].position.z, })
 
-    gsap.to(camera.position, { duration: 2, delay: 0, x: group.position.x, })
-    gsap.to(camera.position, { duration: 2, delay: 0, z: group.position.z + 5, })
+    gsap.to(camera.position, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
+    gsap.to(camera.position, { duration: 2, delay: 0, z: group.children[0].children[0].position.z + 5, })
 }
 
 function getModelByMeshName(obj) {
@@ -245,7 +245,8 @@ function getModelByMeshName(obj) {
             obj.name === "Sphere003_1" ||
             obj.name === "Cylinder063" ||
             obj.name === "Cylinder063_1" ||
-            obj.name === "Cylinder063_1" 
+            obj.name === "NFTsFingerGenCard" ||
+            obj.name === "NFTsFingerOgCard" 
             
             
         ) {
@@ -353,10 +354,8 @@ export const handleClick = (camera, controls, scene) => {
         window.open('https://medium.com/', '_blank');
     }
 
-    // if(model.name === "OriginalNFT002") {
-       
-    // }
     if (model.name === "NFTsFinger") {
+        console.log('HAHAAHAH')
         onFingerClickFocus(camera, controls, models.genesisIslandGroup)
     }
 

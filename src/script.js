@@ -499,7 +499,9 @@ const tick = () => {
             models.NFTsFinger,
             models.NFTsFingerSign,
             models.NFTsFingerToken,
-
+            models.NFTsFingerGenCard,
+            models.NFTsFingerOgCard,
+            
             models.roadmapFinger,
             models.roadmapPaw1,
             models.roadmapPaw2,
