@@ -322,7 +322,7 @@ function getModelByMeshName(obj) {
 
 export function animateBoat(elapsedTime) {
     if(models.genesisBoat) {
-        // models.genesisBoat.position.y = Math.sin(elapsedTime * 2) * 0.02
+        models.genesisBoat.position.y = Math.sin(elapsedTime * 2) * 0.02 + 1.41
         models.genesisBoat.rotation.z = Math.cos(elapsedTime * 2) * 0.02
         
     }
@@ -352,16 +352,20 @@ export const handleClick = (camera, controls,scene) => {
     // if(model.name === "OriginalNFT002") {
        
     // }
-    // if (model.name === "NFTsFinger") {
-    //     onFingerClickFocus(camera, controls, models.bigIslandGroup)
-    // }
+    if (model.name === "NFTsFinger") {
+        onFingerClickFocus(camera, controls, models.genesisIslandGroup)
+    }
 
-    // if (model.name === "gamesMeowverseFinger") {
-    //     onFingerClickFocus(camera, controls, models.meowverseIslandGroup)
-    // }
+    if (model.name === "gamesMeowverseFinger") {
+        onFingerClickFocus(camera, controls, models.meowverseIslandGroup)
+    }
 
     if (model.name === "roadmapFinger") {
         onFingerClickFocus(camera, controls, models.roadmapGroup)
+    }
+
+    if (model.name === "partnersFinger") {
+        onFingerClickFocus(camera, controls, models.partnersIslandGroup)
     }
 
     if (model.name === "tokenomilksSign") {
@@ -397,31 +401,25 @@ export const handleClick = (camera, controls,scene) => {
 
 }
 
-// export const mushroomAnimation = () => {
-//     let mushroomBody = models.meowverseIslandMushroom.children[0].children[0]
-//     let mushroomDots = models.meowverseIslandMushroom.children[0].children[1]
-//     let mushroomRing = models.meowverseIslandMushroom.children[1]
-//     const tree1 = models.meowverseIslandTree1
-//     const tree2 = models.meowverseIslandTree2
-
-//     console.log(models.meowverseIslandTree1)
-
-//     let tl = gsap.timeline({ repeat: -1, repeatDelay: 0 });
-//     let tlRing = gsap.timeline({ repeat: -1, repeatDelay: 0});
-//     let tlTree1 = gsap.timeline({ repeat: -1, repeatDelay: 0});
-//     let tlTree2 = gsap.timeline({ repeat: -1, repeatDelay: 0});
-
+export const mushroomAnimation = () => {
+    let mushroomBody = models.meowrushIslandMushroom.children[0].children[0]
+    let mushroomDots = models.meowrushIslandMushroom.children[0].children[1]
     
-//     tl.to([mushroomBody.scale, mushroomDots.scale], {duration: 1, delay: 0, y: 1.1, x: .9 });
-//     tl.to([mushroomBody.scale, mushroomDots.scale], {duration: 1,  y: 1, x: 1})
+    let timeLine = gsap.timeline({ repeat: -1, repeatDelay: 0 });
+       
+    timeLine.to([mushroomBody.scale, mushroomDots.scale, ], {duration: 1, delay: 0, y: 1.1, x: .9 });
+    timeLine.to([mushroomBody.scale, mushroomDots.scale, ], {duration: 1,  y: 1, x: 1})
+}
 
-//     tlTree1.to([tree1.scale,], {duration: .9, y: 1.03 });
-//     tlTree1.to([tree1.scale,], {duration: 1, y: 1})
+export const coinFlipAnimation = () => {
+    const coin = models.NFTsFingerToken;
+    console.log(coin)
+    let timeLine = gsap.timeline({ repeat: -1, repeatDelay: 3 });
 
-//     tlTree2.to([tree2.scale,], {duration: .8, y: 1.01 });
-//     tlTree2.to([tree2.scale,], {duration: .8, y: 1})
-// }
-
+    timeLine.to(coin.position, {duration: .01, delay: 0, y: .7 });
+    timeLine.to(coin.rotation, {duration: .3, delay: 0, z: -Math.PI * 2 });
+    timeLine.to(coin.position, {duration: .05, delay: 0, y: 0.44 });
+}
 
 function showCloseBtn() {
     let closeBtn = document.querySelector('.m-experienceHeader__cta')
@@ -441,7 +439,6 @@ export function animateClouds(elapsedTime) {
     let clouds = models.cloudsGroup.children
 
     
-
     let cloud1Angle = elapsedTime * 0.12
     clouds[0].position.x = Math.cos(cloud1Angle) * 4
     clouds[0].position.z = Math.sin(cloud1Angle) * 4

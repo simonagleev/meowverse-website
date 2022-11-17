@@ -98,8 +98,8 @@ loaders.loadingManager.onLoad = () => {
     // progressBarontainer.style.display = 'none'
     gsap.to(progressBarontainer, {duration: 1, delay: 0, opacity: 0, display: 'none',})
   
-    // utils.mushroomAnimation()
-
+    utils.mushroomAnimation()
+    utils.coinFlipAnimation()
 }
 
 

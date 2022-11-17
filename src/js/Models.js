@@ -19,17 +19,17 @@ export const tipCircle = new THREE.Group()
 
 tipCircle.position.x = -0.05
 tipCircle.position.y = .8
-tipCircle.position.z = 1
+tipCircle.position.z = 2
 
 export let tipCircleTwitter = null
 export let tipCircleBlog = null
 
 export const createAllTipCircles = () => {
     tipCircleTwitter = tipCircle.clone()
-    tipCircleTwitter.position.set(-1.05, .8, 1.2)
+    tipCircleTwitter.position.set(-1.05, .8, 2.2)
 
     tipCircleBlog = tipCircle.clone()
-    tipCircleBlog.position.set(1.05, .8, 1.2)
+    tipCircleBlog.position.set(1.05, .8, 2.2)
 
     menuMainPawGroup.add(tipCircleTwitter, tipCircleBlog)
 }
@@ -395,8 +395,9 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = backedMaterialMeowrush
         })
+        
         menuMainPawGroup.add(gltf.scene)
-        gamesMeowverseFingerMushroom = gltf.scene.children[0]
+        gamesMeowverseFingerMushroom = gltf.scene
         gamesMeowverseFingerMushroom.name = 'gamesMeowverseFingerMushroom'
 
     },
@@ -572,7 +573,7 @@ gltfLoader.load(
         meelkIslandGroup.add(gltf.scene)
         meelkLand = gltf.scene
 
-        console.log(gltf.scene)
+        
     },
 )
 
