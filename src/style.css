@@ -106,5 +106,34 @@ body
 }
 
 
+.roadmap-container {
+    height: 30vh;
+    width: 20%;
+    overflow-y: scroll;
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    z-index: 1000000;
+ 
+    /* border: solid 1px #dedede; */
+	border-radius: 20px;
+	box-shadow: 0 2px 0 0 rgba(0,0,0,0.04);
+	background: rgb(224, 100, 255);
 
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    scrollbar-width: 0px;
+    display: none
+}
 
+.roadmap-heading {
+    text-align: center;
+}
+.roadmap-item {
+    padding: 10px;
+    display: flex;
+}
+
+.roadmap-container::-webkit-scrollbar {
+    width: 2px;               /* width of the entire scrollbar */
+  }

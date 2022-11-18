@@ -434,12 +434,23 @@ export const handleClick = (camera, controls, scene) => {
 
     if(model.name === "red_button") {
         let redBtn = model.model[1]
-
+        const roadmapDiv = document.querySelector('.roadmap-container')
         if(btnFlag) {
             btnFlag = false
 
             gsap.to(redBtn.position, { duration: 0.5, delay: 0, y: redBtn.position.y - 0.18 })
             gsap.to(redBtn.position, { duration: 0.5, delay: 0.5, y: redBtn.position.y })
+
+            if (roadmapDiv.style.display !== 'block') {
+                roadmapDiv.style.display = 'block'
+                console.log(roadmapDiv.style.display)
+
+            } else if (roadmapDiv.style.display === 'block') {
+                roadmapDiv.style.display = 'none'
+            console.log(roadmapDiv.style.display)
+
+            }
+            console.log(roadmapDiv.style.display)
 
             setTimeout(() => {
                 btnFlag = true
