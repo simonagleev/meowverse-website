@@ -443,14 +443,10 @@ export const handleClick = (camera, controls, scene) => {
 
             if (roadmapDiv.style.display !== 'block') {
                 roadmapDiv.style.display = 'block'
-                console.log(roadmapDiv.style.display)
 
             } else if (roadmapDiv.style.display === 'block') {
                 roadmapDiv.style.display = 'none'
-            console.log(roadmapDiv.style.display)
-
             }
-            console.log(roadmapDiv.style.display)
 
             setTimeout(() => {
                 btnFlag = true
