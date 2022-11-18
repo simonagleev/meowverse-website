@@ -232,7 +232,8 @@ const logoGeometry = new THREE.PlaneGeometry(10, 7)
 
 const logoMaterial = new THREE.MeshStandardMaterial({
     alphaMap: textures.logoBaked,
-    transparent: true
+    transparent: true,
+    alphaTest: 0.001
 })
 export const logo = new THREE.Mesh(
     logoGeometry,
@@ -240,7 +241,7 @@ export const logo = new THREE.Mesh(
 )
 logo.position.set(0, 0, -7)
 logo.rotation.x = -Math.PI / 2
-
+logo.rotation.z = -0.05
 
 /**
  * Models

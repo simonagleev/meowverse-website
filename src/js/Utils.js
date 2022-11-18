@@ -170,7 +170,8 @@ export function focusCamera(camera, controls) {
 
 
         gsap.to(camera.position, { duration: 2, delay: 0, x: groupIntersected.children[0].children[0].position.x, })
-        gsap.to(camera.position, { duration: 2, delay: 0, z: groupIntersected.children[0].children[0].position.z + 5, })
+        gsap.to(camera.position, { duration: 2, delay: 0, z: groupIntersected.children[0].children[0].position.z + 7, })
+        gsap.to(camera.position, { duration: 2, delay: 0, y: groupIntersected.children[0].children[0].position.y + 5, })
 
         focusedOnIsland = true
 

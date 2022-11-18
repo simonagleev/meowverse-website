@@ -283,17 +283,17 @@ window.addEventListener('click', (event) => {
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(0, 8, 8.5)
+camera.position.set(-0.42, 11, 6.15)
 scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
-controls.target.set(0, 0.75, 0)
+controls.target.set(0, 0.75, -3.18)
 controls.enableDamping = true
-controls.maxDistance = 10
-controls.minDistance = 1
-controls.maxPolarAngle = 1.4
-controls.minAzimuthAngle = 0
+// controls.maxDistance = 12
+// controls.minDistance = 1
+// controls.maxPolarAngle = 1.4
+// controls.minAzimuthAngle = 0
 
 /**
  * Renderer
@@ -338,10 +338,17 @@ gui.add(models.tipCircle.position, 'x').min(-10).max(10).step(0.01)
 gui.add(models.tipCircle.position, 'y').min(-10).max(10).step(0.01)
 gui.add(models.tipCircle.position, 'z').min(-10).max(10).step(0.01)
 
-gui.add(camera.position, 'x').min(-10).max(10).step(0.01)
-gui.add(camera.position, 'y').min(-10).max(10).step(0.01)
-gui.add(camera.position, 'z').min(-10).max(10).step(0.01)
+gui.add(camera.position, 'x').min(-20).max(20).step(0.01)
+gui.add(camera.position, 'y').min(-20).max(20).step(0.01)
+gui.add(camera.position, 'z').min(-20).max(20).step(0.01)
 
+gui.add(controls.target, 'x').min(-20).max(20).step(0.01)
+gui.add(controls.target, 'y').min(-20).max(20).step(0.01)
+gui.add(controls.target, 'z').min(-20).max(20).step(0.01)
+
+gui.add(models.logo.rotation, 'x').min(-20).max(20).step(0.01)
+gui.add(models.logo.rotation, 'y').min(-20).max(20).step(0.01)
+gui.add(models.logo.rotation, 'z').min(-20).max(20).step(0.01)
 // const rayParams = {
 //     sourceOffset: new THREE.Vector3(1,1,1),
 //                 destOffset: new THREE.Vector3(2,3,4),
