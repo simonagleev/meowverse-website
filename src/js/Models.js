@@ -95,19 +95,19 @@ export let partnersFingerSign = null;
 // GENESIS Islnad
 export const genesisIslandGroup = new THREE.Group()
 genesisIslandGroup.name = 'genesisIsland'
-const genesisIslandMaterial = new THREE.MeshBasicMaterial({ map:  textures.genesisIslandBacked})
+const genesisIslandMaterial = new THREE.MeshBasicMaterial({ map: textures.genesisIslandBacked })
 textures.genesisIslandBacked.flipY = false
 
-const genesisGen1Material = new THREE.MeshBasicMaterial({ map:  textures.genesisIslandGen1Backed})
+const genesisGen1Material = new THREE.MeshBasicMaterial({ map: textures.genesisIslandGen1Backed })
 textures.genesisIslandGen1Backed.flipY = false
 
-const genesisGen2Material = new THREE.MeshBasicMaterial({ map:  textures.genesisIslandGen2Backed})
+const genesisGen2Material = new THREE.MeshBasicMaterial({ map: textures.genesisIslandGen2Backed })
 textures.genesisIslandGen2Backed.flipY = false
 
-const genesisGen3Material = new THREE.MeshBasicMaterial({ map:  textures.genesisIslandGen3Backed})
+const genesisGen3Material = new THREE.MeshBasicMaterial({ map: textures.genesisIslandGen3Backed })
 textures.genesisIslandGen3Backed.flipY = false
 
-const genesisBoatMaterial = new THREE.MeshBasicMaterial({ map:  textures.genesisIslandBoatBacked})
+const genesisBoatMaterial = new THREE.MeshBasicMaterial({ map: textures.genesisIslandBoatBacked })
 textures.genesisIslandBoatBacked.flipY = false
 
 export let genesisLand = null;
@@ -121,7 +121,7 @@ export let genesisCard3 = null;
 export const meelkIslandGroup = new THREE.Group()
 meelkIslandGroup.position.set(0, 0, 2)
 meelkIslandGroup.name = 'meelkIsland'
-const meelkIslandMaterial = new THREE.MeshBasicMaterial({ map:  textures.meelkIslandBacked})
+const meelkIslandMaterial = new THREE.MeshBasicMaterial({ map: textures.meelkIslandBacked })
 textures.meelkIslandBacked.flipY = false
 
 
@@ -142,16 +142,16 @@ export let meelkTokenTower5 = null;
 export const OGIslandGroup = new THREE.Group()
 OGIslandGroup.position.set(0, 0, 2)
 OGIslandGroup.name = 'OGIsland'
-const OGIslandMaterial = new THREE.MeshBasicMaterial({ map:  textures.OGIslandBacked})
+const OGIslandMaterial = new THREE.MeshBasicMaterial({ map: textures.OGIslandBacked })
 textures.OGIslandBacked.flipY = false
 
-const OG1IslandMaterial = new THREE.MeshBasicMaterial({ map:  textures.OG1IslandBacked})
+const OG1IslandMaterial = new THREE.MeshBasicMaterial({ map: textures.OG1IslandBacked })
 textures.OG1IslandBacked.flipY = false
 
-const OG2IslandMaterial = new THREE.MeshBasicMaterial({ map:  textures.OG2IslandBacked})
+const OG2IslandMaterial = new THREE.MeshBasicMaterial({ map: textures.OG2IslandBacked })
 textures.OG2IslandBacked.flipY = false
 
-const OG3IslandMaterial = new THREE.MeshBasicMaterial({ map:  textures.OG3IslandBacked})
+const OG3IslandMaterial = new THREE.MeshBasicMaterial({ map: textures.OG3IslandBacked })
 textures.OG3IslandBacked.flipY = false
 
 // Meowrush island
@@ -212,7 +212,7 @@ export let roadmapIslandMore = null;
 
 // CLOUDS
 export const cloudsGroup = new THREE.Group()
-const backedMaterialClouds= new THREE.MeshBasicMaterial({ map: textures.cloudsBaked, transparent: true, opacity: 0.9 })
+const backedMaterialClouds = new THREE.MeshBasicMaterial({ map: textures.cloudsBaked, transparent: true, opacity: 0.9 })
 textures.cloudsBaked.flipY = false
 
 cloudsGroup.position.y = 3
@@ -228,8 +228,19 @@ export let cloud7 = null;
 
 // LOGO
 export const logoGroup = new THREE.Group()
-const backedMaterialLogo= new THREE.MeshBasicMaterial({ map: textures.logoBaked })
-textures.logoBaked.flipY = false
+const logoGeometry = new THREE.PlaneGeometry(10, 7)
+
+const logoMaterial = new THREE.MeshStandardMaterial({
+    alphaMap: textures.logoBaked,
+    transparent: true
+})
+export const logo = new THREE.Mesh(
+    logoGeometry,
+    logoMaterial
+)
+logo.position.set(0, 0, -7)
+logo.rotation.x = -Math.PI / 2
+
 
 /**
  * Models
@@ -413,7 +424,7 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = backedMaterialMeowrush
         })
-        
+
         menuMainPawGroup.add(gltf.scene)
         gamesMeowverseFingerMushroom = gltf.scene
         gamesMeowverseFingerMushroom.name = 'gamesMeowverseFingerMushroom'
@@ -545,7 +556,7 @@ gltfLoader.load(
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = genesisGen2Material
-        })     
+        })
 
         genesisIslandGroup.add(gltf.scene)
         genesisCard2 = gltf.scene.children[0]
@@ -959,7 +970,7 @@ gltfLoader.load(
             child.material = backedMaterialPartners
         })
         partnersIslandGroup.add(gltf.scene)
-        
+
     },
 )
 
@@ -1097,7 +1108,7 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = backedMaterialClouds
         })
-        
+
         cloudsGroup.add(gltf.scene)
         cloud2 = gltf.scene
     },
@@ -1145,7 +1156,7 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = backedMaterialClouds
         })
-        
+
         cloudsGroup.add(gltf.scene)
         cloud6 = gltf.scene
 
@@ -1165,13 +1176,3 @@ gltfLoader.load(
     },
 )
 
-// Logo
-gltfLoader.load(
-    'models/logo/logo.glb',
-    (gltf) => {
-        gltf.scene.traverse((child) => {
-            child.material = backedMaterialLogo
-        })
-        logoGroup.add(gltf.scene)
-    },
-)

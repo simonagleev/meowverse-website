@@ -136,7 +136,7 @@ scene.add(models.roadmapGroup)
 scene.add(models.cloudsGroup)
 
 // LOgo
-// scene.add(models.logoGroup) - на черном фоне
+scene.add(models.logo) 
 
 // Tip circle
 // scene.add(models.tipCircle)
