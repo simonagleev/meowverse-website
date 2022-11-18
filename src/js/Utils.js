@@ -66,15 +66,24 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
 
         outlineObj(obj, outlinePass)
 
-
-        gsap.to(models.tipCircle.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
-        if (models.tipCircleTwitter) {
-            gsap.to(models.tipCircleTwitter.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
-
+        if (models.tipCircleTwitter && groupIntersected === models.menuGroup) {
+            gsap.to(models.tipCircle.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
         }
-        if (models.tipCircleBlog) {
-            gsap.to(models.tipCircleBlog.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
 
+        if (models.tipCircleTwitter && groupIntersected === models.menuGroup) {
+            gsap.to(models.tipCircleTwitter.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
+        }
+        if (models.tipCircleBlog && groupIntersected === models.menuGroup) {
+            gsap.to(models.tipCircleBlog.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
+        } 
+        if (models.tipCircleGenesis && groupIntersected === models.genesisIslandGroup) {
+            gsap.to(models.tipCircleGenesis.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
+        }
+        if (models.tipCircleOG && groupIntersected === models.OGIslandGroup) {
+            gsap.to(models.tipCircleOG.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
+        }
+        if (models.tipCircleMeowrush && groupIntersected === models.meowrushIslandGroup) {
+            gsap.to(models.tipCircleMeowrush.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
         }
 
     } else {
@@ -88,6 +97,15 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
         }
         if (models.tipCircleBlog) {
             gsap.to(models.tipCircleBlog.scale, { duration: 2, delay: 0, x: 0, y: 0, z: 0 })
+        }
+        if (models.tipCircleGenesis) {
+            gsap.to(models.tipCircleGenesis.scale, { duration: 2, delay: 0, x: 0, y: 0, z: 0 })
+        }
+        if (models.tipCircleOG) {
+            gsap.to(models.tipCircleOG.scale, { duration: 2, delay: 0, x: 0, y: 0, z: 0 })
+        }
+        if (models.tipCircleMeowrush) {
+            gsap.to(models.tipCircleMeowrush.scale, { duration: 2, delay: 0, x: 0, y: 0, z: 0 })
         }
 
     }
@@ -337,6 +355,21 @@ function getModelByMeshName(obj) {
             shortName = "genesisLand"
         }
 
+        if (obj.name === "tipCircleGenesis1" || obj.name === "tipCircleGenesis2") {
+            object = models.tipCircleGenesis
+            shortName = "tipCircleGenesis"
+        }
+
+        if (obj.name === "tipCircleOG1" || obj.name === "tipCircleOG1") {
+            object = models.tipCircleOG
+            shortName = "tipCircleOG"
+        }
+
+        if (obj.name === "tipCircleMeowrush1" || obj.name === "tipCircleMeowrush2") {
+            object = models.tipCircleMeowrush
+            shortName = "tipCircleMeowrush"
+        }
+
     }
 
     return ({ model: object, name: shortName })
@@ -418,6 +451,17 @@ export const handleClick = (camera, controls, scene) => {
         // createLightningStrike(model.model,scene)
     }
 
+    if (model.name === "tipCircleGenesis") {
+        window.open('https://opensea.com/', '_blank');
+    }
+
+    if (model.name === "tipCircleOG") {
+        window.open('https://opensea.com/', '_blank');
+    }
+
+    if (model.name === "tipCircleMeowrush") {
+        window.open('https://meowrush.com/', '_blank');
+    }
 }
 
 export const mushroomAnimation = () => {

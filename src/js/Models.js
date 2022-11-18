@@ -23,6 +23,9 @@ tipCircle.position.z = 2
 
 export let tipCircleTwitter = null
 export let tipCircleBlog = null
+export let tipCircleGenesis = null
+export let tipCircleOG = null
+export let tipCircleMeowrush = null
 
 export const createAllTipCircles = () => {
     tipCircleTwitter = tipCircle.clone()
@@ -31,9 +34,35 @@ export const createAllTipCircles = () => {
     tipCircleBlog = tipCircle.clone()
     tipCircleBlog.position.set(1.05, .8, 2.2)
 
-    menuMainPawGroup.add(tipCircleTwitter, tipCircleBlog)
-}
+    tipCircleGenesis = tipCircle.clone()
+    tipCircleGenesis.position.x = genesisIslandGroup.children[0].children[0].position.x + 0.2
+    tipCircleGenesis.position.y = genesisIslandGroup.children[0].children[0].position.y + .6
+    tipCircleGenesis.position.z = genesisIslandGroup.children[0].children[0].position.z + .3
+    tipCircleGenesis.name = 'tipCircleGenesis'
+    tipCircleGenesis.children[0].name = 'tipCircleGenesis1'
+    tipCircleGenesis.children[1].name = 'tipCircleGenesis2'
 
+    tipCircleOG = tipCircle.clone()
+    tipCircleOG.position.x = OGIslandGroup.children[0].children[0].position.x + 0.1
+    tipCircleOG.position.y = OGIslandGroup.children[0].children[0].position.y + .5
+    tipCircleOG.position.z = OGIslandGroup.children[0].children[0].position.z + .3
+    tipCircleOG.name = 'tipCircleOG'
+    tipCircleOG.children[0].name = 'tipCircleOG1'
+    tipCircleOG.children[1].name = 'tipCircleOG2'
+
+    tipCircleMeowrush = tipCircle.clone()
+    tipCircleMeowrush.position.x = meowrushIslandGroup.children[0].children[0].position.x 
+    tipCircleMeowrush.position.y = meowrushIslandGroup.children[0].children[0].position.y + 1
+    tipCircleMeowrush.position.z = meowrushIslandGroup.children[0].children[0].position.z + .7
+    tipCircleMeowrush.name = 'tipCircleMeowrush'
+    tipCircleMeowrush.children[0].name = 'tipCircleMeowrush1'
+    tipCircleMeowrush.children[1].name = 'tipCircleMeowrush2'
+    menuMainPawGroup.add(tipCircleTwitter, tipCircleBlog)
+    genesisIslandGroup.add(tipCircleGenesis)
+    OGIslandGroup.add(tipCircleOG)
+    meowrushIslandGroup.add(tipCircleMeowrush)
+
+}
 
 
 
