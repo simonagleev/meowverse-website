@@ -29,6 +29,10 @@ export let strike = null
 //animation flag
 let btnFlag = true
 
+// Roadmap
+const roadmapDiv = document.querySelector('.roadmap-container')
+const roadmapPicturesArray = document.querySelectorAll('.roadmap-item')
+
 
 // export const createToken = (x, y, z, group) => {
 //     if (models.bigIslandToken) {
@@ -434,17 +438,44 @@ export const handleClick = (camera, controls, scene) => {
 
     if(model.name === "red_button") {
         let redBtn = model.model[1]
-        const roadmapDiv = document.querySelector('.roadmap-container')
         if(btnFlag) {
             btnFlag = false
 
             gsap.to(redBtn.position, { duration: 0.5, delay: 0, y: redBtn.position.y - 0.18 })
             gsap.to(redBtn.position, { duration: 0.5, delay: 0.5, y: redBtn.position.y })
 
-            if (roadmapDiv.style.display !== 'block') {
-                roadmapDiv.style.display = 'block'
+            if (roadmapDiv.style.display !== 'flex') {
+                roadmapDiv.style.display = 'flex'
+                console.log(roadmapPicturesArray.style)
+                console.log(roadmapDiv.style)
+                if(roadmapPicturesArray) {
+                    roadmapPicturesArray[0].style.opacity = 1
+                    roadmapPicturesArray[1].style.opacity = 1
+                    roadmapPicturesArray[2].style.opacity = 1
 
-            } else if (roadmapDiv.style.display === 'block') {
+                    gsap.to(roadmapPicturesArray[0].style, { duration: 0.3, delay: 0, scale: 1.1, ease: true})
+                    gsap.to(roadmapPicturesArray[0].style, { duration: 0.3, delay: .3, scale: .9, ease: true})
+                    gsap.to(roadmapPicturesArray[0].style, { duration: 0.3, delay: .6, scale: 1, ease: true})
+
+                    gsap.to(roadmapPicturesArray[1].style, { duration: 0.3, delay: .4, scale: 1.1, ease: true})
+                    gsap.to(roadmapPicturesArray[1].style, { duration: 0.3, delay: .7, scale: .9, ease: true})
+                    gsap.to(roadmapPicturesArray[1].style, { duration: 0.3, delay: 1, scale: 1, ease: true})
+
+                    gsap.to(roadmapPicturesArray[2].style, { duration: 0.3, delay: .8, scale: 1.1, ease: true})
+                    gsap.to(roadmapPicturesArray[2].style, { duration: 0.3, delay: 1.1, scale: .9, ease: true})
+                    gsap.to(roadmapPicturesArray[2].style, { duration: 0.3, delay: 1.4, scale: 1, ease: true})
+                } else {
+                    console.log('ERRRRRR')
+                }
+               
+
+
+            } else if (roadmapDiv.style.display === 'flex') {
+                
+                gsap.to(roadmapPicturesArray[0].style, { duration: 1, delay: 0, scale: 0})
+                gsap.to(roadmapPicturesArray[1].style, { duration: 1, delay: 0, scale: 0})
+                gsap.to(roadmapPicturesArray[2].style, { duration: 1, delay: 0, scale: 0})
+
                 roadmapDiv.style.display = 'none'
             }
 
@@ -516,12 +547,14 @@ export function hideCloseBtn() {
     closeBtn.classList.remove('active')
 
     focusedOnIsland = false
+    if (roadmapDiv.style.display === 'flex') {
+        roadmapDiv.style.display = 'none'
+        gsap.to(roadmapDiv.style, { duration: 1, delay: 0, scale: 0})
+    }
 }
 
 
 export function animateClouds(elapsedTime) {
-    let clouds = models.cloudsGroup.children
-
     
     let cloud1Angle = elapsedTime * 0.12
     models.cloud1.position.x = Math.cos(cloud1Angle) * 4

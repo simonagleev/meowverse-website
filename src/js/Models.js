@@ -57,13 +57,13 @@ export const createAllTipCircles = () => {
     tipCircleMeowrush.name = 'tipCircleMeowrush'
     tipCircleMeowrush.children[0].name = 'tipCircleMeowrush1'
     tipCircleMeowrush.children[1].name = 'tipCircleMeowrush2'
+
     menuMainPawGroup.add(tipCircleTwitter, tipCircleBlog)
     genesisIslandGroup.add(tipCircleGenesis)
     OGIslandGroup.add(tipCircleOG)
     meowrushIslandGroup.add(tipCircleMeowrush)
 
 }
-
 
 
 //menu island
@@ -1105,7 +1105,7 @@ gltfLoader.load(
 // Tip Circle 
 const ringGeometry = new THREE.RingGeometry(.1, .125, 12, 12)
 const ringTexture = new THREE.MeshBasicMaterial({ color: "#ec64f7", side: THREE.DoubleSide })
-const dotGeometry = new THREE.CircleGeometry(.025, 12)
+const dotGeometry = new THREE.CircleGeometry(.075, 12)
 const dotTexture = new THREE.MeshBasicMaterial({ color: "#ffffff", side: THREE.DoubleSide })
 
 const tipCircleRing = new THREE.Mesh(
