@@ -109,7 +109,6 @@ body {
     transition: transform 0.3s;
 }
 
-
 .roadmap-container {
     height: 100vh;
     width: 33%;
@@ -118,7 +117,6 @@ body {
     z-index: 1000000;
     display: none;
     font-family: '.SF Compact', "Arial", sans-serif;
-
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
@@ -129,28 +127,52 @@ body {
     width: 100%;
     height: 31vh;
     scale: 0;
-
-}
-
-.roadmap-item1 {
-    width: 100%;
-    height: 31vh;
-    scale: 0;
 }
 
 .roadmap-picture {
     width: 100%;
     border-radius: 20px;
     max-width: 525px;
-    /* scale: 0; */
 }
 
-/* @media (max-width: 480px) {
+@media (max-width: 540px) {
     .roadmap-container {
-        height: 40vh;
-        width: 70%;
-        top: 50%;
-        left: 50%;
-        transform: translate((-50%, -50%));
+        height: 100vh;
+        width: 90%;
+        position: absolute;
+        z-index: 1000000;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
     }
-} */
+}
+
+@media (min-width: 541px) and (max-width: 815px) {
+    .roadmap-container {
+        height: 100vh;
+        width: 60%;
+        position: absolute;
+        z-index: 1000000;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+@media (min-width: 815px) and (max-width: 1024px) {
+    .roadmap-container {
+        height: 100vh;
+        width: 40%;
+        position: absolute;
+        z-index: 1000000;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+}

@@ -1,17 +1,20 @@
-*
-{
+@font-face {
+    font-family: '.SF Compact';
+    src: url(c0954ae4ba53c3df.otf)
+}
+
+
+* {
     margin: 0;
     padding: 0;
 }
 
 html,
-body
-{
+body {
     overflow: hidden;
 }
 
-.webgl
-{
+.webgl {
     position: fixed;
     top: 0;
     left: 0;
@@ -48,7 +51,7 @@ body
     align-items: center;
     flex-direction: column;
     opacity: 1;
-    
+
 }
 
 #progress-bar {
@@ -67,7 +70,8 @@ body
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;padding: 10px;
+    justify-content: center;
+    padding: 10px;
 }
 
 .paw-pic {
@@ -85,57 +89,92 @@ body
     padding-top: 0.3rem;
     cursor: pointer;
     outline: none;
-    border:none;
+    border: none;
     transform: scale(0.4);
     opacity: 0;
     pointer-events: none;
-    transition: transform .6s cubic-bezier(.6,-.28,.735,.045),opacity .4s cubic-bezier(.215,.61,.355,1);
+    transition: transform .6s cubic-bezier(.6, -.28, .735, .045), opacity .4s cubic-bezier(.215, .61, .355, 1);
 }
 
-.m-experienceHeader__cta.active{
+.m-experienceHeader__cta.active {
     pointer-events: all;
     opacity: 1;
     transform: scale(1);
-    transition: transform .6s cubic-bezier(.175,.885,.32,1.275),opacity .4s cubic-bezier(.215,.61,.355,1) .1s;
+    transition: transform .6s cubic-bezier(.175, .885, .32, 1.275), opacity .4s cubic-bezier(.215, .61, .355, 1) .1s;
     cursor: pointer;
 }
 
-.m-experienceHeader__cta.hover{
+.m-experienceHeader__cta.hover {
     transform: scale(1.1);
     transition: transform 0.3s;
 }
 
-
 .roadmap-container {
-    height: 30vh;
-    width: 20%;
-    overflow-y: scroll;
+    height: 100vh;
+    width: 33%;
     position: absolute;
-    top: 10%;
-    right: 10%;
+    right: 20px;
     z-index: 1000000;
- 
-    /* border: solid 1px #dedede; */
-	border-radius: 20px;
-	box-shadow: 0 2px 0 0 rgba(0,0,0,0.04);
-	background: rgb(224, 100, 255);
-
-    scrollbar-color: rebeccapurple green;
-    scrollbar-width: thin;
-    scrollbar-width: 0px;
-    display: none
+    display: none;
+    font-family: '.SF Compact', "Arial", sans-serif;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
 }
 
-.roadmap-heading {
-    text-align: center;
-}
 .roadmap-item {
-    padding: 10px;
-    display: flex;
+    width: 100%;
+    height: 31vh;
+    scale: 0;
 }
 
-.roadmap-container::-webkit-scrollbar {
-    width: 2px;               /* width of the entire scrollbar */
-  }
+.roadmap-picture {
+    width: 100%;
+    border-radius: 20px;
+    max-width: 525px;
+}
+
+@media (max-width: 540px) {
+    .roadmap-container {
+        height: 100vh;
+        width: 90%;
+        position: absolute;
+        z-index: 1000000;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+@media (min-width: 541px) and (max-width: 815px) {
+    .roadmap-container {
+        height: 100vh;
+        width: 60%;
+        position: absolute;
+        z-index: 1000000;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+@media (min-width: 815px) and (max-width: 1024px) {
+    .roadmap-container {
+        height: 100vh;
+        width: 40%;
+        position: absolute;
+        z-index: 1000000;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+}
 
 /*# sourceMappingURL=main.css.map*/

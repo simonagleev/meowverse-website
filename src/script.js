@@ -26,6 +26,9 @@ closeBtn.addEventListener('click', (event) => {
     event.preventDefault()
     utils.onFingerClickFocus(camera, controls, models.menuGroup)
     utils.hideCloseBtn()
+    mouse.x = 0
+    mouse.y = -0.99
+
 })
 
 /**
@@ -95,12 +98,13 @@ loaders.loadingManager.onLoad = () => {
     console.log('LOADED')
     tick()
     models.createAllTipCircles()
-    // progressBarontainer.style.display = 'none'
+    
     gsap.to(progressBarontainer, {duration: 1, delay: 0, opacity: 0, display: 'none',})
   
     utils.mushroomAnimation()
     utils.coinFlipAnimation()
     utils.kartAnimation()
+    console.log(intersects[0])
 }
 
 
@@ -239,8 +243,19 @@ window.addEventListener('resize', () => {
 const mouse = new THREE.Vector2()
 
 window.addEventListener('mousemove', (event) => {
-    mouse.x = event.clientX / sizes.width * 2 - 1
-    mouse.y = - (event.clientY / sizes.height) * 2 + 1
+    if (window.innerWidth > 800) {
+        console.log(event)
+
+        mouse.x = event.clientX / sizes.width * 2 - 1
+        mouse.y = - (event.clientY / sizes.height) * 2 + 1
+    } else {
+        console.log('MOBILE')
+        console.log(event)
+
+        // mouse.x = 0
+        // mouse.y = 0
+    }
+   
 })
 
 
@@ -272,10 +287,33 @@ const getParent = (obj) => {
 };
 
 //Events
-window.addEventListener('click', (event) => {
+if (window.innerWidth < 800) {
+    window.addEventListener('touchstart', (event) => {
+        console.log('touch start')
+        console.log(event)
+
+        // event.preventDefault()
+        mouse.x = +(event.targetTouches[0].pageX / sizes.width) * 2 +-1
+        mouse.y = -(event.targetTouches[0].pageY / sizes.height) * 2 + 1
+    })
+    window.addEventListener('touchmove', (event) => {
+        console.log('touch move')
+
+        event.preventDefault()
+        mouse.x = +(event.targetTouches[0].pageX / sizes.width) * 2 +-1
+        mouse.y = -(event.targetTouches[0].pageY / sizes.height) * 2 + 1
+    })
+    window.addEventListener('touchend', (event) => {
+        console.log('touch end')
+        
+        utils.handleClick(camera, controls, scene)
+    })
+} else {
+    window.addEventListener('click', (event) => {
     event.preventDefault()
-    utils.handleClick(camera, controls,scene)
+    utils.handleClick(camera, controls, scene)
 })
+}
 
 
 /**
@@ -321,8 +359,6 @@ outlinePass.visibleEdgeColor = new THREE.Color("#ffffff")
 outlinePass.hiddenEdgeColor = new THREE.Color("#190a05")
 outlinePass.usePatternTexture = false
 effectComposer.addPass(outlinePass)
-
-
 
 
 
@@ -485,7 +521,7 @@ const tick = () => {
     if (raycasterCount === 5) {
 
         raycaster.setFromCamera(mouse, camera)
-
+        
         const objectsToTest = [
             models.roadmapGroup,
             models.meowrushIslandGroup,
@@ -530,20 +566,6 @@ const tick = () => {
             models.OGIslandGroup,
             models.partnersIslandGroup,
             models.cloudsGroup
-
-
-
-            // models.meowverseIslandCliff,
-            // models.meowverseIslandGun,
-            // models.meowverseIslandKart,
-            // models.meowverseIslandLand,
-            // models.meowverseIslandMushroom,
-            // models.meowverseIslandSign1,
-            // models.meowverseIslandSign2,
-            // models.meowverseIslandTree1,
-            // models.meowverseIslandTree2,
-            // models.meowverseIslandWheel1,
-            // models.meowverseIslandWheel2
         ]
 
         intersects = raycaster.intersectObjects(objectsToTest)   //тут все меши под курсором
@@ -563,7 +585,7 @@ const tick = () => {
     //Clouds animation
     utils.animateClouds(elapsedTime)
 
-    //Strike
+    // Lightning Strike
     // utils.animateLightningStrike(elapsedTime)
     // lightningStrike.update(elapsedTime)
 

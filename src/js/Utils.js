@@ -61,12 +61,9 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
 
         hoveredObj = obj
 
-        
-        
         getParent(obj)
 
         // animateIsland(obj, elapsedTime)
-
 
         outlineObj(obj, outlinePass)
 
@@ -111,7 +108,6 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
         if (models.tipCircleMeowrush) {
             gsap.to(models.tipCircleMeowrush.scale, { duration: 2, delay: 0, x: 0, y: 0, z: 0 })
         }
-
     }
 }
 
@@ -119,7 +115,6 @@ function outlineObj(obj, outlinePass) {
 
     let model = getModelByMeshName(obj)
     let objArr = []
-    // console.log(model.model)
 
     if (model.model !== null) {
 
@@ -129,8 +124,6 @@ function outlineObj(obj, outlinePass) {
         } else {
             objArr.push(model.model)
         }
-
-        
 
     } else {
         objArr.push(groupIntersected)
@@ -190,7 +183,6 @@ export function focusCamera(camera, controls) {
         gsap.to(controls.target, { duration: 2, delay: 0, y: groupIntersected.children[0].children[0].position.y, })
         gsap.to(controls.target, { duration: 2, delay: 0, z: groupIntersected.children[0].children[0].position.z, })
 
-
         gsap.to(camera.position, { duration: 2, delay: 0, x: groupIntersected.children[0].children[0].position.x, })
         gsap.to(camera.position, { duration: 2, delay: 0, z: groupIntersected.children[0].children[0].position.z + 7, })
         gsap.to(camera.position, { duration: 2, delay: 0, y: groupIntersected.children[0].children[0].position.y + 5, })
@@ -238,8 +230,6 @@ function getModelByMeshName(obj) {
             shortName = "cloud"
         }
 
-
-
         if(obj.name == "Cylinder014" || obj.name == "Cylinder013" || obj.name == "Text011") {
             object = [models.roadmapIslandBaseButton,models.roadmapIslandButton]
             shortName = "red_button"
@@ -273,8 +263,6 @@ function getModelByMeshName(obj) {
             obj.name === "Sign_stick002" ||
             obj.name === "Sign002" ||
             obj.name === "Text002" 
-            
-            
         ) {
             object = models.NFTsFinger
             shortName = "NFTsFinger"
@@ -297,9 +285,7 @@ function getModelByMeshName(obj) {
             obj.name === "RetopoFlow004_1" ||
             obj.name === "Cylinder071" ||
             obj.name === "Cylinder069" ||
-            obj.name === "Cylinder068" 
-
-            
+            obj.name === "Cylinder068"    
         ) {
             object = models.gamesMeowverseFinger
             shortName = "gamesMeowverseFinger"
@@ -389,10 +375,13 @@ export function animateBoat(elapsedTime) {
 
 
 export const handleClick = (camera, controls, scene) => {
-    if(groupIntersected != models.cloudsGroup) {
+    // if (!groupIntersected) {
+    //     hideCloseBtn()
+    // }
+
+    if (groupIntersected != models.cloudsGroup) {
         focusCamera(camera, controls)
     }
-    
     
     let model = getModelByMeshName(hoveredObj)
 
@@ -446,8 +435,6 @@ export const handleClick = (camera, controls, scene) => {
 
             if (roadmapDiv.style.display !== 'flex') {
                 roadmapDiv.style.display = 'flex'
-                console.log(roadmapPicturesArray.style)
-                console.log(roadmapDiv.style)
                 if(roadmapPicturesArray) {
                     roadmapPicturesArray[0].style.opacity = 1
                     roadmapPicturesArray[1].style.opacity = 1
@@ -464,14 +451,8 @@ export const handleClick = (camera, controls, scene) => {
                     gsap.to(roadmapPicturesArray[2].style, { duration: 0.3, delay: .8, scale: 1.1, ease: true})
                     gsap.to(roadmapPicturesArray[2].style, { duration: 0.3, delay: 1.1, scale: .9, ease: true})
                     gsap.to(roadmapPicturesArray[2].style, { duration: 0.3, delay: 1.4, scale: 1, ease: true})
-                } else {
-                    console.log('ERRRRRR')
-                }
-               
-
-
+                } 
             } else if (roadmapDiv.style.display === 'flex') {
-                
                 gsap.to(roadmapPicturesArray[0].style, { duration: 1, delay: 0, scale: 0})
                 gsap.to(roadmapPicturesArray[1].style, { duration: 1, delay: 0, scale: 0})
                 gsap.to(roadmapPicturesArray[2].style, { duration: 1, delay: 0, scale: 0})
@@ -502,6 +483,12 @@ export const handleClick = (camera, controls, scene) => {
     }
 }
 
+if(roadmapDiv) {
+    roadmapDiv.addEventListener('click', () => {
+        roadmapDiv.style.display = 'none'
+    })
+}
+
 export const mushroomAnimation = () => {
     let mushroomBody;
     let mushroomDots;
@@ -511,7 +498,6 @@ export const mushroomAnimation = () => {
             mushroomDots = child.children[1]
         } 
     }
-    
     
     let timeLine = gsap.timeline({ repeat: -1, repeatDelay: 0 });
        
