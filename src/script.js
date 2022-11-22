@@ -25,6 +25,8 @@ const closeBtn = document.querySelector('.m-experienceHeader__cta')
 closeBtn.addEventListener('click', (event) => {
     event.preventDefault()
     utils.onFingerClickFocus(camera, controls, models.menuGroup)
+    // camera.position.set(-0.2, 11, 6.15)
+    // controls.target.set(0, 0.75, -3.18)
     utils.hideCloseBtn()
 
     //Костыль для мобилки
@@ -107,6 +109,9 @@ loaders.loadingManager.onLoad = () => {
     // Костыль дял мобилки
     mouse.x = 0
     mouse.y = -0.99
+
+    console.log(camera.position)
+    console.log(controls.target)
 }
 
 
@@ -318,12 +323,21 @@ if (window.innerWidth < 800) {
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(-0.2, 11, 6.15)
+if (window.innerWidth > 800) {
+    camera.position.set(-0.2, 11, 6.15)
+} else {
+    camera.position.set(-0.2, 13, 9.15)
+}
 scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
-controls.target.set(0, 0.75, -3.18)
+if (window.innerWidth > 800) {
+    controls.target.set(0, 0.75, -3.18)
+
+} else {
+    controls.target.set(0, 2.8805, -2)
+}
 controls.enableDamping = true
 controls.maxDistance = 15
 controls.minDistance = 2
@@ -590,7 +604,7 @@ const tick = () => {
 
     //Clouds animation
     utils.animateClouds(elapsedTime)
-    
+
     //Cat9 animation
     utils.catAnimation9(deltaTime, elapsedTime)
 

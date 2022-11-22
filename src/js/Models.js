@@ -1271,7 +1271,7 @@ gltfLoader.load(
 // )
 
 gltfLoader.load(
-    'models/cats/CAT_9.gltf',
+    'models/cats/CAT_9.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = backedMaterialCat1

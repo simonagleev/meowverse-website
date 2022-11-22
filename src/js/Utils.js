@@ -208,6 +208,9 @@ export const onFingerClickFocus = (camera, controls, group) => {
     gsap.to(camera.position, { duration: 2, delay: 0, z: group.children[0].children[0].position.z + 5, })
     gsap.to(camera.position, { duration: 2, delay: 0, y: group.children[0].children[0].position.y + 5, })
 
+    console.log(camera.position)
+    console.log(controls.target)
+
 }
 
 function getModelByMeshName(obj) {
@@ -458,11 +461,11 @@ export const handleClick = (camera, controls, scene) => {
                     gsap.to(roadmapPicturesArray[2].style, { duration: 0.3, delay: 1.4, scale: 1, ease: true})
                 } 
             } else if (roadmapDiv.style.display === 'flex') {
-                gsap.to(roadmapPicturesArray[0].style, { duration: .1, delay: 0, scale: 0, ease: true})
-                gsap.to(roadmapPicturesArray[1].style, { duration: .1, delay: 0, scale: 0, ease: true})
-                gsap.to(roadmapPicturesArray[2].style, { duration: .1, delay: 0, scale: 0, ease: true})
-
-                roadmapDiv.style.display = 'none'
+                gsap.to(roadmapPicturesArray[0].style, { duration: .7, delay: 0, scale: 0, ease: true})
+                gsap.to(roadmapPicturesArray[1].style, { duration: .5, delay: 0, scale: 0, ease: true})
+                gsap.to(roadmapPicturesArray[2].style, { duration: .3, delay: 0, scale: 0, ease: true})
+                
+                gsap.to(roadmapDiv.style, { duration: .1, delay: .7, display: 'none', ease: true})
             }
 
             setTimeout(() => {
@@ -490,11 +493,23 @@ export const handleClick = (camera, controls, scene) => {
 // Закрытие roadmap по клику
 if(roadmapDiv && window.innerWidth > 800) {
     roadmapDiv.addEventListener('click', () => {
-        roadmapDiv.style.display = 'none'
+        gsap.to(roadmapPicturesArray[0].style, { duration: .7, delay: 0, scale: 0, ease: true})
+        gsap.to(roadmapPicturesArray[1].style, { duration: .5, delay: 0, scale: 0, ease: true})
+        gsap.to(roadmapPicturesArray[2].style, { duration: .3, delay: 0, scale: 0, ease: true})
+
+        gsap.to(roadmapDiv.style, { duration: 1, delay: .9, display: 'none', ease: true})
+        
+        // roadmapDiv.style.display = 'none'
     })
 } else if (roadmapDiv && window.innerWidth <= 800) {
     roadmapDiv.addEventListener('touchend', () => {
-        roadmapDiv.style.display = 'none'
+        gsap.to(roadmapPicturesArray[0].style, { duration: .7, delay: 0, scale: 0, ease: true})
+        gsap.to(roadmapPicturesArray[1].style, { duration: .5, delay: 0, scale: 0, ease: true})
+        gsap.to(roadmapPicturesArray[2].style, { duration: .3, delay: 0, scale: 0, ease: true})
+        gsap.to(roadmapDiv.style, { duration: 1, delay: .9, display: 'none', ease: true})
+
+        // roadmapDiv.style.display = 'none'
+
     })
 }
 
