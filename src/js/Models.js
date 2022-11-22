@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import * as textures from './Textures.js'
 import * as loaders from './Loaders.js'
+import * as script from '../script.js'
 
 
 const dracoLoader = loaders.dracoLoader
@@ -274,6 +275,15 @@ export const logo = new THREE.Mesh(
 logo.position.set(0, 0, -7)
 logo.rotation.x = -Math.PI / 2
 logo.rotation.z = -0.05
+
+// CATS
+const backedMaterialCat1 = new THREE.MeshBasicMaterial({ map: textures.cat9Baked })
+textures.cat9Baked.flipY = false
+
+export let cat1 = null;
+
+export let cat9 = null;
+export let mixerCat9 = null;
 
 /**
  * Models
@@ -1242,5 +1252,38 @@ gltfLoader.load(
         gltf.scene.rotation.z = Math.PI /2.63
         cloudsGroup.add(gltf.scene)
         cloud10 = gltf.scene
+    },
+)
+
+// CATS
+
+// gltfLoader.load(
+//     'models/cats/CAT_7.glb',
+//     (gltf) => {
+//         gltf.scene.traverse((child) => {
+//             child.material = backedMaterialCat1
+//         })
+//         console.log(gltf.scene)
+//         gltf.scene.position.set(0, 1.58, -10.25)
+//         meowverseIslandGroup.add(gltf.scene)
+//         cat1 = gltf.scene
+//     },
+// )
+
+gltfLoader.load(
+    'models/cats/CAT_9.gltf',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialCat1
+        })
+        console.log(gltf)
+        gltf.scene.position.set(0, 2.1, 0)
+        gltf.scene.transparent = false
+        script.scene.add(gltf.scene)
+        cat9 = gltf.scene
+
+        mixerCat9 = new THREE.AnimationMixer(gltf.scene);
+        const fly = mixerCat9.clipAction(gltf.animations[0])
+        fly.play()
     },
 )

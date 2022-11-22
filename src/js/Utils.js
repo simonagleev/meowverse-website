@@ -355,7 +355,7 @@ function getModelByMeshName(obj) {
             shortName = "tipCircleGenesis"
         }
 
-        if (obj.name === "tipCircleOG1" || obj.name === "tipCircleOG1") {
+        if (obj.name === "tipCircleOG1" || obj.name === "tipCircleOG2") {
             object = models.tipCircleOG
             shortName = "tipCircleOG"
         }
@@ -458,9 +458,9 @@ export const handleClick = (camera, controls, scene) => {
                     gsap.to(roadmapPicturesArray[2].style, { duration: 0.3, delay: 1.4, scale: 1, ease: true})
                 } 
             } else if (roadmapDiv.style.display === 'flex') {
-                gsap.to(roadmapPicturesArray[0].style, { duration: 1, delay: 0, scale: 0})
-                gsap.to(roadmapPicturesArray[1].style, { duration: 1, delay: 0, scale: 0})
-                gsap.to(roadmapPicturesArray[2].style, { duration: 1, delay: 0, scale: 0})
+                gsap.to(roadmapPicturesArray[0].style, { duration: .1, delay: 0, scale: 0, ease: true})
+                gsap.to(roadmapPicturesArray[1].style, { duration: .1, delay: 0, scale: 0, ease: true})
+                gsap.to(roadmapPicturesArray[2].style, { duration: .1, delay: 0, scale: 0, ease: true})
 
                 roadmapDiv.style.display = 'none'
             }
@@ -480,7 +480,7 @@ export const handleClick = (camera, controls, scene) => {
     }
 
     if (model.name === "tipCircleOG") {
-        window.open('https://opensea.com/', '_blank');
+        window.open('https://doliacats.com/', '_blank');
     }
 
     if (model.name === "tipCircleMeowrush") {
@@ -593,6 +593,25 @@ export function animateClouds(elapsedTime) {
     models.cloud10.position.z = Math.sin(cloud10Angle) * 1.6
     models.cloud10.position.y = Math.cos(cloud10Angle) - 1
    
+}
+
+
+// CATS ANIMATIONS
+export const catAnimation9 = (deltaTime, elapsedTime) => {
+
+    const cat9Angle = deltaTime / 3
+    
+    if (models.cat9) {
+        models.mixerCat9.update(deltaTime)
+        // models.cat9.position.x = Math.cos(cat9Angle) * 5
+        // models.cat9.position.z = Math.sin(cat9Angle) * 5
+        // models.cat9.position.y = Math.sin(elapsedTime * 2) * Math.sin(elapsedTime * 0.5)
+        const ghostAngle = elapsedTime / 10
+
+        models.cat9.position.x = Math.cos(ghostAngle) * 4
+        models.cat9.position.z = Math.sin(ghostAngle) * 4 - 3
+        models.cat9.position.y = Math.cos(deltaTime * 3) + 3
+    }
 }
 
 

@@ -26,6 +26,8 @@ closeBtn.addEventListener('click', (event) => {
     event.preventDefault()
     utils.onFingerClickFocus(camera, controls, models.menuGroup)
     utils.hideCloseBtn()
+
+    //Костыль для мобилки
     mouse.x = 0
     mouse.y = -0.99
 })
@@ -39,71 +41,70 @@ closeBtn.addEventListener('click', (event) => {
 const canvas = document.querySelector('canvas.webgl')
 
 // Scene
-const scene = new THREE.Scene()
+export const scene = new THREE.Scene()
 
 /**
  * Preloader 
  */
 
-const progressBar = document.getElementById('progress-bar')
 const progressBarontainer = document.querySelector('.progress-bar-container')
 const pawsArr = document.querySelectorAll('.paw-pic')
 
 loaders.loadingManager.onProgress = (url, loaded, total) => {
     // progressBar.value = (loaded / total) * 100
     if ((loaded / total) * 100 <= 10) {
-        gsap.to(pawsArr[0], {duration: .5, delay: 0, opacity: 1})
+        gsap.to(pawsArr[0], { duration: .5, delay: 0, opacity: 1 })
 
-    } else if(((loaded / total) * 100) > 10 && ((loaded / total) * 100) <= 20) {
-        gsap.to(pawsArr[1], {duration: .5, delay: 0, opacity: 1})
-        gsap.to(pawsArr[0], {duration: 1.5, delay: 0, opacity: 0})
+    } else if (((loaded / total) * 100) > 10 && ((loaded / total) * 100) <= 20) {
+        gsap.to(pawsArr[1], { duration: .5, delay: 0, opacity: 1 })
+        gsap.to(pawsArr[0], { duration: 1.5, delay: 0, opacity: .5 })
 
-    }else if(((loaded / total) * 100) > 20 && ((loaded / total) * 100) <= 30) {
-        gsap.to(pawsArr[2], {duration: .5, delay: 0, opacity: 1})
-        gsap.to(pawsArr[1], {duration: 1.5, delay: .6, opacity: .5})
+    } else if (((loaded / total) * 100) > 20 && ((loaded / total) * 100) <= 30) {
+        gsap.to(pawsArr[2], { duration: .5, delay: 0, opacity: 1 })
+        gsap.to(pawsArr[1], { duration: 1.5, delay: .6, opacity: .5 })
 
-    }else if(((loaded / total) * 100) > 30 && ((loaded / total) * 100) <= 40) {
-        gsap.to(pawsArr[3], {duration: .5, delay: 0, opacity: 1})
-        gsap.to(pawsArr[2], {duration: 1.5, delay: .6, opacity: .5})
+    } else if (((loaded / total) * 100) > 30 && ((loaded / total) * 100) <= 40) {
+        gsap.to(pawsArr[3], { duration: .5, delay: 0, opacity: 1 })
+        gsap.to(pawsArr[2], { duration: 1.5, delay: .6, opacity: .5 })
 
-    }else if(((loaded / total) * 100) > 40 && ((loaded / total) * 100) <= 50) {
-        gsap.to(pawsArr[4], {duration: .5, delay: 0, opacity: 1})
-        gsap.to(pawsArr[3], {duration: 1.5, delay: .6, opacity: .5})
+    } else if (((loaded / total) * 100) > 40 && ((loaded / total) * 100) <= 50) {
+        gsap.to(pawsArr[4], { duration: .5, delay: 0, opacity: 1 })
+        gsap.to(pawsArr[3], { duration: 1.5, delay: .6, opacity: .5 })
 
-    }else if(((loaded / total) * 100) > 50 && ((loaded / total) * 100) <= 60) {
-        gsap.to(pawsArr[5], {duration: .5, delay: 0, opacity: 1})
-        gsap.to(pawsArr[4], {duration: 1.5, delay: .6, opacity: .5})
+    } else if (((loaded / total) * 100) > 50 && ((loaded / total) * 100) <= 60) {
+        gsap.to(pawsArr[5], { duration: .5, delay: 0, opacity: 1 })
+        gsap.to(pawsArr[4], { duration: 1.5, delay: .6, opacity: .5 })
 
-    }else if(((loaded / total) * 100) > 60 && ((loaded / total) * 100) <= 70) {
-        gsap.to(pawsArr[6], {duration: .5, delay: 0, opacity: 1})
-        gsap.to(pawsArr[5], {duration: 1.5, delay: .6, opacity: .5})
+    } else if (((loaded / total) * 100) > 60 && ((loaded / total) * 100) <= 70) {
+        gsap.to(pawsArr[6], { duration: .5, delay: 0, opacity: 1 })
+        gsap.to(pawsArr[5], { duration: 1.5, delay: .6, opacity: .5 })
 
-    }else if(((loaded / total) * 100) > 70 && ((loaded / total) * 100) <= 80) {
-        gsap.to(pawsArr[7], {duration: .5, delay: 0, opacity: 1})
-        gsap.to(pawsArr[6], {duration: 1.5, delay: .6, opacity: .5})
+    } else if (((loaded / total) * 100) > 70 && ((loaded / total) * 100) <= 80) {
+        gsap.to(pawsArr[7], { duration: .5, delay: 0, opacity: 1 })
+        gsap.to(pawsArr[6], { duration: 1.5, delay: .6, opacity: .5 })
 
-    }else if(((loaded / total) * 100) > 80 && ((loaded / total) * 100) <= 90) {
-        gsap.to(pawsArr[8], {duration: .5, delay: 0, opacity: 1})
-        gsap.to(pawsArr[7], {duration: 1.5, delay: .6, opacity: .5})
+    } else if (((loaded / total) * 100) > 80 && ((loaded / total) * 100) <= 90) {
+        gsap.to(pawsArr[8], { duration: .5, delay: 0, opacity: 1 })
+        gsap.to(pawsArr[7], { duration: 1.5, delay: .6, opacity: .5 })
 
-    }else if(((loaded / total) * 100) > 90 && ((loaded / total) * 100) <= 100) {
-        gsap.to(pawsArr[9], {duration: .5, delay: 0, opacity: 1})
-        gsap.to(pawsArr[8], {duration: 1.5, delay: .6, opacity: .5})
+    } else if (((loaded / total) * 100) > 90 && ((loaded / total) * 100) <= 100) {
+        gsap.to(pawsArr[9], { duration: .5, delay: 0, opacity: 1 })
+        gsap.to(pawsArr[8], { duration: 1.5, delay: .6, opacity: .5 })
     }
-    
+
 }
 
 loaders.loadingManager.onLoad = () => {
     console.log('LOADED')
     tick()
     models.createAllTipCircles()
-    
-    gsap.to(progressBarontainer, {duration: 1, delay: 0, opacity: 0, display: 'none',})
-  
+
+    gsap.to(progressBarontainer, { duration: 1, delay: 0, opacity: 0, display: 'none', })
+
     utils.mushroomAnimation()
     utils.coinFlipAnimation()
     utils.kartAnimation()
-// Костыль дял мобилки
+    // Костыль дял мобилки
     mouse.x = 0
     mouse.y = -0.99
 }
@@ -141,7 +142,7 @@ scene.add(models.roadmapGroup)
 scene.add(models.cloudsGroup)
 
 // LOgo
-scene.add(models.logo) 
+scene.add(models.logo)
 
 // Tip circle
 // scene.add(models.tipCircle)
@@ -251,7 +252,7 @@ window.addEventListener('mousemove', (event) => {
         // mouse.x = 0
         // mouse.y = 0
     }
-   
+
 })
 
 
@@ -289,26 +290,26 @@ if (window.innerWidth < 800) {
         console.log(event)
 
         // event.preventDefault()
-        mouse.x = +(event.targetTouches[0].pageX / sizes.width) * 2 +-1
+        mouse.x = +(event.targetTouches[0].pageX / sizes.width) * 2 + -1
         mouse.y = -(event.targetTouches[0].pageY / sizes.height) * 2 + 1
     })
     window.addEventListener('touchmove', (event) => {
         console.log('touch move')
 
         event.preventDefault()
-        mouse.x = +(event.targetTouches[0].pageX / sizes.width) * 2 +-1
+        mouse.x = +(event.targetTouches[0].pageX / sizes.width) * 2 + -1
         mouse.y = -(event.targetTouches[0].pageY / sizes.height) * 2 + 1
     })
     window.addEventListener('touchend', (event) => {
         console.log('touch end')
-        
+
         utils.handleClick(camera, controls, scene)
     })
 } else {
     window.addEventListener('click', (event) => {
-    event.preventDefault()
-    utils.handleClick(camera, controls, scene)
-})
+        event.preventDefault()
+        utils.handleClick(camera, controls, scene)
+    })
 }
 
 
@@ -317,17 +318,18 @@ if (window.innerWidth < 800) {
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(-0.42, 11, 6.15)
+camera.position.set(-0.2, 11, 6.15)
 scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
 controls.target.set(0, 0.75, -3.18)
 controls.enableDamping = true
-// controls.maxDistance = 12
-// controls.minDistance = 1
-// controls.maxPolarAngle = 1.4
-// controls.minAzimuthAngle = 0
+controls.maxDistance = 15
+controls.minDistance = 2
+controls.maxPolarAngle = 1.4
+controls.minAzimuthAngle = - Math.PI / 4
+controls.maxAzimuthAngle = Math.PI / 4
 
 /**
  * Renderer
@@ -381,6 +383,14 @@ gui.add(controls.target, 'z').min(-20).max(20).step(0.01)
 gui.add(models.logo.rotation, 'x').min(-20).max(20).step(0.01)
 gui.add(models.logo.rotation, 'y').min(-20).max(20).step(0.01)
 gui.add(models.logo.rotation, 'z').min(-20).max(20).step(0.01)
+
+setTimeout(() => {
+    gui.add(models.cat9.position, 'x').min(-20).max(20).step(0.01)
+    gui.add(models.cat9.position, 'y').min(-20).max(20).step(0.01)
+    gui.add(models.cat9.position, 'z').min(-20).max(20).step(0.01)
+}, 3000)
+
+
 // const rayParams = {
 //     sourceOffset: new THREE.Vector3(1,1,1),
 //                 destOffset: new THREE.Vector3(2,3,4),
@@ -517,7 +527,7 @@ const tick = () => {
     if (raycasterCount === 5) {
 
         raycaster.setFromCamera(mouse, camera)
-        
+
         const objectsToTest = [
             models.roadmapGroup,
             models.meowrushIslandGroup,
@@ -541,7 +551,7 @@ const tick = () => {
             models.NFTsFingerToken,
             models.NFTsFingerGenCard,
             models.NFTsFingerOgCard,
-            
+
             models.roadmapFinger,
             models.roadmapPaw1,
             models.roadmapPaw2,
@@ -556,9 +566,9 @@ const tick = () => {
             models.gamesMeowverseFingerSign,
 
             models.genesisIslandGroup,
-           
+
             models.meelkIslandGroup,
-            
+
             models.OGIslandGroup,
             models.partnersIslandGroup,
             models.cloudsGroup
@@ -580,6 +590,10 @@ const tick = () => {
 
     //Clouds animation
     utils.animateClouds(elapsedTime)
+    
+    //Cat9 animation
+    utils.catAnimation9(deltaTime, elapsedTime)
+
 
     // Lightning Strike
     // utils.animateLightningStrike(elapsedTime)
@@ -592,14 +606,14 @@ const tick = () => {
     // test.position.copy(physics.sphereBody.position)
     // testFloor.position.copy(physics.roadmapIslandFloorBody.position)
     // if (physics.roadmapABody) {
-        // models.roadmapIslandA.position.copy(physics.roadmapABody.position)
-        // models.roadmapIslandA.position.x = physics.roadmapABody.position.x - 6.5
-        // models.roadmapIslandA.position.y = physics.roadmapABody.position.y 
-        // models.roadmapIslandA.position.z = physics.roadmapABody.position.z - 1.5
+    // models.roadmapIslandA.position.copy(physics.roadmapABody.position)
+    // models.roadmapIslandA.position.x = physics.roadmapABody.position.x - 6.5
+    // models.roadmapIslandA.position.y = physics.roadmapABody.position.y 
+    // models.roadmapIslandA.position.z = physics.roadmapABody.position.z - 1.5
 
     // }
-   
-    
+
+
 
 
     // Update camera position 

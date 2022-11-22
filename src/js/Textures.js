@@ -49,3 +49,6 @@ export const cloudsBaked = loaders.textureLoader.load('models/clouds/clouds.jpg'
 
 // LOGO
 export const logoBaked = loaders.textureLoader.load('models/logo/logo.png')
+
+// CAT1
+export const cat9Baked = loaders.textureLoader.load('models/cats/CAT_9.jpg')
