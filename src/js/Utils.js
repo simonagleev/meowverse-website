@@ -54,7 +54,9 @@ export function animateIsland(obj, elapsedTime) {
 
 export const hovering = (intersects, elapsedTime, outlinePass) => {
     if (intersects[0]) {
-
+        
+        $('html,body').css('cursor', 'pointer'); // Меняет курсор
+                
         console.log(intersects[0].object.name)
 
         let obj = intersects[0].object
@@ -88,6 +90,7 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
         }
 
     } else {
+        $('html,body').css('cursor', 'default'); //меняе курсор назад
         hoveredObj = null
         groupIntersected = null
         outlinePass.selectedObjects = []
@@ -203,6 +206,8 @@ export const onFingerClickFocus = (camera, controls, group) => {
 
     gsap.to(camera.position, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
     gsap.to(camera.position, { duration: 2, delay: 0, z: group.children[0].children[0].position.z + 5, })
+    gsap.to(camera.position, { duration: 2, delay: 0, y: group.children[0].children[0].position.y + 5, })
+
 }
 
 function getModelByMeshName(obj) {
@@ -482,9 +487,13 @@ export const handleClick = (camera, controls, scene) => {
         window.open('https://meowrush.com/', '_blank');
     }
 }
-
-if(roadmapDiv) {
+// Закрытие roadmap по клику
+if(roadmapDiv && window.innerWidth > 800) {
     roadmapDiv.addEventListener('click', () => {
+        roadmapDiv.style.display = 'none'
+    })
+} else if (roadmapDiv && window.innerWidth <= 800) {
+    roadmapDiv.addEventListener('touchend', () => {
         roadmapDiv.style.display = 'none'
     })
 }
@@ -566,6 +575,24 @@ export function animateClouds(elapsedTime) {
     models.cloud6.position.x = Math.cos(cloud6Angle) * 6
     models.cloud6.position.z = Math.sin(cloud6Angle) * 5
     models.cloud6.position.y = Math.sin(cloud6Angle)
+
+    let cloud8Angle = -elapsedTime * 0.1
+    models.cloud8.position.x = Math.cos(cloud8Angle) * 2
+    models.cloud8.position.z = Math.sin(cloud8Angle) * 5
+    models.cloud8.position.y = Math.sin(cloud8Angle)
+
+    let cloud9Angle = -elapsedTime * 0.034
+    models.cloud9.position.x = Math.cos(cloud9Angle) * 3.3 - 7
+    models.cloud9.position.z = Math.sin(cloud9Angle) * 3.3
+    models.cloud9.position.y = Math.cos(cloud9Angle)
+    models.cloud9.rotation.x += Math.cos(Math.random()) / 500
+    models.cloud9.rotation.z += Math.cos(Math.random()) / 100
+
+    let cloud10Angle = -elapsedTime * 0.21
+    models.cloud10.position.x = -Math.cos(cloud10Angle) * 3.3 - 10
+    models.cloud10.position.z = Math.sin(cloud10Angle) * 1.6
+    models.cloud10.position.y = Math.cos(cloud10Angle) - 1
+   
 }
 
 

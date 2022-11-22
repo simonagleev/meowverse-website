@@ -28,7 +28,6 @@ closeBtn.addEventListener('click', (event) => {
     utils.hideCloseBtn()
     mouse.x = 0
     mouse.y = -0.99
-
 })
 
 /**
@@ -104,7 +103,9 @@ loaders.loadingManager.onLoad = () => {
     utils.mushroomAnimation()
     utils.coinFlipAnimation()
     utils.kartAnimation()
-    console.log(intersects[0])
+// Костыль дял мобилки
+    mouse.x = 0
+    mouse.y = -0.99
 }
 
 
@@ -244,14 +245,9 @@ const mouse = new THREE.Vector2()
 
 window.addEventListener('mousemove', (event) => {
     if (window.innerWidth > 800) {
-        console.log(event)
-
         mouse.x = event.clientX / sizes.width * 2 - 1
         mouse.y = - (event.clientY / sizes.height) * 2 + 1
     } else {
-        console.log('MOBILE')
-        console.log(event)
-
         // mouse.x = 0
         // mouse.y = 0
     }

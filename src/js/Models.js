@@ -253,6 +253,9 @@ export let cloud4 = null;
 export let cloud5 = null;
 export let cloud6 = null;
 export let cloud7 = null;
+export let cloud8 = null;
+export let cloud9 = null;
+export let cloud10 = null;
 
 
 // LOGO
@@ -441,7 +444,6 @@ gltfLoader.load(
             child.material = backedMaterialMeowrushKart
         })
         menuMainPawGroup.add(gltf.scene)
-        console.log(gltf.scene)
         gamesMeowverseFingerKart = gltf.scene
         gamesMeowverseFingerKart.name = 'gamesMeowverseFingerKart'
 
@@ -1186,10 +1188,8 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = backedMaterialClouds
         })
-
         cloudsGroup.add(gltf.scene)
         cloud6 = gltf.scene
-
     },
 )
 
@@ -1206,3 +1206,41 @@ gltfLoader.load(
     },
 )
 
+gltfLoader.load(
+    'models/clouds/cloud6.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialClouds
+        })
+        gltf.scene.scale.set(.4, .4, .4)
+        cloudsGroup.add(gltf.scene)
+        
+        cloud8 = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/clouds/cloud4.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialClouds
+        })
+        // gltf.scene.scale.set(2,2,2)
+        gltf.scene.position.x = -11
+        cloudsGroup.add(gltf.scene)
+        cloud9 = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/clouds/cloud7.glb',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialClouds
+        })
+        gltf.scene.scale.set(.7, .7, .7)
+        gltf.scene.rotation.z = Math.PI /2.63
+        cloudsGroup.add(gltf.scene)
+        cloud10 = gltf.scene
+    },
+)
