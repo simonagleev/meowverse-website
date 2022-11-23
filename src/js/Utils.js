@@ -195,22 +195,50 @@ export function focusCamera(camera, controls) {
         setTimeout(() => {
             showCloseBtn()
         }, 1500);
-        
     }
 }
 
 export const onFingerClickFocus = (camera, controls, group) => {
-    gsap.to(controls.target, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
-    gsap.to(controls.target, { duration: 2, delay: 0, y: group.children[0].children[0].position.y, })
-    gsap.to(controls.target, { duration: 2, delay: 0, z: group.children[0].children[0].position.z, })
+    if (group === models.menuGroup) {
+        if (window.innerWidth > 800) {
+            gsap.to(controls.target, { duration: 2, delay: 0, x: 0, })
+            gsap.to(controls.target, { duration: 2, delay: 0, y: 0.75, })
+            gsap.to(controls.target, { duration: 2, delay: 0, z: -3.18, })
 
-    gsap.to(camera.position, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
-    gsap.to(camera.position, { duration: 2, delay: 0, z: group.children[0].children[0].position.z + 5, })
-    gsap.to(camera.position, { duration: 2, delay: 0, y: group.children[0].children[0].position.y + 5, })
+            gsap.to(camera.position, { duration: 2, delay: 0, x: -0.2, })
+            gsap.to(camera.position, { duration: 2, delay: 0, z: 11, })
+            gsap.to(camera.position, { duration: 2, delay: 0, y: 6.15, })
 
-    console.log(camera.position)
-    console.log(controls.target)
 
+        } else {
+            gsap.to(controls.target, { duration: 2, delay: 0, x: 0, })
+            gsap.to(controls.target, { duration: 2, delay: 0, y: 2.8805, })
+            gsap.to(controls.target, { duration: 2, delay: 0, z: -2, })
+            
+            gsap.to(camera.position, { duration: 2, delay: 0, x: -0.2, })
+            gsap.to(camera.position, { duration: 2, delay: 0, y: 13, })
+            gsap.to(camera.position, { duration: 2, delay: 0, z: 9.15, })
+        }
+        console.log('IFFFF')
+    } else if (group === models.genesisIslandGroup) {
+        gsap.to(controls.target, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
+        gsap.to(controls.target, { duration: 2, delay: 0, y: group.children[0].children[0].position.y, })
+        gsap.to(controls.target, { duration: 2, delay: 0, z: group.children[0].children[0].position.z + 5, })
+
+        gsap.to(camera.position, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
+        gsap.to(camera.position, { duration: 2, delay: 0, y: group.children[0].children[0].position.y + 5, })
+        gsap.to(camera.position, { duration: 2, delay: 0, z: group.children[0].children[0].position.z + 10, })
+
+    } else {
+        gsap.to(controls.target, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
+        gsap.to(controls.target, { duration: 2, delay: 0, y: group.children[0].children[0].position.y, })
+        gsap.to(controls.target, { duration: 2, delay: 0, z: group.children[0].children[0].position.z, })
+
+        gsap.to(camera.position, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
+        gsap.to(camera.position, { duration: 2, delay: 0, y: group.children[0].children[0].position.y + 5, })
+        gsap.to(camera.position, { duration: 2, delay: 0, z: group.children[0].children[0].position.z + 5, })
+    }
+    
 }
 
 function getModelByMeshName(obj) {

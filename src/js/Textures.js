@@ -2,10 +2,9 @@ import * as THREE from 'three'
 import * as loaders from './Loaders.js'
 
 
-export const bakedTexture = loaders.textureLoader.load('models/WEB3_BIGISLAND/bigisland_texture2k.jpg')
-export const backedTextureMeowverse = loaders.textureLoader.load('models/WEB3_MEOWVERSE/meowverse-devided/meowrush2k.jpg')
+// ROADMAP island
 export const backedTextureRoadmap = loaders.textureLoader.load('models/Roadmap-island/roadmap_island.jpg')
-export const backedTextureMenu = loaders.textureLoader.load('models/WEB3_MENU/menu-backed/menu2k.jpg')
+
 
 // MENU island
 export const menuMainBaked = loaders.textureLoader.load('models/menu-island/menu_island.jpg')

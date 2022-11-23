@@ -149,7 +149,7 @@ export let genesisCard3 = null;
 
 // MEELK Islnad
 export const meelkIslandGroup = new THREE.Group()
-meelkIslandGroup.position.set(0, 0, 2)
+meelkIslandGroup.position.set(0, 0, 0)
 meelkIslandGroup.name = 'meelkIsland'
 const meelkIslandMaterial = new THREE.MeshBasicMaterial({ map: textures.meelkIslandBacked })
 textures.meelkIslandBacked.flipY = false
@@ -170,7 +170,7 @@ export let meelkTokenTower5 = null;
 
 // OG Islnad
 export const OGIslandGroup = new THREE.Group()
-OGIslandGroup.position.set(0, 0, 2)
+OGIslandGroup.position.set(0, 0, 0)
 OGIslandGroup.name = 'OGIsland'
 const OGIslandMaterial = new THREE.MeshBasicMaterial({ map: textures.OGIslandBacked })
 textures.OGIslandBacked.flipY = false
@@ -1439,7 +1439,7 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = backedMaterialCat8
         })
-        gltf.scene.position.set(-7.41, 1.12, -2.8)
+        gltf.scene.position.set(-7.41, 1.12, -4.8)
         script.scene.add(gltf.scene)
         cat8 = gltf.scene
 
@@ -1456,7 +1456,7 @@ gltfLoader.load(
             child.material = meelkIslandMaterial
         })
         console.log(gltf.scene)
-        gltf.scene.position.set(-7.35, 1.31, -2.71)
+        gltf.scene.position.set(-7.35, 1.31, -4.71)
         script.scene.add(gltf.scene)
         cat8Token = gltf.scene
     },

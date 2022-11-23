@@ -25,8 +25,6 @@ const closeBtn = document.querySelector('.m-experienceHeader__cta')
 closeBtn.addEventListener('click', (event) => {
     event.preventDefault()
     utils.onFingerClickFocus(camera, controls, models.menuGroup)
-    // camera.position.set(-0.2, 11, 6.15)
-    // controls.target.set(0, 0.75, -3.18)
     utils.hideCloseBtn()
 
     //Костыль для мобилки
@@ -109,9 +107,6 @@ loaders.loadingManager.onLoad = () => {
     // Костыль дял мобилки
     mouse.x = 0
     mouse.y = -0.99
-
-    console.log(camera.position)
-    console.log(controls.target)
 }
 
 
@@ -399,9 +394,9 @@ gui.add(models.logo.rotation, 'y').min(-20).max(20).step(0.01)
 gui.add(models.logo.rotation, 'z').min(-20).max(20).step(0.01)
 
 setTimeout(() => {
-    gui.add(models.cat5.position, 'x').min(-20).max(20).step(0.01)
-    gui.add(models.cat5.position, 'y').min(-20).max(20).step(0.01)
-    gui.add(models.cat5.position, 'z').min(-20).max(20).step(0.01)
+    gui.add(models.cat8.position, 'x').min(-20).max(20).step(0.01)
+    gui.add(models.cat8.position, 'y').min(-20).max(20).step(0.01)
+    gui.add(models.cat8.position, 'z').min(-20).max(20).step(0.01)
 }, 3000)
 
 
