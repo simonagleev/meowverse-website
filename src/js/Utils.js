@@ -221,14 +221,15 @@ export const onFingerClickFocus = (camera, controls, group) => {
         }
         console.log('IFFFF')
     } else if (group === models.genesisIslandGroup) {
-        gsap.to(controls.target, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
-        gsap.to(controls.target, { duration: 2, delay: 0, y: group.children[0].children[0].position.y, })
-        gsap.to(controls.target, { duration: 2, delay: 0, z: group.children[0].children[0].position.z + 5, })
+        gsap.to(controls.target, { duration: 2, delay: 0, x: -6.2, })
+        gsap.to(controls.target, { duration: 2, delay: 0, y: 0.25 , })
+        gsap.to(controls.target, { duration: 2, delay: 0, z: -7, })
 
-        gsap.to(camera.position, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
-        gsap.to(camera.position, { duration: 2, delay: 0, y: group.children[0].children[0].position.y + 5, })
-        gsap.to(camera.position, { duration: 2, delay: 0, z: group.children[0].children[0].position.z + 10, })
-
+        gsap.to(camera.position, { duration: 2, delay: 0, x: -7, })
+        gsap.to(camera.position, { duration: 2, delay: 0, y: 16, })
+        gsap.to(camera.position, { duration: 2, delay: 0, z: 4, })
+        camera.position.set(-7, 16, 3)
+        controls.target.set(-6.2, 0.25, -7)
     } else {
         gsap.to(controls.target, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
         gsap.to(controls.target, { duration: 2, delay: 0, y: group.children[0].children[0].position.y, })
@@ -646,9 +647,6 @@ export const catAnimation9 = (deltaTime, elapsedTime) => {
     
     if (models.cat9) {
         models.mixerCat9.update(deltaTime)
-        // models.cat9.position.x = Math.cos(cat9Angle) * 5
-        // models.cat9.position.z = Math.sin(cat9Angle) * 5
-        // models.cat9.position.y = Math.sin(elapsedTime * 2) * Math.sin(elapsedTime * 0.5)
         const ghostAngle = elapsedTime / 10
 
         models.cat9.position.x = Math.cos(ghostAngle) * 4
@@ -683,18 +681,6 @@ export const catAnimation5 = (deltaTime) => {
 export const catAnimation6 = (deltaTime) => {
     if (models.cat6) {
         models.mixerCat6.update(deltaTime)
-    }
-}
-
-export const catAnimation8 = (deltaTime) => {
-    if (models.cat8) {
-        models.mixerCat8.update(deltaTime)
-    }
-}
-
-export const catAnimation7 = (deltaTime) => {
-    if (models.cat7) {
-        models.mixerCat7.update(deltaTime)
     }
 }
 

@@ -10,7 +10,7 @@ export const backedTextureRoadmap = loaders.textureLoader.load('models/Roadmap-i
 export const menuMainBaked = loaders.textureLoader.load('models/menu-island/menu_island.jpg')
 export const menuGamesMeowverseBaked = loaders.textureLoader.load('models/menu-island/GM_island.jpg')
 export const menuNFTsBaked = loaders.textureLoader.load('models/menu-island/NM_island.jpg')
-export const menuRoadmapBaked = loaders.textureLoader.load('models/menu-island/R_island.png')
+export const menuRoadmapBaked = loaders.textureLoader.load('models/menu-island/R_island.jpg')
 export const menuPartnersBaked = loaders.textureLoader.load('models/menu-island/P_island.jpg')
 
 
@@ -57,5 +57,3 @@ export const cat3Baked = loaders.textureLoader.load('models/cats/CAT_3.jpg')
 export const cat4Baked = loaders.textureLoader.load('models/cats/CAT_4.jpg')
 export const cat5Baked = loaders.textureLoader.load('models/cats/CAT_5.jpg')
 export const cat6Baked = loaders.textureLoader.load('models/cats/CAT_6.jpg')
-export const cat8Baked = loaders.textureLoader.load('models/cats/CAT_8.jpg')
-export const cat7Baked = loaders.textureLoader.load('models/cats/CAT_7.jpg')

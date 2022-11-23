@@ -124,6 +124,7 @@ export let partnersFingerSign = null;
 
 // GENESIS Islnad
 export const genesisIslandGroup = new THREE.Group()
+genesisIslandGroup.position.set(0, 0, 1.3)
 genesisIslandGroup.name = 'genesisIsland'
 const genesisIslandMaterial = new THREE.MeshBasicMaterial({ map: textures.genesisIslandBacked })
 textures.genesisIslandBacked.flipY = false
@@ -298,12 +299,6 @@ textures.cat5Baked.flipY = false
 const backedMaterialCat6 = new THREE.MeshBasicMaterial({ map: textures.cat6Baked })
 textures.cat6Baked.flipY = false
 
-const backedMaterialCat8 = new THREE.MeshBasicMaterial({ map: textures.cat8Baked })
-textures.cat8Baked.flipY = false
-
-const backedMaterialCat7 = new THREE.MeshBasicMaterial({ map: textures.cat7Baked })
-textures.cat7Baked.flipY = false
-
 export let cat1 = null;
 export let mixerCat1 = null;
 export let cat1Mushroom = null;
@@ -321,13 +316,6 @@ export let mixerCat5 = null;
 
 export let cat6 = null;
 export let mixerCat6 = null;
-
-export let cat8 = null;
-export let mixerCat8 = null;
-export let cat8Token = null;
-
-export let cat7 = null;
-export let mixerCat7 = null;
 
 export let cat9 = null;
 export let mixerCat9 = null;
@@ -1430,51 +1418,5 @@ gltfLoader.load(
         mixerCat6 = new THREE.AnimationMixer(gltf.scene);
         const cat6Animation = mixerCat6.clipAction(gltf.animations[0])
         cat6Animation.play()
-    },
-)
-
-gltfLoader.load(
-    'models/cats/CAT_8.gltf',
-    (gltf) => {
-        gltf.scene.traverse((child) => {
-            child.material = backedMaterialCat8
-        })
-        gltf.scene.position.set(-7.41, 1.12, -4.8)
-        script.scene.add(gltf.scene)
-        cat8 = gltf.scene
-
-        mixerCat8 = new THREE.AnimationMixer(gltf.scene);
-        const cat8Animation = mixerCat8.clipAction(gltf.animations[0])
-        cat8Animation.play()
-    },
-)
-
-gltfLoader.load(
-    'models/cats/cats_token.gltf',
-    (gltf) => {
-        gltf.scene.traverse((child) => {
-            child.material = meelkIslandMaterial
-        })
-        console.log(gltf.scene)
-        gltf.scene.position.set(-7.35, 1.31, -4.71)
-        script.scene.add(gltf.scene)
-        cat8Token = gltf.scene
-    },
-)
-
-gltfLoader.load(
-    'models/cats/CAT_7.gltf',
-    (gltf) => {
-        gltf.scene.traverse((child) => {
-            child.material = backedMaterialCat7
-        })
-        console.log(gltf.scene)
-        gltf.scene.position.set(0.15, 0.3, -0.22)
-        script.scene.add(gltf.scene)
-        cat7 = gltf.scene
-
-        mixerCat7 = new THREE.AnimationMixer(gltf.scene);
-        const cat7Animation = mixerCat7.clipAction(gltf.animations[0])
-        cat7Animation.play()
     },
 )

@@ -14,7 +14,6 @@ import * as light from './js/Lights.js'
 import * as utils from './js/Utils.js'
 import * as loaders from './js/Loaders.js'
 import gsap from 'gsap';
-import * as physics from './js/Physics.js'
 import './app.js'
 
 /**
@@ -48,59 +47,15 @@ export const scene = new THREE.Scene()
  */
 
 const progressBarontainer = document.querySelector('.progress-bar-container')
-const pawsArr = document.querySelectorAll('.paw-pic')
 
 loaders.loadingManager.onProgress = (url, loaded, total) => {
-    // progressBar.value = (loaded / total) * 100
-    if ((loaded / total) * 100 <= 10) {
-        gsap.to(pawsArr[0], { duration: .5, delay: 0, opacity: 1 })
-
-    } else if (((loaded / total) * 100) > 10 && ((loaded / total) * 100) <= 20) {
-        gsap.to(pawsArr[1], { duration: .5, delay: 0, opacity: 1 })
-        gsap.to(pawsArr[0], { duration: 1.5, delay: 0, opacity: .5 })
-
-    } else if (((loaded / total) * 100) > 20 && ((loaded / total) * 100) <= 30) {
-        gsap.to(pawsArr[2], { duration: .5, delay: 0, opacity: 1 })
-        gsap.to(pawsArr[1], { duration: 1.5, delay: .6, opacity: .5 })
-
-    } else if (((loaded / total) * 100) > 30 && ((loaded / total) * 100) <= 40) {
-        gsap.to(pawsArr[3], { duration: .5, delay: 0, opacity: 1 })
-        gsap.to(pawsArr[2], { duration: 1.5, delay: .6, opacity: .5 })
-
-    } else if (((loaded / total) * 100) > 40 && ((loaded / total) * 100) <= 50) {
-        gsap.to(pawsArr[4], { duration: .5, delay: 0, opacity: 1 })
-        gsap.to(pawsArr[3], { duration: 1.5, delay: .6, opacity: .5 })
-
-    } else if (((loaded / total) * 100) > 50 && ((loaded / total) * 100) <= 60) {
-        gsap.to(pawsArr[5], { duration: .5, delay: 0, opacity: 1 })
-        gsap.to(pawsArr[4], { duration: 1.5, delay: .6, opacity: .5 })
-
-    } else if (((loaded / total) * 100) > 60 && ((loaded / total) * 100) <= 70) {
-        gsap.to(pawsArr[6], { duration: .5, delay: 0, opacity: 1 })
-        gsap.to(pawsArr[5], { duration: 1.5, delay: .6, opacity: .5 })
-
-    } else if (((loaded / total) * 100) > 70 && ((loaded / total) * 100) <= 80) {
-        gsap.to(pawsArr[7], { duration: .5, delay: 0, opacity: 1 })
-        gsap.to(pawsArr[6], { duration: 1.5, delay: .6, opacity: .5 })
-
-    } else if (((loaded / total) * 100) > 80 && ((loaded / total) * 100) <= 90) {
-        gsap.to(pawsArr[8], { duration: .5, delay: 0, opacity: 1 })
-        gsap.to(pawsArr[7], { duration: 1.5, delay: .6, opacity: .5 })
-
-    } else if (((loaded / total) * 100) > 90 && ((loaded / total) * 100) <= 100) {
-        gsap.to(pawsArr[9], { duration: .5, delay: 0, opacity: 1 })
-        gsap.to(pawsArr[8], { duration: 1.5, delay: .6, opacity: .5 })
-    }
-
 }
 
 loaders.loadingManager.onLoad = () => {
     console.log('LOADED')
     tick()
     models.createAllTipCircles()
-
     gsap.to(progressBarontainer, { duration: 1, delay: 0, opacity: 0, display: 'none', })
-
     utils.mushroomAnimation()
     utils.coinFlipAnimation()
     utils.kartAnimation()
@@ -186,19 +141,6 @@ scene.add(light.pointLightmenuIsland)
 
 scene.add(light.spotlight)
 scene.add(light.spotlight.target)
-
-
-/**
- * 
- * HELPERS 
- */
-// const helper = new THREE.DirectionalLightHelper(directionalLight, 5);
-// const helper1 = new THREE.PointLightHelper(pointLightBigIsland, 1);
-// const helper2 = new THREE.PointLightHelper(pointLightmenuIsland, 1);
-// const spotlightHelper = new THREE.SpotLightHelper(spotlight, 1)
-// scene.add(spotlightHelper)
-//  scene.add( helper, helper1, helper2 );
-
 
 /**
  * Raycaster
@@ -334,7 +276,7 @@ if (window.innerWidth > 800) {
     controls.target.set(0, 2.8805, -2)
 }
 controls.enableDamping = true
-controls.maxDistance = 15
+controls.maxDistance = 16
 controls.minDistance = 2
 controls.maxPolarAngle = 1.4
 controls.minAzimuthAngle = - Math.PI / 4
@@ -375,29 +317,19 @@ effectComposer.addPass(outlinePass)
  */
 const gui = new dat.GUI()
 gui.close()
-// gui.add(controls, 'maxAzimuthAngle').min(0).max(Math.PI * 2).step(0.1)
-
-gui.add(models.tipCircle.position, 'x').min(-10).max(10).step(0.01)
-gui.add(models.tipCircle.position, 'y').min(-10).max(10).step(0.01)
-gui.add(models.tipCircle.position, 'z').min(-10).max(10).step(0.01)
-
-gui.add(camera.position, 'x').min(-20).max(20).step(0.01)
-gui.add(camera.position, 'y').min(-20).max(20).step(0.01)
-gui.add(camera.position, 'z').min(-20).max(20).step(0.01)
-
-gui.add(controls.target, 'x').min(-20).max(20).step(0.01)
-gui.add(controls.target, 'y').min(-20).max(20).step(0.01)
-gui.add(controls.target, 'z').min(-20).max(20).step(0.01)
-
-gui.add(models.logo.rotation, 'x').min(-20).max(20).step(0.01)
-gui.add(models.logo.rotation, 'y').min(-20).max(20).step(0.01)
-gui.add(models.logo.rotation, 'z').min(-20).max(20).step(0.01)
-
 setTimeout(() => {
-    gui.add(models.cat8.position, 'x').min(-20).max(20).step(0.01)
-    gui.add(models.cat8.position, 'y').min(-20).max(20).step(0.01)
-    gui.add(models.cat8.position, 'z').min(-20).max(20).step(0.01)
+    gui.add(camera.position, 'x').min(-20).max(20).step(0.01)
+    gui.add(camera.position, 'y').min(-20).max(20).step(0.01)
+    gui.add(camera.position, 'z').min(-20).max(20).step(0.01)
+
+    gui.add(controls.target, 'x').min(-20).max(20).step(0.01)
+    gui.add(controls.target, 'y').min(-20).max(20).step(0.01)
+    gui.add(controls.target, 'z').min(-20).max(20).step(0.01)
 }, 3000)
+
+
+
+
 
 
 // const rayParams = {
@@ -482,33 +414,6 @@ setTimeout(() => {
 // 	strikeMesh = new THREE.Mesh( lightningStrike, lightningMaterial )
 //     scene.add(strikeMesh)
 // }
-
-
-
-
-
-
-/**
- * PHYSICS
- */
-
-// const test = new THREE.Mesh(
-//     new THREE.SphereGeometry(.5, 32,32),
-//     new THREE.MeshBasicMaterial({color: '#fff000'})
-// )
-
-// const geo = new THREE.CylinderGeometry(2, 1, 2, 5)
-// const testFloor = new THREE.Mesh(
-//     geo,
-//     new THREE.MeshBasicMaterial({color: '#1aff00'})
-// )
-// const geo2 = new THREE.CylinderGeometry(.1, .1, 1, 5)
-// const testFloor2 = new THREE.Mesh(
-//     geo2,
-//     new THREE.MeshBasicMaterial({color: '#0000ff'})
-// )
-
-// scene.add(test, testFloor, testFloor2)
 
 
 
@@ -607,29 +512,11 @@ const tick = () => {
     utils.catAnimation3(deltaTime)
     utils.catAnimation5(deltaTime)
     utils.catAnimation6(deltaTime)
-    utils.catAnimation8(deltaTime)
-    utils.catAnimation7(deltaTime)
+
 
     // Lightning Strike
     // utils.animateLightningStrike(elapsedTime)
     // lightningStrike.update(elapsedTime)
-
-
-
-    //Physics
-    // physics.world.step(1/60, deltaTime, 3)
-    // test.position.copy(physics.sphereBody.position)
-    // testFloor.position.copy(physics.roadmapIslandFloorBody.position)
-    // if (physics.roadmapABody) {
-    // models.roadmapIslandA.position.copy(physics.roadmapABody.position)
-    // models.roadmapIslandA.position.x = physics.roadmapABody.position.x - 6.5
-    // models.roadmapIslandA.position.y = physics.roadmapABody.position.y 
-    // models.roadmapIslandA.position.z = physics.roadmapABody.position.z - 1.5
-
-    // }
-
-
-
 
     // Update camera position 
 
