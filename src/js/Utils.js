@@ -228,8 +228,7 @@ export const onFingerClickFocus = (camera, controls, group) => {
         gsap.to(camera.position, { duration: 2, delay: 0, x: -7, })
         gsap.to(camera.position, { duration: 2, delay: 0, y: 16, })
         gsap.to(camera.position, { duration: 2, delay: 0, z: 4, })
-        camera.position.set(-7, 16, 3)
-        controls.target.set(-6.2, 0.25, -7)
+
     } else {
         gsap.to(controls.target, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
         gsap.to(controls.target, { duration: 2, delay: 0, y: group.children[0].children[0].position.y, })
