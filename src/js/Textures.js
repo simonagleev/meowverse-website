@@ -50,5 +50,13 @@ export const cloudsBaked = loaders.textureLoader.load('models/clouds/clouds.jpg'
 // LOGO
 export const logoBaked = loaders.textureLoader.load('models/logo/logo.png')
 
-// CAT1
+// CATS
 export const cat9Baked = loaders.textureLoader.load('models/cats/CAT_9.jpg')
+export const cat2Baked = loaders.textureLoader.load('models/cats/CAT_2.jpg')
+export const cat1Baked = loaders.textureLoader.load('models/cats/CAT_1.jpg')
+export const cat3Baked = loaders.textureLoader.load('models/cats/CAT_3.jpg')
+export const cat4Baked = loaders.textureLoader.load('models/cats/CAT_4.jpg')
+export const cat5Baked = loaders.textureLoader.load('models/cats/CAT_5.jpg')
+export const cat6Baked = loaders.textureLoader.load('models/cats/CAT_6.jpg')
+export const cat8Baked = loaders.textureLoader.load('models/cats/CAT_8.jpg')
+export const cat7Baked = loaders.textureLoader.load('models/cats/CAT_7.jpg')

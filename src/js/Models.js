@@ -277,13 +277,61 @@ logo.rotation.x = -Math.PI / 2
 logo.rotation.z = -0.05
 
 // CATS
-const backedMaterialCat1 = new THREE.MeshBasicMaterial({ map: textures.cat9Baked })
+const backedMaterialCat9 = new THREE.MeshBasicMaterial({ map: textures.cat9Baked })
 textures.cat9Baked.flipY = false
 
+const backedMaterialCat2 = new THREE.MeshBasicMaterial({ map: textures.cat2Baked })
+textures.cat2Baked.flipY = false
+
+const backedMaterialCat1 = new THREE.MeshBasicMaterial({ map: textures.cat1Baked })
+textures.cat1Baked.flipY = false
+
+const backedMaterialCat3 = new THREE.MeshBasicMaterial({ map: textures.cat3Baked })
+textures.cat3Baked.flipY = false
+
+const backedMaterialCat4 = new THREE.MeshBasicMaterial({ map: textures.cat4Baked })
+textures.cat4Baked.flipY = false
+
+const backedMaterialCat5 = new THREE.MeshBasicMaterial({ map: textures.cat5Baked })
+textures.cat5Baked.flipY = false
+
+const backedMaterialCat6 = new THREE.MeshBasicMaterial({ map: textures.cat6Baked })
+textures.cat6Baked.flipY = false
+
+const backedMaterialCat8 = new THREE.MeshBasicMaterial({ map: textures.cat8Baked })
+textures.cat8Baked.flipY = false
+
+const backedMaterialCat7 = new THREE.MeshBasicMaterial({ map: textures.cat7Baked })
+textures.cat7Baked.flipY = false
+
 export let cat1 = null;
+export let mixerCat1 = null;
+export let cat1Mushroom = null;
+
+export let cat2 = null;
+export let mixerCat2 = null;
+
+export let cat3 = null;
+export let mixerCat3 = null;
+
+export let cat4 = null;
+
+export let cat5 = null;
+export let mixerCat5 = null;
+
+export let cat6 = null;
+export let mixerCat6 = null;
+
+export let cat8 = null;
+export let mixerCat8 = null;
+export let cat8Token = null;
+
+export let cat7 = null;
+export let mixerCat7 = null;
 
 export let cat9 = null;
 export let mixerCat9 = null;
+
 
 /**
  * Models
@@ -674,6 +722,9 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = meelkIslandMaterial
         })
+        gltf.scene.children[0].children[0].name = 'cylinderToken1'
+        gltf.scene.children[0].children[1].name = 'cylinderToken1_1'
+
         meelkIslandGroup.add(gltf.scene)
         meelkToken1 = gltf.scene.children[0]
 
@@ -1256,34 +1307,174 @@ gltfLoader.load(
 )
 
 // CATS
-
-// gltfLoader.load(
-//     'models/cats/CAT_7.glb',
-//     (gltf) => {
-//         gltf.scene.traverse((child) => {
-//             child.material = backedMaterialCat1
-//         })
-//         console.log(gltf.scene)
-//         gltf.scene.position.set(0, 1.58, -10.25)
-//         meowverseIslandGroup.add(gltf.scene)
-//         cat1 = gltf.scene
-//     },
-// )
-
 gltfLoader.load(
     'models/cats/CAT_9.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            child.material = backedMaterialCat1
+            child.material = backedMaterialCat9
         })
-        console.log(gltf)
         gltf.scene.position.set(0, 2.1, 0)
-        gltf.scene.transparent = false
         script.scene.add(gltf.scene)
         cat9 = gltf.scene
 
         mixerCat9 = new THREE.AnimationMixer(gltf.scene);
         const fly = mixerCat9.clipAction(gltf.animations[0])
         fly.play()
+    },
+)
+
+gltfLoader.load(
+    'models/cats/CAT_2.gltf',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialCat2
+        })
+        gltf.scene.position.set(0, 1.64, -10.57)
+        
+        script.scene.add(gltf.scene)
+        cat2 = gltf.scene
+
+        mixerCat2 = new THREE.AnimationMixer(gltf.scene);
+        const cat2Animation = mixerCat2.clipAction(gltf.animations[0])
+        cat2Animation.play()
+    },
+)
+
+gltfLoader.load(
+    'models/cats/CAT_1.gltf',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialCat1
+        })
+        gltf.scene.position.set(-0.36, 1.64, -10.53)
+        gltf.scene.rotation.y = 0.6
+        script.scene.add(gltf.scene)
+        cat1 = gltf.scene
+
+        mixerCat1 = new THREE.AnimationMixer(gltf.scene);
+        const cat1Animation = mixerCat1.clipAction(gltf.animations[0])
+        cat1Animation.play()
+    },
+)
+gltfLoader.load(
+    'models/cats/cat1_mush.gltf',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialMeowverse
+        })
+        gltf.scene.position.set(-.29, 1.82, -10.51)
+        
+        script.scene.add(gltf.scene)
+        cat1Mushroom = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/cats/CAT_3.gltf',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialCat3
+        })
+        gltf.scene.position.set(0.61, 1.64, -10.14)
+        gltf.scene.rotation.y = -0.25
+        script.scene.add(gltf.scene)
+        cat3 = gltf.scene
+
+        mixerCat3 = new THREE.AnimationMixer(gltf.scene);
+        const cat3Animation = mixerCat3.clipAction(gltf.animations[0])
+        cat3Animation.play()
+    },
+)
+
+gltfLoader.load(
+    'models/cats/CAT_4.gltf',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialCat4
+        })
+        gltf.scene.position.set(-1.16, 2.08, -10.4)
+
+        script.scene.add(gltf.scene)
+        cat4 = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/cats/CAT_5.gltf',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialCat5
+        })
+        gltf.scene.position.set(5.87, 1.14, -3.62)
+        gltf.scene.rotation.y = 0.4
+        script.scene.add(gltf.scene)
+        cat5 = gltf.scene
+
+        mixerCat5 = new THREE.AnimationMixer(gltf.scene);
+        const cat5Animation = mixerCat5.clipAction(gltf.animations[0])
+        cat5Animation.play()
+    },
+)
+
+gltfLoader.load(
+    'models/cats/CAT_6.gltf',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialCat6
+        })
+        gltf.scene.position.set(7.34, 1.35, -3.67)
+        // gltf.scene.rotation.y = 0.4
+        script.scene.add(gltf.scene)
+        cat6 = gltf.scene
+
+        mixerCat6 = new THREE.AnimationMixer(gltf.scene);
+        const cat6Animation = mixerCat6.clipAction(gltf.animations[0])
+        cat6Animation.play()
+    },
+)
+
+gltfLoader.load(
+    'models/cats/CAT_8.gltf',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialCat8
+        })
+        gltf.scene.position.set(-7.41, 1.12, -2.8)
+        script.scene.add(gltf.scene)
+        cat8 = gltf.scene
+
+        mixerCat8 = new THREE.AnimationMixer(gltf.scene);
+        const cat8Animation = mixerCat8.clipAction(gltf.animations[0])
+        cat8Animation.play()
+    },
+)
+
+gltfLoader.load(
+    'models/cats/cats_token.gltf',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = meelkIslandMaterial
+        })
+        console.log(gltf.scene)
+        gltf.scene.position.set(-7.35, 1.31, -2.71)
+        script.scene.add(gltf.scene)
+        cat8Token = gltf.scene
+    },
+)
+
+gltfLoader.load(
+    'models/cats/CAT_7.gltf',
+    (gltf) => {
+        gltf.scene.traverse((child) => {
+            child.material = backedMaterialCat7
+        })
+        console.log(gltf.scene)
+        gltf.scene.position.set(0.15, 0.3, -0.22)
+        script.scene.add(gltf.scene)
+        cat7 = gltf.scene
+
+        mixerCat7 = new THREE.AnimationMixer(gltf.scene);
+        const cat7Animation = mixerCat7.clipAction(gltf.animations[0])
+        cat7Animation.play()
     },
 )

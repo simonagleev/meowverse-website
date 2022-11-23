@@ -399,9 +399,9 @@ gui.add(models.logo.rotation, 'y').min(-20).max(20).step(0.01)
 gui.add(models.logo.rotation, 'z').min(-20).max(20).step(0.01)
 
 setTimeout(() => {
-    gui.add(models.cat9.position, 'x').min(-20).max(20).step(0.01)
-    gui.add(models.cat9.position, 'y').min(-20).max(20).step(0.01)
-    gui.add(models.cat9.position, 'z').min(-20).max(20).step(0.01)
+    gui.add(models.cat5.position, 'x').min(-20).max(20).step(0.01)
+    gui.add(models.cat5.position, 'y').min(-20).max(20).step(0.01)
+    gui.add(models.cat5.position, 'z').min(-20).max(20).step(0.01)
 }, 3000)
 
 
@@ -605,9 +605,15 @@ const tick = () => {
     //Clouds animation
     utils.animateClouds(elapsedTime)
 
-    //Cat9 animation
+    //CATS animation
     utils.catAnimation9(deltaTime, elapsedTime)
 
+    utils.catAnimation1and2(deltaTime)
+    utils.catAnimation3(deltaTime)
+    utils.catAnimation5(deltaTime)
+    utils.catAnimation6(deltaTime)
+    utils.catAnimation8(deltaTime)
+    utils.catAnimation7(deltaTime)
 
     // Lightning Strike
     // utils.animateLightningStrike(elapsedTime)

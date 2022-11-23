@@ -394,7 +394,7 @@ export const handleClick = (camera, controls, scene) => {
     let model = getModelByMeshName(hoveredObj)
 
     if (model.name === "twitter") {
-        window.open('https://twitter.com/DoliaCats_eth', '_blank');
+        window.open('https://twitter.com/DoliaCats', '_blank');
     }
 
     if (model.name === "discord") {
@@ -626,6 +626,47 @@ export const catAnimation9 = (deltaTime, elapsedTime) => {
         models.cat9.position.x = Math.cos(ghostAngle) * 4
         models.cat9.position.z = Math.sin(ghostAngle) * 4 - 3
         models.cat9.position.y = Math.cos(deltaTime * 3) + 3
+    }
+}
+
+export const catAnimation1and2 = (deltaTime) => {
+    
+    if (models.cat2) {
+        models.mixerCat2.update(deltaTime)
+    }
+
+    if (models.cat1) {
+        models.mixerCat1.update(deltaTime)
+    }
+}
+
+export const catAnimation3 = (deltaTime) => {
+    if (models.cat3) {
+        models.mixerCat3.update(deltaTime)
+    }
+}
+
+export const catAnimation5 = (deltaTime) => {
+    if (models.cat5) {
+        models.mixerCat5.update(deltaTime)
+    }
+}
+
+export const catAnimation6 = (deltaTime) => {
+    if (models.cat6) {
+        models.mixerCat6.update(deltaTime)
+    }
+}
+
+export const catAnimation8 = (deltaTime) => {
+    if (models.cat8) {
+        models.mixerCat8.update(deltaTime)
+    }
+}
+
+export const catAnimation7 = (deltaTime) => {
+    if (models.cat7) {
+        models.mixerCat7.update(deltaTime)
     }
 }
 
