@@ -315,17 +315,17 @@ effectComposer.addPass(outlinePass)
 /**
  * DEBUG
  */
-const gui = new dat.GUI()
-gui.close()
-setTimeout(() => {
-    gui.add(camera.position, 'x').min(-20).max(20).step(0.01)
-    gui.add(camera.position, 'y').min(-20).max(20).step(0.01)
-    gui.add(camera.position, 'z').min(-20).max(20).step(0.01)
+// const gui = new dat.GUI()
+// gui.close()
+// setTimeout(() => {
+//     gui.add(camera.position, 'x').min(-20).max(20).step(0.01)
+//     gui.add(camera.position, 'y').min(-20).max(20).step(0.01)
+//     gui.add(camera.position, 'z').min(-20).max(20).step(0.01)
 
-    gui.add(controls.target, 'x').min(-20).max(20).step(0.01)
-    gui.add(controls.target, 'y').min(-20).max(20).step(0.01)
-    gui.add(controls.target, 'z').min(-20).max(20).step(0.01)
-}, 3000)
+//     gui.add(controls.target, 'x').min(-20).max(20).step(0.01)
+//     gui.add(controls.target, 'y').min(-20).max(20).step(0.01)
+//     gui.add(controls.target, 'z').min(-20).max(20).step(0.01)
+// }, 3000)
 
 
 
