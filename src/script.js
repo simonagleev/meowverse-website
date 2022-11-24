@@ -62,6 +62,12 @@ loaders.loadingManager.onLoad = () => {
     // Костыль дял мобилки
     mouse.x = 0
     mouse.y = -0.99
+    
+    if (window.innerWidth > 800) {
+        gsap.to(camera.position, { duration: 4, delay: 0, y: 11, })
+    } else {
+        gsap.to(camera.position, { duration: 4, delay: 0, y: 13, })
+    }
 }
 
 
@@ -261,9 +267,12 @@ if (window.innerWidth < 800) {
 // Base camera
 const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 100)
 if (window.innerWidth > 800) {
-    camera.position.set(-0.2, 11, 6.15)
+    // camera.position.set(-0.2, 11, 6.15)
+    camera.position.set(-0.2, 35, 9.15)
 } else {
-    camera.position.set(-0.2, 13, 9.15)
+    // camera.position.set(-0.2, 13, 9.15)
+    camera.position.set(-0.2, 35, 9.15)
+
 }
 scene.add(camera)
 
@@ -276,7 +285,7 @@ if (window.innerWidth > 800) {
     controls.target.set(0, 2.8805, -2)
 }
 controls.enableDamping = true
-controls.maxDistance = 16
+controls.maxDistance = 35
 controls.minDistance = 2
 controls.maxPolarAngle = 1.4
 controls.minAzimuthAngle = - Math.PI / 4

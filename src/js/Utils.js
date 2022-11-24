@@ -658,8 +658,8 @@ export const catAnimation9 = (deltaTime, elapsedTime) => {
         const ghostAngle = elapsedTime / 10
 
         models.cat9.position.x = Math.cos(ghostAngle) * 4
-        models.cat9.position.z = Math.sin(ghostAngle) * 4 - 3
         models.cat9.position.y = Math.cos(deltaTime * 3) + 3
+        models.cat9.position.z = Math.sin(ghostAngle) * 4 - 5
     }
 }
 
