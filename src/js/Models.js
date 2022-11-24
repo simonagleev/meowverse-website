@@ -36,25 +36,25 @@ export const createAllTipCircles = () => {
     tipCircleBlog.position.set(1.05, .8, 2.2)
 
     tipCircleGenesis = tipCircle.clone()
-    tipCircleGenesis.position.x = genesisIslandGroup.children[0].children[0].position.x + 0.2
-    tipCircleGenesis.position.y = genesisIslandGroup.children[0].children[0].position.y + .6
-    tipCircleGenesis.position.z = genesisIslandGroup.children[0].children[0].position.z + .3
+    tipCircleGenesis.position.x = genesisCard1.position.x + 0.3
+    tipCircleGenesis.position.y = genesisCard1.position.y + 0.9
+    tipCircleGenesis.position.z = genesisCard1.position.z + 0.4
     tipCircleGenesis.name = 'tipCircleGenesis'
     tipCircleGenesis.children[0].name = 'tipCircleGenesis1'
     tipCircleGenesis.children[1].name = 'tipCircleGenesis2'
 
     tipCircleOG = tipCircle.clone()
-    tipCircleOG.position.x = OGIslandGroup.children[0].children[0].position.x + 0.1
-    tipCircleOG.position.y = OGIslandGroup.children[0].children[0].position.y + .5
-    tipCircleOG.position.z = OGIslandGroup.children[0].children[0].position.z + .3
+    tipCircleOG.position.x = OGIslandLand.children[0].position.x 
+    tipCircleOG.position.y = OGIslandLand.children[0].position.y + .6
+    tipCircleOG.position.z = OGIslandLand.children[0].position.z + .3
     tipCircleOG.name = 'tipCircleOG'
     tipCircleOG.children[0].name = 'tipCircleOG1'
     tipCircleOG.children[1].name = 'tipCircleOG2'
 
     tipCircleMeowrush = tipCircle.clone()
-    tipCircleMeowrush.position.x = meowrushIslandGroup.children[0].children[0].position.x 
-    tipCircleMeowrush.position.y = meowrushIslandGroup.children[0].children[0].position.y + 1
-    tipCircleMeowrush.position.z = meowrushIslandGroup.children[0].children[0].position.z + .7
+    tipCircleMeowrush.position.x = meowrushIslandGun.children[0].position.x + 1
+    tipCircleMeowrush.position.y = meowrushIslandGun.children[0].position.y + 1
+    tipCircleMeowrush.position.z = meowrushIslandGun.children[0].position.z + .9
     tipCircleMeowrush.name = 'tipCircleMeowrush'
     tipCircleMeowrush.children[0].name = 'tipCircleMeowrush1'
     tipCircleMeowrush.children[1].name = 'tipCircleMeowrush2'
@@ -63,7 +63,6 @@ export const createAllTipCircles = () => {
     genesisIslandGroup.add(tipCircleGenesis)
     OGIslandGroup.add(tipCircleOG)
     meowrushIslandGroup.add(tipCircleMeowrush)
-
 }
 
 
@@ -1278,7 +1277,7 @@ gltfLoader.load(
         })
         gltf.scene.scale.set(.4, .4, .4)
         cloudsGroup.add(gltf.scene)
-        
+
         cloud8 = gltf.scene
     },
 )
@@ -1303,7 +1302,7 @@ gltfLoader.load(
             child.material = backedMaterialClouds
         })
         gltf.scene.scale.set(.7, .7, .7)
-        gltf.scene.rotation.z = Math.PI /2.63
+        gltf.scene.rotation.z = Math.PI / 2.63
         cloudsGroup.add(gltf.scene)
         cloud10 = gltf.scene
     },
@@ -1333,7 +1332,7 @@ gltfLoader.load(
             child.material = backedMaterialCat2
         })
         gltf.scene.position.set(0, 1.64, -10.57)
-        
+
         script.scene.add(gltf.scene)
         cat2 = gltf.scene
 
@@ -1366,7 +1365,7 @@ gltfLoader.load(
             child.material = backedMaterialMeowverse
         })
         gltf.scene.position.set(-.29, 1.82, -10.51)
-        
+
         script.scene.add(gltf.scene)
         cat1Mushroom = gltf.scene
     },

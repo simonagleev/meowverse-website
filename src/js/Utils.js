@@ -242,13 +242,25 @@ export const onFingerClickFocus = (camera, controls, group) => {
         gsap.to(camera.position, { duration: 2, delay: 0, z: 4, })
 
     } else {
-        gsap.to(controls.target, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
-        gsap.to(controls.target, { duration: 2, delay: 0, y: group.children[0].children[0].position.y, })
-        gsap.to(controls.target, { duration: 2, delay: 0, z: group.children[0].children[0].position.z, })
+        // gsap.to(controls.target, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
+        // gsap.to(controls.target, { duration: 2, delay: 0, y: group.children[0].children[0].position.y, })
+        // gsap.to(controls.target, { duration: 2, delay: 0, z: group.children[0].children[0].position.z, })
 
-        gsap.to(camera.position, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
-        gsap.to(camera.position, { duration: 2, delay: 0, y: group.children[0].children[0].position.y + 8, })
-        gsap.to(camera.position, { duration: 2, delay: 0, z: group.children[0].children[0].position.z + 5, })
+        // gsap.to(camera.position, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
+        // gsap.to(camera.position, { duration: 2, delay: 0, y: group.children[0].children[0].position.y + 8, })
+        // gsap.to(camera.position, { duration: 2, delay: 0, z: group.children[0].children[0].position.z + 5, })
+
+        for (const child of group.children) {
+            if (child.name.includes('IslandLand')) {
+                gsap.to(controls.target, { duration: 2, delay: 0, x: child.children[0].position.x, })
+                gsap.to(controls.target, { duration: 2, delay: 0, y: child.children[0].position.y, })
+                gsap.to(controls.target, { duration: 2, delay: 0, z: child.children[0].position.z, })
+        
+                gsap.to(camera.position, { duration: 2, delay: 0, x: child.children[0].position.x, })
+                gsap.to(camera.position, { duration: 2, delay: 0, z: child.children[0].position.z + 7, })
+                gsap.to(camera.position, { duration: 2, delay: 0, y: child.children[0].position.y + 7, })
+            } 
+        }
     }
     
 }
