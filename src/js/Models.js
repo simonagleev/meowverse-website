@@ -1168,9 +1168,9 @@ gltfLoader.load(
 
 
 // Tip Circle 
-const ringGeometry = new THREE.RingGeometry(.1, .125, 12, 12)
-const ringTexture = new THREE.MeshBasicMaterial({ color: "#ec64f7", side: THREE.DoubleSide })
-const dotGeometry = new THREE.CircleGeometry(.075, 12)
+const ringGeometry = window.innerWidth > 800 ? new THREE.RingGeometry(.1, .125, 12, 12) : new THREE.RingGeometry(.3, .225, 12, 12)
+const ringTexture = new THREE.MeshBasicMaterial({ color: "#ffffff", side: THREE.DoubleSide })
+const dotGeometry = window.innerWidth > 800 ? new THREE.CircleGeometry(.075, 12) : new THREE.CircleGeometry(.175, 12)
 const dotTexture = new THREE.MeshBasicMaterial({ color: "#ffffff", side: THREE.DoubleSide })
 
 const tipCircleRing = new THREE.Mesh(
