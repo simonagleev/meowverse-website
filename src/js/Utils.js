@@ -182,13 +182,25 @@ const getParent = (obj) => {
 export function focusCamera(camera, controls) {
     if (groupIntersected && !focusedOnIsland) {
 
-        gsap.to(controls.target, { duration: 2, delay: 0, x: groupIntersected.children[0].children[0].position.x, })
-        gsap.to(controls.target, { duration: 2, delay: 0, y: groupIntersected.children[0].children[0].position.y, })
-        gsap.to(controls.target, { duration: 2, delay: 0, z: groupIntersected.children[0].children[0].position.z, })
-
-        gsap.to(camera.position, { duration: 2, delay: 0, x: groupIntersected.children[0].children[0].position.x, })
-        gsap.to(camera.position, { duration: 2, delay: 0, z: groupIntersected.children[0].children[0].position.z + 7, })
-        gsap.to(camera.position, { duration: 2, delay: 0, y: groupIntersected.children[0].children[0].position.y + 5, })
+        for (const child of groupIntersected.children) {
+            if (child.name.includes('IslandLand')) {
+                gsap.to(controls.target, { duration: 2, delay: 0, x: child.children[0].position.x, })
+                gsap.to(controls.target, { duration: 2, delay: 0, y: child.children[0].position.y, })
+                gsap.to(controls.target, { duration: 2, delay: 0, z: child.children[0].position.z, })
+        
+                gsap.to(camera.position, { duration: 2, delay: 0, x: child.children[0].position.x, })
+                gsap.to(camera.position, { duration: 2, delay: 0, z: child.children[0].position.z + 7, })
+                gsap.to(camera.position, { duration: 2, delay: 0, y: child.children[0].position.y + 5, })
+            } else if (child.name === 'menuIsland') {
+                gsap.to(controls.target, { duration: 2, delay: 0, x: child.children[0].position.x, })
+                gsap.to(controls.target, { duration: 2, delay: 0, y: child.children[0].position.y, })
+                gsap.to(controls.target, { duration: 2, delay: 0, z: child.children[0].position.z, })
+        
+                gsap.to(camera.position, { duration: 2, delay: 0, x: child.children[0].position.x, })
+                gsap.to(camera.position, { duration: 2, delay: 0, z: child.children[0].position.z + 7, })
+                gsap.to(camera.position, { duration: 2, delay: 0, y: child.children[0].position.y + 5, })
+            }
+        }
 
         focusedOnIsland = true
 
@@ -219,7 +231,7 @@ export const onFingerClickFocus = (camera, controls, group) => {
             gsap.to(camera.position, { duration: 2, delay: 0, y: 13, })
             gsap.to(camera.position, { duration: 2, delay: 0, z: 9.15, })
         }
-        console.log('IFFFF')
+
     } else if (group === models.genesisIslandGroup) {
         gsap.to(controls.target, { duration: 2, delay: 0, x: -6.2, })
         gsap.to(controls.target, { duration: 2, delay: 0, y: 0.25 , })
@@ -235,7 +247,7 @@ export const onFingerClickFocus = (camera, controls, group) => {
         gsap.to(controls.target, { duration: 2, delay: 0, z: group.children[0].children[0].position.z, })
 
         gsap.to(camera.position, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
-        gsap.to(camera.position, { duration: 2, delay: 0, y: group.children[0].children[0].position.y + 5, })
+        gsap.to(camera.position, { duration: 2, delay: 0, y: group.children[0].children[0].position.y + 8, })
         gsap.to(camera.position, { duration: 2, delay: 0, z: group.children[0].children[0].position.z + 5, })
     }
     
@@ -352,21 +364,6 @@ function getModelByMeshName(obj) {
             shortName = "partnersFinger"
         }
 
-        // if (obj.name === "TokenSign_3" || obj.name === "TokenSign_2" || obj.name === "TokenSign_1") {
-        //     object = models.bigIslandSign1
-        //     shortName = "tokenomilksSign"
-        // }
-
-        // if (obj.name === "Bolt_3" || obj.name === "Bolt_4" || obj.name === "Bolt_5") {
-        //     object = models.bigIslandSign2
-        //     shortName = "genesisSign"
-        // }
-
-        // if (obj.name === "OG_Sign_1" || obj.name === "OG_Sign_2" || obj.name === "OG_Sign_3") {
-        //     object = models.bigIslandSign3
-        //     shortName = "originalSign"
-        // }
-
         if (
             obj.name === "Genesis1002" ||
             obj.name === "Genesis1001" ||
@@ -377,7 +374,7 @@ function getModelByMeshName(obj) {
             obj.name === "Cylinder001" ||
             obj.name === "Cylinder001_1"
         ) {
-            object = models.genesisLand
+            object = models.genesisIslandGroup
             shortName = "genesisLand"
         }
 
@@ -507,11 +504,11 @@ export const handleClick = (camera, controls, scene) => {
     }
 
     if (model.name === "tipCircleGenesis") {
-        window.open('https://opensea.com/', '_blank');
+        window.open('https://opensea.io/collection/doliacatsgenesis', '_blank');
     }
 
     if (model.name === "tipCircleOG") {
-        window.open('https://doliacats.com/', '_blank');
+        window.open('https://original.doliacats.com/', '_blank');
     }
 
     if (model.name === "tipCircleMeowrush") {

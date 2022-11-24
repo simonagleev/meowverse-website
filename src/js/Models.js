@@ -73,6 +73,7 @@ menuGroup.name = 'menuIsland'
 // menuGroup.position.set(0, 0, 4)
 
 const menuMainPawGroup = new THREE.Group()
+menuMainPawGroup.name = 'menuIsland'
 menuMainPawGroup.add(tipCircle)
 menuGroup.add(menuMainPawGroup)
 
@@ -97,7 +98,7 @@ export let discordPlate = null;
 export let blog = null;
 export let blogPlate = null;
 
-export let pawBig = null;
+export let menuIslandLand = null;
 export let menuPaw1 = null;
 export let menuPaw2 = null;
 
@@ -141,7 +142,7 @@ textures.genesisIslandGen3Backed.flipY = false
 const genesisBoatMaterial = new THREE.MeshBasicMaterial({ map: textures.genesisIslandBoatBacked })
 textures.genesisIslandBoatBacked.flipY = false
 
-export let genesisLand = null;
+export let genesisIslandLand = null;
 export let genesisBoat = null;
 export let genesisCard1 = null;
 export let genesisCard2 = null;
@@ -156,7 +157,7 @@ const meelkIslandMaterial = new THREE.MeshBasicMaterial({ map: textures.meelkIsl
 textures.meelkIslandBacked.flipY = false
 
 
-export let meelkLand = null;
+export let meelkIslandLand = null;
 export let meelkFactoryX1 = null;
 export let meelkFactoryX2 = null;
 export let meelkToken1 = null;
@@ -185,8 +186,11 @@ textures.OG2IslandBacked.flipY = false
 const OG3IslandMaterial = new THREE.MeshBasicMaterial({ map: textures.OG3IslandBacked })
 textures.OG3IslandBacked.flipY = false
 
+let OGIslandLand = null
+
 // Meowrush island
 export const meowrushIslandGroup = new THREE.Group()
+meowrushIslandGroup.name = 'meowrushIslandGroup'
 const backedMaterialMeowrush = new THREE.MeshBasicMaterial({ map: textures.meowrushIslandBaked })
 textures.meowrushIslandBaked.flipY = false
 
@@ -204,6 +208,8 @@ export let meowrushIslandWheel = null;
 
 // MeowVerse Island
 export const meowverseIslandGroup = new THREE.Group()
+meowverseIslandGroup.name = 'meowverseIslandGroup'
+console.log(meowverseIslandGroup.position)
 const backedMaterialMeowverse = new THREE.MeshBasicMaterial({ map: textures.meowverseIslandBaked })
 textures.meowverseIslandBaked.flipY = false
 
@@ -224,6 +230,8 @@ export let meowverseIslandTree7 = null;
 export const partnersIslandGroup = new THREE.Group()
 const backedMaterialPartners = new THREE.MeshBasicMaterial({ map: textures.partnersIslandBaked })
 textures.partnersIslandBaked.flipY = false
+
+let partnersIslandLand = null;
 
 //Roadmap island
 export const roadmapGroup = new THREE.Group()
@@ -334,8 +342,8 @@ gltfLoader.load(
         })
         menuMainPawGroup.add(gltf.scene)
 
-        pawBig = gltf.scene.children[0]
-        pawBig.name = 'pawBig'
+        menuIslandLand = gltf.scene.children[0]
+        menuIslandLand.name = 'menuIslandLand'
     },
 )
 
@@ -612,7 +620,9 @@ gltfLoader.load(
             child.material = genesisIslandMaterial
         })
         genesisIslandGroup.add(gltf.scene)
-        genesisLand = gltf.scene
+        genesisIslandLand = gltf.scene
+        genesisIslandLand.name = 'genesisIslandLand'
+
     },
 )
 
@@ -677,7 +687,8 @@ gltfLoader.load(
             child.material = meelkIslandMaterial
         })
         meelkIslandGroup.add(gltf.scene)
-        meelkLand = gltf.scene
+        meelkIslandLand = gltf.scene
+        meelkIslandLand.name = 'meelkIslandLand'
     },
 )
 
@@ -802,7 +813,7 @@ gltfLoader.load(
     },
 )
 
-//OG island
+// OG island
 gltfLoader.load(
     'models/OG-island/OG_island.glb',
     (gltf) => {
@@ -810,7 +821,8 @@ gltfLoader.load(
             child.material = OGIslandMaterial
         })
         OGIslandGroup.add(gltf.scene)
-
+        OGIslandLand = gltf.scene
+        OGIslandLand.name = 'OGIslandLand'
     },
 )
 
@@ -856,6 +868,8 @@ gltfLoader.load(
             child.material = backedMaterialMeowrush
         })
         meowrushIslandGroup.add(gltf.scene)
+        meowrushIslandLand = gltf.scene
+        meowrushIslandLand.name = 'meowrushIslandLand'
     },
 )
 
@@ -1051,7 +1065,8 @@ gltfLoader.load(
             child.material = backedMaterialPartners
         })
         partnersIslandGroup.add(gltf.scene)
-
+        partnersIslandLand = gltf.scene
+        partnersIslandLand.name = 'partnersIslandLand'
     },
 )
 

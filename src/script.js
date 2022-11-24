@@ -456,7 +456,7 @@ const tick = () => {
             models.blog,
             models.blogPlate,
 
-            models.pawBig,
+            models.menuIslandLand,
             models.menuPaw1,
             models.menuPaw2,
 
