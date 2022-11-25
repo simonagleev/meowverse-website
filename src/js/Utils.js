@@ -458,18 +458,6 @@ export const handleClick = (camera, controls, scene) => {
         onFingerClickFocus(camera, controls, models.partnersIslandGroup)
     }
 
-    if (model.name === "tokenomilksSign") {
-        window.open('https://doliacats.com#tokenomilks/', '_blank');
-    }
-
-    if (model.name === "genesisSign") {
-        window.open('http://genesis.doliacats.com/', '_blank');
-    }
-
-    if (model.name === "originalSign") {
-        window.open('https://doliacats.com/', '_blank');
-    }
-
     if(model.name === "red_button") {
         let redBtn = model.model[1]
         if(btnFlag) {
@@ -520,7 +508,7 @@ export const handleClick = (camera, controls, scene) => {
     }
 
     if (model.name === "tipCircleOG") {
-        window.open('https://original.doliacats.com/', '_blank');
+        window.open('https://original.doliacats.xyz/', '_blank');
     }
 
     if (model.name === "tipCircleMeowrush") {
