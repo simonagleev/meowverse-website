@@ -64,9 +64,9 @@ loaders.loadingManager.onLoad = () => {
     mouse.y = -0.99
     
     if (window.innerWidth > 800) {
-        gsap.to(camera.position, { duration: 4, delay: 0, y: 11, })
+        gsap.to(camera.position, { duration: 3, delay: 0, y: 11, })
     } else {
-        gsap.to(camera.position, { duration: 4, delay: 0, y: 13, })
+        gsap.to(camera.position, { duration: 3, delay: 0, y: 13, })
     }
 }
 

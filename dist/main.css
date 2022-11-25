@@ -12,6 +12,12 @@
 html,
 body {
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
 }
 
 .webgl {
@@ -135,10 +141,9 @@ body {
 }
 
 .roadmap-container {
-    height: 100vh;
-    width: 33%;
-    position: absolute;
-    right: 20px;
+    height: 70vh;
+    width: 100%;
+    /* position: absolute; */
     z-index: 1000000;
     display: none;
     font-family: '.SF Compact', "Arial", sans-serif;
@@ -148,14 +153,18 @@ body {
     gap: 10px;
 }
 
+
+
 .roadmap-item {
     width: 100%;
     max-height: 30vh;
     scale: 0;
+    text-align: right;
+    padding-right: 5%;
 }
 
 .roadmap-picture {
-    width: 100%;
+    width: 30%;
     border-radius: 20px;
     max-width: 525px;
 }
@@ -164,13 +173,25 @@ body {
     .roadmap-container {
         height: 90vh;
         width: 90%;
-        position: absolute;
         z-index: 1000000;
         display: none;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 10px;
+    }
+
+    .roadmap-picture {
+        width: 100%;
+        border-radius: 20px;
+        max-width: 400px;
+    }
+
+    .roadmap-item {
+        width: 100%;
+        max-height: 30vh;
+        scale: 0;
+        text-align: center;
     }
 
     .loader-pic {
@@ -181,8 +202,7 @@ body {
 @media (min-width: 541px) and (max-width: 815px) {
     .roadmap-container {
         height: 90vh;
-        width: 60%;
-        position: absolute;
+        width: 90%;
         z-index: 1000000;
         display: none;
         flex-direction: column;
@@ -190,19 +210,44 @@ body {
         justify-content: center;
         gap: 10px;
     }
+
+    .roadmap-picture {
+        width: 70%;
+        border-radius: 20px;
+        max-width: 435px;
+    }
+
+    .roadmap-item {
+        width: 100%;
+        max-height: 30vh;
+        scale: 0;
+        text-align: center;
+    }
 }
 
 @media (min-width: 815px) and (max-width: 1024px) {
     .roadmap-container {
-        height: 100vh;
-        width: 40%;
-        position: absolute;
+        height: 90vh;
+        width: 90%;
         z-index: 1000000;
         display: none;
         flex-direction: column;
-        align-items: center;
+        align-items: right;
         justify-content: center;
         gap: 10px;
+    }
+
+    .roadmap-picture {
+        width: 50%;
+        border-radius: 20px;
+        max-width: 433px;
+    }
+
+    .roadmap-item {
+        width: 100%;
+        max-height: 30vh;
+        scale: 0;
+        text-align: center;
     }
 }
 
