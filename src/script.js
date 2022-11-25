@@ -234,23 +234,15 @@ const getParent = (obj) => {
 //Events
 if (window.innerWidth < 800) {
     window.addEventListener('touchstart', (event) => {
-        console.log('touch start')
-        console.log(event)
-
-        // event.preventDefault()
         mouse.x = +(event.targetTouches[0].pageX / sizes.width) * 2 + -1
         mouse.y = -(event.targetTouches[0].pageY / sizes.height) * 2 + 1
     })
     window.addEventListener('touchmove', (event) => {
-        console.log('touch move')
-
         event.preventDefault()
         mouse.x = +(event.targetTouches[0].pageX / sizes.width) * 2 + -1
         mouse.y = -(event.targetTouches[0].pageY / sizes.height) * 2 + 1
     })
     window.addEventListener('touchend', (event) => {
-        console.log('touch end')
-
         utils.handleClick(camera, controls, scene)
     })
 } else {

@@ -208,7 +208,7 @@ export let meowrushIslandWheel = null;
 // MeowVerse Island
 export const meowverseIslandGroup = new THREE.Group()
 meowverseIslandGroup.name = 'meowverseIslandGroup'
-console.log(meowverseIslandGroup.position)
+
 const backedMaterialMeowverse = new THREE.MeshBasicMaterial({ map: textures.meowverseIslandBaked })
 textures.meowverseIslandBaked.flipY = false
 

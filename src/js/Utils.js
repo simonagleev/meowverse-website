@@ -57,7 +57,7 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
         
         $('html,body').css('cursor', 'pointer'); // Меняет курсор
                 
-        console.log(intersects[0].object.name)
+        // console.log(intersects[0].object.name)
 
         let obj = intersects[0].object
 
