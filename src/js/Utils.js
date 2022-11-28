@@ -180,7 +180,7 @@ const getParent = (obj) => {
 
 
 export function focusCamera(camera, controls) {
-    if (groupIntersected && !focusedOnIsland) {
+    if (groupIntersected) {
 
         for (const child of groupIntersected.children) {
             if (child.name.includes('IslandLand')) {
