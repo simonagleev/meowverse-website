@@ -21,7 +21,6 @@ const myGroups = [
 let hoveredObj = null
 let focusedOnIsland = false
 
-
 // strike flag
 let strikeCreated = false
 export let strike = null
@@ -679,6 +678,38 @@ export const catAnimation6 = (deltaTime) => {
         models.mixerCat6.update(deltaTime)
     }
 }
+
+
+export const goFullscreen = (elem) => {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+      elem.msRequestFullscreen();
+    }
+}
+
+export const toggleFullscreen = (elem) => {  
+    if (!document.fullscreenElement) {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen().catch((err) => {
+                console.log(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+              })
+          } else if (elem.webkitRequestFullscreen) { /* Safari */
+            elem.webkitRequestFullscreen().catch((err) => {
+                console.log(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+              })
+          } else if (elem.msRequestFullscreen) { /* IE11 */
+            elem.msRequestFullscreen().catch((err) => {
+                console.log(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+              })
+          }
+    } else {
+      document.exitFullscreen();
+    }
+  }
+
 
 
 // function createLightningStrike(obj,scene) {

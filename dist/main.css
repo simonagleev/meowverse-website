@@ -33,9 +33,6 @@ body {
     position: absolute;
     left: 10px;
     top: 10px;
-    /* background-color: white;
-    border-radius: 50%;
-    cursor: pointer; */
 }
 
 .menu-text {
@@ -169,7 +166,7 @@ body {
     max-width: 525px;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 540px) and (min-height: 600px) {
     .roadmap-container {
         height: 90vh;
         width: 90%;
@@ -199,7 +196,7 @@ body {
     }
 }
 
-@media (min-width: 541px) and (max-width: 815px) {
+@media (min-width: 541px) and (max-width: 815px) and (min-height: 600px) {
     .roadmap-container {
         height: 90vh;
         width: 90%;
@@ -225,7 +222,7 @@ body {
     }
 }
 
-@media (min-width: 815px) and (max-width: 1024px) {
+@media (min-width: 815px) and (max-width: 1024px) and (min-height: 600px) {
     .roadmap-container {
         height: 90vh;
         width: 90%;
@@ -248,6 +245,126 @@ body {
         max-height: 30vh;
         scale: 0;
         text-align: center;
+    }
+}
+
+@media (max-height: 500px) and (min-height: 200px) {
+    .roadmap-container {
+        height: 90vh;
+        width: 95%;
+        z-index: 1000000;
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .roadmap-picture {
+        width: 100%;
+        border-radius: 20px;
+        max-width: 400px;
+    }
+
+    .roadmap-item {
+        width: 30%;
+        max-height: 90vh;
+        scale: 0;
+        text-align: center;
+        padding-right: 0px;
+    }
+
+    .loader-pic {
+        max-width: 80px;
+    }
+}
+
+
+.fullscreen-prompt-container {
+    width: 25%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000000;
+    background-color: #15E2FF;
+    border-radius: 50px;
+    height: 20vh;
+}
+
+.prompt-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.prompt-text {
+    margin-bottom: 5%;
+    font-size: 1.2em;
+    color: #0d0052;
+    font-weight: bold;
+    font-family: '.SF Compact', "Arial", sans-serif;
+    padding: 0 10px;
+}
+
+.yes {
+    padding: 12px 5px;
+    margin-right: 10px;
+    border-radius: 20px;
+    width: 30%;
+    font-family: '.SF Compact', "Arial", sans-serif;
+    border: 1px solid #000;
+    background-color: #0d0052;
+    color: antiquewhite;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+.no {
+    padding: 12px 5px;
+    margin-right: 10px;
+    border-radius: 20px;
+    width: 30%;
+    font-family: '.SF Compact', "Arial", sans-serif;
+    border: 1px solid #000;
+    background-color: #0d0052;
+    color: antiquewhite;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media (max-width: 540px) {
+    .fullscreen-prompt-container {
+        width: 90%;
+        height: 30vh;
+    }
+
+    .prompt-text {
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 541px) and (max-width: 690px) {
+    .fullscreen-prompt-container {
+        width: 70%;
+        height: 50vh;
+    }
+
+    .prompt-text {
+        font-size: 1.2em;
+    }
+}
+
+@media (min-width: 691px) and (max-width: 1080px) {
+    .fullscreen-prompt-container {
+        width: 50%;
+        height: 50vh;
+    }
+
+    .prompt-text {
+        font-size: 1.2em;
     }
 }
 

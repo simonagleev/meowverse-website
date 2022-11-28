@@ -46,6 +46,7 @@ export const scene = new THREE.Scene()
  * Preloader 
  */
 
+
 const progressBarontainer = document.querySelector('.progress-bar-container')
 
 loaders.loadingManager.onProgress = (url, loaded, total) => {
@@ -62,12 +63,13 @@ loaders.loadingManager.onLoad = () => {
     // Костыль дял мобилки
     mouse.x = 0
     mouse.y = -0.99
-    
+
     if (window.innerWidth > 800) {
         gsap.to(camera.position, { duration: 3, delay: 0, y: 11, })
     } else {
         gsap.to(camera.position, { duration: 3, delay: 0, y: 13, })
     }
+
 }
 
 
@@ -185,6 +187,43 @@ window.addEventListener('resize', () => {
     effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
+/**
+ * Landscape mode
+ */
+window.addEventListener("orientationchange", function (event) {
+    let orientation = (screen.orientation || {}).type || screen.mozOrientation || screen.msOrientation;
+    const body = document.querySelector('body')
+    let prompt = document.querySelector('.fullscreen-prompt-container');
+    const yes = document.querySelector('.yes')
+    const no = document.querySelector('.no')
+
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+        prompt.style.display = 'none'
+    } else if (!document.fullscreenElement && ["landscape-primary", "landscape-secondary"].indexOf(orientation) != -1){
+        prompt.style.display = 'flex'
+
+        yes.addEventListener('click', () => {
+            console.log('YESSSS')
+            utils.toggleFullscreen(body)
+            prompt.style.display = 'none'
+        })
+        no.addEventListener('click', () => {
+            prompt.style.display = 'none'
+        })
+    } else {
+        prompt.style.display = 'none'
+    }
+
+    // if (["landscape-primary", "landscape-secondary"].indexOf(orientation) != -1) {
+    //     // becomeFullscreen();
+    //     utils.toggleFullscreen(canvas)
+    //     console.log("to landscape");
+    // }
+    // else if (orientation === undefined) {
+    //     console.log("The orientation API isn't supported in this browser :(");
+    // }
+});
 
 
 /**
