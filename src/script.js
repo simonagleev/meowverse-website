@@ -318,7 +318,7 @@ controls.maxAzimuthAngle = Math.PI / 4
  * Renderer
  */
 export const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+    canvas: canvas,
 })
 renderer.shadowMap.enabled = true
 renderer.shadowMap.type = THREE.PCFSoftShadowMap
