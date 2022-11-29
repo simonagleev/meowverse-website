@@ -69,7 +69,7 @@ loaders.loadingManager.onLoad = () => {
     } else {
         gsap.to(camera.position, { duration: 3, delay: 0, y: 13, })
     }
-
+  
 }
 
 
@@ -141,14 +141,6 @@ const fog = new THREE.Fog(0x8C97F4, 1, 50)
  * Lights
  */
 scene.add(light.ambientLight)
-scene.add(light.directionalLight)
-
-scene.add(light.pointLightBigIsland)
-
-scene.add(light.pointLightmenuIsland)
-
-scene.add(light.spotlight)
-scene.add(light.spotlight.target)
 
 /**
  * Raycaster
@@ -325,13 +317,15 @@ controls.maxAzimuthAngle = Math.PI / 4
 /**
  * Renderer
  */
-const renderer = new THREE.WebGLRenderer({
+export const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.shadowMap.enabled = true
 renderer.shadowMap.type = THREE.PCFSoftShadowMap
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+
 
 /**
  * Post-processing & outline
@@ -368,7 +362,23 @@ effectComposer.addPass(outlinePass)
 // }, 3000)
 
 
+/**
+ * TEST TEXTURES .basis + KTX2
+ */
 
+// export const roadmapMaterial = new THREE.MeshBasicMaterial();
+
+// loaders.ktx2Loader.setTranscoderPath('./node_modules/three/examples/js/libs/basis');
+// loaders.ktx2Loader.detectSupport(renderer);
+
+// loaders.ktx2Loader.load('models/Roadmap-island/roadmap_island.ktx2', function (texture) {
+//     // let material = new THREE.MeshStandardMaterial({ map: texture });
+//     roadmapMaterial.map = texture
+// }, function () {
+//     console.log('onProgress');
+// }, function (e) {
+//     console.error(e);
+// });
 
 
 

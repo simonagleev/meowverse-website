@@ -235,6 +235,8 @@ let partnersIslandLand = null;
 //Roadmap island
 export const roadmapGroup = new THREE.Group()
 
+// let roadmapMaterial = script.roadmapMaterial
+
 const backedMaterialRoadmap = new THREE.MeshBasicMaterial({ map: textures.backedTextureRoadmap })
 textures.backedTextureRoadmap.flipY = false
 
@@ -1075,6 +1077,7 @@ gltfLoader.load(
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = backedMaterialRoadmap
+            // child.material = roadmapMaterial
         })
         roadmapGroup.add(gltf.scene)
         roadmapIslandLand = gltf.scene
