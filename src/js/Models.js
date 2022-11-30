@@ -3,7 +3,6 @@ import * as textures from './Textures.js'
 import * as loaders from './Loaders.js'
 import * as script from '../script.js'
 
-
 const dracoLoader = loaders.dracoLoader
 dracoLoader.setDecoderPath('/draco/')
 
@@ -69,7 +68,6 @@ export const createAllTipCircles = () => {
 //menu island
 export const menuGroup = new THREE.Group()
 menuGroup.name = 'menuIsland'
-// menuGroup.position.set(0, 0, 4)
 
 const menuMainPawGroup = new THREE.Group()
 menuMainPawGroup.name = 'menuIsland'
@@ -119,7 +117,6 @@ export let roadmapPaw2 = null;
 
 export let partnersFinger = null;
 export let partnersFingerSign = null;
-
 
 
 // GENESIS Islnad
@@ -187,6 +184,7 @@ textures.OG3IslandBacked.flipY = false
 
 let OGIslandLand = null
 
+
 // Meowrush island
 export const meowrushIslandGroup = new THREE.Group()
 meowrushIslandGroup.name = 'meowrushIslandGroup'
@@ -204,6 +202,7 @@ export let meowrushIslandGun = null;
 export let meowrushIslandKart = null;
 export let meowrushIslandMushroom = null;
 export let meowrushIslandWheel = null;
+
 
 // MeowVerse Island
 export const meowverseIslandGroup = new THREE.Group()
@@ -231,6 +230,7 @@ const backedMaterialPartners = new THREE.MeshBasicMaterial({ map: textures.partn
 textures.partnersIslandBaked.flipY = false
 
 let partnersIslandLand = null;
+
 
 //Roadmap island
 export const roadmapGroup = new THREE.Group()
@@ -285,6 +285,7 @@ export const logo = new THREE.Mesh(
 logo.position.set(0, 0, -7)
 logo.rotation.x = -Math.PI / 2
 logo.rotation.z = -0.05
+
 
 // CATS
 const backedMaterialCat9 = new THREE.MeshBasicMaterial({ map: textures.cat9Baked })
@@ -515,7 +516,6 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
         gamesMeowverseFingerMushroom = gltf.scene
         gamesMeowverseFingerMushroom.name = 'gamesMeowverseFingerMushroom'
-
     },
 )
 
@@ -528,7 +528,6 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
         gamesMeowverseFingerSign = gltf.scene
         gamesMeowverseFingerSign.name = 'gamesMeowverseFingerSign'
-
     },
 )
 
@@ -543,7 +542,6 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
         roadmapFinger = gltf.scene.children[0]
         roadmapFinger.name = 'roadmapFinger'
-
     },
 )
 
@@ -568,7 +566,6 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
         roadmapPaw1 = gltf.scene.children[0]
         roadmapPaw1.name = 'roadmapPaw1'
-
     },
 )
 
@@ -583,6 +580,7 @@ gltfLoader.load(
         roadmapPaw2.name = 'roadmapPaw2'
     },
 )
+
 
 // Partners Finger
 gltfLoader.load(
@@ -613,7 +611,6 @@ gltfLoader.load(
 
 
 // GENESIS Island
-
 gltfLoader.load(
     'models/GEN-island/GEN_island.glb',
     (gltf) => {
@@ -623,7 +620,6 @@ gltfLoader.load(
         genesisIslandGroup.add(gltf.scene)
         genesisIslandLand = gltf.scene
         genesisIslandLand.name = 'genesisIslandLand'
-
     },
 )
 
@@ -633,10 +629,8 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = genesisGen1Material
         })
-
         genesisIslandGroup.add(gltf.scene)
         genesisCard1 = gltf.scene.children[0]
-
     },
 )
 
@@ -646,10 +640,8 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = genesisGen2Material
         })
-
         genesisIslandGroup.add(gltf.scene)
         genesisCard2 = gltf.scene.children[0]
-
     },
 )
 
@@ -659,10 +651,8 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = genesisGen3Material
         })
-
         genesisIslandGroup.add(gltf.scene)
         genesisCard3 = gltf.scene.children[0]
-
     },
 )
 
@@ -672,15 +662,13 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = genesisBoatMaterial
         })
-
         genesisIslandGroup.add(gltf.scene)
         genesisBoat = gltf.scene.children[0]
-
     },
 )
 
-// MEELK Island
 
+// MEELK Island
 gltfLoader.load(
     'models/Meelk-island/meelk_island.glb',
     (gltf) => {
@@ -814,6 +802,7 @@ gltfLoader.load(
     },
 )
 
+
 // OG island
 gltfLoader.load(
     'models/OG-island/OG_island.glb',
@@ -860,8 +849,8 @@ gltfLoader.load(
     },
 )
 
-// Meowrush island
 
+// Meowrush island
 gltfLoader.load(
     'models/meowrush-island/meowrush_island.glb',
     (gltf) => {
@@ -873,7 +862,6 @@ gltfLoader.load(
         meowrushIslandLand.name = 'meowrushIslandLand'
     },
 )
-
 
 gltfLoader.load(
     'models/meowrush-island/meowrush_gun.glb',
@@ -1070,6 +1058,7 @@ gltfLoader.load(
         partnersIslandLand.name = 'partnersIslandLand'
     },
 )
+
 
 //Roadmap island 
 gltfLoader.load(
@@ -1310,6 +1299,7 @@ gltfLoader.load(
         cloud10 = gltf.scene
     },
 )
+
 
 // CATS
 gltfLoader.load(

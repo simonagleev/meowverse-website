@@ -1,7 +1,6 @@
 import * as models from './Models.js';
 import gsap from 'gsap';
-import * as THREE from 'three'
-import { LightningStrike } from 'three/examples/jsm/geometries/LightningStrike.js'
+// import { LightningStrike } from 'three/examples/jsm/geometries/LightningStrike.js'
 import $ from "jquery";
 
 let groupIntersected = null;
@@ -32,19 +31,6 @@ let btnFlag = true
 const roadmapDiv = document.querySelector('.roadmap-container')
 const roadmapPicturesArray = document.querySelectorAll('.roadmap-item')
 
-
-// export const createToken = (x, y, z, group) => {
-//     if (models.bigIslandToken) {
-
-//         let coin = models.bigIslandToken.clone()
-//         coin.position.x = x
-//         coin.position.y = y
-//         coin.position.z = z
-//         group.add(coin)
-//     } else {
-//     }
-// }
-
 export function animateIsland(obj, elapsedTime) {
 
     groupIntersected.position.y = Math.sin(elapsedTime * 2) * 0.1
@@ -63,8 +49,6 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
         hoveredObj = obj
 
         getParent(obj)
-
-        // animateIsland(obj, elapsedTime)
 
         outlineObj(obj, outlinePass)
 
@@ -89,7 +73,7 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
         }
 
     } else {
-        $('html,body').css('cursor', 'default'); //меняе курсор назад
+        $('html,body').css('cursor', 'default'); //меняет курсор назад
         hoveredObj = null
         groupIntersected = null
         outlinePass.selectedObjects = []
@@ -241,14 +225,6 @@ export const onFingerClickFocus = (camera, controls, group) => {
         gsap.to(camera.position, { duration: 2, delay: 0, z: 4, })
 
     } else {
-        // gsap.to(controls.target, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
-        // gsap.to(controls.target, { duration: 2, delay: 0, y: group.children[0].children[0].position.y, })
-        // gsap.to(controls.target, { duration: 2, delay: 0, z: group.children[0].children[0].position.z, })
-
-        // gsap.to(camera.position, { duration: 2, delay: 0, x: group.children[0].children[0].position.x, })
-        // gsap.to(camera.position, { duration: 2, delay: 0, y: group.children[0].children[0].position.y + 8, })
-        // gsap.to(camera.position, { duration: 2, delay: 0, z: group.children[0].children[0].position.z + 5, })
-
         for (const child of group.children) {
             if (child.name.includes('IslandLand')) {
                 gsap.to(controls.target, { duration: 2, delay: 0, x: child.children[0].position.x, })

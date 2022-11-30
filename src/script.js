@@ -4,8 +4,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
 import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass.js'
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js'
-import { LightningStrike } from 'three/examples/jsm/geometries/LightningStrike.js'
+// import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js'
+// import { LightningStrike } from 'three/examples/jsm/geometries/LightningStrike.js'
 import * as dat from 'lil-gui'
 import { Vector3 } from 'three'
 import * as models from './js/Models.js'
@@ -19,7 +19,6 @@ import './app.js'
 /**
  * HTML
  */
-
 const closeBtn = document.querySelector('.m-experienceHeader__cta')
 closeBtn.addEventListener('click', (event) => {
     event.preventDefault()
@@ -31,10 +30,10 @@ closeBtn.addEventListener('click', (event) => {
     mouse.y = -0.99
 })
 
+
 /**
  * Base
  */
-
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -42,10 +41,10 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 export const scene = new THREE.Scene()
 
+
 /**
  * Preloader 
  */
-
 
 const progressBarontainer = document.querySelector('.progress-bar-container')
 
@@ -69,7 +68,6 @@ loaders.loadingManager.onLoad = () => {
     } else {
         gsap.to(camera.position, { duration: 3, delay: 0, y: 13, })
     }
-  
 }
 
 
@@ -104,16 +102,13 @@ scene.add(models.roadmapGroup)
 // CLOUDS
 scene.add(models.cloudsGroup)
 
-// LOgo
+// LOGO
 scene.add(models.logo)
 
-// Tip circle
-// scene.add(models.tipCircle)
 
 /**
  * SKYBOX
  */
-
 scene.background = new THREE.CubeTextureLoader()
     .load([
         '/space/px.png',
@@ -130,12 +125,6 @@ scene.background = new THREE.CubeTextureLoader()
  */
 scene.add(particles.particles)
 
-/**
- * FOG
- */
-
-const fog = new THREE.Fog(0x8C97F4, 1, 50)
-// scene.fog = fog
 
 /**
  * Lights
@@ -179,6 +168,7 @@ window.addEventListener('resize', () => {
     effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
+
 /**
  * Landscape mode
  */
@@ -206,15 +196,6 @@ window.addEventListener("orientationchange", function (event) {
     } else {
         prompt.style.display = 'none'
     }
-
-    // if (["landscape-primary", "landscape-secondary"].indexOf(orientation) != -1) {
-    //     // becomeFullscreen();
-    //     utils.toggleFullscreen(canvas)
-    //     console.log("to landscape");
-    // }
-    // else if (orientation === undefined) {
-    //     console.log("The orientation API isn't supported in this browser :(");
-    // }
 });
 
 
@@ -227,11 +208,7 @@ window.addEventListener('mousemove', (event) => {
     if (window.innerWidth > 800) {
         mouse.x = event.clientX / sizes.width * 2 - 1
         mouse.y = - (event.clientY / sizes.height) * 2 + 1
-    } else {
-        // mouse.x = 0
-        // mouse.y = 0
-    }
-
+    } 
 })
 
 
@@ -241,8 +218,6 @@ window.addEventListener('mousemove', (event) => {
 
 // Находит родителей вплоть до Scene
 let groupIntersected = null;
-
-let parentBeforScene = null;
 
 const getParent = (obj) => {
 
@@ -290,12 +265,9 @@ if (window.innerWidth < 800) {
 // Base camera
 const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 100)
 if (window.innerWidth > 800) {
-    // camera.position.set(-0.2, 11, 6.15)
     camera.position.set(-0.2, 35, 9.15)
 } else {
-    // camera.position.set(-0.2, 13, 9.15)
     camera.position.set(-0.2, 35, 9.15)
-
 }
 scene.add(camera)
 
@@ -303,7 +275,6 @@ scene.add(camera)
 const controls = new OrbitControls(camera, canvas)
 if (window.innerWidth > 800) {
     controls.target.set(0, 0.75, -3.18)
-
 } else {
     controls.target.set(0, 2.8805, -2)
 }
@@ -313,6 +284,7 @@ controls.minDistance = 2
 controls.maxPolarAngle = 1.4
 controls.minAzimuthAngle = - Math.PI / 4
 controls.maxAzimuthAngle = Math.PI / 4
+
 
 /**
  * Renderer
@@ -324,7 +296,6 @@ renderer.shadowMap.enabled = true
 renderer.shadowMap.type = THREE.PCFSoftShadowMap
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-
 
 
 /**
@@ -342,8 +313,6 @@ outlinePass.visibleEdgeColor = new THREE.Color("#ffffff")
 outlinePass.hiddenEdgeColor = new THREE.Color("#190a05")
 outlinePass.usePatternTexture = false
 effectComposer.addPass(outlinePass)
-
-
 
 
 /**
@@ -473,7 +442,7 @@ effectComposer.addPass(outlinePass)
 const clock = new THREE.Clock()
 let previousTime = 0
 
-var intersects = []
+let intersects = []
 
 /**
  * Raycaster counter
@@ -481,7 +450,6 @@ var intersects = []
 var raycasterCount = 0
 
 const tick = () => {
-
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
@@ -563,13 +531,9 @@ const tick = () => {
     utils.catAnimation5(deltaTime)
     utils.catAnimation6(deltaTime)
 
-
     // Lightning Strike
     // utils.animateLightningStrike(elapsedTime)
     // lightningStrike.update(elapsedTime)
-
-    // Update camera position 
-
 
     // Update controls
     controls.update()

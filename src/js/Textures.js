@@ -1,6 +1,5 @@
-import * as THREE from 'three'
 import * as loaders from './Loaders.js'
-import * as script from '../script.js'
+// import * as script from '../script.js'
 
 // ROADMAP island
 export const backedTextureRoadmap = loaders.textureLoader.load('models/Roadmap-island/roadmap_island.jpg')
