@@ -186,7 +186,6 @@ window.addEventListener("orientationchange", function (event) {
         prompt.style.display = 'flex'
 
         yes.addEventListener('click', () => {
-            console.log('YESSSS')
             utils.toggleFullscreen(body)
             prompt.style.display = 'none'
         })
