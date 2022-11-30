@@ -26,6 +26,8 @@ export let tipCircleBlog = null
 export let tipCircleGenesis = null
 export let tipCircleOG = null
 export let tipCircleMeowrush = null
+export let tipCircleTokenomeelks = null
+
 
 export const createAllTipCircles = () => {
     tipCircleTwitter = tipCircle.clone()
@@ -58,10 +60,19 @@ export const createAllTipCircles = () => {
     tipCircleMeowrush.children[0].name = 'tipCircleMeowrush1'
     tipCircleMeowrush.children[1].name = 'tipCircleMeowrush2'
 
+    tipCircleTokenomeelks = tipCircle.clone()
+    tipCircleTokenomeelks.position.x = meelkFactoryX1.position.x - .3
+    tipCircleTokenomeelks.position.y = meelkFactoryX1.position.y + 1
+    tipCircleTokenomeelks.position.z = meelkFactoryX1.position.z + .9
+    tipCircleTokenomeelks.name = 'tipCircleTokenomeelks'
+    tipCircleTokenomeelks.children[0].name = 'tipCircleTokenomeelks1'
+    tipCircleTokenomeelks.children[1].name = 'tipCircleTokenomeelks2'
+
     menuMainPawGroup.add(tipCircleTwitter, tipCircleBlog)
     genesisIslandGroup.add(tipCircleGenesis)
     OGIslandGroup.add(tipCircleOG)
     meowrushIslandGroup.add(tipCircleMeowrush)
+    meelkIslandGroup.add(tipCircleTokenomeelks)
 }
 
 
@@ -687,8 +698,10 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = meelkIslandMaterial
         })
+        console.log(gltf.scene)
         meelkIslandGroup.add(gltf.scene)
         meelkFactoryX1 = gltf.scene.children[0]
+
     },
 )
 
@@ -1388,7 +1401,6 @@ gltfLoader.load(
             child.material = backedMaterialCat4
         })
         gltf.scene.position.set(-1.16, 2.08, -10.4)
-
         script.scene.add(gltf.scene)
         cat4 = gltf.scene
     },
@@ -1418,7 +1430,6 @@ gltfLoader.load(
             child.material = backedMaterialCat6
         })
         gltf.scene.position.set(7.34, 1.35, -3.67)
-        // gltf.scene.rotation.y = 0.4
         script.scene.add(gltf.scene)
         cat6 = gltf.scene
 

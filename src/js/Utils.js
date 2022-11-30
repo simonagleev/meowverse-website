@@ -71,6 +71,9 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
         if (models.tipCircleMeowrush && groupIntersected === models.meowrushIslandGroup) {
             gsap.to(models.tipCircleMeowrush.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
         }
+        if (models.tipCircleTokenomeelks && groupIntersected === models.meelkIslandGroup) {
+            gsap.to(models.tipCircleTokenomeelks.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
+        }
 
     } else {
         $('html,body').css('cursor', 'default'); //меняет курсор назад
@@ -93,6 +96,9 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
         }
         if (models.tipCircleMeowrush) {
             gsap.to(models.tipCircleMeowrush.scale, { duration: 2, delay: 0, x: 0, y: 0, z: 0 })
+        }
+        if (models.tipCircleTokenomeelks) {
+            gsap.to(models.tipCircleTokenomeelks.scale, { duration: 2, delay: 0, x: 0, y: 0, z: 0 })
         }
     }
 }
@@ -380,6 +386,11 @@ function getModelByMeshName(obj) {
             shortName = "tipCircleMeowrush"
         }
 
+        if (obj.name === "tipCircleTokenomeelks1" || obj.name === "tipCircleTokenomeelks2") {
+            object = models.tipCircleTokenomeelks
+            shortName = "tipCircleTokenomeelks"
+        }
+
     }
 
     return ({ model: object, name: shortName })
@@ -488,6 +499,10 @@ export const handleClick = (camera, controls, scene) => {
 
     if (model.name === "tipCircleMeowrush") {
         window.open('https://meowrush.com/', '_blank');
+    }
+
+    if (model.name === "tipCircleTokenomeelks") {
+        window.open('https://dolia-cats.gitbook.io/tokenomeelks', '_blank');
     }
 }
 // Закрытие roadmap по клику
