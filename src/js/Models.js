@@ -381,7 +381,6 @@ gltfLoader.load(
             child.material = bakedMaterialMenu
         })
         menuMainPawGroup.add(gltf.scene)
-
         discord = gltf.scene.children[1]
         discord.name = 'dscord'
         discordPlate = gltf.scene.children[0]
