@@ -698,7 +698,6 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = meelkIslandMaterial
         })
-        console.log(gltf.scene)
         meelkIslandGroup.add(gltf.scene)
         meelkFactoryX1 = gltf.scene.children[0]
 
