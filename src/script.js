@@ -433,6 +433,7 @@ const tick = () => {
             models.roadmapGroup,
             models.meowrushIslandGroup,
             models.meowverseIslandGroup,
+            models.menuGroup,
             models.twitter,
             models.twitterPlate,
             models.discord,
@@ -461,7 +462,7 @@ const tick = () => {
             models.meelkIslandGroup,
             models.OGIslandGroup,
             models.partnersIslandGroup,
-            models.cloudsGroup
+            models.cloudsGroup,
         ]
 
         intersects = raycaster.intersectObjects(objectsToTest)   //тут все меши под курсором

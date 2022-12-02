@@ -15,7 +15,6 @@ gltfLoader.setDRACOLoader(dracoLoader)
 
 // Tip circle
 export const tipCircle = new THREE.Group()
-
 tipCircle.position.x = -0.05
 tipCircle.position.y = .8
 tipCircle.position.z = 2
@@ -28,11 +27,21 @@ export let tipCircleMeowrush = null
 export let tipCircleTokenomeelks = null
 
 export const createAllTipCircles = () => {
+    tipCircle.name = 'tipCircleDiscord'
+    tipCircle.children[0].name = 'tipCircleDiscord1'
+    tipCircle.children[1].name = 'tipCircleDiscord2'
+
     tipCircleTwitter = tipCircle.clone()
     tipCircleTwitter.position.set(-1.05, .8, 2.2)
+    tipCircleTwitter.name = 'tipCircleTwitter'
+    tipCircleTwitter.children[0].name = 'tipCircleTwitter1'
+    tipCircleTwitter.children[1].name = 'tipCircleTwitter2'
 
     tipCircleBlog = tipCircle.clone()
     tipCircleBlog.position.set(1.05, .8, 2.2)
+    tipCircleBlog.name = 'tipCircleBlog'
+    tipCircleBlog.children[0].name = 'tipCircleBlog1'
+    tipCircleBlog.children[1].name = 'tipCircleBlog2'
 
     tipCircleGenesis = tipCircle.clone()
     tipCircleGenesis.position.x = genesisCard1.position.x + 0.3
@@ -66,7 +75,7 @@ export const createAllTipCircles = () => {
     tipCircleTokenomeelks.children[0].name = 'tipCircleTokenomeelks1'
     tipCircleTokenomeelks.children[1].name = 'tipCircleTokenomeelks2'
 
-    menuMainPawGroup.add(tipCircleTwitter, tipCircleBlog)
+    menuMainPawGroup.add(tipCircleTwitter, tipCircleBlog, tipCircle)
     genesisIslandGroup.add(tipCircleGenesis)
     OGIslandGroup.add(tipCircleOG)
     meowrushIslandGroup.add(tipCircleMeowrush)
@@ -363,10 +372,17 @@ gltfLoader.load(
             child.material = bakedMaterialMenu
         })
         menuMainPawGroup.add(gltf.scene)
-        twitter = gltf.scene.children[1]
-        twitter.name = 'twitter'
-        twitterPlate = gltf.scene.children[0]
-        twitterPlate.name = 'twitterPlate'
+        if (gltf.scene.children[0].name === "Cylinder002") {
+            twitter = gltf.scene.children[1]
+            twitter.name = 'twitter'
+            twitterPlate = gltf.scene.children[0]
+            twitterPlate.name = 'twitterPlate'
+        } else {
+            twitter = gltf.scene.children[0]
+            twitter.name = 'twitter'
+            twitterPlate = gltf.scene.children[1]
+            twitterPlate.name = 'twitterPlate'
+        }
     },
 )
 
@@ -377,10 +393,17 @@ gltfLoader.load(
             child.material = bakedMaterialMenu
         })
         menuMainPawGroup.add(gltf.scene)
-        discord = gltf.scene.children[1]
-        discord.name = 'dscord'
-        discordPlate = gltf.scene.children[0]
-        discordPlate.name = 'discordPlate'
+        if (gltf.scene.children[0].name === "Cylinder") {
+            discordPlate = gltf.scene.children[0]
+            discordPlate.name = 'discordPlate'
+            discord = gltf.scene.children[1]
+            discord.name = 'dscord'
+        } else {
+            discordPlate = gltf.scene.children[1]
+            discordPlate.name = 'discordPlate'
+            discord = gltf.scene.children[0]
+            discord.name = 'dscord'
+        }
     },
 )
 
@@ -391,10 +414,17 @@ gltfLoader.load(
             child.material = bakedMaterialMenu
         })
         menuMainPawGroup.add(gltf.scene)
-        blog = gltf.scene.children[1]    // Group
-        blog.name = 'blog'
-        blogPlate = gltf.scene.children[0]
-        blogPlate.name = 'blogPlate'
+        if (gltf.scene.children[0].name === "Cylinder003") {
+            blog = gltf.scene.children[1]
+            blog.name = 'blog'
+            blogPlate = gltf.scene.children[0]
+            blogPlate.name = 'blogPlate'
+        } else {
+            blog = gltf.scene.children[0]
+            blog.name = 'blog'
+            blogPlate = gltf.scene.children[1]
+            blogPlate.name = 'blogPlate'
+        }
     },
 )
 

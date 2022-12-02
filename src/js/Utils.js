@@ -39,7 +39,7 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
     if (intersects[0]) {
         $('html,body').css('cursor', 'pointer'); // Меняет курсор
                 
-        // console.log(intersects[0].object.name)
+        console.log(intersects[0].object.name)
 
         let obj = intersects[0].object
 
@@ -344,6 +344,18 @@ function getModelByMeshName(obj) {
             object = models.genesisIslandGroup
             shortName = "genesisLand"
         }
+        if (obj.name === "tipCircleTwitter1" || obj.name === "tipCircleTwitter2") {
+            object = models.tipCircleTwitter
+            shortName = "tipCircleTwitter"
+        }
+        if (obj.name === "tipCircleDiscord1" || obj.name === "tipCircleDiscord2") {
+            object = models.tipCircle
+            shortName = "tipCircleDiscord"
+        }
+        if (obj.name === "tipCircleBlog1" || obj.name === "tipCircleBlog1") {
+            object = models.tipCircleBlog
+            shortName = "tipCircleBlog"
+        }
         if (obj.name === "tipCircleGenesis1" || obj.name === "tipCircleGenesis2") {
             object = models.tipCircleGenesis
             shortName = "tipCircleGenesis"
@@ -380,15 +392,6 @@ export const handleClick = (camera, controls, scene) => {
 
     let model = getModelByMeshName(hoveredObj)
 
-    if (model.name === "twitter") {
-        window.open('https://twitter.com/DoliaCats', '_blank');
-    }
-    if (model.name === "discord") {
-        window.open('https://discord.com/invite/RetekYNarD', '_blank');
-    }
-    if (model.name === "blog") {
-        window.open('https://medium.com/', '_blank');
-    }
     if (model.name === "NFTsFinger") {
         onFingerClickFocus(camera, controls, models.genesisIslandGroup)
     }
@@ -446,6 +449,15 @@ export const handleClick = (camera, controls, scene) => {
         // createLightningStrike(model.model,scene)
     }
 
+    if (model.name === "tipCircleTwitter") {
+        window.open('https://twitter.com/DoliaCats', '_blank');
+    }
+    if (model.name === "tipCircleDiscord") {
+        window.open('https://discord.com/invite/RetekYNarD', '_blank');
+    }
+    if (model.name === "tipCircleBlog") {
+        window.open('https://medium.com/', '_blank');
+    }
     if (model.name === "tipCircleGenesis") {
         window.open('https://opensea.io/collection/doliacatsgenesis', '_blank');
     }
@@ -706,8 +718,6 @@ export const toggleFullscreen = (elem) => {
 //     strike = lightningStrike
 //     strikeCreated = true
 
-    
-    
 // }
 
 // export function animateLightningStrike(elapsedTime) {
