@@ -32,14 +32,11 @@ const roadmapDiv = document.querySelector('.roadmap-container')
 const roadmapPicturesArray = document.querySelectorAll('.roadmap-item')
 
 export function animateIsland(obj, elapsedTime) {
-
     groupIntersected.position.y = Math.sin(elapsedTime * 2) * 0.1
-
 }
 
 export const hovering = (intersects, elapsedTime, outlinePass) => {
     if (intersects[0]) {
-        
         $('html,body').css('cursor', 'pointer'); // Меняет курсор
                 
         // console.log(intersects[0].object.name)
@@ -55,7 +52,6 @@ export const hovering = (intersects, elapsedTime, outlinePass) => {
         if (models.tipCircleTwitter && groupIntersected === models.menuGroup) {
             gsap.to(models.tipCircle.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
         }
-
         if (models.tipCircleTwitter && groupIntersected === models.menuGroup) {
             gsap.to(models.tipCircleTwitter.scale, { duration: 2, delay: 0, x: 1, y: 1, z: 1 })
         }
@@ -112,7 +108,6 @@ function outlineObj(obj, outlinePass) {
 
         if(Array.isArray(model.model)) {
             objArr = model.model
-
         } else {
             objArr.push(model.model)
         }
@@ -127,7 +122,6 @@ function outlineObj(obj, outlinePass) {
 
 export function intersectAnimationMedia(intersects) {
     if (intersects[0]) {
-
         let result = getModelByMeshName(intersects[0].object)
 
         switch (result.name) {
@@ -150,13 +144,11 @@ export function intersectAnimationMedia(intersects) {
 
 
 const getParent = (obj) => {
-
     let element = obj
     if (element.parent === null) {
 
     } else {
         for (let i = 0; i < myGroups.length; i++) {
-
             if (element.uuid === myGroups[i].uuid) {
                 groupIntersected = myGroups[i]
             }
@@ -165,7 +157,6 @@ const getParent = (obj) => {
         getParent(element)
     }
 };
-
 
 
 export function focusCamera(camera, controls) {
@@ -209,8 +200,6 @@ export const onFingerClickFocus = (camera, controls, group) => {
             gsap.to(camera.position, { duration: 2, delay: 0, x: -0.2, })
             gsap.to(camera.position, { duration: 2, delay: 0, z: 11, })
             gsap.to(camera.position, { duration: 2, delay: 0, y: 6.15, })
-
-
         } else {
             gsap.to(controls.target, { duration: 2, delay: 0, x: 0, })
             gsap.to(controls.target, { duration: 2, delay: 0, y: 2.8805, })
@@ -220,7 +209,6 @@ export const onFingerClickFocus = (camera, controls, group) => {
             gsap.to(camera.position, { duration: 2, delay: 0, y: 13, })
             gsap.to(camera.position, { duration: 2, delay: 0, z: 9.15, })
         }
-
     } else if (group === models.genesisIslandGroup) {
         gsap.to(controls.target, { duration: 2, delay: 0, x: -6.2, })
         gsap.to(controls.target, { duration: 2, delay: 0, y: 0.25 , })
@@ -229,7 +217,6 @@ export const onFingerClickFocus = (camera, controls, group) => {
         gsap.to(camera.position, { duration: 2, delay: 0, x: -7, })
         gsap.to(camera.position, { duration: 2, delay: 0, y: 16, })
         gsap.to(camera.position, { duration: 2, delay: 0, z: 4, })
-
     } else {
         for (const child of group.children) {
             if (child.name.includes('IslandLand')) {
@@ -243,7 +230,6 @@ export const onFingerClickFocus = (camera, controls, group) => {
             } 
         }
     }
-    
 }
 
 function getModelByMeshName(obj) {
@@ -255,42 +241,34 @@ function getModelByMeshName(obj) {
             object = hoveredObj
             shortName = "OriginalNFT002"
         }
-
         if(obj.name === "OG1") {
             object = hoveredObj
             shortName = "OriginalNFT001"
         }
-
         if(obj.name === "OG1002") {
             object = hoveredObj
             shortName = "OriginalNFT003"
         }
-
         if(obj.name === "Mball002" || obj.name === "Mball003" || obj.name === "Mball004" || obj.name === "Mball005" || obj.name === "Mball006" || obj.name === "Mball007") {
             object = obj
             shortName = "cloud"
         }
-
         if(obj.name == "Cylinder014" || obj.name == "Cylinder013" || obj.name == "Text011") {
             object = [models.roadmapIslandBaseButton,models.roadmapIslandButton]
             shortName = "red_button"
         }
-
         if (obj.name === "Cylinder047" || obj.name === "Cylinder047_1" || obj.name === "twitter" || obj.name === "twitterPlate") {
             object = models.twitter
             shortName = "twitter"
         }
-
         if (obj.name === "Cube000_Cube005_1" || obj.name === "Cube000_Cube005_2" || obj.name === "Cylinder036" || obj.name === "Cylinder036_1") {
             object = models.discord
             shortName = "discord"
         }
-
         if (obj.name === "Cube035_1" || obj.name === "Cube035" || obj.name === "Cylinder048" || obj.name === "Cylinder048_1") {
             object = models.blog
             shortName = "blog"
         }
-
         if (
             obj.name === "NFTsFingerSign" ||
             obj.name === "Sphere003" ||
@@ -308,7 +286,6 @@ function getModelByMeshName(obj) {
             object = models.NFTsFinger
             shortName = "NFTsFinger"
         }
-
         if (
             obj.name === "gamesMeowverseFingerSign" ||
             obj.name === "Sphere001_1" ||
@@ -331,7 +308,6 @@ function getModelByMeshName(obj) {
             object = models.gamesMeowverseFinger
             shortName = "gamesMeowverseFinger"
         }
-
         if (
             obj.name === "roadmapFingerSign" ||
             obj.name === "Sphere005" ||
@@ -346,7 +322,6 @@ function getModelByMeshName(obj) {
             object = models.roadmapFinger
             shortName = "roadmapFinger"
         }
-
         if (
             obj.name === "Sphere004" ||
             obj.name === "partnersFingerSign" ||
@@ -356,7 +331,6 @@ function getModelByMeshName(obj) {
             object = models.partnersFinger
             shortName = "partnersFinger"
         }
-
         if (
             obj.name === "Genesis1002" ||
             obj.name === "Genesis1001" ||
@@ -370,27 +344,22 @@ function getModelByMeshName(obj) {
             object = models.genesisIslandGroup
             shortName = "genesisLand"
         }
-
         if (obj.name === "tipCircleGenesis1" || obj.name === "tipCircleGenesis2") {
             object = models.tipCircleGenesis
             shortName = "tipCircleGenesis"
         }
-
         if (obj.name === "tipCircleOG1" || obj.name === "tipCircleOG2") {
             object = models.tipCircleOG
             shortName = "tipCircleOG"
         }
-
         if (obj.name === "tipCircleMeowrush1" || obj.name === "tipCircleMeowrush2") {
             object = models.tipCircleMeowrush
             shortName = "tipCircleMeowrush"
         }
-
         if (obj.name === "tipCircleTokenomeelks1" || obj.name === "tipCircleTokenomeelks2") {
             object = models.tipCircleTokenomeelks
             shortName = "tipCircleTokenomeelks"
         }
-
     }
 
     return ({ model: object, name: shortName })
@@ -400,50 +369,38 @@ export function animateBoat(elapsedTime) {
     if(models.genesisBoat) {
         models.genesisBoat.position.y = Math.sin(elapsedTime * 2) * 0.02 + 1.41
         models.genesisBoat.rotation.z = Math.cos(elapsedTime * 2) * 0.02
-        
     }
 }
 
 
 export const handleClick = (camera, controls, scene) => {
-    // if (!groupIntersected) {
-    //     hideCloseBtn()
-    // }
-
     if (groupIntersected != models.cloudsGroup) {
         focusCamera(camera, controls)
     }
-    
+
     let model = getModelByMeshName(hoveredObj)
 
     if (model.name === "twitter") {
         window.open('https://twitter.com/DoliaCats', '_blank');
     }
-
     if (model.name === "discord") {
         window.open('https://discord.com/invite/RetekYNarD', '_blank');
     }
-
     if (model.name === "blog") {
         window.open('https://medium.com/', '_blank');
     }
-
     if (model.name === "NFTsFinger") {
         onFingerClickFocus(camera, controls, models.genesisIslandGroup)
     }
-
     if (model.name === "gamesMeowverseFinger") {
         onFingerClickFocus(camera, controls, models.meowverseIslandGroup)
     }
-
     if (model.name === "roadmapFinger") {
         onFingerClickFocus(camera, controls, models.roadmapGroup)
     }
-
     if (model.name === "partnersFinger") {
         onFingerClickFocus(camera, controls, models.partnersIslandGroup)
     }
-
     if(model.name === "red_button") {
         let redBtn = model.model[1]
         if(btnFlag) {
@@ -492,19 +449,17 @@ export const handleClick = (camera, controls, scene) => {
     if (model.name === "tipCircleGenesis") {
         window.open('https://opensea.io/collection/doliacatsgenesis', '_blank');
     }
-
     if (model.name === "tipCircleOG") {
         window.open('https://original.doliacats.xyz/', '_blank');
     }
-
     if (model.name === "tipCircleMeowrush") {
         window.open('https://meowrush.com/', '_blank');
     }
-
     if (model.name === "tipCircleTokenomeelks") {
         window.open('https://dolia-cats.gitbook.io/tokenomeelks', '_blank');
     }
 }
+
 // Закрытие roadmap по клику
 if(roadmapDiv && window.innerWidth > 800) {
     roadmapDiv.addEventListener('click', () => {
@@ -513,8 +468,6 @@ if(roadmapDiv && window.innerWidth > 800) {
         gsap.to(roadmapPicturesArray[2].style, { duration: .3, delay: 0, scale: 0, ease: true})
 
         gsap.to(roadmapDiv.style, { duration: 1, delay: .9, display: 'none', ease: true})
-        
-        // roadmapDiv.style.display = 'none'
     })
 } else if (roadmapDiv && window.innerWidth <= 800) {
     roadmapDiv.addEventListener('touchend', () => {
@@ -522,9 +475,6 @@ if(roadmapDiv && window.innerWidth > 800) {
         gsap.to(roadmapPicturesArray[1].style, { duration: .5, delay: 0, scale: 0, ease: true})
         gsap.to(roadmapPicturesArray[2].style, { duration: .3, delay: 0, scale: 0, ease: true})
         gsap.to(roadmapDiv.style, { duration: 1, delay: .9, display: 'none', ease: true})
-
-        // roadmapDiv.style.display = 'none'
-
     })
 }
 
@@ -558,7 +508,6 @@ export const kartAnimation = () => {
     let timeLine = gsap.timeline({ repeat: -1, repeatDelay: 0 });
     
     timeLine.to(kart.rotation, {duration: .1, delay: 0, z: .01 });
-    
 }
 
 function showCloseBtn() {
@@ -580,7 +529,6 @@ export function hideCloseBtn() {
 
 
 export function animateClouds(elapsedTime) {
-    
     let cloud1Angle = elapsedTime * 0.12
     models.cloud1.position.x = Math.cos(cloud1Angle) * 4
     models.cloud1.position.z = Math.sin(cloud1Angle) * 4
@@ -622,13 +570,11 @@ export function animateClouds(elapsedTime) {
     models.cloud10.position.x = -Math.cos(cloud10Angle) * 3.3 - 10
     models.cloud10.position.z = Math.sin(cloud10Angle) * 1.6
     models.cloud10.position.y = Math.cos(cloud10Angle) - 1
-   
 }
 
 
 // CATS ANIMATIONS
 export const catAnimation9 = (deltaTime, elapsedTime) => {
-
     const cat9Angle = deltaTime / 3
     
     if (models.cat9) {
@@ -642,7 +588,6 @@ export const catAnimation9 = (deltaTime, elapsedTime) => {
 }
 
 export const catAnimation1and2 = (deltaTime) => {
-    
     if (models.cat2) {
         models.mixerCat2.update(deltaTime)
     }
@@ -669,7 +614,6 @@ export const catAnimation6 = (deltaTime) => {
         models.mixerCat6.update(deltaTime)
     }
 }
-
 
 export const goFullscreen = (elem) => {
     if (elem.requestFullscreen) {
@@ -700,8 +644,6 @@ export const toggleFullscreen = (elem) => {
       document.exitFullscreen();
     }
   }
-
-
 
 // function createLightningStrike(obj,scene) {
     

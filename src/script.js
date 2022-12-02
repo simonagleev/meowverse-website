@@ -24,7 +24,6 @@ closeBtn.addEventListener('click', (event) => {
     event.preventDefault()
     utils.onFingerClickFocus(camera, controls, models.menuGroup)
     utils.hideCloseBtn()
-
     //Костыль для мобилки
     mouse.x = 0
     mouse.y = -0.99
@@ -62,7 +61,6 @@ loaders.loadingManager.onLoad = () => {
     // Костыль дял мобилки
     mouse.x = 0
     mouse.y = -0.99
-
     if (window.innerWidth > 800) {
         gsap.to(camera.position, { duration: 3, delay: 0, y: 11, })
     } else {
@@ -136,7 +134,6 @@ scene.add(light.ambientLight)
  */
 
 const raycaster = new THREE.Raycaster()
-
 const rayOrigin = new THREE.Vector3(- 3, 0, 0)
 const rayDirection = new THREE.Vector3(10, 0, 0)
 rayDirection.normalize()
@@ -178,7 +175,6 @@ window.addEventListener("orientationchange", function (event) {
     let prompt = document.querySelector('.fullscreen-prompt-container');
     const yes = document.querySelector('.yes')
     const no = document.querySelector('.no')
-
     if (document.fullscreenElement) {
         document.exitFullscreen();
         prompt.style.display = 'none'
@@ -202,7 +198,6 @@ window.addEventListener("orientationchange", function (event) {
  * Mouse
  */
 const mouse = new THREE.Vector2()
-
 window.addEventListener('mousemove', (event) => {
     if (window.innerWidth > 800) {
         mouse.x = event.clientX / sizes.width * 2 - 1
@@ -214,22 +209,17 @@ window.addEventListener('mousemove', (event) => {
 /**
  * UTILS
  */
-
 // Находит родителей вплоть до Scene
 let groupIntersected = null;
 
 const getParent = (obj) => {
-
     let element = obj
     if (element.parent === null) {
-
     } else {
         for (let i = 0; i < myGroups.length; i++) {
-
             if (element.uuid === myGroups[i].uuid) {
                 groupIntersected = myGroups[i]
-            } else {
-            }
+            } 
         }
         element = element.parent
         getParent(element)
@@ -330,25 +320,6 @@ effectComposer.addPass(outlinePass)
 // }, 3000)
 
 
-/**
- * TEST TEXTURES .basis + KTX2
- */
-
-// export const roadmapMaterial = new THREE.MeshBasicMaterial();
-
-// loaders.ktx2Loader.setTranscoderPath('./node_modules/three/examples/js/libs/basis');
-// loaders.ktx2Loader.detectSupport(renderer);
-
-// loaders.ktx2Loader.load('models/Roadmap-island/roadmap_island.ktx2', function (texture) {
-//     // let material = new THREE.MeshStandardMaterial({ map: texture });
-//     roadmapMaterial.map = texture
-// }, function () {
-//     console.log('onProgress');
-// }, function (e) {
-//     console.error(e);
-// });
-
-
 
 // const rayParams = {
 //     sourceOffset: new THREE.Vector3(1,1,1),
@@ -440,7 +411,6 @@ effectComposer.addPass(outlinePass)
  */
 const clock = new THREE.Clock()
 let previousTime = 0
-
 let intersects = []
 
 /**
@@ -463,43 +433,32 @@ const tick = () => {
             models.roadmapGroup,
             models.meowrushIslandGroup,
             models.meowverseIslandGroup,
-
             models.twitter,
             models.twitterPlate,
-
             models.discord,
             models.discordPlate,
-
             models.blog,
             models.blogPlate,
-
             models.menuIslandLand,
             models.menuPaw1,
             models.menuPaw2,
-
             models.NFTsFinger,
             models.NFTsFingerSign,
             models.NFTsFingerToken,
             models.NFTsFingerGenCard,
             models.NFTsFingerOgCard,
-
             models.roadmapFinger,
             models.roadmapPaw1,
             models.roadmapPaw2,
             models.roadmapFingerSign,
-
             models.partnersFinger,
             models.partnersFingerSign,
-
             models.gamesMeowverseFinger,
             models.gamesMeowverseFingerKart,
             models.gamesMeowverseFingerMushroom,
             models.gamesMeowverseFingerSign,
-
             models.genesisIslandGroup,
-
             models.meelkIslandGroup,
-
             models.OGIslandGroup,
             models.partnersIslandGroup,
             models.cloudsGroup
@@ -524,7 +483,6 @@ const tick = () => {
 
     //CATS animation
     utils.catAnimation9(deltaTime, elapsedTime)
-
     utils.catAnimation1and2(deltaTime)
     utils.catAnimation3(deltaTime)
     utils.catAnimation5(deltaTime)

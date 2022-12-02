@@ -3,7 +3,6 @@
     src: url("../static/fonts/sf-compact-display-medium-5864711817c30.otf")
 }
 
-
 * {
     margin: 0;
     padding: 0;
@@ -37,7 +36,6 @@ body {
 
 .menu-text {
     padding: 3px 5px;
-
 }
 
 .progress-bar-container {
@@ -56,7 +54,6 @@ body {
     opacity: 1;
     color: azure;
     font-size: 2em;
-
 }
 
 .loader-pic {
@@ -64,7 +61,6 @@ body {
     max-width: 125px;
     animation: load 3s ease-in-out infinite alternate;
 }
-
 
 @keyframes load {
     0% {
@@ -140,7 +136,6 @@ body {
 .roadmap-container {
     height: 70vh;
     width: 100%;
-    /* position: absolute; */
     z-index: 1000000;
     display: none;
     font-family: '.SF Compact', "Arial", sans-serif;
@@ -177,20 +172,17 @@ body {
         justify-content: center;
         gap: 10px;
     }
-
     .roadmap-picture {
         width: 100%;
         border-radius: 20px;
         max-width: 400px;
     }
-
     .roadmap-item {
         width: 100%;
         max-height: 30vh;
         scale: 0;
         text-align: center;
     }
-
     .loader-pic {
         max-width: 80px;
     }
@@ -207,13 +199,11 @@ body {
         justify-content: center;
         gap: 10px;
     }
-
     .roadmap-picture {
         width: 70%;
         border-radius: 20px;
         max-width: 435px;
     }
-
     .roadmap-item {
         width: 100%;
         max-height: 30vh;
@@ -259,13 +249,11 @@ body {
         justify-content: center;
         gap: 10px;
     }
-
     .roadmap-picture {
         width: 100%;
         border-radius: 20px;
         max-width: 400px;
     }
-
     .roadmap-item {
         width: 30%;
         max-height: 90vh;
@@ -273,12 +261,10 @@ body {
         text-align: center;
         padding-right: 0px;
     }
-
     .loader-pic {
         max-width: 80px;
     }
 }
-
 
 .fullscreen-prompt-container {
     width: 25%;
@@ -319,7 +305,6 @@ body {
     color: antiquewhite;
     font-weight: bold;
     cursor: pointer;
-
 }
 
 .no {
@@ -340,7 +325,6 @@ body {
         width: 90%;
         height: 30vh;
     }
-
     .prompt-text {
         font-size: 1em;
     }
@@ -351,7 +335,6 @@ body {
         width: 70%;
         height: 50vh;
     }
-
     .prompt-text {
         font-size: 1.2em;
     }
@@ -362,7 +345,6 @@ body {
         width: 50%;
         height: 50vh;
     }
-
     .prompt-text {
         font-size: 1.2em;
     }

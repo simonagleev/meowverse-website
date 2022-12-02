@@ -13,7 +13,6 @@ gltfLoader.setDRACOLoader(dracoLoader)
  * Composer
  */
 
-
 // Tip circle
 export const tipCircle = new THREE.Group()
 
@@ -27,7 +26,6 @@ export let tipCircleGenesis = null
 export let tipCircleOG = null
 export let tipCircleMeowrush = null
 export let tipCircleTokenomeelks = null
-
 
 export const createAllTipCircles = () => {
     tipCircleTwitter = tipCircle.clone()
@@ -45,7 +43,7 @@ export const createAllTipCircles = () => {
     tipCircleGenesis.children[1].name = 'tipCircleGenesis2'
 
     tipCircleOG = tipCircle.clone()
-    tipCircleOG.position.x = OGIslandLand.children[0].position.x 
+    tipCircleOG.position.x = OGIslandLand.children[0].position.x
     tipCircleOG.position.y = OGIslandLand.children[0].position.y + .6
     tipCircleOG.position.z = OGIslandLand.children[0].position.z + .3
     tipCircleOG.name = 'tipCircleOG'
@@ -162,7 +160,6 @@ meelkIslandGroup.position.set(0, 0, 0)
 meelkIslandGroup.name = 'meelkIsland'
 const meelkIslandMaterial = new THREE.MeshBasicMaterial({ map: textures.meelkIslandBacked })
 textures.meelkIslandBacked.flipY = false
-
 
 export let meelkIslandLand = null;
 export let meelkFactoryX1 = null;
@@ -354,7 +351,6 @@ gltfLoader.load(
             child.material = bakedMaterialMenu
         })
         menuMainPawGroup.add(gltf.scene)
-
         menuIslandLand = gltf.scene.children[0]
         menuIslandLand.name = 'menuIslandLand'
     },
@@ -411,7 +407,6 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
         menuPaw1 = gltf.scene.children[0]
         menuPaw1.name = 'menuPaw1'
-
     },
 )
 
@@ -424,7 +419,6 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
         menuPaw2 = gltf.scene.children[0]
         menuPaw2.name = 'menuPaw2'
-
     },
 )
 
@@ -449,7 +443,6 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
         NFTsFingerToken = gltf.scene.children[0]
         NFTsFingerToken.name = 'NFTsFingerToken'
-
     },
 )
 gltfLoader.load(
@@ -499,7 +492,6 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
         gamesMeowverseFinger = gltf.scene.children[0]
         gamesMeowverseFinger.name = 'gamesMeowverseFinger'
-
     },
 )
 
@@ -512,7 +504,6 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
         gamesMeowverseFingerKart = gltf.scene
         gamesMeowverseFingerKart.name = 'gamesMeowverseFingerKart'
-
     },
 )
 
@@ -522,7 +513,6 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = backedMaterialMeowrush
         })
-
         menuMainPawGroup.add(gltf.scene)
         gamesMeowverseFingerMushroom = gltf.scene
         gamesMeowverseFingerMushroom.name = 'gamesMeowverseFingerMushroom'
@@ -602,7 +592,6 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
         partnersFinger = gltf.scene.children[0]
         partnersFinger.name = 'partnersFinger'
-
     },
 )
 
@@ -615,7 +604,6 @@ gltfLoader.load(
         menuMainPawGroup.add(gltf.scene)
         partnersFingerSign = gltf.scene.children[0]
         partnersFingerSign.name = 'partnersFingerSign'
-
     },
 )
 
@@ -699,7 +687,6 @@ gltfLoader.load(
         })
         meelkIslandGroup.add(gltf.scene)
         meelkFactoryX1 = gltf.scene.children[0]
-
     },
 )
 
@@ -711,7 +698,6 @@ gltfLoader.load(
         })
         meelkIslandGroup.add(gltf.scene)
         meelkFactoryX2 = gltf.scene.children[0]
-
     },
 )
 
@@ -726,7 +712,6 @@ gltfLoader.load(
 
         meelkIslandGroup.add(gltf.scene)
         meelkToken1 = gltf.scene.children[0]
-
     },
 )
 
@@ -738,7 +723,6 @@ gltfLoader.load(
         })
         meelkIslandGroup.add(gltf.scene)
         meelkToken2 = gltf.scene.children[0]
-
     },
 )
 
@@ -750,7 +734,6 @@ gltfLoader.load(
         })
         meelkIslandGroup.add(gltf.scene)
         meelkToken3 = gltf.scene.children[0]
-
     },
 )
 
@@ -773,7 +756,6 @@ gltfLoader.load(
         })
         meelkIslandGroup.add(gltf.scene)
         meelkTokenTower2 = gltf.scene.children[0]
-
     },
 )
 
@@ -785,7 +767,6 @@ gltfLoader.load(
         })
         meelkIslandGroup.add(gltf.scene)
         meelkTokenTower3 = gltf.scene.children[0]
-
     },
 )
 
@@ -797,7 +778,6 @@ gltfLoader.load(
         })
         meelkIslandGroup.add(gltf.scene)
         meelkTokenTower4 = gltf.scene.children[0]
-
     },
 )
 
@@ -809,7 +789,6 @@ gltfLoader.load(
         })
         meelkIslandGroup.add(gltf.scene)
         meelkTokenTower5 = gltf.scene.children[0]
-
     },
 )
 
@@ -834,7 +813,6 @@ gltfLoader.load(
             child.material = OG1IslandMaterial
         })
         OGIslandGroup.add(gltf.scene)
-
     },
 )
 
@@ -845,7 +823,6 @@ gltfLoader.load(
             child.material = OG2IslandMaterial
         })
         OGIslandGroup.add(gltf.scene)
-
     },
 )
 
@@ -856,7 +833,6 @@ gltfLoader.load(
             child.material = OG3IslandMaterial
         })
         OGIslandGroup.add(gltf.scene)
-
     },
 )
 
@@ -1077,7 +1053,6 @@ gltfLoader.load(
     (gltf) => {
         gltf.scene.traverse((child) => {
             child.material = backedMaterialRoadmap
-            // child.material = roadmapMaterial
         })
         roadmapGroup.add(gltf.scene)
         roadmapIslandLand = gltf.scene
@@ -1206,7 +1181,6 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = backedMaterialClouds
         })
-
         cloudsGroup.add(gltf.scene)
         cloud2 = gltf.scene
     },
@@ -1230,7 +1204,6 @@ gltfLoader.load(
             child.material = backedMaterialClouds
         })
         gltf.scene.position.y = -3
-
         cloudsGroup.add(gltf.scene)
         cloud4 = gltf.scene
     },
@@ -1244,7 +1217,6 @@ gltfLoader.load(
         })
         cloudsGroup.add(gltf.scene)
         cloud5 = gltf.scene
-
     },
 )
 
@@ -1266,7 +1238,6 @@ gltfLoader.load(
             child.material = backedMaterialClouds
         })
         gltf.scene.position.y = -3
-
         cloudsGroup.add(gltf.scene)
         cloud7 = gltf.scene
     },
@@ -1280,7 +1251,6 @@ gltfLoader.load(
         })
         gltf.scene.scale.set(.4, .4, .4)
         cloudsGroup.add(gltf.scene)
-
         cloud8 = gltf.scene
     },
 )
@@ -1291,7 +1261,6 @@ gltfLoader.load(
         gltf.scene.traverse((child) => {
             child.material = backedMaterialClouds
         })
-        // gltf.scene.scale.set(2,2,2)
         gltf.scene.position.x = -11
         cloudsGroup.add(gltf.scene)
         cloud9 = gltf.scene
@@ -1336,7 +1305,6 @@ gltfLoader.load(
             child.material = backedMaterialCat2
         })
         gltf.scene.position.set(0, 1.64, -10.57)
-
         script.scene.add(gltf.scene)
         cat2 = gltf.scene
 
@@ -1369,7 +1337,6 @@ gltfLoader.load(
             child.material = backedMaterialMeowverse
         })
         gltf.scene.position.set(-.29, 1.82, -10.51)
-
         script.scene.add(gltf.scene)
         cat1Mushroom = gltf.scene
     },

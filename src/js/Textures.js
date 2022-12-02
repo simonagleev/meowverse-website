@@ -1,23 +1,8 @@
 import * as loaders from './Loaders.js'
-// import * as script from '../script.js'
+
 
 // ROADMAP island
 export const backedTextureRoadmap = loaders.textureLoader.load('models/Roadmap-island/roadmap_island.jpg')
-
-// export const roadmapMaterial = new THREE.MeshBasicMaterial();
-
-
-// loaders.ktx2Loader.detectSupport(script.renderer);
-
-// loaders.ktx2Loader.asyncLoad('models/Roadmap-island/roadmap_island.ktx2', function (texture) {
-//     // let material = new THREE.MeshStandardMaterial({ map: texture });
-//     roadmapMaterial.map = texture
-// }, function () {
-//     console.log('onProgress');
-// }, function (e) {
-//     console.error(e);
-// });
-
 
 
 // MENU island
