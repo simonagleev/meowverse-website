@@ -45,7 +45,7 @@ export const scene = new THREE.Scene()
  * Preloader 
  */
 
-const progressBarontainer = document.querySelector('.progress-bar-container')
+const progressBarontainer = document.querySelector('.preloader-container')
 
 loaders.loadingManager.onProgress = (url, loaded, total) => {
 }

@@ -17,6 +17,7 @@ body {
     justify-content: center;
     width: 100%;
     height: 100vh;
+    font-size: 16px;
 }
 
 .webgl {
@@ -38,7 +39,7 @@ body {
     padding: 3px 5px;
 }
 
-.progress-bar-container {
+.preloader-container {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -48,12 +49,26 @@ body {
     height: 100vh;
     background-color: #0d0052;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     opacity: 1;
     color: azure;
+}
+
+.preloader-text-top{
+    padding-top: 6rem;
+    font-family: '.SF Compact', "Arial", sans-serif;
+    text-align: center;
     font-size: 2em;
+    position: relative;
+}
+
+.preloader-text-bot{
+    padding-bottom: 6rem; 
+    font-family: '.SF Compact', "Arial", sans-serif;
+    text-align: center;
+    font-size: 1em;
 }
 
 .loader-pic {
@@ -84,6 +99,118 @@ body {
         -webkit-transform: scale(1.0);
     }
 }
+
+
+.preloader-title-1 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards;
+}
+.preloader-title-2 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards .2s;
+}
+.preloader-title-3 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards .4s;
+}
+.preloader-title-4 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards .6s;
+}
+.preloader-title-5 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards .8s;
+}
+.preloader-title-6 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 1s;
+}
+.preloader-title-7 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 1.2s;
+}
+.preloader-title-8 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 1.4s;
+}
+
+.preloader-title-10 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 1.6s;
+}
+.preloader-title-11 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 1.7s;
+}
+.preloader-title-12 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 1.8s;
+}
+.preloader-title-13 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 1.9s;
+}
+.preloader-title-14 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 2s;
+}
+.preloader-title-15 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 2.1s;
+}
+.preloader-title-16 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 2.2s;
+}
+.preloader-title-17 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 2.3s;
+}
+.preloader-title-18 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 2.4s;
+}
+.preloader-title-19 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 2.5s;
+}
+.preloader-title-20 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 2.6s;
+}
+.preloader-title-21 {
+    opacity: 0;
+    display: inline-block;
+    animation: drop .4s linear forwards 2.7s;
+}
+
+@keyframes drop {
+    0% {transform: translateY(-200px) scaleY(0.9); opacity: 0;}
+    5% {opacity: .7;}
+    50% {transform: translateY(0px) scaleY(1); opacity: 1;}
+    65% {transform: translateY(-17px) scaleY(.9); opacity: 1;}
+    75% {transform: translateY(-22px) scaleY(.9); opacity: 1;}
+    100% {transform: translateY(0px) scaleY(1); opacity: 1;}
+  }
 
 .label {
     color: azure;
@@ -144,8 +271,6 @@ body {
     justify-content: center;
     gap: 10px;
 }
-
-
 
 .roadmap-item {
     width: 100%;
@@ -328,6 +453,12 @@ body {
     .prompt-text {
         font-size: 1em;
     }
+    .preloader-text-top{
+        font-size: 1.4em;
+    }
+    .preloader-text-bot{
+        font-size: 0.8em;
+    }
 }
 
 @media (min-width: 541px) and (max-width: 690px) {
@@ -338,6 +469,7 @@ body {
     .prompt-text {
         font-size: 1.2em;
     }
+   
 }
 
 @media (min-width: 691px) and (max-width: 1080px) {
@@ -347,5 +479,5 @@ body {
     }
     .prompt-text {
         font-size: 1.2em;
-    }
+    } 
 }
